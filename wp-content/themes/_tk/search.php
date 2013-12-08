@@ -7,7 +7,7 @@
 
 get_header(); ?>
 	<div class="container">
-		
+		<!-- Test -->
 		
 		<?php if ( have_posts() ) : ?>
 
