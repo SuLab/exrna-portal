@@ -236,33 +236,34 @@
 		<footer>
 			<div class="container">
 				<div class="row pushtop">
-					<div class="col-md-3">
+					<div class="col-md-1 col-md-offset-1 ft-nav">
 						<h3>exRNA</h3>
 						<ul class="list-unstyled">
 							
 					        <li>
-					          <a style="padding-left:10px;text-transform: uppercase;" href="/~j/exrna-protypes/about.html">About</a>
+					          <a href="">About</a>
 					        </li>
 					        <li>
-					          <a style="padding-left:10px;text-transform: uppercase;" href="/~j/exrna-protypes/protocols.html">Protocols</a>
+					          <a href="">Protocols</a>
 					        </li>
 					        <li>
-					          <a style="padding-left:10px;text-transform: uppercase;" href="#">Projects</a>
+					          <a href="#">Projects</a>
 					        </li>
 					        <li>
-					          <a style="padding-left:10px;text-transform: uppercase;" href="#">Publications</a>
+					          <a href="#">Publications</a>
 					        </li>
 					        <li>
-					          <a style="padding-left:10px;text-transform: uppercase;" href="#">Resources</a>	
+					          <a href="#">Resources</a>	
 					        </li>
 					        <li>
-					          <a style="padding-left:10px;text-transform: uppercase;" href="#">Events</a>
+					          <a href="#">Events</a>
 					        </li>
 					        <li>
-					          <a style="padding-left:10px;text-transform: uppercase;" href="#">Engage</a>
+					          <a href="#">Engage</a>
 					        </li>
 					      </ul>
 					</div>
+					<div class="col-md-1"></div>
 					<div class="col-md-3">
 						<div class="blue">
 							<p>Patel Lab Protocol</p>
@@ -270,9 +271,10 @@
 							<p class="whitemore">MORE <i class="fa fa-long-arrow-right"></i></p>
 						</div>
 					</div>
-					<div class="col-md-3">
+					
+					<div class="col-md-2">
 						<h3>Resources</h3>
-						<ul>
+						<ul class="list-unstyled">
 							<li><a href="">Protocols</a></li>
 							<li><a href="">Data</a></li>
 							<li><a href="">Software</a></li>
@@ -280,9 +282,15 @@
 							<li><a href="">Publications</a></li>
 						</ul>
 					</div>
-					<div class="col-md-3">
-						<h3>Engage</h3>
-						<p style="font-size: 25px;">
+					<div class="col-md-2">
+						<h3 class="">Contact Us</h3>
+						<address>
+							<p>1232 SomeStreet St.</p>
+							<p>San Diego, CA 92111 USA</p>
+							<p style="margin-top:10px;"><abbr title="Phone">P:</abbr> (619) 555-5555</p> 
+							<p style="margin-top:10px;"><a href="mailto:info@exrna.org" style="margin-top:30px;">info@exrna.org</a></p>
+						</address>
+						<p style="font-size: 20px;">
 							<i class="fa fa-facebook-square fa-3"></i>
 							<i class="fa fa-twitter-square fa-5"></i>
 							<i class="fa fa-linkedin-square fa-5"></i>
@@ -290,14 +298,9 @@
 							<i class="fa fa-bitbucket-square fa-5"></i>
 						</p>
 						
-						<p class="">Contact Us</p>
-						<address>
-							1232 SomeStreet St. <br>
-							San Diego, CA 92111 USA <br>
-							<abbr title="Phone">P:</abbr> (619) 555-5555 <br>
-							<a href="mailto:info@exrna.org">info@exrna.org</a>
-						</address>
-						
+					</div>
+					<div class="col-md-2">
+						<img src="./media/exrna-logo-only.png" alt="" class="img-responsive">
 					</div>
 				</div>
 			</div>
