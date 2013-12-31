@@ -188,13 +188,14 @@
 											<div class="col-md-12">
 												<img src="http://exrna.org/media/banner-nihlogo.png" alt="" class="img-responsive imgcent">
 											</div>
+											
 											<div class="col-md-12 pushtop">
-												<div class="imgcent">
+												<div class="imgcent white email-signup">
 									        		<form class="form-inline" role="form">
 													  <div class="form-group">
-													    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter email">
+													    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email Newsletter">
 													  </div>
-													  <button type="submit" class="btn btn-warning">Sign up</button>
+													  <button type="submit" class="btn btn-warning pull-right"><strong>SIGN UP</strong></button>
 													</form>
 												</div>
 											</div>	

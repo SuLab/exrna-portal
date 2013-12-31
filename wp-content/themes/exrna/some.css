@@ -184,6 +184,7 @@ p{
 
 .blue{
 	background-color: #00adef;
+	font-size: 16px;
 	padding: 30px;
 	color: white;
 }
@@ -221,6 +222,19 @@ p{
 
 .more{
 	color:#00aeef;
+}
+
+.email-signup form{
+	padding: 10px;
+}
+
+.email-signup .form-control {
+	color: #555;
+	border: none;
+	border-radius: 4px;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	font-size: 16px;
 }
 
 
