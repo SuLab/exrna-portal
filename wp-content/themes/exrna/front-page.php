@@ -173,7 +173,7 @@
 								<div class="col-md-12">
 									<div class="blue">
 										<h3>Quick Links</h3>
-										<ul>
+										<ul class="list-unstyled">
 											<li><a href="">ExRNA Atlas @ BioGPS</a></li>
 											<li><a href="">ExRNA Pathway Collection</a></li>
 											<li><a href="">ExoCarta</a></li>

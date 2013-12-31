@@ -188,6 +188,20 @@ p{
 	color: white;
 }
 
+.blue a{
+	color:white;
+}
+
+.blue ul li:after{ 
+   content: '\f178';
+   font-family: FontAwesome;
+   font-weight: normal;
+   font-style: normal;
+   margin:0px 0px 0px 10px;
+   text-decoration:none;
+
+} 
+
 .grey{
 	background-color: #efefef;
 	padding: 20px 15px;
