@@ -208,20 +208,42 @@ p{
 	padding: 20px 15px;
 }
 
-.homeposts h3{
+.hm-post{
+	color: #000000;
+	margin-bottom: 60px;
+}
+
+.hm-post-border{
+	border-top: 2px solid #000000;
+	margin-bottom: 20px;
+}
+
+.hm-posts h3{
+	font-family: Helvetica, Arial;
+	font-size: 34px;
+	line-height: 40px;
 	margin-top: 5px;
 	margin-bottom: 5px;
 }
 
-.homeposts p{
+.hm-posts p{
 	font-family: Helvetica, Arial;
-	font-size: 14px;
-	line-height: 120%;
-	font-weight: bold;
+	font-size: 20px;
+	line-height: 30px;
+	font-weight: normal;
+}
+
+.post-date, .post-author{
+	font-size: 16px;
+}
+
+.post-author{
+	color: #9d9d9d;
 }
 
 .more{
 	color:#00aeef;
+	font-size: 16px;
 }
 
 .email-signup form{

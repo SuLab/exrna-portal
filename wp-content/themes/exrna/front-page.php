@@ -155,18 +155,28 @@
 			<div class="white">
 				<div class="container">
 					
-					<div class="row pushtop homeposts">
+					<div class="row pushtop hm-posts">
 						<div class="col-md-5 col-md-offset-1">
-							<h2>Latest Blog Posts</h2>
-							<h3><a href="">Identification of Novel Liver-Specific mRNAs in Plasma</a></h3>
-							<p>Post on 10.01.13 by Andrew Su</p>
-							<p style="font-family:'Kepler W01 Regular'; font-size:17px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore, ducimus, corporis, totam, iste laborum quia recusandae porro maxime nostrum sed debitis autem consequuntur amet fugit tenetur consectetur assumenda mollitia numquam.</p>
-							<p class="more">MORE <i class="fa fa-long-arrow-right"></i></p>
-							<h3><a href="#">The Complex Exogenous RNA Spectra In Human Plasma: An Interface</a></h3>
-							<p>Post on 10.01.13 by Andrew Su</p>
-							<p style="font-family:'Kepler W01 Regular'; font-size:17px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti, laudantium, vel rerum ipsa perspiciatis dolor quibusdam! Quia, veritatis, fuga, ratione facere nobis recusandae assumenda suscipit culpa velit beatae itaque quod.</p>
-							<p class="more">MORE <i class="fa fa-long-arrow-right"></i></p>
-						</div>
+							<div class="row"><div class="col-xs-6"><div class="hm-post-border"></div></div></div>
+							<div class="hm-post">
+								<p><span class="post-date">10.01.13</span> <span class="post-author">by Andrew Su</span></p>
+								<h3><a href="">Identification of Novel Liver-Specific mRNAs in Plasma</a></h3>
+								<p class="post-excert">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore, ducimus, corporis, totam, iste laborum quia recusandae porro maxime nostrum sed debitis autem consequuntur amet fugit tenetur consectetur assumenda mollitia numquam. <span class="more">MORE <i class="fa fa-long-arrow-right"></i></span> </p>
+							</div>
+							<div class="row"><div class="col-xs-6"><div class="hm-post-border"></div></div></div>
+							<div class="hm-post">
+								<p><span class="post-date">10.01.13</span> <span class="post-author">by Andrew Su</span></p>
+								<h3><a href="">Identification of Novel Liver-Specific mRNAs in Plasma</a></h3>
+								<p class="post-excert">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore, ducimus, corporis, totam, iste laborum quia recusandae porro maxime nostrum sed debitis autem consequuntur amet fugit tenetur consectetur assumenda mollitia numquam. <span class="more">MORE <i class="fa fa-long-arrow-right"></i></span></p>
+							</div>
+							<div class="row"><div class="col-xs-6"><div class="hm-post-border"></div></div></div>
+							<div class="hm-post">
+								<p><span class="post-date">10.01.13</span> <span class="post-author">by Andrew Su</span></p>
+								<h3><a href="">Identification of Novel Liver-Specific mRNAs in Plasma</a></h3>
+								<p class="post-excert">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore, ducimus, corporis, totam, iste laborum quia recusandae porro maxime nostrum sed debitis autem consequuntur amet fugit tenetur consectetur assumenda mollitia numquam. <span class="more">MORE <i class="fa fa-long-arrow-right"></i></span></p>
+							</div>
+							
+						</div><!-- End hm-posts -->
 						<div class="col-md-1"></div>
 						<div class="col-md-4">
 							<div class="row">
