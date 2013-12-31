@@ -11,5 +11,4 @@
     <input type="text" class="search-field" id="q" name="q" value="<?php the_search_query(); ?>">
 </label>
     <input type="submit" class="btn btn-default" value="Search">
-
 </form>
