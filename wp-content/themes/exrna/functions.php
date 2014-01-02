@@ -13,5 +13,26 @@ function custom_excerpt_length( $length ) {
 }
 add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
 
+/**
+ * Register our sidebars and widgetized areas.
+ *
+ */
+function create_widget( $name, $id, $description, $class ){
+	$args = array(
+		'name'          => __( $name ),
+		'id'            => $id,
+		'description'   => $description,
+	    'class'         => $class,
+		'before_widget' => '',
+		'after_widget'  => '',
+		'before_title'  => '',
+		'after_title'   => '' 
+	); 
 
+	register_sidebar( $args );
+}
+
+create_widget('Quick Links', "quick_links", "The quick links list", "blue");
+create_widget('Email Signup', "email_signup", "Email Signup Area w/ Gravity Forms", "grey");
+create_widget('Twitter', "twitter_area", "Twitter Box", "");
 ?>

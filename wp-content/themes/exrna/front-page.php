@@ -185,16 +185,7 @@
 						<div class="col-md-4">
 							<div class="row">
 								<div class="col-md-12">
-									<div class="blue">
-										<h3>Quick Links</h3>
-										<ul class="list-unstyled">
-											<li><a href="">ExRNA Atlas @ BioGPS</a></li>
-											<li><a href="">ExRNA Pathway Collection</a></li>
-											<li><a href="">ExoCarta</a></li>
-											<li><a href="">Vesiclepedia</a></li>
-											<li><a href="">ExRNA Protocols</a></li>
-										</ul>
-									</div>
+									<?php dynamic_sidebar( 'quick_links' ); ?>
 								</div>
 								<div class="col-md-12 pushtop">
 									<div class="grey">
@@ -217,9 +208,8 @@
 									</div>
 								</div>
 								<div class="col-md-12 pushtop">
-									<a class="twitter-timeline" href="https://twitter.com/exRNA" data-widget-id="416833924866654209">Tweets by @exRNA</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-
+									<?php dynamic_sidebar( 'twitter_area' ); ?>
+									
 
 								</div>
 								
