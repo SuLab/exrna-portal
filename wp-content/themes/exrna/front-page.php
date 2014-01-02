@@ -175,15 +175,7 @@
 
 								<?php endwhile; ?>
 
-								<?php if ($paged > 1) { ?>
-
-					
-
-								<?php } else { ?>
-
 								
-
-								<?php } ?>
 
 								<?php wp_reset_postdata(); ?>
 

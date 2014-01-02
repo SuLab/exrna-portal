@@ -14,10 +14,10 @@ get_header(); ?>
 <div class="container pushtop">
 	<div class="row pushtop hm-posts">
 		<div class="col-md-5 col-md-offset-1">
-			<?php if ( have_posts() ) : ?>
-
-				<?php /* Start the Loop */ ?>
-				<?php while ( have_posts() ) : the_post(); ?>
+			<?php // Display blog posts on any page @ http://m0n.co/l
+				$temp = $wp_query; $wp_query= null;
+				$wp_query = new WP_Query(); $wp_query->query('showposts=10' . '&paged='.$paged);
+				while ($wp_query->have_posts()) : $wp_query->the_post(); ?>
 
 					<?php
 						/* Include the Post-Format-specific template for the content.
@@ -29,13 +29,24 @@ get_header(); ?>
 
 				<?php endwhile; ?>
 
-				<?php _tk_content_nav( 'nav-below' ); ?>
+				<?php if ($paged > 1) { ?>
 
-			<?php else : ?>
+					<nav id="nav-posts">
+						<div class="prev"><?php next_posts_link('&laquo; Previous Posts'); ?></div>
+						<div class="next"><?php previous_posts_link('Newer Posts &raquo;'); ?></div>
+					</nav>
 
-				<?php get_template_part( 'no-results', 'index' ); ?>
+				<?php } else { ?>
 
-			<?php endif; ?>
+					<nav id="nav-posts">
+						<div class="prev"><?php next_posts_link('&laquo; Previous Posts'); ?></div>
+					</nav>
+
+				<?php } ?>
+
+				<?php wp_reset_postdata(); ?>
+
+			
 		</div>
 		<div class="col-md-1"></div>
 		<div class="col-md-4">
