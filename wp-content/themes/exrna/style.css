@@ -13,6 +13,12 @@ License: 		GNU General Public License
 /* Import the necessary TK Bootstrap WP CSS additions */
 @import url( ./_tk/style.css );
 @import url(bs-css/bootstrap.css);
+@import url('http://localhost:8888/exrnawp/wp-content/themes/exrna/bs-css/bootstrap.min.css');
+@import url(http://fonts.googleapis.com/css?family=Fjord+One);
+@import url(http://fonts.googleapis.com/css?family=Droid+Sans:400,700);
+@import url(http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800);
+
 
 /* Custom Classes */
 
@@ -179,6 +185,290 @@ Home Page Email
 #field_2_1 label{
 	display: none;
 }
+
+/* ------------------------------------
+Some 
+---------------------------------------*/
+
+footer{
+	min-height: 100px;
+	background-color: #efefef;
+}
+
+h2,h3,h4,h5,h6{
+	font-family:'Kepler W01 Regular';
+}
+
+h3{
+	font-size: 30px;
+	line-height:120%;
+}
+
+h3 a{
+	color: #333;
+}
+
+a,h3 a:hover{
+	color: #00aeef;
+}
+
+p{
+	font-size: 20px;
+	line-height: 28px;
+}
+
+.wrap{
+	position: relative;
+}
+
+.pushy{
+	margin-top: 55px;
+}
+
+.pushtop{
+	margin-top: 30px;
+}
+
+.pushbot{
+	margin-bottom: 30px;
+}
+
+.cent{
+	text-align: center;
+}
+
+.imgcent {
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+/* Video */
+
+.ui-video-background {
+	display: none;
+}
+
+/* navbar and restaurant */
+
+.navbar{
+	padding-top: 0px;
+}
+
+.navbar-nav {
+	margin: 21px;
+}
+
+.navbar-inverse {
+	background-color: transparent;
+	border-color:transparent;
+}
+.navbar-inverse .navbar-brand,
+.navbar-inverse .navbar-nav>li>a {
+	color: #fff;
+	
+}
+
+.navbar>.container .navbar-brand {
+	margin-left: -30px;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+	text-transform: uppercase;
+	margin-top: 7px;
+	font-size: 14px
+}
+
+.navbar-inverse .navbar-brand{
+	padding: 20px;
+	font-size: 24px;
+}
+
+.navbar-inverse .navbar-brand img:hover{
+	opacity: .7
+}
+
+.navbar-nav>li>.dropdown-menu {
+	background: transparent;
+}
+
+/* Home Page Stylish */
+
+#page{
+	background-color: #00adef;
+	padding-bottom: 30px;
+}
+
+.jumb h1, .jumb p{
+	color: #fff;
+}
+
+.jumb h1{
+	font-size: 57px;
+	line-height: 58px;
+	font-weight: bold;
+}
+
+.jumb p{
+	font-size: 20;
+	line-height: 28px;
+}
+
+
+.hmbtn{
+	text-align: center;
+}
+
+.hmbtn p{
+	margin-bottom: 0;
+	padding:9px;
+	font-size: 18px
+}
+
+.hmbtn .btn{
+	padding: 0;
+	border: none;
+}
+
+.hmbtn .btn-primary {
+	color: #fff;
+	background-color: transparent;
+	border-color: transparent;
+}
+
+#hm .modal-dialog {
+	width: 625px;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	}
+
+#hm .modal-content {
+	/*background-color: transparent;*/
+}
+
+#hm .close {
+	font-size: 31px;
+	color: #fff;
+	opacity: .9;
+	filter: alpha(opacity=90);
+}
+
+.learn{
+	border: 3px solid #fff;
+}
+
+.play{
+	background: rgba(52, 73, 94,0.3);
+	border: 3px solid rgba(52, 73, 94,0.0);
+}
+
+.white{
+	background-color: #fff;
+}
+
+.blue{
+	background-color: #00adef;
+	font-size: 16px;
+	padding: 30px;
+	color: white;
+}
+
+.blue a{
+	color:white;
+}
+
+.blue ul li:after{ 
+   content: '\f178';
+   font-family: FontAwesome;
+   font-weight: normal;
+   font-style: normal;
+   margin:0px 0px 0px 10px;
+   text-decoration:none;
+
+} 
+
+.grey{
+	background-color: #efefef;
+	padding: 20px 15px;
+}
+
+.hm-post{
+	color: #000000;
+	margin-bottom: 60px;
+}
+
+.hm-post-border{
+	border-top: 2px solid #000000;
+	margin-bottom: 20px;
+}
+
+.hm-posts h3{
+	font-family: Helvetica, Arial;
+	font-size: 34px;
+	line-height: 40px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.hm-posts p{
+	font-family: Helvetica, Arial;
+	font-size: 20px;
+	line-height: 30px;
+	font-weight: normal;
+}
+
+.post-date, .post-author{
+	font-size: 16px;
+}
+
+.post-author a{
+	color: #9d9d9d;
+}
+
+.more{
+	color:#00aeef;
+	font-size: 16px;
+}
+
+/* Email Signup */
+
+.email-signup form{
+	padding: 10px;
+}
+
+.email-signup .form-control {
+	color: #555;
+	border: none;
+	border-radius: 4px;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	font-size: 16px;
+}
+
+/* Footer */
+
+footer h3{
+	font-family: Helvetica, Arial;
+	font-size: 24px;
+	font-weight:bold;
+	margin-bottom: 30px;
+}
+
+footer p{
+	font-size: 12px;
+	line-height: 14px;
+	margin-bottom: 3px;
+}
+
+footer li{
+	font-size: 16px;
+	line-height:20px;
+	margin-bottom: 20px;
+}
+
+
+
+
 
 @media (min-width: 992px) { 
 	#gform_fields_2 li{

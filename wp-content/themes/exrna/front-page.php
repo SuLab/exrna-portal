@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<link href="http://localhost:8888/exrnawp/wp-content/themes/exrna/themes/ui-darkness/jquery-ui-1.8.12.custom.css" rel="stylesheet" media="screen">
 		<link href="http://localhost:8888/exrnawp/wp-content/themes/exrna/themes/jquery.videobackground.css" rel="stylesheet" media="screen">
-		<link rel="stylesheet" href="http://localhost:8888/exrnawp/wp-content/themes/exrna/some.css">
+		<link rel="stylesheet" href="http://localhost:8888/exrnawp/wp-content/themes/exrna/style.css">
 		<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 		<script type="text/javascript" src="http://fast.fonts.net/jsapi/ba20ca36-be5d-4953-bf6c-5e8e2e344077.js"></script>
 		<meta charset="UTF-8">
@@ -157,25 +157,37 @@
 					
 					<div class="row pushtop hm-posts">
 						<div class="col-md-5 col-md-offset-1">
-							<div class="row"><div class="col-xs-6"><div class="hm-post-border"></div></div></div>
-							<div class="hm-post">
-								<p><span class="post-date">10.01.13</span> <span class="post-author">by Andrew Su</span></p>
-								<h3><a href="">Identification of Novel Liver-Specific mRNAs in Plasma</a></h3>
-								<p class="post-excert">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore, ducimus, corporis, totam, iste laborum quia recusandae porro maxime nostrum sed debitis autem consequuntur amet fugit tenetur consectetur assumenda mollitia numquam. <span class="more">MORE <i class="fa fa-long-arrow-right"></i></span> </p>
-							</div>
-							<div class="row"><div class="col-xs-6"><div class="hm-post-border"></div></div></div>
-							<div class="hm-post">
-								<p><span class="post-date">10.01.13</span> <span class="post-author">by Andrew Su</span></p>
-								<h3><a href="">Identification of Novel Liver-Specific mRNAs in Plasma</a></h3>
-								<p class="post-excert">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore, ducimus, corporis, totam, iste laborum quia recusandae porro maxime nostrum sed debitis autem consequuntur amet fugit tenetur consectetur assumenda mollitia numquam. <span class="more">MORE <i class="fa fa-long-arrow-right"></i></span></p>
-							</div>
-							<div class="row"><div class="col-xs-6"><div class="hm-post-border"></div></div></div>
-							<div class="hm-post">
-								<p><span class="post-date">10.01.13</span> <span class="post-author">by Andrew Su</span></p>
-								<h3><a href="">Identification of Novel Liver-Specific mRNAs in Plasma</a></h3>
-								<p class="post-excert">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore, ducimus, corporis, totam, iste laborum quia recusandae porro maxime nostrum sed debitis autem consequuntur amet fugit tenetur consectetur assumenda mollitia numquam. <span class="more">MORE <i class="fa fa-long-arrow-right"></i></span></p>
-							</div>
-							
+							<article>
+
+								<?php // Display blog posts on any page
+								$temp = $wp_query; $wp_query= null;
+								$wp_query = new WP_Query(); $wp_query->query('showposts=3' . '&paged='.$paged);
+								while ($wp_query->have_posts()) : $wp_query->the_post(); ?>
+
+								<?php
+									/* Include the Post-Format-specific template for the content.
+									 * If you want to overload this in a child theme then include a file
+									 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
+									 */
+									get_template_part( 'content', 'blog' );
+								?>
+
+
+								<?php endwhile; ?>
+
+								<?php if ($paged > 1) { ?>
+
+					
+
+								<?php } else { ?>
+
+								
+
+								<?php } ?>
+
+								<?php wp_reset_postdata(); ?>
+
+							</article>
 						</div><!-- End hm-posts -->
 						<div class="col-md-1"></div>
 						<div class="col-md-4">
