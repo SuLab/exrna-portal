@@ -462,9 +462,9 @@ p{
 	font-size: 16px;
 }
 
-/* Email Signup */
-
-
+.modal-backdrop, .modal-backdrop.fade.in {
+    opacity: 1.9;
+}
 
 /* Footer */
 
@@ -497,10 +497,7 @@ footer li{
  }
 
 @media (max-width: 991px){
-	#gform_submit_button_2 {
-		display: block;
-		margin: 0 auto;
-	}
+	
 }
 
 
