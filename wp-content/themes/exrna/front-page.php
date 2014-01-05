@@ -196,17 +196,22 @@
 											
 											<div class="col-md-12 pushtop">
 												<div class="imgcent white email-signup">
-									        		<form class="form-inline" role="form">
-													  <div class="form-group">
-													    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email Newsletter">
-													  </div>
-													  <button type="submit" class="btn btn-warning pull-right"><strong>SIGN UP</strong></button>
-													</form>
+									        		
+														<?php gravity_form( 2, $display_title=false, $display_description=false, $display_inactive=false, $field_values=null, $ajax=true, $tabindex); ?>
+													
+													<script>
+														$(document).ready(function(){
+															$( ".gform_body" ).replaceWith( "<div class='form-group'><input name='input_1' id='input_2_1' type='email' value='' class='medium form-control' placeholder='Email Newsletter'></div>" );
+														    $('#gform_submit_button_2').addClass('btn btn-warning pull-right');
+														});
+														</script>
 												</div>
 											</div>	
 										</div>
 									</div>
 								</div>
+
+
 								<div class="col-md-12 pushtop">
 									<?php dynamic_sidebar( 'twitter_area' ); ?>
 									
@@ -300,5 +305,6 @@
 			</div>
 		</footer>
 		<script type="text/javascript" src="http://localhost:8888/exrnawp/wp-content/themes/exrna/js/bootstrap.min.js"></script>
+    	<!-- <script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.min.js"></script> -->
     </body>
 </html>
