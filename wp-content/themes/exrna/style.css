@@ -44,32 +44,7 @@ License: 		GNU General Public License
 	text-align: center;
 }
 
-/* Navbar */
 
-.navbar {
-	/*background-color: rgba(0, 0, 0, .8);*/
-	border-radius: 0px;
-	margin-bottom: 0px;
-	z-index: 9999;
-}
-
-.navbar-toggle {
-	margin-top: auto;
-	margin-right: 0px;
-}
-
-.home-bg{
-	background-image: url("http://exrna.org/media/ncats_hi_res.jpg");
-	position: relative;
-	background-color: #2980b9;
-	background-repeat: no-repeat;
-	background-position: center 0;
-	background-size: cover;
-	min-height: 430px;
-	padding-top: 70px;
-	left: 0;
-	margin-top: -55px;
-}
 
 .layer {
     background-color: rgba(0, 0, 0, 0.4);
@@ -98,6 +73,115 @@ License: 		GNU General Public License
 .video-container { position: relative; padding-bottom: 56.25%; padding-top: 30px; margin-bottom: 40px; height: 0; overflow: visible; } 
 .video-container iframe, .video-container object, .video-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
+.home-bg{
+	background-image: url("http://exrna.org/media/ncats_hi_res.jpg");
+	position: relative;
+	background-color: #2980b9;
+	background-repeat: no-repeat;
+	background-position: center 0;
+	background-size: cover;
+	min-height: 430px;
+	padding-top: 70px;
+	left: 0;
+	margin-top: -55px;
+}
+
+/* Navbar */
+
+.navbar {
+	/*background-color: rgba(0, 0, 0, .8);*/
+	border-radius: 0px;
+	margin-bottom: 0px;
+	z-index: 9999;
+}
+
+.navbar-toggle {
+	margin-top: auto;
+	margin-right: 0px;
+}
+
+.navbar{
+	padding-top: 0px;
+}
+
+.navbar-nav {
+	margin: 35px 21px;
+}
+
+.navbar-inverse {
+	background-color: transparent;
+	border-color:transparent;
+}
+
+.navbar-brand {
+max-width: none;
+}
+
+.nav>li>a, .navbar-right>li>a {
+	padding: 10px;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+	font-size: 16px;
+}
+
+
+.navbar-inverse .navbar-brand,
+.navbar-inverse .navbar-nav>li>a {
+	color: #00adef;
+	font-weight: bold;
+	text-align: center;
+	
+}
+
+.navbar-inverse .navbar-nav>li>a:hover, .navbar-inverse .navbar-nav>li>a:focus {
+	color: #000;
+	background-color: transparent;
+}
+
+
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:hover, .navbar-inverse .navbar-nav>.active>a:focus {
+	color: #000;
+	background-color: #efefef;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+
+.navbar-right li{
+	background-color: rgba(239, 239, 239, 0.3);
+	margin-left: 3px;
+	width: 40px;
+
+}
+
+.navbar-right>li>a{
+	
+
+}
+
+#page .navbar-inverse .navbar-brand,
+#page .navbar-inverse .navbar-nav>li>a {
+	color: #fff;	
+}
+
+.navbar>.container .navbar-brand {
+	margin-left: -30px;
+}
+
+
+.navbar-inverse .navbar-brand{
+	padding: 20px;
+	font-size: 24px;
+}
+
+.navbar-inverse .navbar-brand img:hover{
+	opacity: .7
+}
+
+.navbar-nav>li>.dropdown-menu {
+	background: transparent;
+}
 
 /* Gravity Forms */
 /* ------------------------------------
@@ -281,90 +365,7 @@ p{
 	display: none;
 }
 
-/* navbar */
 
-.navbar{
-	padding-top: 0px;
-}
-
-.navbar-nav {
-	margin: 30px 21px;
-}
-
-.navbar-inverse {
-	background-color: transparent;
-	border-color:transparent;
-}
-
-.navbar-brand {
-max-width: none;
-}
-
-.nav>li>a, .navbar-right>li>a {
-	padding: 10px;
-}
-
-.navbar-inverse .navbar-nav>li>a {
-	font-size: 16px;
-}
-
-
-.navbar-inverse .navbar-brand,
-.navbar-inverse .navbar-nav>li>a {
-	color: #00adef;
-	font-weight: bold;
-	text-align: center;
-	
-}
-
-.navbar-inverse .navbar-nav>li>a:hover, .navbar-inverse .navbar-nav>li>a:focus {
-	color: #000;
-	background-color: transparent;
-}
-
-
-.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:hover, .navbar-inverse .navbar-nav>.active>a:focus {
-	color: #000;
-	background-color: #efefef;
-	border-radius: 5px;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-}
-
-.navbar-right li{
-	background-color: rgba(239, 239, 239, 0.3);
-	margin-left: 3px;
-	width: 40px;
-
-}
-
-.navbar-right>li>a{
-	
-
-}
-
-#page .navbar-inverse .navbar-brand,
-#page .navbar-inverse .navbar-nav>li>a {
-	color: #fff;	
-}
-
-.navbar>.container .navbar-brand {
-	margin-left: -30px;
-}
-
-
-.navbar-inverse .navbar-brand{
-	padding: 20px;
-	font-size: 24px;
-}
-
-.navbar-inverse .navbar-brand img:hover{
-	opacity: .7
-}
-
-.navbar-nav>li>.dropdown-menu {
-	background: transparent;
-}
 
 /* Home Page Stylish */
 
@@ -450,6 +451,7 @@ max-width: none;
 .blue a{
 	color:white;
 }
+
 
 .blue ul li:after{ 
    content: '\f178';
