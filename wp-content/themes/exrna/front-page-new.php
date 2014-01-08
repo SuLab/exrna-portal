@@ -112,5 +112,8 @@ Template Name: front new
 
 	</div> <!-- End Container -->
 
-<script>$('body').addClass('home');$('body').attr('id', 'page');</script>
+<script>
+$('body').addClass('home');
+$('body').attr('id', 'page');
+$( 'img.logo' ).replaceWith( '<img src="http://localhost:8888/exrnawp//media/exrna-logo-white.png" alt="exrna">' );</script>
 <?php get_footer(); ?>

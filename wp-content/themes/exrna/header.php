@@ -46,7 +46,7 @@
           </button>
           
 		    <!-- Your site title as branding in the menu -->
-		    <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><img src="<?php echo esc_url( home_url( '/' ) ); ?>/media/exrna-logo-black.png" alt="exrna"></a>
+		    <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><img class="logo" src="<?php echo esc_url( home_url( '/' ) ); ?>/media/exrna-logo-black.png" alt="exrna"></a>
 		</div>	
 		<ul class="nav navbar-nav navbar-right">
 	        <li>
