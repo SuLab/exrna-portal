@@ -111,9 +111,25 @@ Template Name: front new
 					</div>
 
 	</div> <!-- End Container -->
+	<!-- Modal -->
+	<div class="home modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="page-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	        
+	      </div>
+	      <div class="modal-body">
+	        <iframe width="853" height="480" src="//www.youtube.com/embed/bfMg3RhxNm8" frameborder="0" allowfullscreen></iframe>
+	      </div>
+	      
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
 
 <script>
 $('body').addClass('home');
 $('body').attr('id', 'page');
-$( 'img.logo' ).replaceWith( '<img src="http://localhost:8888/exrnawp//media/exrna-logo-white.png" alt="exrna">' );</script>
+$( 'img.logo' ).replaceWith( '<img src="http://localhost:8888/exrnawp//media/exrna-logo-white.png" alt="exrna">' );
+</script>
 <?php get_footer(); ?>
