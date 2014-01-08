@@ -1,5 +1,13 @@
 <?php
 
+
+//Remove _tk Bootstrapp CSS
+add_action( 'wp_print_styles', 'child_overwrite_styles', 100 );
+
+function child_overwrite_styles() {
+    wp_deregister_style( '_tk-bootstrap' );
+}
+
 // Replaces the excerpt "more" text by a link
 function new_excerpt_more($more) {
        global $post;

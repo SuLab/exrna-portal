@@ -35,7 +35,7 @@
 	
 
 		
-<div class="navbar navbar-default " role="navigation">
+<div class="navbar navbar-inverse " role="navigation">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -46,8 +46,19 @@
           </button>
           
 				    <!-- Your site title as branding in the menu -->
-				    <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
-		</div>		    
+				    <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><img src="<?php echo esc_url( home_url( '/' ) ); ?>/media/exrna_logo_test.png" alt="exrna"></a>
+		</div>	
+		<ul class="nav navbar-nav navbar-right">
+	        <li>
+	        	<a href="#"><strong>?</strong></a>
+	        </li>
+	    	<li class="dropdown">
+			  <a data-toggle="dropdown" id="drop1" href="#"><i class="fa fa-search"></i></a>
+			  <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+			    <li><input type="text" class="form-control" placeholder="Search"></li>
+			  </ul>
+			</li>
+	    </ul>	    
 				    <!-- The WordPress Menu goes here -->
 				       <?php wp_nav_menu(
 			                array(
@@ -59,6 +70,8 @@
 			                    'walker' => new wp_bootstrap_navwalker()
 			                )
 			            ); ?>
+
+		
 		</div><!-- .container -->
 </div><!-- .site-navigation -->
 
