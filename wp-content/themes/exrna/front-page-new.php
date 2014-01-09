@@ -130,6 +130,32 @@ Template Name: front new
 <script>
 $('body').addClass('home');
 $('body').attr('id', 'page');
-$( 'img.logo' ).replaceWith( '<img src="http://localhost:8888/exrnawp//media/exrna-logo-white.png" alt="exrna">' );
+$( 'img.logo' ).replaceWith( '<img src="http://localhost:8888/exrnawp/media/exrna-logo-white.png" alt="exrna">' );
 </script>
+
+
+    <!-- BigVideo Dependencies -->
+	
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="http://localhost:8888/exrnawp/wp-content/themes/exrna/bigvid/bower_components/jquery/jquery.min.js"><\/script>')</script>
+    <script src="http://localhost:8888/exrnawp/wp-content/themes/exrna/bigvid/bower_components/jquery-ui/ui/jquery-ui.js"></script>
+    <script src="http://localhost:8888/exrnawp/wp-content/themes/exrna/bigvid/bower_components/jquery-ui/ui/minified/jquery-ui.min.js"></script>
+    <script src="http://vjs.zencdn.net/4.0/video.js"></script>
+
+    <!-- BigVideo -->
+    <script src="http://localhost:8888/exrnawp/wp-content/themes/exrna/bigvid/bower_components/BigVideo/lib/bigvideo.js"></script>
+
+    <!-- Demo -->
+    <script>
+	    $(function() {
+            var BV = new $.BigVideo();
+            var vids = [
+                'http://localhost:8888/exrnawp/wp-content/themes/exrna/bigvid/vids/exrnahd.mp4',
+            ];
+            vids.sort(function() { return 0.5 - Math.random() }); // random order on load
+			BV.init();
+			BV.show(vids,{ambient:true});
+	    });
+    </script>
+
 <?php get_footer(); ?>

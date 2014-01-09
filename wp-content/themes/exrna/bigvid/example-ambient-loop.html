@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>BigVideo.js - The jQuery Plugin for Big Background Video</title>
+    <meta name="description" content="BigVideo.js - The jQuery Plugin for Big Background Video" />
+    <meta name="author" content="John Polacek" />
+    <meta name="viewport" content="width=device-width">
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:900&text=ABCDEFGHIJKLMNOPQRSTUVWXYZ' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="bower_components/BigVideo/css/bigvideo.css">
+
+</head>
+<body class="home">
+
+    <div class="main">
+        <div id="overview" class="box">
+            <h1>BigVideo<span class="dimmed"><small>.</small>js</span></h1>
+            <h2>Random Ambient Loop Example</h2>
+            <!-- Button trigger modal -->
+<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="page-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        
+      </div>
+      <div class="modal-body">
+        <iframe width="853" height="480" src="//www.youtube.com/embed/bfMg3RhxNm8" frameborder="0" allowfullscreen></iframe>
+      </div>
+      
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+        </div>
+
+        
+    </div>
+
+
+    <!-- BigVideo Dependencies -->
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="../bs3/dist/js/bootstrap.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="bower_components/jquery/jquery.min.js"><\/script>')</script>
+    <script src="bower_components/jquery-ui/ui/jquery-ui.js"></script>
+    <script src="bower_components/jquery-ui/ui/minified/jquery-ui.min.js"></script>
+    <script src="http://vjs.zencdn.net/4.0/video.js"></script>
+
+    <!-- BigVideo -->
+    <script src="bower_components/BigVideo/lib/bigvideo.js"></script>
+
+    <!-- Demo -->
+    <script>
+	    $(function() {
+            var BV = new $.BigVideo();
+            var vids = [
+                'vids/exrnahd.mp4',
+            ];
+            vids.sort(function() { return 0.5 - Math.random() }); // random order on load
+			BV.init();
+			BV.show(vids,{ambient:true});
+	    });
+    </script>
+    
+</body>
+</html>
