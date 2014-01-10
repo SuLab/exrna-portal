@@ -8,6 +8,12 @@ function child_overwrite_styles() {
     wp_deregister_style( '_tk-bootstrap' );
 }
 
+add_action( 'wp_print_styles', 'child_overwrite_styles', 100 );
+
+function child_overwrite_script() {
+    wp_deregister_script( '_tk-bootstrapjs' );
+}
+
 // Replaces the excerpt "more" text by a link
 function new_excerpt_more($more) {
        global $post;

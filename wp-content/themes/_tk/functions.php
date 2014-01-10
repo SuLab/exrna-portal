@@ -91,7 +91,7 @@ add_action( 'widgets_init', '_tk_widgets_init' );
 /**
  * Enqueue scripts and styles
  */
-function _tk_scripts() {
+/**function _tk_scripts() {
 	
 
 	// load bootstrap css

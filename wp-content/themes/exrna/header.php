@@ -14,6 +14,9 @@
 <title><?php wp_title( '|', true, 'right' ); ?></title>
 <link rel="profile" href="http://gmpg.org/xfn/11">
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
+<link rel="stylesheet" href="http://localhost:8888/exrnawp/wp-content/themes/exrna/style.css">
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 <?php wp_head(); ?>
 <!-- Google Custom Site Search -->
 <script>
@@ -48,13 +51,14 @@
 		    <!-- Your site title as branding in the menu -->
 		    <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><img class="logo" src="<?php echo esc_url( home_url( '/' ) ); ?>/media/exrna-logo-black.png" alt="exrna"></a>
 		</div>	
+
 		<ul class="nav navbar-nav navbar-right">
 	        <li>
 	        	<a href="#"><strong>?</strong></a>
 	        </li>
 	    	<li class="dropdown">
-			  <a data-toggle="dropdown" id="drop1" href="#"><i class="fa fa-search"></i></a>
-			  <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+			  <a data-toggle="dropdown" id="search" href="#"><i class="fa fa-search"></i></a>
+			  <ul class="dropdown-menu" role="menu" aria-labelledby="search">
 			    <li><input type="text" class="form-control" placeholder="Search"></li>
 			  </ul>
 			</li>
