@@ -39,8 +39,8 @@ function create_widget( $name, $id, $description, $class ){
 	    'class'         => $class,
 		'before_widget' => '',
 		'after_widget'  => '',
-		'before_title'  => '',
-		'after_title'   => '' 
+		'before_title'  => '<h3>',
+		'after_title'   => '</h3>' 
 	); 
 
 	register_sidebar( $args );
@@ -49,4 +49,5 @@ function create_widget( $name, $id, $description, $class ){
 create_widget('Quick Links', "quick_links", "The quick links list", "blue");
 create_widget('Email Signup', "email_signup", "Email Signup Area w/ Gravity Forms", "grey");
 create_widget('Twitter', "twitter_area", "Twitter Box", "");
+create_widget('Blog1', "blog_1", "Top Blog Widget Area", "Blue");
 ?>

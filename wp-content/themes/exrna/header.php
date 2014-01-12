@@ -56,12 +56,15 @@
 	        <li>
 	        	<a href="#"><strong>?</strong></a>
 	        </li>
-	    	<li class="dropdown">
+	        <li>
+	        	<a href="/exrnawp/search/"><i class="fa fa-search"></i></a></a>
+	        </li>
+	    	<!--<li class="dropdown">
 			  <a data-toggle="dropdown" id="search" href="#"><i class="fa fa-search"></i></a>
 			  <ul class="dropdown-menu" role="menu" aria-labelledby="search">
 			    <li><input type="text" class="form-control" placeholder="Search"></li>
 			  </ul>
-			</li>
+			</li>-->
 	    </ul>	    
 				    <!-- The WordPress Menu goes here -->
 				       <?php wp_nav_menu(

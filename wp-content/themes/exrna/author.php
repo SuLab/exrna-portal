@@ -1,7 +1,7 @@
 <?php
 /**
  *
- *Blog Template
+ *Author Template
  *
  * 
  *
@@ -12,40 +12,48 @@
 
 get_header(); ?>
 <div class="container pushtop">
+	<div class="row">
+			<div class="col-md-12">
+				<?php
+				    $curauth = (isset($_GET['author_name'])) ? get_user_by('slug', $author_name) : get_userdata(intval($author));
+				    ?>
+
+				    <h2>About: <?php echo $curauth->first_name; ?> <?php echo $curauth->last_name; ?></h2>
+				    <dl>
+				        <dt>Website</dt>
+				        <dd><a href="<?php echo $curauth->user_url; ?>"><?php echo $curauth->user_url; ?></a></dd>
+				        <dt>Profile</dt>
+				        <dd><?php echo $curauth->user_description; ?></dd>
+				        <dd>Twitter: <a href="https://twitter.com/<?php echo the_author_meta('twitter'); ?>"><?php echo the_author_meta('twitter'); ?></a></dd>
+				        <dd>Google +: <a href="<?php echo the_author_meta('googleplus'); ?>"><?php echo the_author_meta('googleplus'); ?></a></dd>
+						<dd><?php echo get_avatar( get_the_author_meta( 'ID' ), 75 ); ?></dd>
+				    </dl>
+
+				    <h2>Posts by <?php echo $curauth->nickname; ?>:</h2>
+
+				    <ul>
+			</div>
+		</div>
 	<div class="row pushtop hm-posts">
+
 		<div class="col-md-5 col-md-offset-1">
-			<?php // Display blog posts on any page @ http://m0n.co/l
-				$temp = $wp_query; $wp_query= null;
-				$wp_query = new WP_Query(); $wp_query->query('showposts=10' . '&paged='.$paged);
-				while ($wp_query->have_posts()) : $wp_query->the_post(); ?>
+			<!-- The Loop -->
 
-					<?php
-						/* Include the Post-Format-specific template for the content.
-						 * If you want to overload this in a child theme then include a file
-						 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-						 */
-						get_template_part( 'content', 'blog' );
-					?>
+    <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+        <li>
+            <a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link: <?php the_title(); ?>">
+            <?php the_title(); ?></a>,
+            <?php the_time('d M Y'); ?> in <?php the_category('&');?>
+        </li>
 
-				<?php endwhile; ?>
+    <?php endwhile; else: ?>
+        <p><?php _e('No posts by this author.'); ?></p>
 
-				<?php if ($paged > 1) { ?>
+    <?php endif; ?>
 
-					<nav id="nav-posts">
-						<div class="prev"><?php next_posts_link('&laquo; Previous Posts'); ?></div>
-						<div class="next"><?php previous_posts_link('Newer Posts &raquo;'); ?></div>
-					</nav>
+<!-- End Loop -->
 
-				<?php } else { ?>
-
-					<nav id="nav-posts">
-						<div class="prev"><?php next_posts_link('&laquo; Previous Posts'); ?></div>
-					</nav>
-
-				<?php } ?>
-
-				<?php wp_reset_postdata(); ?>
-
+    </ul>
 			
 		</div>
 		<div class="col-md-1"></div>

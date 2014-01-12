@@ -362,11 +362,11 @@ h3{
 	line-height:120%;
 }
 
-h3 a{
+h1 a, h3 a{
 	color: #333;
 }
 
-a,h3 a:hover{
+a,h1 a:hover, h3 a:hover{
 	color: #00aeef;
 }
 
@@ -401,7 +401,9 @@ p{
 	margin-left: auto;
 }
 
-/* Video */
+/* ------------------------------------
+Video 
+---------------------------------------*/
 
 .ui-video-background {
 	display: none;
@@ -409,8 +411,9 @@ p{
 
 
 
-/* Home Page Stylish */
-
+/* ------------------------------------
+Home Page 
+---------------------------------------*/
 #page{
 	background-color: #000;
 	padding-bottom: 30px;
@@ -520,7 +523,7 @@ p{
 	margin-bottom: 20px;
 }
 
-.hm-posts h3{
+.sp-sidebar h3, .hm-posts h3{
 	font-family: Helvetica, Arial;
 	font-size: 34px;
 	line-height: 40px;
@@ -548,9 +551,19 @@ p{
 	font-size: 16px;
 }
 
+/* ------------------------------------
+Singe Post sp 
+---------------------------------------*/
+
+.sp h1{
+	font-size: 57px;
+	line-height:58px;
+}
 
 
-/* Footer */
+/* ------------------------------------
+Footer 
+---------------------------------------*/
 
 footer h3{
 	font-family: Helvetica, Arial;

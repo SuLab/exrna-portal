@@ -8,8 +8,8 @@
 	
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 		<div class="row">
-				<div class="col-xs-6"><div class="hm-post-border"></div></div>
-			</div>
+			<div class="col-xs-6"><div class="hm-post-border"></div></div>
+		</div>
 		<div class="col-md-12 hm-post">
 			
 			<div class="row">
