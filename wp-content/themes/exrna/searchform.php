@@ -11,16 +11,10 @@
 	</label>
 	<input type="submit" class="search-submit" value="<?php echo esc_attr_x( 'Search', 'submit button', '_tk' ); ?>">
 </form> -->
-<script>
-  (function() {
-    var cx = '012304415858857934156:pnxfgu4-04k';
-    var gcse = document.createElement('script');
-    gcse.type = 'text/javascript';
-    gcse.async = true;
-    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
-        '//www.google.com/cse/cse.js?cx=' + cx;
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(gcse, s);
-  })();
-</script>
-<gcse:search></gcse:search>
+<form  class="form-inline" role="form" method="get" action="<?php bloginfo('url'); ?>/search/">
+<label>
+    <input type="text" class="search-field form-control" id="q" name="q" value="<?php the_search_query(); ?>">
+</label>
+    <input type="submit" class="btn btn-success" value="Search">
+
+</form>
