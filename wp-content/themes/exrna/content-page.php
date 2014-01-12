@@ -20,14 +20,6 @@
 				</div>
 				<div class="entry-content">
 					<?php the_content(); ?>
-					<!--<?php
-						wp_link_pages( array(
-							'before' => '<div class="page-links">' . __( 'Pages:', '_tk' ),
-							'after'  => '</div>',
-						) );
-					?>
-				</div><!-- .entry-content -->
-				<!--<?php edit_post_link( __( 'Edit', '_tk' ), '<footer class="entry-meta"><span class="edit-link">', '</span></footer>' ); ?>-->
 			</article><!-- #post-## -->
 
 		</div>

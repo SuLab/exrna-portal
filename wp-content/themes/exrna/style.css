@@ -568,6 +568,10 @@ Search Page
 	display: none;
 }
 
+.gsc-selected-option{
+	font-size: 8px;
+}
+
 
 /* ------------------------------------
 Footer 

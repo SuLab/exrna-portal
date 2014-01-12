@@ -5,7 +5,7 @@
 <?php get_header(); ?>
 <div class="container pushtop">
 	<div class="row">
-		<div class="col-md-7">
+		<div class="col-md-10 col-md-offset-1">
 			<form class="form-inline" role="form" method="get" action="<?php bloginfo('url'); ?>/search/">
 				<label class="sr-only" for="Search">Search</label>
 				<div class="form-group col-md-9">
@@ -32,9 +32,7 @@
 		    </div><!-- #primary -->
 		</div>
 		
-		<div class="col-md-5">
-			<?php get_sidebar(); ?>
-		</div>
+		
 	
 	</div>
 	    
