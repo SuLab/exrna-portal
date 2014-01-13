@@ -141,15 +141,16 @@ $( 'img.logo' ).replaceWith( '<img src="http://localhost:8888/exrnawp/media/exrn
     <script src="http://localhost:8888/exrnawp/wp-content/themes/exrna/bigvid/bower_components/BigVideo/lib/bigvideo.js"></script>
 
     <!-- Demo -->
-    <script>
+	 <script>
+        var BV;
 	    $(function() {
-            var BV = new $.BigVideo();
-            var vids = [
-                'http://localhost:8888/exrnawp/wp-content/themes/exrna/bigvid/vids/exrnahd.mp4',
-            ];
-            vids.sort(function() { return 0.5 - Math.random() }); // random order on load
+            
+            // initialize BigVideo
+            BV = new $.BigVideo();
 			BV.init();
-			BV.show(vids,{ambient:true});
+			BV.show('http://localhost:8888/exrnawp/wp-content/themes/exrna/bigvid/vids/exrnahd.mp4',{ambient:true});
+
+           
 	    });
     </script>
     
