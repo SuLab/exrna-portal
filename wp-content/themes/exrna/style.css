@@ -14,11 +14,23 @@ License: 		GNU General Public License
 @import url( ./_tk/style.css );
 @import url(bs-css/bootstrap.css);
 @import url('http://localhost:8888/exrnawp/wp-content/themes/exrna/bs-css/bootstrap.min.css');
-@import url(http://fonts.googleapis.com/css?family=Fjord+One);
-@import url(http://fonts.googleapis.com/css?family=Droid+Sans:400,700);
-@import url(http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic);
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800);
 
+/*  Font Reference
+
+font-family:'Proxima N W01 Bold';
+font-family:'Proxima N W15 Reg It';
+font-family:'Proxima N W01 Reg';
+
+*/
+
+h1,h2, h3, h4, h5, h6, #main-menu li{
+ 	font-family:'Proxima N W01 Bold', Helvetica, Arial;
+}
+
+p, li{
+	font-family: 'Proxima N W01 Reg', Helvetica, Arial;
+
+}
 
 /* Custom Classes */
 
@@ -105,7 +117,7 @@ License: 		GNU General Public License
 }
 
 .navbar-nav {
-	margin: 35px 21px;
+	margin: 35px 10px;
 }
 
 .navbar-inverse {
@@ -114,7 +126,19 @@ License: 		GNU General Public License
 }
 
 .navbar-brand {
-max-width: none;
+	max-width: none;
+}
+
+.navbar-inverse .navbar-brand {
+	padding: 20px 10px;
+}
+.navbar-text-logo>h1{
+	color: black;
+	font-size: 45px;
+}
+
+.home .navbar-text-logo>h1{
+	color: white;
 }
 
 .nav>li>a, .navbar-right>li>a {
@@ -148,6 +172,10 @@ max-width: none;
 	-webkit-border-radius: 5px;
 }
 
+#main-menu li{
+	text-transform: uppercase;
+}
+
 .navbar-right li{
 	background-color: rgba(239, 239, 239, 0.3);
 	margin-left: 3px;
@@ -167,12 +195,6 @@ max-width: none;
 
 .navbar>.container .navbar-brand {
 	margin-left: -30px;
-}
-
-
-.navbar-inverse .navbar-brand{
-	padding: 20px;
-	font-size: 24px;
 }
 
 .navbar-inverse .navbar-brand img:hover{
@@ -353,10 +375,6 @@ footer{
 	background-color: #efefef;
 }
 
-h2,h3,h4,h5,h6{
-	font-family:'Kepler W01 Regular';
-}
-
 h3{
 	font-size: 30px;
 	line-height:120%;
@@ -524,7 +542,6 @@ Home Page
 }
 
 .sp-sidebar h3, .hm-posts h3{
-	font-family: Helvetica, Arial;
 	font-size: 34px;
 	line-height: 40px;
 	margin-top: 5px;
@@ -532,7 +549,6 @@ Home Page
 }
 
 .hm-posts p{
-	font-family: Helvetica, Arial;
 	font-size: 20px;
 	line-height: 30px;
 	font-weight: normal;
@@ -578,7 +594,6 @@ Footer
 ---------------------------------------*/
 
 footer h3{
-	font-family: Helvetica, Arial;
 	font-size: 24px;
 	font-weight:bold;
 	margin-bottom: 30px;
@@ -598,7 +613,14 @@ footer li{
 
 
 
+@media (max-width: 1199px) { 
 
+	.navbar-inverse .navbar-brand{
+		padding-top: 15px;
+	}
+
+
+ }
 
 @media (min-width: 992px) { 
 

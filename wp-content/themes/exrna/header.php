@@ -16,6 +16,7 @@
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 <link rel="stylesheet" href="http://localhost:8888/exrnawp/wp-content/themes/exrna/style.css">
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+<script type="text/javascript" src="http://fast.fonts.net/jsapi/ba20ca36-be5d-4953-bf6c-5e8e2e344077.js"></script>
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 <?php wp_head(); ?>
 <!-- Google Custom Site Search -->
@@ -49,7 +50,8 @@
           </button>
           
 		    <!-- Your site title as branding in the menu -->
-		    <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><img class="logo" src="<?php echo esc_url( home_url( '/' ) ); ?>/media/exrna-logo-black.png" alt="exrna"></a>
+		    <a class="navbar-brand visible-lg " href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><img class="logo" src="<?php echo esc_url( home_url( '/' ) ); ?>/media/exrna-logo-black.png" alt="exrna"></a>
+			<a class="navbar-brand hidden-lg navbar-text-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><h1>exRNA</h1></a>
 		</div>	
 
 		<ul class="nav navbar-nav navbar-right">
