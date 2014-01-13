@@ -50,4 +50,8 @@ create_widget('Quick Links', "quick_links", "The quick links list", "blue");
 create_widget('Email Signup', "email_signup", "Email Signup Area w/ Gravity Forms", "grey");
 create_widget('Twitter', "twitter_area", "Twitter Box", "");
 create_widget('Blog1', "blog_1", "Top Blog Widget Area", "Blue");
+create_widget('Footer1', "footer_1", "Footer 1 Widget Area", "");
+create_widget('Footer2', "footer_2", "Footer 2 Widget Area", "");
+create_widget('Footer3', "footer_3", "Footer 3 Widget Area", "");
+create_widget('Footer4', "footer_4", "Footer 4 Widget Area", "");
 ?>
