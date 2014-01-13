@@ -57,7 +57,7 @@
 
 		<ul class="nav navbar-nav navbar-right visible-md visible-lg">
 	        <li>
-	        	<a href="#"><strong>?</strong></a>
+	        	<a href="#"><i class="fa fa-question"></i></a>
 	        </li>
 	        <li>
 	        	<a href="/exrnawp/search/"><i class="fa fa-search"></i></a></a>
