@@ -15,15 +15,12 @@ License: 		GNU General Public License
 @import url(bs-css/bootstrap.css);
 @import url('http://localhost:8888/exrnawp/wp-content/themes/exrna/bs-css/bootstrap.min.css');
 
-/*  Font Reference
 
-font-family:'Proxima N W01 Bold';
-font-family:'Proxima N W15 Reg It';
-font-family:'Proxima N W01 Reg';
+body{
+	font-family: 'Proxima N W01 Reg', Helvetica, Arial;
+}
 
-*/
-
-h1,h2, h3, h4, h5, h6, #main-menu li{
+h1,h2, h3, h4, h5, h6, #main-menu-nav li{
  	font-family:'Proxima N W01 Bold', Helvetica, Arial;
 }
 
@@ -172,7 +169,7 @@ p, li{
 	-webkit-border-radius: 5px;
 }
 
-#main-menu li{
+#main-menu-nav li{
 	text-transform: uppercase;
 }
 
@@ -442,13 +439,13 @@ Home Page
 }
 
 .jumb h1{
-	font-size: 57px;
+	font-size: 55px;
 	line-height: 58px;
 	font-weight: bold;
 }
 
 .jumb p{
-	font-size: 20;
+	font-size: 20px;
 	line-height: 28px;
 }
 
@@ -623,12 +620,74 @@ footer li{
  }
 
 @media (min-width: 992px) { 
-
+	
 
  }
 
 @media (max-width: 991px){
 	
+	.navbar-inverse .navbar-nav>li>a {
+		font-size: 14px;
+	}
+
+}
+
+@media (max-width: 767px){
+
+	
+	.navbar-inverse {
+		margin-top: -46px;
+		background-color: #00adef;
+
+	}
+
+	.container>.navbar-header, .container>.navbar-collapse {
+		margin-right: -10px;
+		margin-left: 5px;
+	}
+
+	.navbar-inverse .navbar-brand {
+		padding: 0px 10px;
+	}
+
+	.navbar-brand h1{
+		color: #fff;
+		margin-top: 8px;
+		margin-bottom: -3px;
+	}
+
+	.navbar-inverse .navbar-nav>li>a {
+		color:#fff;
+	}
+
+	.navbar-toggle {
+		margin-top: 8px;
+	}
+
+	.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+			border:none;
+		}
+
+	.navbar-collapse {
+		box-shadow: none;
+	}
+
+	.learn{
+		margin-bottom: 15px;
+	}
+
+}
+
+@media (max-width: 480px){
+	.jumb h1 {
+		font-size: 34px;
+		line-height: 40px;
+	}
+
+	.jumb p{
+		font-size: 16px;
+		line-height: 20px;
+	}
 }
 
 

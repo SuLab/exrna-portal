@@ -54,7 +54,7 @@
 			<a class="navbar-brand hidden-lg navbar-text-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><h1>exRNA</h1></a>
 		</div>	
 
-		<ul class="nav navbar-nav navbar-right">
+		<ul class="nav navbar-nav navbar-right visible-md visible-lg">
 	        <li>
 	        	<a href="#"><strong>?</strong></a>
 	        </li>
@@ -75,7 +75,7 @@
 			                    'container_class' => 'collapse navbar-collapse',
 			                    'menu_class' => 'nav navbar-nav',
 			                    'fallback_cb' => '',
-			                    'menu_id' => 'main-menu',
+			                    'menu_id' => 'main-menu-nav',
 			                    'walker' => new wp_bootstrap_navwalker()
 			                )
 			            ); ?>

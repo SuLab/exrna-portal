@@ -5,7 +5,7 @@
 				<div class="row">
 					<div class="col-md-6">
 						<h1>Unlocking the <br> Mysteries of <br>Extracellular RNA <br>Communication</h1>
-						<p class="pushtop">Once thought to exist only inside cells, RNA is <br> known to travel outside of cells and play a role in newly <br> discovered mechanisms of cell-to-cell communication.</p>
+						<p class="pushtop">Once thought to exist only inside cells, RNA is <br class="visible-lg"> known to travel outside of cells and play a role in newly <br class="visible-lg"> discovered mechanisms of cell-to-cell communication.</p>
 					</div>
 				</div>
 				<div class="row pushtop">
