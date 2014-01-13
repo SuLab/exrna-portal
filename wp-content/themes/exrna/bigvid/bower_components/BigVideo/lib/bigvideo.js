@@ -205,7 +205,7 @@
 				});
 				doLoop = true;
 			} else {
-				$('#big-video-control-container').css('display','block');
+				$('#big-video-control-container').css('display','none');
 				player.ready(function(){
 					player.volume(defaultVolume);
 				});

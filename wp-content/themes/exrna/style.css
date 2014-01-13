@@ -331,7 +331,7 @@ Home Page Video Modal
 
 .home .modal-dialog {
 	margin-top: 50px;
-	width: 950px;
+	width: 70%;
 }
 
 .home .modal-content {
@@ -676,6 +676,11 @@ footer li{
 		margin-bottom: 15px;
 	}
 
+	.home .modal-dialog {
+		margin-top: 40px;
+		width: 98%;
+	}
+
 }
 
 @media (max-width: 480px){
@@ -689,9 +694,6 @@ footer li{
 		line-height: 20px;
 	}
 }
-
-
-
 
 
 

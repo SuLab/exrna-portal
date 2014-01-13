@@ -129,6 +129,7 @@ $('body').addClass('home');
 $('body').attr('id', 'page');
 $( 'img.logo' ).replaceWith( '<img src="http://localhost:8888/exrnawp/media/exrna-logo-white.png" alt="exrna">' );
 </script>
+
     <!-- BigVideo Dependencies -->
 	
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -139,19 +140,35 @@ $( 'img.logo' ).replaceWith( '<img src="http://localhost:8888/exrnawp/media/exrn
 
     <!-- BigVideo -->
     <script src="http://localhost:8888/exrnawp/wp-content/themes/exrna/bigvid/bower_components/BigVideo/lib/bigvideo.js"></script>
+	<script src="http://localhost:8888/exrnawp/wp-content/themes/exrna/js/fitvids/jquery.fitvids.js"></script>
 
-    <!-- Demo -->
+    <!-- Video Load -->
 	 <script>
         var BV;
 	    $(function() {
             
             // initialize BigVideo
-            BV = new $.BigVideo();
-			BV.init();
-			BV.show('http://localhost:8888/exrnawp/wp-content/themes/exrna/bigvid/vids/exrnahd.mp4',{ambient:true});
+            //BV = new $.BigVideo();
+			//BV.init();
+			//BV.show('http://localhost:8888/exrnawp/wp-content/themes/exrna/bigvid/vids/exrnahd.mp4',{ambient:true});
 
+			var BV = new $.BigVideo({useFlashForFirefox:false});
+			BV.init();
+			if (Modernizr.touch) {
+			    BV.show('http://localhost:8888/exrnawp/media/exRNA-moviestill-0820.jpg');
+			} else {
+			    BV.show('http://localhost:8888/exrnawp/wp-content/themes/exrna/bigvid/vids/exrnahd.mp4', {altSource:'http://localhost:8888/exrnawp/wp-content/themes/exrna/bigvid/vids/exrnahd.ogv'} , {ambient:true});
+			}
            
 	    });
+
     </script>
-    
+
+    <script>
+  $(document).ready(function(){
+    // Target your .container, .wrapper, .post, etc.
+    $(".modal-dialog").fitVids();
+  });
+</script>
+
 <? get_footer(); ?>
