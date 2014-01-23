@@ -51,8 +51,14 @@
           </button>
           
 		    <!-- Your site title as branding in the menu -->
-		    <a class="navbar-brand visible-lg " href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><img class="logo" src="<?php echo esc_url( home_url( '/' ) ); ?>/media/exrna-logo-black.png" alt="exrna"></a>
-			<a class="navbar-brand hidden-lg navbar-text-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><h1>exRNA</h1></a>
+		    <div id="exrnalogo">
+			    <a class="navbar-brand visible-lg visible-md" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+		    		<img src="<?php echo esc_url( home_url( '/' ) ); ?>/media/exrna-logo-black.svg" alt="exRNA" class="logo img-responsive" onerror="this.onerror=null; this.src='<?php echo esc_url( home_url( '/' ) ); ?>/media/exrna-logo-black.png'">
+		    	</a>
+				<a class="navbar-brand hidden-lg hidden-md navbar-text-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+					<img src="<?php echo esc_url( home_url( '/' ) ); ?>/media/exrna-logo-black-small.svg" alt="exRNA" class="logo img-responsive" onerror="this.onerror=null; this.src='<?php echo esc_url( home_url( '/' ) ); ?>/media/exrna-logo-black-small.png'">
+				</a>
+			</div>
 		</div>	
 
 		<ul class="nav navbar-nav navbar-right visible-md visible-lg">
