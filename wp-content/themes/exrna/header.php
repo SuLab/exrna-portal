@@ -52,11 +52,11 @@
           
 		    <!-- Your site title as branding in the menu -->
 		    <div id="exrnalogo">
-			    <a class="navbar-brand visible-lg visible-md" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
-		    		<img src="<?php echo esc_url( home_url( '/' ) ); ?>/media/exrna-logo-black.svg" alt="exRNA" class="logo img-responsive" onerror="this.onerror=null; this.src='<?php echo esc_url( home_url( '/' ) ); ?>/media/exrna-logo-black.png'">
+			    <a class="navbar-brand visible-lg visible-md visible-sm" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+		    		<img src="<?php echo esc_url( home_url( '/' ) ); ?>media/exrna-logo-black.svg" alt="exRNA" class="logo img-responsive" onerror="this.onerror=null; this.src='<?php echo esc_url( home_url( '/' ) ); ?>media/exrna-logo-black.png'">
 		    	</a>
-				<a class="navbar-brand hidden-lg hidden-md navbar-text-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
-					<img src="<?php echo esc_url( home_url( '/' ) ); ?>/media/exrna-logo-black-small.svg" alt="exRNA" class="logo img-responsive" onerror="this.onerror=null; this.src='<?php echo esc_url( home_url( '/' ) ); ?>/media/exrna-logo-black-small.png'">
+				<a class="navbar-brand hidden-lg hidden-md hidden-sm visible-xs" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+					<img src="<?php echo esc_url( home_url( '/' ) ); ?>media/exrna-logo-white-small.svg" alt="exRNA" class="logo img-responsive" onerror="this.onerror=null; this.src='<?php echo esc_url( home_url( '/' ) ); ?>media/exrna-logo-white-small.png'">
 				</a>
 			</div>
 		</div>	
