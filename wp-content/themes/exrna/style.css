@@ -18,10 +18,16 @@ License: 		GNU General Public License
 
 body{
 	font-family: 'Proxima N W01 Reg', Helvetica, Arial;
+	font-size: 16px;
+	line-height: 24px;
 }
 
-h1,h2, h3, h4, h5, h6, #main-menu-nav li{
+h1, #main-menu-nav li{
  	font-family:'Proxima N W01 Bold', Helvetica, Arial;
+}
+
+h2, h3, h4, h5, h6{
+	font-family: Georgia, Times, Serif;
 }
 
 h1{
@@ -32,6 +38,32 @@ p, li{
 	font-family: 'Proxima N W01 Reg', Helvetica, Arial;
 
 }
+
+/* p{
+	font-size: 20px;
+	line-height: 28px;
+} */
+
+footer{
+	min-height: 100px;
+	background-color: #efefef;
+}
+
+h3{
+	font-size: 30px;
+	line-height:120%;
+}
+
+
+h1 a, h2 a, h3 a, h4 a, h5 a{
+	color: #333;
+}
+
+a,h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover{
+	color: #00aeef;
+}
+
+
 
 /* Custom Classes */
 
@@ -376,28 +408,7 @@ Home Page Video Modal
 Some 
 ---------------------------------------*/
 
-footer{
-	min-height: 100px;
-	background-color: #efefef;
-}
 
-h3{
-	font-size: 30px;
-	line-height:120%;
-}
-
-h1 a, h3 a{
-	color: #333;
-}
-
-a,h1 a:hover, h3 a:hover{
-	color: #00aeef;
-}
-
-p{
-	font-size: 20px;
-	line-height: 28px;
-}
 
 .wrap{
 	position: relative;
@@ -594,12 +605,56 @@ Search Page
 	font-size: 8px;
 }
 
+/* ------------------------------------
+Project Page 
+---------------------------------------*/
 
+.fp{
+	padding: 20px;
+	background-color: #f2f2f2;
+	margin-top: 20px;
+}
+
+td.border-less{
+	border:none;
+}
+
+.funded-projects table{
+	background-color: #f2f2f2;
+}
+
+.funded-projects tr{
+	padding: 10px;
+}
+
+.funded-projects p, .funded-projects th{
+	font-family:'Proxima N W01 Bold', Helvetica, Arial;
+}
+
+.funded-projects th{
+	color: #b4b4b4;
+}
+
+.funded-projects td a{
+	font-size: 18px;
+}
+
+.funded-projects td a:hover{
+	color: #333
+}
+
+.funded-projects h4 a{
+	font-size: 34px;
+}
+
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td {
+padding: 11px;}
 /* ------------------------------------
 Footer 
 ---------------------------------------*/
 
 footer h3{
+	font-family:'Proxima N W01 Bold', Helvetica, Arial;
 	font-size: 24px;
 	font-weight:bold;
 	margin-bottom: 30px;
