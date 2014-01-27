@@ -29,7 +29,7 @@ h1, #main-menu-nav li{
 }
 
 h2, h3, h4, h5, h6{
-	font-family: 'Vollkorn', Georgia, Times, Serif;
+	font-family: 'Foundry Form Serif W01 Md', Georgia, Times, Serif;
 }
 
 h1{
@@ -58,7 +58,7 @@ h3{
 
 
 h1 a, h2 a, h3 a, h4 a, h5 a{
-	color: #333;
+	color: #000;
 }
 
 a, a:hover, h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover{
@@ -575,6 +575,8 @@ Home Page
 
 .post-date, .post-author{
 	font-size: 16px;
+	font-family:'Proxima N W01 Bold';
+
 }
 
 .post-author a{

@@ -18,7 +18,7 @@ get_header(); ?>
 				    $curauth = (isset($_GET['author_name'])) ? get_user_by('slug', $author_name) : get_userdata(intval($author));
 				    ?>
 					<div class="center-block">
-						<?php echo get_avatar( get_the_author_meta( 'ID' ), 75 , $default, $alt); ?>
+						<?php echo get_avatar( get_the_author_meta( 'ID' ), 75 ); ?>
 					</div>
 				    <h1 class="text-center"><?php echo $curauth->first_name; ?> <?php echo $curauth->last_name; ?></h1>
 				    <div class="row">
@@ -78,16 +78,7 @@ get_header(); ?>
 				    	</div>
 				    	
 				    </div>
-				    <dl>
-				        <dt>Website</dt>
-				        <dd><a href="<?php echo $curauth->user_url; ?>"><?php echo $curauth->user_url; ?></a></dd>
-				        <dt>Profile</dt>
-				        <dd><?php echo $curauth->user_description; ?></dd>
-				        <dd>Twitter: <a href="https://twitter.com/<?php echo the_author_meta('twitter'); ?>"><?php echo the_author_meta('twitter'); ?></a></dd>
-				        <dd>Google +: <a href="<?php echo the_author_meta('googleplus'); ?>"><?php echo the_author_meta('googleplus'); ?></a></dd>
-						<dd><?php echo get_avatar( get_the_author_meta( 'ID' ), 75 ); ?></dd>
-				    </dl>
-
+				    
 				   
 			</div>
 		</div>
