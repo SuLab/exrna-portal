@@ -208,8 +208,57 @@ a, a:hover, h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover{
 	-webkit-border-radius: 5px;
 }
 
+.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>.open>a:focus {
+	color: #000;
+	background-color: #efefef;
+	border-top-right-radius: 5px;
+	-moz-border-top-right-radius: 5px;
+	-webkit-border-top-right-radius: 5px;
+	border-top-left-radius: 5px;
+	-moz-border-top-left-radius: 5px;
+	-webkit-border-top-left-radius: 5px;
+}
+
+#page .navbar-inverse .navbar-nav>li>a:hover, .navbar-inverse .navbar-nav>li>a:focus {
+	color: #fff;
+	background-color: rgba(0, 0, 0, 0.3);
+}
+
+
+#page .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:hover, .navbar-inverse .navbar-nav>.active>a:focus {
+	color: #fff;
+	background-color: rgba(0, 0, 0, 0.3);
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+
+#page .navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>.open>a:focus {
+	color: #fff;
+	background-color: rgba(0, 0, 0, 0.3);
+	border-top-right-radius: 5px;
+	-moz-border-top-right-radius: 5px;
+	-webkit-border-top-right-radius: 5px;
+	border-top-left-radius: 5px;
+	-moz-border-top-left-radius: 5px;
+	-webkit-border-top-left-radius: 5px;
+}
+
+#page .dropdown-menu>li>a{
+	color: #fff;
+}
+
+#page .dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus {
+	background-color: rgba(0, 0, 0, 0.3);
+}
+
+
+
+
+
 #main-menu-nav li{
 	text-transform: uppercase;
+	margin-right: 5px;
 }
 
 .navbar-right li{
@@ -238,8 +287,27 @@ a, a:hover, h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover{
 }
 
 .navbar-nav>li>.dropdown-menu {
-	background: transparent;
+	background: #efefef;
+	border: none;
+	box-shadow: none;
+	-web-kit-box-shadow: none;
+	-moz-box-shadow: none;
+	border-radius: 0px;
+	-web-kit-border-radius: 0px;
+	-moz-border-radius: 0px;
 }
+
+#page .navbar-nav>li>.dropdown-menu {
+	background: rgba(0, 0, 0, 0.3);
+	border: none;
+	box-shadow: none;
+	-web-kit-box-shadow: none;
+	-moz-box-shadow: none;
+	border-radius: 0px;
+	-web-kit-border-radius: 0px;
+	-moz-border-radius: 0px;
+}
+
 
 
 .logo{
