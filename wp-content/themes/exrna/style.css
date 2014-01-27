@@ -14,6 +14,8 @@ License: 		GNU General Public License
 @import url( ./_tk/style.css );
 @import url(bs-css/bootstrap.css);
 @import url('http://localhost:8888/exrnawp/wp-content/themes/exrna/bs-css/bootstrap.min.css');
+@import url(http://fonts.googleapis.com/css?family=Vollkorn:400,700);
+
 
 
 body{
@@ -27,7 +29,7 @@ h1, #main-menu-nav li{
 }
 
 h2, h3, h4, h5, h6{
-	font-family: Georgia, Times, Serif;
+	font-family: 'Vollkorn', Georgia, Times, Serif;
 }
 
 h1{
@@ -59,7 +61,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a{
 	color: #333;
 }
 
-a,h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover{
+a, a:hover, h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover{
 	color: #00aeef;
 }
 
@@ -640,7 +642,7 @@ td.border-less{
 }
 
 .funded-projects td a:hover{
-	color: #333
+	color: #00aeef;
 }
 
 .funded-projects h4 a{
@@ -649,6 +651,21 @@ td.border-less{
 
 .table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td {
 padding: 11px;}
+
+
+/* ------------------------------------
+Author Page 
+---------------------------------------*/
+
+.author .avatar{
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+
+
+
 /* ------------------------------------
 Footer 
 ---------------------------------------*/

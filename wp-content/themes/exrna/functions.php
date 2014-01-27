@@ -27,6 +27,15 @@ function custom_excerpt_length( $length ) {
 }
 add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
 
+//Author Image Class
+
+add_filter('get_avatar','change_avatar_css');
+
+function change_avatar_css($class) {
+$class = str_replace("class='avatar", "class='img-circle avatar ", $class) ;
+return $class;
+}
+
 /**
  * Register our sidebars and widgetized areas.
  *

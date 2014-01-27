@@ -66,7 +66,7 @@
 	        	<a href="#"><i class="fa fa-question"></i></a>
 	        </li>
 	        <li>
-	        	<a href="/exrnawp/search/"><i class="fa fa-search"></i></a></a>
+	        	<a href="<?php bloginfo( 'url' ) ?>/search/"><i class="fa fa-search"></i></a></a>
 	        </li>
 	    	<!--<li class="dropdown">
 			  <a data-toggle="dropdown" id="search" href="#"><i class="fa fa-search"></i></a>

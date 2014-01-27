@@ -11,14 +11,73 @@
  */
 
 get_header(); ?>
-<div class="container pushtop">
+<div class="container pushtop author">
 	<div class="row">
 			<div class="col-md-12">
 				<?php
 				    $curauth = (isset($_GET['author_name'])) ? get_user_by('slug', $author_name) : get_userdata(intval($author));
 				    ?>
+					<div class="center-block">
+						<?php echo get_avatar( get_the_author_meta( 'ID' ), 75 , $default, $alt); ?>
+					</div>
+				    <h1 class="text-center"><?php echo $curauth->first_name; ?> <?php echo $curauth->last_name; ?></h1>
+				    <div class="row">
+				    	<div class="col-sm-6 col-sm-offset-3 text-center">
+				    		<div class="row">
+				    			<div class="col-sm-4">
+				    				<a href="<?php echo $curauth->user_url; ?>"><i class="fa fa-link"></i> <?php echo $curauth->user_url; ?></a> 
+				    			</div>
+				    			<div class="col-sm-4">
+				    				<a href="https://twitter.com/<?php echo the_author_meta('twitter'); ?>"><i class="fa fa-twitter"></i> <?php echo the_author_meta('twitter'); ?></a>				    				
+				    			</div>
+				    			<div class="col-sm-4">
+									<a href="<?php echo the_author_meta('googleplus'); ?>"><i class="fa fa-google-plus"></i> Google Plus</a>
+								</div>
+				    		</div>
+				    	</div>
+				    </div>
+				    <div class="row">
+				    	<div class="col-sm-8 col-sm-offset-2 text-center pushtop">
+				    		<?php echo $curauth->user_description; ?>
+				    	</div>
+				    </div>
+				    <div class="row">
+				    	<div class="col-xs-10 col-xs-offset-1">
+				    		<?php // Display blog posts on any page
+								$temp = $wp_query; $wp_query= null;
+								$wp_query = new WP_Query(); $wp_query->query('showposts=3' . '&paged='.$paged);
+								while ($wp_query->have_posts()) : $wp_query->the_post(); ?>
 
-				    <h2>About: <?php echo $curauth->first_name; ?> <?php echo $curauth->last_name; ?></h2>
+								<div class="row pushtop">
+									<div class="col-xs-12"><div class="hm-post-border"></div></div>
+								</div>
+								<div class="col-md-12 hm-post">
+									
+									<div class="row">
+										<div class="heading">
+											<p><span class="post-date"><?php the_time('m.d.y') ?></span> <span class="post-author">by <?php the_author_posts_link(); ?></span></p>
+											<h3><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h3>
+										</div>
+									</div>
+									<div class="row">
+										<div class="excerpt">
+											<div class="post-excerpt">
+												<p><?php the_excerpt() ?>
+											</div>
+										</div>
+									</div>
+									
+								</div>
+
+
+								<?php endwhile; ?>
+
+								
+
+								<?php wp_reset_postdata(); ?>
+				    	</div>
+				    	
+				    </div>
 				    <dl>
 				        <dt>Website</dt>
 				        <dd><a href="<?php echo $curauth->user_url; ?>"><?php echo $curauth->user_url; ?></a></dd>
@@ -29,75 +88,15 @@ get_header(); ?>
 						<dd><?php echo get_avatar( get_the_author_meta( 'ID' ), 75 ); ?></dd>
 				    </dl>
 
-				    <h2>Posts by <?php echo $curauth->nickname; ?>:</h2>
-
-				    <ul>
+				   
 			</div>
 		</div>
-	<div class="row pushtop hm-posts">
-
-		<div class="col-md-5 col-md-offset-1">
-			<!-- The Loop -->
-
-    <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-        <li>
-            <a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link: <?php the_title(); ?>">
-            <?php the_title(); ?></a>,
-            <?php the_time('d M Y'); ?> in <?php the_category('&');?>
-        </li>
-
-    <?php endwhile; else: ?>
-        <p><?php _e('No posts by this author.'); ?></p>
-
-    <?php endif; ?>
+	
 
 <!-- End Loop -->
 
-    </ul>
 			
-		</div>
-		<div class="col-md-1"></div>
-		<div class="col-md-4">
-			<div class="row sp-sidebar">
-				<div class="col-md-12">
-					<div class="grey blog1">
-						<?php dynamic_sidebar( 'blog_1' ); ?>
-						<script>
-						$(document).ready(function(){
-						    $('.blog1 ul').addClass('list-unstyled');
-						});
-						</script>
-					</div>
-				</div>
-				<div class="col-md-12 pushtop">
-					<div class="grey">
-						<div class="row">
-							<div class="col-md-12">
-								<img src="http://exrna.org/media/banner-nihlogo.png" alt="" class="img-responsive imgcent">
-							</div>
-							
-							<div class="col-md-12 pushtop">
-								<div class="imgcent white email-signup">
-					        		
-										<?php gravity_form( 2, $display_title=false, $display_description=false, $display_inactive=false, $field_values=null, $ajax=true, $tabindex); ?>
-									
-									<script>
-										$(document).ready(function(){
-											$( ".gform_body" ).replaceWith( "<div class='form-group'><input name='input_1' id='input_2_1' type='email' value='' class='medium form-control' placeholder='Email Newsletter'></div>" );
-										    $('#gform_submit_button_2').addClass('btn btn-warning pull-right');
-										});
-									</script>
-								</div>
-							</div>	
-						</div>
-					</div>
-				</div>
-				<div class="col-md-12 pushtop">
-					<?php dynamic_sidebar( 'twitter_area' ); ?>
-				</div>
-				
-			</div>
-		</div>
+		
 	</div>
 </div>
 	

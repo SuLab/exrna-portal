@@ -30,7 +30,7 @@
 						<?php dynamic_sidebar( 'footer_4' ); ?>
 					</div>
 					<div class="col-md-2">
-						<img src="http://localhost:8888/exrnawp/media/exrna-logo-only-black.png" alt="" class="img-responsive">
+						<a href="<?php bloginfo( 'url' ) ?>/"><img src="<?php bloginfo( 'url' ) ?>/media/exrna-logo-only-black.svg" alt="exRNA" style="max-width:105px;" class="logo img-responsive" onerror="this.onerror=null; this.src='<?php echo esc_url( home_url( '/' ) ); ?>media/exrna-logo-only-black.png'"></a>
 					</div>
 				</div>
 			</div>
