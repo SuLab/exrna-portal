@@ -12,8 +12,7 @@ get_header(); ?>
 			<div class="col-md-12 hm-post">
 				<div class="row">
 					<div class="heading">
-						<p>Singe-Projects.php</p>
-						<p><span class="post-date"><?php the_time('m.d.y') ?></span> <span class="post-author">by <?php the_author_posts_link(); ?></span></p>
+						<p><span class="post-date"><?php the_field('project_number'); ?> &bull; <?php the_field('awardee_organization'); ?> &bull; <?php the_time('m.d.y') ?></p>
 						<h1><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h1>
 					</div>
 				</div>
@@ -21,18 +20,30 @@ get_header(); ?>
 		</article>
 	</div><!-- End Row -->
 	<div class="row">
-		<div class="col-md-5 col-md-offset-1">
+		<div class="col-md-6 col-md-offset-1">
 			<div class="row">
-				<div class="col-xs-6"><div class="hm-post-border"></div></div>
+				<div class="col-xs-4"><div class="hm-post-border"></div></div>
 			</div>
-			<p><span class="post-author">by <?php the_author_posts_link(); ?></span></p>
+
 			<div class="sp-content">
-				<p><?php the_field('project_number'); ?></p>
-				<p><?php the_field('contact_pi_project_leader'); ?></p>
-				<p><?php the_field('contributors'); ?></p>
-				<p><?php the_field('awardee_organization'); ?></p>
-				<p><?php the_field('abstract_text'); ?></p>
-				<p><a href="<?php the_field('nih_link'); ?>"><?php the_field('nih_link'); ?></a></p>
+				<div class="row">
+					<div class="col-md-8">
+					<p><span class="projectlead">Project Lead:</span> <?php the_field('contact_pi_project_leader'); ?></p>
+					<p><span class="projectlead">Contributors:</span> <?php the_field('contributors'); ?></p>
+					</div>
+					<div class="col-md-4">
+						<a href="<?php the_field('nih_link'); ?>"><button class="btn btn-teal pull-right"><span class="post-date">VIEW NIH</span></button></a>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 project-content">
+						<p><?php the_field('abstract_text'); ?></p>
+						<p><a href="<?php the_field('nih_link'); ?>">
+							<span class="post-date">VIEW NIH</span>  <i class="fa fa-long-arrow-right"></i><br>
+							<?php the_field('nih_link'); ?></a>
+						</p>
+					</div>
+				</div>
 				
 			</div>
 			<div class="sp-prevnext pushtop">
@@ -51,7 +62,7 @@ get_header(); ?>
 			<?php endwhile; // end of the loop. ?>
 			</div>
 		</div>
-		<div class="col-md-1"></div>
+		
 		<div class="col-md-4">
 			<div class="row sp-sidebar">
 				<div class="col-md-12">
