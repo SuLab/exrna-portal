@@ -630,8 +630,9 @@ Home Page
 }
 
 .sp-sidebar h3, .hm-posts h3{
-	font-size: 34px;
-	line-height: 40px;
+	font-family:'Proxima N W01 Bold', Helvetica, Arial;
+	font-size: 22px;
+	line-height: 24px;
 	margin-top: 5px;
 	margin-bottom: 5px;
 }
