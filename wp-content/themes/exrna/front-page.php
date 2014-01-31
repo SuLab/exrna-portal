@@ -160,7 +160,7 @@ $( '#exrnalogo' ).replaceWith('<a class="navbar-brand visible-lg visible-md visi
 			if (Modernizr.touch) {
 			    BV.show('http://localhost:8888/exrnawp/media/exRNA-moviestill-0820.jpg');
 			} else {
-			    BV.show('http://localhost:8888/exrnawp/wp-content/themes/exrna/bigvid/vids/exrnahd.mp4', {altSource:'http://localhost:8888/exrnawp/wp-content/themes/exrna/bigvid/vids/exrnahd.ogv'} , {ambient:true});
+			    BV.show('http://localhost:8888/exrnawp/wp-content/themes/exrna/bigvid/vids/exrnahd.mp4', {altSource:'http://localhost:8888/exrnawp/wp-content/themes/exrna/bigvid/vids/exrnahd.ogv' , ambient:true});
 			}
            
 	    });
