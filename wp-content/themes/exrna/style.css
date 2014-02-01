@@ -680,6 +680,10 @@ Singe Post sp
 	line-height:58px;
 }
 
+.sp-sidebar li{
+	padding-bottom: 10px;
+}
+
 /* ------------------------------------
 Search Page
 ---------------------------------------*/
@@ -761,6 +765,7 @@ Single Project
 	border-radius: 0px;
 	background-color:#00aeef;
 	color: #fff;
+	float: right;
 }
 
 .projectlead{
@@ -795,7 +800,13 @@ footer li{
 	margin-bottom: 20px;
 }
 
+@media (min-width: 1199px) { 
 
+	.navbar-nav {
+		margin: 35px 30px;
+	}
+
+}
 
 @media (max-width: 1199px) { 
 
@@ -823,16 +834,24 @@ footer li{
 	}
 
 	.nav>li>a, .navbar-right>li>a {
-	padding: 7px;
+		padding: 7px;
 	}
 
 	.logo {
-		max-width: 180px;
+		max-width: 160px;
 		margin-top: 10px;
-		}
+	}
 
 	.navbar-nav {
-	margin: 35px 0px;
+		margin: 35px 10px;
+	}
+
+	.btn-teal{
+		float: left;
+	}
+
+	.hm-post{
+		margin-bottom: 10px;
 	}
 
 }
@@ -909,6 +928,16 @@ footer li{
 		text-align: center;
 		}
 
+	.sp h1 {
+		font-size: 2em;
+		line-height: 120%;
+	}
+
+	.project-content p {
+		padding-right: 0px;
+	}
+
+	
 
 }
 

@@ -32,7 +32,7 @@ get_header(); ?>
 					<p><span class="projectlead">Contributors:</span> <?php the_field('contributors'); ?></p>
 					</div>
 					<div class="col-md-4">
-						<a href="<?php the_field('nih_link'); ?>"><button class="btn btn-teal pull-right"><span class="post-date">VIEW NIH</span></button></a>
+						<a href="<?php the_field('nih_link'); ?>"><button class="btn btn-teal"><span class="post-date">VIEW NIH</span></button></a>
 					</div>
 				</div>
 				<div class="row">
