@@ -11,7 +11,7 @@ License: 		GNU General Public License
 */
 
 /* Import the necessary TK Bootstrap WP CSS additions */
-@import url( ./_tk/style.css );
+
 @import url(bs-css/bootstrap.css);
 @import url('http://localhost:8888/exrnawp/wp-content/themes/exrna/bs-css/bootstrap.min.css');
 @import url(http://fonts.googleapis.com/css?family=Vollkorn:400,700);
@@ -171,7 +171,7 @@ a:hover, h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover{
 }
 
 .navbar-inverse .navbar-brand {
-	padding: 15px 15px;
+	padding: 15px 0px;
 }
 
 .navbar-text-logo>h1{
@@ -706,6 +706,10 @@ td.border-less{
 	border:none;
 }
 
+.funded-projects{
+	text-transform: capitalize;
+}
+
 .funded-projects table{
 	background-color: #f2f2f2;
 }
@@ -716,6 +720,7 @@ td.border-less{
 
 .funded-projects p, .funded-projects th{
 	font-family:'Proxima N W01 Bold', Helvetica, Arial;
+	text-transform: uppercase;
 }
 
 .funded-projects th{
@@ -727,7 +732,7 @@ td.border-less{
 }
 
 .funded-projects td a:hover{
-	color: #00aeef;
+	color: #198bbd;
 }
 
 .funded-projects h4 a{
@@ -882,9 +887,27 @@ footer li{
 	}
 
 	.logo{
-	width: 180px;
-	padding: 0px 15px;
+		width: 180px;
+		padding: 0px 15px;
 	}
+
+	.fp{
+		padding: 0px;
+		margin-left: 0px;
+	}
+
+	.funded-projects td, .funded-projects td a, .funded-projects th {
+		font-size: 12px;
+	}
+
+	.funded-projects h4 a{
+		font-size: 18px;
+	}	
+
+	.navbar-inverse .navbar-nav .open .dropdown-menu>li>a {
+		color: #fff;
+		text-align: center;
+		}
 
 
 }
