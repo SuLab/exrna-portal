@@ -20,6 +20,7 @@ License: 		GNU General Public License
 
 
 body{
+	margin-top: 45px;
 	font-family: 'Proxima N W01 Reg', Helvetica, Arial;
 	font-size: 16px;
 	line-height: 24px;
@@ -804,7 +805,7 @@ footer li{
 @media (min-width: 1199px) { 
 
 	.navbar-nav {
-		margin: 35px 30px;
+		margin: 35px 0 35px 30px;
 	}
 
 }
