@@ -14,11 +14,11 @@
 <title><?php wp_title( '|', true, 'right' ); ?></title>
 <link rel="profile" href="http://gmpg.org/xfn/11">
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
-<link rel="stylesheet" href="http://localhost:8888/exrnawp/wp-content/themes/exrna/style.css">
+<link rel="stylesheet" href="<?php bloginfo( 'url' ); ?>/wp-content/themes/exrna/style.css">
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 <script type="text/javascript" src="http://fast.fonts.net/jsapi/ba20ca36-be5d-4953-bf6c-5e8e2e344077.js"></script>
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-<script src="http://localhost:8888/exrnawp/wp-content/themes/exrna/bigvid/bower_components/modernizr/modernizr-2.5.3.min.js"></script>
+<script src="<?php bloginfo( 'url' ); ?>/wp-content/themes/exrna/bigvid/bower_components/modernizr/modernizr-2.5.3.min.js"></script>
 <?php wp_head(); ?>
 <!-- Google Custom Site Search -->
 <script>
