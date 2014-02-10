@@ -30,7 +30,7 @@ Template Name: test new
 	                        <tr>
 	                            <td colspan="3" style="border:none;">
 	                              <p>(u54) rfa-rm-12-010</p>
-	                              <h4><a href="http://localhost:8888/exrnawp/dmrr/" title="data management and resource repository (dmrr) on extracellular rna (u54) rfa-rm-12-010 ">Data Management And Resource Repository (DMRR) On Extracellular RNA</a></h4>
+	                              <h4><a href="<?php bloginfo( 'url' ); ?>/dmrr/" title="data management and resource repository (dmrr) on extracellular rna (u54) rfa-rm-12-010 ">Data Management And Resource Repository (DMRR) On Extracellular RNA</a></h4>
 	                            </td>
 	                        </tr>
 	                        <tr style="border:none;">
@@ -41,7 +41,7 @@ Template Name: test new
 	                        
 	                        <tr>
 	                            <td>
-	                              <a href="http://localhost:8888/exrnawp/projects/data-management-resource-repository-exrna-atlas/">Data Management and Resource Repository for the exRNA Atlas</a>
+	                              <a href="<?php bloginfo( 'url' ); ?>/projects/data-management-resource-repository-exrna-atlas/">Data Management and Resource Repository for the exRNA Atlas</a>
 	                            </td>
 	                            <td>
 	                              Aleksandar Milosavljevic<br>
@@ -62,7 +62,7 @@ Template Name: test new
 	                          <tr>
 	                            <td colspan="3" style="border:none;">
 	                              <p>(u19) rfa-rm-12-012</p>
-	                              <h4><a href="http://localhost:8888/exrnawp/function/" title="extracellular rna biogenesis, biodistribution, uptake, and effector function (u19) rfa-rm-12-012">Extracellular RNA Biogenesis, Biodistribution, Uptake, And Effector Function</a></h4>
+	                              <h4><a href="<?php bloginfo( 'url' ); ?>/function/" title="extracellular rna biogenesis, biodistribution, uptake, and effector function (u19) rfa-rm-12-012">Extracellular RNA Biogenesis, Biodistribution, Uptake, And Effector Function</a></h4>
 	                            </td>
 	                          </tr>
 	                          <tr style="border:none;">
@@ -72,12 +72,12 @@ Template Name: test new
 	                          </tr>
 	                          
 	                        <tr >
-	                          <td><a href="http://localhost:8888/exrnawp/projects/vivo-regulated-release-function-extracellular-small-rnas/">In Vivo Regulated Release and Function Of Extracellular Small RNAs</a> </td>
+	                          <td><a href="<?php bloginfo( 'url' ); ?>/projects/vivo-regulated-release-function-extracellular-small-rnas/">In Vivo Regulated Release and Function Of Extracellular Small RNAs</a> </td>
 	                          <td>Robert H. Blelloch</td>
 	                          <td>University of California, San Francisco</td>
 	                        </tr>
 	                        <tr>
-	                          <td><a href="http://localhost:8888/exrnawp/projects/exrna-released-glioblastoma-alters-brain-microenvironment/">Exrna Released By Glioblastoma Alters Brain Microenvironment</a></td>
+	                          <td><a href="<?php bloginfo( 'url' ); ?>/projects/exrna-released-glioblastoma-alters-brain-microenvironment/">Exrna Released By Glioblastoma Alters Brain Microenvironment</a></td>
 	                          <td>Xandra Owens Breakefield<br>
 	                              Alain Charest<br>
 	                              Stephen J. Gould<br>
@@ -87,17 +87,17 @@ Template Name: test new
 	                          <td>Massachusetts General Hospital</td>
 	                        </tr>
 	                         <tr>
-	                          <td><a href="http://localhost:8888/exrnawp/projects/secreted-rna-crc-progression-biogenesis-function-clinical-markers/">Secreted RNA During CRC Progression Biogenesis Function And Clinical Markers</a></td>
+	                          <td><a href="<?php bloginfo( 'url' ); ?>/projects/secreted-rna-crc-progression-biogenesis-function-clinical-markers/">Secreted RNA During CRC Progression Biogenesis Function And Clinical Markers</a></td>
 	                          <td>Robert J. Coffey</td>
 	                          <td>Vanderbilt University Medical Center</td>
 	                        </tr>
 	                        <tr>
-	                          <td><a href="http://localhost:8888/exrnawp/projects/genetic-models-exrna-communication/">Genetic Models for exRNA Communication</a></td>
+	                          <td><a href="<?php bloginfo( 'url' ); ?>/projects/genetic-models-exrna-communication/">Genetic Models for exRNA Communication</a></td>
 	                          <td>Michael T. Mcmanus</td>
 	                          <td>University of California, San Francisco</td>
 	                        </tr>
 	                        <tr>
-	                          <td><a href="http://localhost:8888/exrnawp/projects/definition-serum-ribonucleoprotein-composition-regulation-function/">Definition Of Serum Ribonucleoprotein Composition And Its Regulation And Function</a></td>
+	                          <td><a href="<?php bloginfo( 'url' ); ?>/projects/definition-serum-ribonucleoprotein-composition-regulation-function/">Definition Of Serum Ribonucleoprotein Composition And Its Regulation And Function</a></td>
 	                          <td>Thomas Tuschl</td>
 	                          <td>rockefeller university</td>
 	                        </tr>
@@ -110,7 +110,7 @@ Template Name: test new
 	                        <tr>
 	                          <td colspan="3" style="border:none;">
 	                            <p>(uh2/uh3) rfa-rm-12-013</p>
-	                            <h4><a href="http://localhost:8888/exrnawp/biomarker/" title="clinical utility of extracellular rna for biomarker development">Clinical Utility Of Extracellular RNA For Biomarker Development</a></h4>
+	                            <h4><a href="<?php bloginfo( 'url' ); ?>/biomarker/" title="clinical utility of extracellular rna for biomarker development">Clinical Utility Of Extracellular RNA For Biomarker Development</a></h4>
 	                          </td>
 	                        </tr>
 	                        <tr style="border:none;">
@@ -120,7 +120,7 @@ Template Name: test new
 	                        </tr>
 	                        <tr>
 	                          <td>
-	                            <a href="http://localhost:8888/exrnawp/projects/exrna-biomarkers-human-glioma/" title="exrna biomarkers for human glioma">exRNA Biomarkers for Human Glioma</a>
+	                            <a href="<?php bloginfo( 'url' ); ?>/projects/exrna-biomarkers-human-glioma/" title="exrna biomarkers for human glioma">exRNA Biomarkers for Human Glioma</a>
 	                          </td>
 	                          <td>Bob S. Carter<br>
 	                            Fred H. Hochberg</td>
@@ -128,7 +128,7 @@ Template Name: test new
 	                        </tr>
 	                        <tr>
 	                          <td>
-	                            <a href="http://localhost:8888/exrnawp/projects/plasma-mirna-predictors-adverse-mechanical-electrical-remodeling-mi/" title="plasma mirna predictors of adverse mechanical and electrical remodeling after mi">Plasma miRNA Predictors Of Adverse Mechanical And Electrical Remodeling After mi</a>
+	                            <a href="<?php bloginfo( 'url' ); ?>/projects/plasma-mirna-predictors-adverse-mechanical-electrical-remodeling-mi/" title="plasma mirna predictors of adverse mechanical and electrical remodeling after mi">Plasma miRNA Predictors Of Adverse Mechanical And Electrical Remodeling After mi</a>
 	                          </td>
 	                          <td>Saumya Das<br>
 	                          Raymond Y. Kwong<br>
@@ -139,14 +139,14 @@ Template Name: test new
 	                        </tr>
 	                        <tr>
 	                          <td>
-	                            <a href="http://localhost:8888/exrnawp/projects/extracellular-rnas-biomarkers-cardiovascular-risk-disease/" title="extracellular rnas: biomarkers for cardiovascular risk and disease">extracellular RNAs: biomarkers for cardiovascular risk and disease</a>
+	                            <a href="<?php bloginfo( 'url' ); ?>/projects/extracellular-rnas-biomarkers-cardiovascular-risk-disease/" title="extracellular rnas: biomarkers for cardiovascular risk and disease">extracellular RNAs: biomarkers for cardiovascular risk and disease</a>
 	                          </td>
 	                          <td>Jane E. Freedman</td>
 	                          <td>University of Massachusetts Medical School, Worcester</td>
 	                        </tr>
 	                       <tr>
 	                          <td>
-	                            <a href="http://localhost:8888/exrnawp/projects/exrna-signatures-predict-outcomes-brain-injury/" title="exrna signatures predict outcomes after brain injury">exRNA Signatures Predict Outcomes After Brain Injury</a>
+	                            <a href="<?php bloginfo( 'url' ); ?>/projects/exrna-signatures-predict-outcomes-brain-injury/" title="exrna signatures predict outcomes after brain injury">exRNA Signatures Predict Outcomes After Brain Injury</a>
 	                          </td>
 	                          <td>Matthew Huentelman<br>
 	                          David P. Adelson<br>
@@ -157,21 +157,21 @@ Template Name: test new
 	                        </tr>
 	                        <tr class="row3">
 	                            <td>
-	                              <a href="http://localhost:8888/exrnawp/projects/exrnas-early-identification-pregnancies-risk-placental-dysfunction/" title="exrnas for early identification of pregnancies at risk for placental dysfunction">exRNAs For Early Identification Of Pregnancies At Risk For Placental Dysfunction</a>
+	                              <a href="<?php bloginfo( 'url' ); ?>/projects/exrnas-early-identification-pregnancies-risk-placental-dysfunction/" title="exrnas for early identification of pregnancies at risk for placental dysfunction">exRNAs For Early Identification Of Pregnancies At Risk For Placental Dysfunction</a>
 	                            </td>
 	                            <td>Louise C. Laurent</td>
 	                            <td>University Of California, San Diego</td>
 	                          </tr>
 	                        <tr>
 	                            <td>
-	                              <a href="http://localhost:8888/exrnawp/projects/extracellular-non-coding-rna-biomarkers-hepatocellular-cancer/" title="extracellular non-coding rna biomarkers of hepatocellular cancer">eExtracellular Non-coding RNA Biomarkers Of Hepatocellular Cancer</a>
+	                              <a href="<?php bloginfo( 'url' ); ?>/projects/extracellular-non-coding-rna-biomarkers-hepatocellular-cancer/" title="extracellular non-coding rna biomarkers of hepatocellular cancer">eExtracellular Non-coding RNA Biomarkers Of Hepatocellular Cancer</a>
 	                            </td>
 	                            <td>Tushar Patel</td>
 	                            <td>Mayo Clinic, Jacksonville</td>
 	                          </tr>
 	                        <tr class="row3">
 	                            <td>
-	                              <a href="http://localhost:8888/exrnawp/projects/clinical-utility-micrornas-diagnostic-biomarkers-alzheimers-disease/" title="clinical utility of micrornas as diagnostic biomarkers of alzheimers disease">Clinical Utility Of MicroRNAs As Diagnostic Biomarkers Of Alzheimer's Disease</a>
+	                              <a href="<?php bloginfo( 'url' ); ?>/projects/clinical-utility-micrornas-diagnostic-biomarkers-alzheimers-disease/" title="clinical utility of micrornas as diagnostic biomarkers of alzheimers disease">Clinical Utility Of MicroRNAs As Diagnostic Biomarkers Of Alzheimer's Disease</a>
 	                            </td>
 	                            <td>Julie Anne Saugstad<br>
 	                               Joseph F. Quinn 
@@ -180,7 +180,7 @@ Template Name: test new
 	                          </tr>
 	                        <tr>
 	                            <td>
-	                              <a href="http://localhost:8888/exrnawp/projects/clinical-utility-extracellular-rna-marker-kidney-disease-progression/" title="clinical utility of extracellular rna as marker of kidney disease progression">Clinical Utility Of Extracellular RNA As Marker Of Kidney Disease Progression</a>
+	                              <a href="<?php bloginfo( 'url' ); ?>/projects/clinical-utility-extracellular-rna-marker-kidney-disease-progression/" title="clinical utility of extracellular rna as marker of kidney disease progression">Clinical Utility Of Extracellular RNA As Marker Of Kidney Disease Progression</a>
 	                            </td>
 	                            <td>Thomas Tuschl<br>
 	                              Manikkam Suthanthiran</td>
@@ -188,14 +188,14 @@ Template Name: test new
 	                          </tr>
 	                        <tr class="row3">
 	                            <td>
-	                              <a href="http://localhost:8888/exrnawp/projects/circulating-micrornas-disease-biomarkers-multiple-sclerosis/" title="circulating micrornas as disease biomarkers in multiple sclerosis">Circulating MicroRNAs As Disease Biomarkers In Multiple Sclerosis</a>
+	                              <a href="<?php bloginfo( 'url' ); ?>/projects/circulating-micrornas-disease-biomarkers-multiple-sclerosis/" title="circulating micrornas as disease biomarkers in multiple sclerosis">Circulating MicroRNAs As Disease Biomarkers In Multiple Sclerosis</a>
 	                            </td>
 	                            <td>Howard L. Weiner</td>
 	                            <td>Brigham And Women's Hospital</td>
 	                          </tr>
 	                        <tr>
 	                          <td>
-	                            <a href="http://localhost:8888/exrnawp/projects/clinical-utility-salivary-exrna-biomarkers-gastric-cancer-detection/" title="clinical utility of salivary exrna biomarkers for gastric cancer detection">Clinical Utility Of Salivary exRNA Biomarkers For Gastric Cancer Detection</a>
+	                            <a href="<?php bloginfo( 'url' ); ?>/projects/clinical-utility-salivary-exrna-biomarkers-gastric-cancer-detection/" title="clinical utility of salivary exrna biomarkers for gastric cancer detection">Clinical Utility Of Salivary exRNA Biomarkers For Gastric Cancer Detection</a>
 	                          </td>
 	                          <td>David T. Wong</td>
 	                          <td>University Of California, Los Angeles</td>
@@ -208,7 +208,7 @@ Template Name: test new
 	            <tbody><tr>
 	              <td colspan="3" style="border:none;">
 	                <p>(uh2/uh3) rfa-rm-12-014</p>
-	                <h4><a href="http://localhost:8888/exrnawp/thearpy/" title="clinical utility of extracellular rna for therapy development">Clinical Utility Of Extracellular RNA For Therapy Development</a></h4></td>
+	                <h4><a href="<?php bloginfo( 'url' ); ?>/thearpy/" title="clinical utility of extracellular rna for therapy development">Clinical Utility Of Extracellular RNA For Therapy Development</a></h4></td>
 	            </tr>
 	            <tr style="border:none;">
 	                    <th style="border:none;">title</th>
@@ -217,42 +217,42 @@ Template Name: test new
 	                </tr>
 	            <tr class="row3">
 	              <td>
-	                <a href="http://localhost:8888/exrnawp/projects/targeting-tumor-derived-exrna-containing-microvesicles-high-throughput-screeni/" title="targeting tumor-derived exrna-containing microvesicles by high throughput screeni">Targeting Tumor-derived exRNA-containing Microvesicles By High Throughput Screeni</a>
+	                <a href="<?php bloginfo( 'url' ); ?>/projects/targeting-tumor-derived-exrna-containing-microvesicles-high-throughput-screeni/" title="targeting tumor-derived exrna-containing microvesicles by high throughput screeni">Targeting Tumor-derived exRNA-containing Microvesicles By High Throughput Screeni</a>
 	              </td>
 	              <td>Asim B. Abdel-Mageed</td>
 	              <td>Tulane University Of Louisiana</td>
 	            </tr>
 	            <tr>
 	              <td>
-	                <a href="http://localhost:8888/exrnawp/projects/exosome-based-therapeutics-huntingtons-disease/" title="exosome based therapeutics in huntingtons disease">Exosome Based Therapeutics In Huntington's Disease</a>
+	                <a href="<?php bloginfo( 'url' ); ?>/projects/exosome-based-therapeutics-huntingtons-disease/" title="exosome based therapeutics in huntingtons disease">Exosome Based Therapeutics In Huntington's Disease</a>
 	              </td>
 	              <td>Neil Aronin</td>
 	              <td>University of Massachusetts Medical School, Worcester</td>
 	            </tr>
 	            <tr class="row3">
 	              <td>
-	                <a href="http://localhost:8888/exrnawp/projects/exosome-rna-therapeutics-promote-cna-myelination/" title="exosome rna-therapeutics to promote cns myelination">Exosome RNA-therapeutics To Promote CNA Myelination</a>
+	                <a href="<?php bloginfo( 'url' ); ?>/projects/exosome-rna-therapeutics-promote-cna-myelination/" title="exosome rna-therapeutics to promote cns myelination">Exosome RNA-therapeutics To Promote CNA Myelination</a>
 	              </td>
 	              <td>Richard P. Kraig</td>
 	              <td>University Of Chicago</td>
 	            </tr>
 	            <tr>
 	              <td>
-	                <a href="http://localhost:8888/exrnawp/projects/her2-targeted-exosomal-delivery-therapeutic-mrna-enzyme-pro-drug-therapy/" title="her2-targeted exosomal delivery of therapeutic mrna for enzyme pro-drug therapy">HER2-targeted Exosomal Delivery Of Therapeutic mRNA For Enzyme Pro-drug Therapy</a>
+	                <a href="<?php bloginfo( 'url' ); ?>/projects/her2-targeted-exosomal-delivery-therapeutic-mrna-enzyme-pro-drug-therapy/" title="her2-targeted exosomal delivery of therapeutic mrna for enzyme pro-drug therapy">HER2-targeted Exosomal Delivery Of Therapeutic mRNA For Enzyme Pro-drug Therapy</a>
 	              </td>
 	              <td>AC Matin</td>
 	              <td>Stanford University</td>
 	            </tr>
 	            <tr class="row3">
 	              <td>
-	                <a href="http://localhost:8888/exrnawp/projects/regulation-of-renal-and-bone-marrow-injury-by-extracellular-vesicle-non-coding-rn/" title="regulation of renal and bone marrow injury by extracellular vesicle non-coding rn">Regulation Of Renal And Bone Marrow Injury By Extracellular Vesicle Non-coding RN</a>
+	                <a href="<?php bloginfo( 'url' ); ?>/projects/regulation-of-renal-and-bone-marrow-injury-by-extracellular-vesicle-non-coding-rn/" title="regulation of renal and bone marrow injury by extracellular vesicle non-coding rn">Regulation Of Renal And Bone Marrow Injury By Extracellular Vesicle Non-coding RN</a>
 	              </td>
 	              <td>Peter J. Quesenberry</td>
 	              <td>Rhode Island Hospital</td>
 	            </tr>
 	            <tr>
 	              <td>
-	                <a href="http://localhost:8888/exrnawp/projects/targeted-delivery-microrna-loaded-microvesicle-cancer-therapy/" title="targeted delivery of microrna-loaded microvesicle for cancer therapy">Targeted Delivery Of MicroRNA-loaded Microvesicle For Cancer Therapy</a>
+	                <a href="<?php bloginfo( 'url' ); ?>/projects/targeted-delivery-microrna-loaded-microvesicle-cancer-therapy/" title="targeted delivery of microrna-loaded microvesicle for cancer therapy">Targeted Delivery Of MicroRNA-loaded Microvesicle For Cancer Therapy</a>
 	              </td>
 	              <td>Thomas D. Schmittgen<br>
 	              Mitch A. Phelps</td>
@@ -260,7 +260,7 @@ Template Name: test new
 	            </tr>
 	            <tr class="row3">
 	              <td>
-	                <a href="http://localhost:8888/exrnawp/projects/novel-extra-cellular-rna-based-combinatorial-rna-inhibition-therapy/" title="novel extra cellular rna-based combinatorial rna inhibition therapy">Novel Extra Cellular RNA-based Combinatorial RNA Inhibition Therapy</a>
+	                <a href="<?php bloginfo( 'url' ); ?>/projects/novel-extra-cellular-rna-based-combinatorial-rna-inhibition-therapy/" title="novel extra cellular rna-based combinatorial rna inhibition therapy">Novel Extra Cellular RNA-based Combinatorial RNA Inhibition Therapy</a>
 	              </td>
 	              <td>Anil K. Sood<br>
 	              George A. Calin,<br>
@@ -269,7 +269,7 @@ Template Name: test new
 	            </tr>
 	            <tr>
 	              <td>
-	                <a href="http://localhost:8888/exrnawp/projects/fruit-exosome-like-particles-therapeutic-delivery-extracellular-mirnas/" title="fruit exosome-like particles for therapeutic delivery of extracellular mirnas">Fruit Exosome-like Particles For Therapeutic Delivery Of Extracellular miRNAs</a>
+	                <a href="<?php bloginfo( 'url' ); ?>/projects/fruit-exosome-like-particles-therapeutic-delivery-extracellular-mirnas/" title="fruit exosome-like particles for therapeutic delivery of extracellular mirnas">Fruit Exosome-like Particles For Therapeutic Delivery Of Extracellular miRNAs</a>
 	              </td>
 	              <td>Huang-ge Zhang,<br>
 	              Peixuan Guo</td></td>

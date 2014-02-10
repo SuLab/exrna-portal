@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<link rel="stylesheet" href="http://localhost:8888/exrnawp/wp-content/themes/exrna/bigvid/bower_components/BigVideo/css/bigvideo.css">
+<link rel="stylesheet" href="<?php bloginfo( 'url' ); ?>/wp-content/themes/exrna/bigvid/bower_components/BigVideo/css/bigvideo.css">
 <div class="container pushy jumb">
 				<div class="row">
 					<div class="col-md-6">
@@ -136,14 +136,14 @@ $('.modal').each(function(){var src = $(this).find('iframe').attr('src');$(this)
     <!-- BigVideo Dependencies -->
 	
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="http://localhost:8888/exrnawp/wp-content/themes/exrna/bigvid/bower_components/jquery/jquery.min.js"><\/script>')</script>
-    <script src="http://localhost:8888/exrnawp/wp-content/themes/exrna/bigvid/bower_components/jquery-ui/ui/jquery-ui.js"></script>
-    <script src="http://localhost:8888/exrnawp/wp-content/themes/exrna/bigvid/bower_components/jquery-ui/ui/minified/jquery-ui.min.js"></script>
+    <script>window.jQuery || document.write('<script src="<?php bloginfo( 'url' ); ?>/wp-content/themes/exrna/bigvid/bower_components/jquery/jquery.min.js"><\/script>')</script>
+    <script src="<?php bloginfo( 'url' ); ?>/wp-content/themes/exrna/bigvid/bower_components/jquery-ui/ui/jquery-ui.js"></script>
+    <script src="<?php bloginfo( 'url' ); ?>/wp-content/themes/exrna/bigvid/bower_components/jquery-ui/ui/minified/jquery-ui.min.js"></script>
     <script src="http://vjs.zencdn.net/4.0/video.js"></script>
 
     <!-- BigVideo -->
-    <script src="http://localhost:8888/exrnawp/wp-content/themes/exrna/bigvid/bower_components/BigVideo/lib/bigvideo.js"></script>
-	<script src="http://localhost:8888/exrnawp/wp-content/themes/exrna/js/fitvids/jquery.fitvids.js"></script>
+    <script src="<?php bloginfo( 'url' ); ?>/wp-content/themes/exrna/bigvid/bower_components/BigVideo/lib/bigvideo.js"></script>
+	<script src="<?php bloginfo( 'url' ); ?>/wp-content/themes/exrna/js/fitvids/jquery.fitvids.js"></script>
 
     <!-- Video Load -->
 	 <script>
@@ -153,14 +153,14 @@ $('.modal').each(function(){var src = $(this).find('iframe').attr('src');$(this)
             // initialize BigVideo
             //BV = new $.BigVideo();
 			//BV.init();
-			//BV.show('http://localhost:8888/exrnawp/wp-content/themes/exrna/bigvid/vids/exrnahd.mp4',{ambient:true});
+			//BV.show('<?php bloginfo( 'url' ); ?>/wp-content/themes/exrna/bigvid/vids/exrnahd.mp4',{ambient:true});
 
 			var BV = new $.BigVideo({useFlashForFirefox:false});
 			BV.init();
 			if (Modernizr.touch) {
-			    BV.show('http://localhost:8888/exrnawp/media/exRNA-moviestill-0820.jpg');
+			    BV.show('<?php bloginfo( 'url' ); ?>/media/exRNA-moviestill-0820.jpg');
 			} else {
-			    BV.show('http://localhost:8888/exrnawp/wp-content/themes/exrna/bigvid/vids/exrnahd.mp4', {altSource:'http://localhost:8888/exrnawp/wp-content/themes/exrna/bigvid/vids/exrnahd.ogv' , ambient:true});
+			    BV.show('<?php bloginfo( 'url' ); ?>/wp-content/themes/exrna/bigvid/vids/exrnahd.mp4', {altSource:'<?php bloginfo( 'url' ); ?>/wp-content/themes/exrna/bigvid/vids/exrnahd.ogv' , ambient:true});
 			}
            
 	    });
