@@ -13,7 +13,7 @@
 <!--</div><!-- close .main-content -->
 			
 
-<footer class="pushtop">
+<footer>
 			<div class="container">
 				<div class="row pushtop">
 					<div class="col-md-1 col-sm-2 col-md-offset-1 ft-nav">

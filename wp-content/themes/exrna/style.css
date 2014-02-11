@@ -89,6 +89,10 @@ a:hover, h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover{
 	margin-top: 100px;
 }
 
+.push80{
+	margin-top: 80px;
+}
+
 .imgcent{
 	display: block;
 	margin-right: auto;
@@ -486,6 +490,16 @@ Home Page Video Modal
 .home .modal-backdrop, .modal-backdrop.fade.in {
     opacity: ;
 }
+
+.pause{
+	position: absolute;
+	left: 96%;
+	margin-top: 30px;
+	color: white;
+	font-size: 27px;
+	position: absolute;
+}
+
 
 /* ------------------------------------
 Some 

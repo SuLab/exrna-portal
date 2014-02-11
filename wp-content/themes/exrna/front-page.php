@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <link rel="stylesheet" href="<?php bloginfo( 'url' ); ?>/wp-content/themes/exrna/bigvid/bower_components/BigVideo/css/bigvideo.css">
-<div class="container pushy jumb">
+<div class="container pushtop pushbot jumb">
 				<div class="row">
 					<div class="col-md-6">
 						<h1>Unlocking the <br> Mysteries of <br>Extracellular RNA <br>Communication</h1>
@@ -29,16 +29,18 @@
 						</div>
 						
 					</div>
+					<div class="pause float-right"><i class="fa fa-pause"></i></div>
 				</div>
 			</div>
 		</div>
+
 
 		<div class="clearfix"></div>
 		<div class="wrap pushtop">
 			<div class="white">
 				<div class="container">
 					
-					<div class="row pushtop hm-posts">
+					<div class="row push80 hm-posts">
 						<div class="col-md-5 col-md-offset-1">
 							<article>
 
@@ -129,7 +131,7 @@
 <script>
 $('body').addClass('home');
 $('body').attr('id', 'page');
-$( '#exrnalogo' ).replaceWith('<a class="navbar-brand visible-lg visible-md visible-sm" href="/" title="exRNA" rel="home"><img src="./media/exrna-logo-white.svg" alt="exRNA" class="logo img-responsive" onerror="this.onerror=null; this.src="./media/exrna-logo-white.png"></a><a class="navbar-brand hidden-lg hidden-md hidden-sm visible-xs navbar-text-logo" href="/" title="exRNA" rel="home"><img src="./media/exrna-logo-white-small.svg" alt="exRNA" class="logo img-responsive" onerror="this.onerror=null; this.src="./media/exrna-logo-white-small.png"></a>');
+$( '#exrnalogo' ).replaceWith('<a class="navbar-brand visible-lg visible-md visible-sm" href="/" title="exRNA" rel="home"><img src="./media/exrna-logo-white.svg" alt="exRNA" class="logo img-responsive" onerror="this.onerror=null; this.src=/media/exrna-logo-white.png"></a><a class="navbar-brand hidden-lg hidden-md hidden-sm visible-xs navbar-text-logo" href="/" title="exRNA" rel="home"><img src="./media/exrna-logo-white-small.svg" alt="exRNA" class="logo img-responsive" onerror="this.onerror=null; this.src=/media/exrna-logo-white-small.png"></a>');
 $('.modal').each(function(){var src = $(this).find('iframe').attr('src');$(this).on('click', function(){$(this).find('iframe').attr('src', '');$(this).find('iframe').attr('src', src);});});
 </script>
 
