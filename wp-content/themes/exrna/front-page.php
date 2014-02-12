@@ -1,6 +1,7 @@
 <?php get_header(); ?>
 
 <link rel="stylesheet" href="<?php bloginfo( 'url' ); ?>/wp-content/themes/exrna/bigvid/bower_components/BigVideo/css/bigvideo.css">
+<div class="over"></div>
 <div class="container pushtop pushbot jumb">
 				<div class="row">
 					<div class="col-md-6">
@@ -19,7 +20,7 @@
 							<div id="hm" class="col-md-6">
 								<div class="hmbtn play">
 									<!-- Button trigger modal -->
-									<button class="btn btn-primary btn-block hidden-sm hidden-xs" data-toggle="modal" data-target="#myModal"><p>Play Video <i class="fa fa-play"></i></p></button>
+									<button class="btn btn-primary btn-block hidden-sm hidden-xs" data-toggle="modal" data-target="#myModal"><p>Full Video <i class="fa fa-play"></i></p></button>
 									<a href="http://www.youtube.com/watch?v=bfMg3RhxNm8"><button class="btn btn-primary btn-block hidden-lg hidden-md"><p>Play Video <i class="fa fa-play"></i></p></button></a>
 
 								</div>
