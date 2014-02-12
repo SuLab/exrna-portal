@@ -29,7 +29,12 @@
 						</div>
 						
 					</div>
-					<div class="pause float-right"><i class="fa fa-pause"></i></div>
+					<div class="pause hidden-sm hidden-xs float-right">
+						<div id="big-video-control">
+							<a href="#" id="big-video-control-play"></a>
+							<i class="stopbgvid fa fa-pause"></i>
+						</div>
+			        </div>
 				</div>
 			</div>
 		</div>
@@ -133,6 +138,12 @@ $('body').addClass('home');
 $('body').attr('id', 'page');
 $( '#exrnalogo' ).replaceWith('<a class="navbar-brand visible-lg visible-md visible-sm" href="/" title="exRNA" rel="home"><img src="./media/exrna-logo-white.svg" alt="exRNA" class="logo img-responsive" onerror="this.onerror=null; this.src=/media/exrna-logo-white.png"></a><a class="navbar-brand hidden-lg hidden-md hidden-sm visible-xs navbar-text-logo" href="/" title="exRNA" rel="home"><img src="./media/exrna-logo-white-small.svg" alt="exRNA" class="logo img-responsive" onerror="this.onerror=null; this.src=/media/exrna-logo-white-small.png"></a>');
 $('.modal').each(function(){var src = $(this).find('iframe').attr('src');$(this).on('click', function(){$(this).find('iframe').attr('src', '');$(this).find('iframe').attr('src', src);});});
+$('#big-video-control').on('click', function(e) {
+      $('.stopbgvid').toggleClass('fa-play').toggleClass('fa-pause'); //you can list several class names 
+      e.preventDefault();
+    });
+
+
 </script>
 
     <!-- BigVideo Dependencies -->
@@ -166,7 +177,6 @@ $('.modal').each(function(){var src = $(this).find('iframe').attr('src');$(this)
 			}
            
 	    });
-
     </script>
 
     <script>
