@@ -14,6 +14,7 @@
 			
 
 <footer>
+	<div id="footy">
 			<div class="container">
 				<div class="row pushtop">
 					<div class="col-md-1 col-sm-2 col-md-offset-1 ft-nav">
@@ -34,7 +35,8 @@
 					</div>
 				</div>
 			</div>
-		</footer>
+	</div>
+</footer>
 
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 

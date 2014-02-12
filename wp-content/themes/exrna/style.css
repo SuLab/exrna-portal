@@ -17,10 +17,13 @@ License: 		GNU General Public License
 @import url('http://andrewsu.staging.wpengine.com/wp-content/themes/exrna/bs-css/bootstrap.min.css');
 @import url(http://fonts.googleapis.com/css?family=Vollkorn:400,700);
 
-
+html{
+    position: relative;
+    min-height: 100%;
+}
 
 body{
-	margin-top: 45px;
+	margin: 0 0 400px; /* bottom = footer height */
 	font-family: 'Proxima N W01 Reg', Helvetica, Arial;
 	font-size: 16px;
 	line-height: 24px;
@@ -49,8 +52,19 @@ p, li{
 } */
 
 footer{
+	background-color: #fff;
+	position: absolute;
+	padding-top: 50px;
+    left: 0;
+    bottom: 0;
+    height: 400px;
+    width: 100%;
+}
+
+#footy{
 	min-height: 400px;
 	background-color: #efefef;
+    width:100%;
 }
 
 h3{
