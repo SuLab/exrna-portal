@@ -836,8 +836,8 @@ p.soon{
 }
 
 .resource-left{
-	padding: 40px;
-	margin:25px;
+	padding: 25%;
+	margin-top: 12px;
 }
 
 .circle{
@@ -913,6 +913,14 @@ footer li{
 
 	.hm-post{
 		margin-bottom: 10px;
+	}
+
+	.resources{
+		text-align: center;
+	}
+
+	.resource-left{
+		padding: 50px;
 	}
 
 }
