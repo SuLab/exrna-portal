@@ -826,7 +826,7 @@ Resources Page
 ---------------------------------------*/
 
 .resource-block{
-	padding: 30px 50px;
+	padding: 20px 50px;
 }
 
 p.soon{
@@ -889,6 +889,10 @@ footer li{
  }
 
 @media (max-width: 991px){
+
+	.pushtopsmall{
+		margin-top: 30px;
+	}
 	
 	.navbar-inverse .navbar-nav>li>a {
 		font-size: 14px;
