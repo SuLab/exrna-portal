@@ -42,49 +42,50 @@ get_header(); ?>
 				    	</div>
 				    </div>
 				    <div class="row">
-				    	<div class="col-xs-10 col-xs-offset-1">
-				    		<?php // Display blog posts on any page
-								$temp = $wp_query; $wp_query= null;
-								$wp_query = new WP_Query(); $wp_query->query('showposts=3' . '&paged='.$paged);
-								while ($wp_query->have_posts()) : $wp_query->the_post(); ?>
-
-								<div class="row pushtop">
-									<div class="col-xs-12"><div class="hm-post-border"></div></div>
-								</div>
-								<div class="col-md-12 hm-post">
-									
-									<div class="row">
-										<div class="heading">
-											<p><span class="post-date"><?php the_time('m.d.y') ?></span> <span class="post-author">by <?php the_author_posts_link(); ?></span></p>
-											<h3><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h3>
-										</div>
-									</div>
-									<div class="row">
-										<div class="excerpt">
-											<div class="post-excerpt">
-												<p><?php the_excerpt() ?>
-											</div>
-										</div>
-									</div>
-									
-								</div>
-
-
-								<?php endwhile; ?>
-
-								
-
-								<?php wp_reset_postdata(); ?>
-				    	</div>
-				    	
-				    </div>
-				    
 				   
-			</div>
-		</div>
+				<!-- The Loop -->
+
+				    <div class="col-xs-10 col-xs-offset-1">
+			    		<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+							<div class="row pushtop">
+								<div class="col-xs-12"><div class="hm-post-border"></div></div>
+							</div>
+							<div class="col-md-12 hm-post">
+								
+								<div class="row">
+									<div class="heading">
+										<p><span class="post-date"><?php the_time('m.d.y') ?></span> <span class="post-author">by <?php the_author_posts_link(); ?></span></p>
+										<h3><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h3>
+									</div>
+								</div>
+								<div class="row">
+									<div class="excerpt">
+										<div class="post-excerpt">
+											<p><?php the_excerpt() ?>
+										</div>
+									</div>
+								</div>
+								
+							</div>
+
+						 <?php endwhile; else: ?>
+						        <p><?php _e('No posts by this author.'); ?></p>
+
+						 <?php endif; ?><!-- End Loop -->
+				    </div>
+
+
+				    	
+		    	</div>
+		    	
+		    </div>
+		    
+		   
+	</div>
+</div>
 	
 
-<!-- End Loop -->
+
 
 			
 		
