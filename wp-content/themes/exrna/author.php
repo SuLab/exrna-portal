@@ -41,44 +41,41 @@ get_header(); ?>
 				    		<?php echo $curauth->user_description; ?>
 				    	</div>
 				    </div>
-				    <div class="row">
+				    <div class="row">	
 				   
-				<!-- The Loop -->
+					<!-- The Loop -->
 
-				    <div class="col-xs-10 col-xs-offset-1">
-			    		<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-							<div class="row pushtop">
-								<div class="col-xs-12"><div class="hm-post-border"></div></div>
-							</div>
-							<div class="col-md-12 hm-post">
-								
-								<div class="row">
-									<div class="heading">
-										<p><span class="post-date"><?php the_time('m.d.y') ?></span> <span class="post-author">by <?php the_author_posts_link(); ?></span></p>
-										<h3><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h3>
-									</div>
+						<div class="col-xs-10 col-xs-offset-1">
+							<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+								<div class="row pushtop">
+									<div class="col-xs-12"><div class="hm-post-border"></div></div>
 								</div>
-								<div class="row">
-									<div class="excerpt">
-										<div class="post-excerpt">
-											<p><?php the_excerpt() ?>
+								<div class="col-md-12 hm-post">
+									
+									<div class="row">
+										<div class="heading">
+											<p><span class="post-date"><?php the_time('m.d.y') ?></span> <span class="post-author">by <?php the_author_posts_link(); ?></span></p>
+											<h3><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h3>
 										</div>
 									</div>
+									<div class="row">
+										<div class="excerpt">
+											<div class="post-excerpt">
+												<p><?php the_excerpt() ?>
+											</div>
+										</div>
+									</div>
+									
 								</div>
-								
-							</div>
 
-						 <?php endwhile; else: ?>
-						        <p><?php _e('No posts by this author.'); ?></p>
+							 <?php endwhile; else: ?>
+							        <p><?php _e('No posts by this author.'); ?></p>
 
-						 <?php endif; ?><!-- End Loop -->
-				    </div>
-
-
+							 <?php endif; ?><!-- End Loop -->
+						</div>
 				    	
-		    	</div>
-		    	
-		    </div>
+		    		 </div><!-- /row -->
+		    </div><!-- /col-md-12 -->
 		    
 		   
 	</div>
