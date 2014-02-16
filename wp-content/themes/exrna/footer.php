@@ -37,17 +37,17 @@
 			</div>
 	</div>
 </footer>
+
+
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<?php wp_footer(); ?>
 <script>
-	//Allows Main Nav li to click to href
 	$(function(){
-	  $('.nav-pills .dropdown .dropdown-toggle').bind('mousedown', function(){
+	  $('.nav .dropdown .dropdown-toggle').bind('mousedown', function(){
 	  var href = $(this).attr('href');
 	  location.href = href;
 	 });
 	});
 </script>
-
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-<?php wp_footer(); ?>
 </body>
 </html>
