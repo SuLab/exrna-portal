@@ -88,10 +88,10 @@ Template Name: test new
 	</div>
 </div> 
 
-<!-- <div class="container resources pushtop">
+<!-- <div class="container resources pushtopsmall">
 	<h1>Resources</h1>
 	<div class="row">
-		<div class="col-md-6 pushtop">
+		<div class="col-md-6 pushtopsmall">
 			<div class="text-center resource-block grey">
 				<img src="<?php bloginfo( 'url' ); ?>/media/protocols.png" alt="Protocols">
 				<h3>Protocols</h3>
@@ -99,7 +99,7 @@ Template Name: test new
 				<p class="soon">coming soon</p>
 			</div>
 		</div>
-		<div class="col-md-6 pushtop">
+		<div class="col-md-6 pushtopsmall">
 			<div class="text-center resource-block grey">
 				<img src="<?php bloginfo( 'url' ); ?>/media/data.png" alt="Data">
 				<h3>Data</h3>
@@ -109,7 +109,7 @@ Template Name: test new
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-6 pushtop">
+		<div class="col-md-6 pushtopsmall">
 			<div class="text-center resource-block grey">
 				<img src="<?php bloginfo( 'url' ); ?>/media/standards.png" alt="Standards">
 				<h3>Standards</h3>
@@ -117,7 +117,7 @@ Template Name: test new
 				<p class="soon">coming soon</p>
 			</div>
 		</div>
-		<div class="col-md-6 pushtop">
+		<div class="col-md-6 pushtopsmall">
 			<div class="text-center resource-block grey">
 				<img src="<?php bloginfo( 'url' ); ?>/media/software.png" alt="Software">
 				<h3>Software</h3>

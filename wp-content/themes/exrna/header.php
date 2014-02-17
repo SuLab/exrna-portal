@@ -63,7 +63,7 @@
 
 		<ul class="nav navbar-nav navbar-right visible-md visible-lg">
 	        <li>
-	        	<a href="#"><i class="fa fa-question"></i></a>
+	        	<a href="<?php bloginfo( 'url' ) ?>/contact/"><i class="fa fa-question"></i></a>
 	        </li>
 	        <li>
 	        	<a href="<?php bloginfo( 'url' ) ?>/search/"><i class="fa fa-search"></i></a></a>

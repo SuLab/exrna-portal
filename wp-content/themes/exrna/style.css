@@ -195,10 +195,6 @@ a:hover, h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover{
 	padding: 15px 0px;
 }
 
-.dropdown:hover .dropdown-menu {
-    display: block;
- }
-
 .navbar-text-logo>h1{
 	color: black;
 	font-size: 45px;
@@ -930,6 +926,14 @@ footer li{
 	.resource-left{
 		padding: 50px;
 	}
+
+}
+
+@media (min-width: 768px){
+
+	.dropdown:hover .dropdown-menu {
+	    display: block;
+	 }
 
 }
 
