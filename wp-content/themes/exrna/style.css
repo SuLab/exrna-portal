@@ -285,7 +285,7 @@ a:hover, h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover{
 
 #main-menu-nav li{
 	text-transform: uppercase;
-	margin-right: 5px;
+	margin-right: 2px;
 }
 
 .navbar-right li{
@@ -307,6 +307,11 @@ a:hover, h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover{
 
 .navbar-inverse .navbar-brand img:hover{
 	opacity: .7
+}
+
+.dropdown-menu>li>a {
+	display: block;
+	padding: 3px 0px 3px 12px;
 }
 
 .navbar-nav>li>.dropdown-menu {
@@ -341,9 +346,9 @@ a:hover, h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover{
 	max-width: 252px;
 }
 
-.navbar-inverse .navbar-nav>.dropdown>a .caret {
+/* .navbar-inverse .navbar-nav>.dropdown>a .caret {
 	display: none;
-}
+} Hide Caret */
 
 /* Gravity Forms */
 /* ------------------------------------
@@ -931,9 +936,9 @@ footer li{
 
 @media (min-width: 768px){
 
-	.dropdown:hover .dropdown-menu {
+	/*.dropdown:hover .dropdown-menu {
 	    display: block;
-	 }
+	 }    Nav Hover */
 
 }
 

@@ -42,7 +42,7 @@
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 <?php wp_footer(); ?>
 <script>
-$('.dropdown-toggle').addClass('disabled');
+//$('.dropdown-toggle').addClass('disabled');
 /**
  * Project: Bootstrap Hover Dropdown
  * Author: Cameron Spear
@@ -55,8 +55,8 @@ $('.dropdown-toggle').addClass('disabled');
  * License: MIT
  *
  * http://cameronspear.com/blog/bootstrap-dropdown-on-hover-plugin/
- */
-;(function ($, window, undefined) {
+ *
+function ($, window, undefined) {
     // outside the scope of the jQuery plugin to
     // keep track of all dropdowns
     var $allDropdowns = $();
@@ -144,15 +144,7 @@ $('.dropdown-toggle').addClass('disabled');
         // apply dropdownHover to all elements with the data-hover="dropdown" attribute
         $('[data-hover="dropdown"]').dropdownHover();
     });
-})(jQuery, this);
-	//if (matchMedia('only screen and (min-width: 768px)').matches) {
-	//	$(function(){
-	//	  $('.nav .dropdown .dropdown-toggle').bind('mousedown', function(){
-	//	  var href = $(this).attr('href');
-	//	  location.href = href;
-	//	 });
-	//	});
-	//}
+})(jQuery, this);	*/
 </script>
 </body>
 </html>
