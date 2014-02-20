@@ -20,6 +20,7 @@
 							<div id="hm" class="col-md-6">
 								<div class="hmbtn play">
 									<!-- Button trigger modal -->
+
 									<button id="pausey" class="pausey btn btn-primary btn-block hidden-sm hidden-xs" data-toggle="modal" data-target="#myModal"><p>Full Video <i class="fa fa-play"></i></p></button>
 									<a href="http://www.youtube.com/watch?v=bfMg3RhxNm8"><button class="btn btn-primary btn-block hidden-lg hidden-md"><p>Play Video <i class="fa fa-play"></i></p></button></a>
 
@@ -142,16 +143,8 @@
 	      $('.stopbgvid').toggleClass('fa-play').toggleClass('fa-pause'); //you can list several class names 
 	      e.preventDefault();
 	    });
-	//$('.pausey').onClick( playControl );
-	//$('.pausey').click(function(e) {
-	//			e.preventDefault();
-	//			playControl('toggle');
-	//		});
-	//$('.pausey').onClick( playControl );
-	//$('.pausey').on('Click', BV.getPlayer().pause());
-	var vid = document.getElementById(".pausey");
-	vid.pause();
 </script>
+
 
     <!-- BigVideo Dependencies -->
 	
@@ -183,7 +176,7 @@
 			}
            //$('.pausey').on('Click', getPlayer().pause());
 	    });
-    </script>
+    </script> 
 
     <script>
   $(document).ready(function(){
