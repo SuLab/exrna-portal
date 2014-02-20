@@ -260,6 +260,15 @@ a:hover, h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover{
 	-webkit-border-radius: 0px;
 }
 
+#page .navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>.open>a:focus {
+	background-color: rgba(0, 0, 0, 0.3);
+}
+
+.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>.open>a:focus {
+	background-color: #efefef;
+}
+
+
 #page .navbar-inverse .navbar-nav>.open>a,  {
 	color: #fff;
 	background-color: rgba(0, 0, 0, 0.3);
