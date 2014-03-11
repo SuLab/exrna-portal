@@ -11,9 +11,7 @@ Template Name: test new
 		<div class="col-md-8">		
 			<div class="row pushtop">
 					<div class="col-md-3">
-						
 							<img src="<?php bloginfo( 'url' ); ?>/media/protocols.png" alt="Protocols" class="grey center-block img-circle center-block resource-left">
-						
 					</div>
 					<div class="col-md-8">
 						<h3>Protocols</h3>

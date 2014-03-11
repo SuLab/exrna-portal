@@ -49,10 +49,7 @@ get_header() ?>
 	      $('.stopbgvid').toggleClass('fa-play').toggleClass('fa-pause'); //you can list several class names 
 	      e.preventDefault();
 	    });
-	    $('#fuckbutton').on('click', function(e) {
-	     	$("#fuckbutton").toggle(myFirstHandlerFunction, mySecondHandlerFunction);
-	     	e.preventDefault();
-	     });
+	    
     </script>
 <?php get_footer() ?>
 
