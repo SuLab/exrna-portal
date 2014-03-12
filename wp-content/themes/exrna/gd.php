@@ -31,24 +31,41 @@ get_header() ?>
 			// initialize BigVideo
 			BV = new $.BigVideo();
 			BV.init();
-			BV.show('http://localhost:8888/exrnawp/wp-content/themes/exrna/bigvid/vids/exrnahd.mp4',{ambient:true});
+			BV.show("<?php bloginfo( 'url' ); ?>/wp-content/themes/exrna/bigvid/vids/exrnahd.mp4",{ambient:true});
 	    });
     </script>
-	<button id="fuckmodal" onclick='BV.getPlayer().pause();' style="z-index:9999">Pause me</button>
-	<button id="fuckbutton" onclick='BV.getPlayer().play();' style="z-index:9999">
+	<button id="elmodal"  style="z-index:9999">Pause me</button>
+	<button id="theButton" class="playing" style="z-index:9999">
 		<i class="stopbgvid fa fa-pause"></i>
 	</button>
 		</div>
     </div>
     <script>
-    	$('#fuckmodal').on('click', function(e) {
-	      $('.fa-pause').removeClass('fa-pause').addClass('fa-play'); //you can list several class names 
+    	$('#elmodal').on('click', function(e) {
+	      $('.fa-pause').removeClass('fa-pause').addClass('fa-play');
+	      $('#theButton').removeClass('playing');
+	      BV.getPlayer().pause();
 	      e.preventDefault();
 	    });
-	    $('.stopbgvid').on('click', function(e) {
-	      $('.stopbgvid').toggleClass('fa-play').toggleClass('fa-pause'); //you can list several class names 
+
+    	$('.stopbgvid').on('click', function(e) {
+	      $('.stopbgvid').toggleClass('fa-play').toggleClass('fa-pause'); 
 	      e.preventDefault();
 	    });
+	    
+	    
+
+	    $("#theButton").on('click', function(e) {
+		    if($(this).hasClass('playing')) {
+		        BV.getPlayer().pause();
+		        e.preventDefault();   
+		    } else {
+		        BV.getPlayer().play();
+		        e.preventDefault();
+		    }
+		    $(this).toggleClass('playing')
+		})
+
 	    
     </script>
 <?php get_footer() ?>
