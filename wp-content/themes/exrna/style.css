@@ -160,6 +160,13 @@ a:hover, h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover{
 	margin-top: -55px;
 }
 
+#theButton{
+	z-index: 9999;
+	background: transparent;
+	color: white;
+	border: none;
+}
+
 /* Navbar */
 
 .navbar {

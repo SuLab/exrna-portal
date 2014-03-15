@@ -1,47 +1,54 @@
-<?php get_header(); ?>
-
+<?php
+/*
+Template Name: gd video w/ Title
+*/
+ 
+get_header() ?>
 <link rel="stylesheet" href="<?php bloginfo( 'url' ); ?>/wp-content/themes/exrna/bigvid/bower_components/BigVideo/css/bigvideo.css">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="<?php bloginfo( 'url' ); ?>/wp-content/themes/exrna/bigvid/bower_components/jquery/jquery.min.js"><\/script>')</script>
+<script src="<?php bloginfo( 'url' ); ?>/wp-content/themes/exrna/bigvid/bower_components/jquery-ui/ui/jquery-ui.js"></script>
+<script src="<?php bloginfo( 'url' ); ?>/wp-content/themes/exrna/bigvid/bower_components/jquery-ui/ui/minified/jquery-ui.min.js"></script>
+<script src="http://vjs.zencdn.net/4.0/video.js"></script>
 <div class="over"></div>
 <div class="container pushtop pushbot jumb">
-				<div class="row">
-					<div class="col-md-6">
-						<h1>Unlocking the <br> Mysteries of <br>Extracellular RNA <br>Communication</h1>
-						<p class="pushtop">Once thought to exist only inside cells, RNA is <br class="visible-lg"> known to travel outside of cells and play a role in newly <br class="visible-lg"> discovered mechanisms of cell-to-cell communication.</p>
-					</div>
-				</div>
-				<div class="row pushtop">
-					<div class="col-md-6">
-						<div class="row">
-							<div class="col-md-6">
-								<div class="hmbtn learn">
-									<a href="/exrnawp/about" class="btn btn-primary btn-block"><p>Learn More</p></a>
-								</div>
-							</div>
-							<div id="hm" class="col-md-6">
-								<div class="hmbtn play">
-									<!-- Button trigger modal -->
-
-									<button id="pausey" class="pausey btn btn-primary btn-block hidden-sm hidden-xs" data-toggle="modal" data-target="#myModal"><p>Full Video <i class="fa fa-play"></i></p></button>
-									<a href="http://www.youtube.com/watch?v=bfMg3RhxNm8"><button class="btn btn-primary btn-block hidden-lg hidden-md"><p>Play Video <i class="fa fa-play"></i></p></button></a>
-
-								</div>
-
-							</div>
-						</div>
-						
-					</div>
-					<div class="pause hidden-sm hidden-xs float-right">
-						<div id="big-video-control">
-							<a href="#" id="big-video-control-play"></a>
-							<i class="stopbgvid fa fa-pause"></i>
-						</div>
-			        </div>
-				</div>
+		<div class="row">
+			<div class="col-md-6">
+				<h1>Unlocking the <br> Mysteries of <br>Extracellular RNA <br>Communication</h1>
+				<p class="pushtop">Once thought to exist only inside cells, RNA is <br class="visible-lg"> known to travel outside of cells and play a role in newly <br class="visible-lg"> discovered mechanisms of cell-to-cell communication.</p>
 			</div>
 		</div>
+		<div class="row pushtop">
+			<div class="col-md-6">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="hmbtn learn">
+							<a href="/exrnawp/about" class="btn btn-primary btn-block"><p>Learn More</p></a>
+						</div>
+					</div>
+					<div id="hm" class="col-md-6">
+						<div id="elmodal" class="hmbtn play">
+							<!-- Button trigger modal -->
 
+							<button id="elmodal pausey" class="pausey btn btn-primary btn-block hidden-sm hidden-xs" data-toggle="modal" data-target="#myModal"><p>Full Video <i class="fa fa-play"></i></p></button>
+							<a href="http://www.youtube.com/watch?v=bfMg3RhxNm8"><button class="btn btn-primary btn-block hidden-lg hidden-md"><p>Play Video <i class="fa fa-play"></i></p></button></a>
 
-		<div class="clearfix"></div>
+						</div>
+
+					</div>
+				</div>
+				
+			</div>
+			<div class="pause hidden-sm hidden-xs float-right">
+				<button id="theButton" class="playing" style="z-index:9999">
+					<i class="stopbgvid fa fa-pause"></i>
+				</button>
+	        </div>
+		</div>
+	</div>
+</div>
+
+<div class="clearfix"></div>
 		<div class="wrap pushtop">
 			<div class="white">
 				<div class="container">
@@ -145,44 +152,60 @@
 	    });
 </script>
 
+<!-- Button to Pause BigVideo.js -->
 
-    <!-- BigVideo Dependencies -->
-	
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="<?php bloginfo( 'url' ); ?>/wp-content/themes/exrna/bigvid/bower_components/jquery/jquery.min.js"><\/script>')</script>
-    <script src="<?php bloginfo( 'url' ); ?>/wp-content/themes/exrna/bigvid/bower_components/jquery-ui/ui/jquery-ui.js"></script>
-    <script src="<?php bloginfo( 'url' ); ?>/wp-content/themes/exrna/bigvid/bower_components/jquery-ui/ui/minified/jquery-ui.min.js"></script>
+
+<!-- BigVideo Dependencies -->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
     <script src="http://vjs.zencdn.net/4.0/video.js"></script>
 
     <!-- BigVideo -->
-    <script src="<?php bloginfo( 'url' ); ?>/wp-content/themes/exrna/bigvid/bower_components/BigVideo/lib/bigvideo.js"></script>
-	<script src="<?php bloginfo( 'url' ); ?>/wp-content/themes/exrna/js/fitvids/jquery.fitvids.js"></script>
+    <script src="<?php bloginfo( 'url' ); ?>/wp-content/themes/exrna/bgvidjs/lib/bigvideo.js"></script>
+
 
     <!-- Video Load -->
 	 <script>
-	    $(function() {
-            
-            // initialize BigVideo
-            //BV = new $.BigVideo();
-			//BV.init();
-			//BV.show('<?php bloginfo( 'url' ); ?>/wp-content/themes/exrna/bigvid/vids/exrnahd.mp4',{ambient:true});
-
-			var BV = new $.BigVideo({useFlashForFirefox:false});
+			var BV;
+	    	$(function() {
+         
+			// initialize BigVideo
+			BV = new $.BigVideo();
 			BV.init();
-			if (Modernizr.touch) {
-			    BV.show('<?php bloginfo( 'url' ); ?>/media/exRNA-moviestill-0820.jpg');
-			} else {
-			    BV.show('<?php bloginfo( 'url' ); ?>/wp-content/themes/exrna/bigvid/vids/exrnahd.mp4', {altSource:'<?php bloginfo( 'url' ); ?>/wp-content/themes/exrna/bigvid/vids/exrnahd.ogv' , ambient:true});
-			}
-           //$('.pausey').on('Click', getPlayer().pause());
+			BV.show("<?php bloginfo( 'url' ); ?>/wp-content/themes/exrna/bigvid/vids/exrnahd.mp4",{ambient:true});
 	    });
-    </script> 
-
+    </script>
+	
     <script>
-  $(document).ready(function(){
-    // Target your .container, .wrapper, .post, etc.
-    $(".modal-dialog").fitVids();
-  });
-</script>
+    $( document ).ready(function() {
 
-<? get_footer(); ?>
+
+    	$('#elmodal').on('click', function(e) {
+	      $('.fa-pause').removeClass('fa-pause').addClass('fa-play');
+	      $('#theButton').removeClass('playing');
+	      BV.getPlayer().pause();
+	      e.preventDefault();
+	    });
+
+    	$('.stopbgvid').on('click', function(e) {
+	      $('.stopbgvid').toggleClass('fa-play').toggleClass('fa-pause'); 
+	      e.preventDefault();
+	    });
+	    
+	    
+
+	    $("#theButton").on('click', function(e) {
+		    if($(this).hasClass('playing')) {
+		        BV.getPlayer().pause();
+		        e.preventDefault();   
+		    } else {
+		        BV.getPlayer().play();
+		        e.preventDefault();
+		    }
+		    $(this).toggleClass('playing')
+		})
+
+	 });  
+    </script>
+<?php get_footer() ?>
+
