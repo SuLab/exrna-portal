@@ -295,10 +295,10 @@
 				player.on('loadedmetadata', function(data) {
 					if (document.getElementById('big-video-vid_flash_api')) {
 						// use flash callback to get mediaAspect ratio
-						mediaAspect = document.getElementById('big-video-vid_flash_api').vjs_getProperty('videoWidth')/document.getElementById('big-video-vid_flash_api').vjs_getProperty('videoHeight');
+						mediaAspect = document.getElementById('big-video-vid_flash_api').vjs_getProperty('test')/document.getElementById('big-video-vid_flash_api').vjs_getProperty('videoHeight');
 					} else {
 						// use html5 player to get mediaAspect
-						mediaAspect = $('#big-video-vid_html5_api').prop('videoWidth')/$('#big-video-vid_html5_api').prop('videoHeight');
+						mediaAspect = $('#big-video-vid_html5_api').prop('test')/$('#big-video-vid_html5_api').prop('videoHeight');
 					}
 					updateSize();
 					var dur = Math.round(player.duration());
