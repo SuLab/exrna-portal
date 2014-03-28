@@ -786,7 +786,7 @@ td.border-less{
 	padding: 10px;
 }
 
-.funded-projects p, .funded-projects th{
+.the-projects h5, .l-more, .funded-projects p, .funded-projects th{
 	font-family:'Proxima N W01 Bold', Helvetica, Arial;
 	text-transform: uppercase;
 }
@@ -803,13 +803,55 @@ td.border-less{
 	color: #198bbd;
 }
 
-.funded-projects h4 a{
+.funded-projects h2 {
 	font-size: 34px;
+	margin-top: 4px
+}
+
+.funded-projects h4 {
+	font-size: 20px;
+	line-height: 24px;
+	font-family: 'Proxima N W01 Reg', Helvetica, Arial;
+	margin-top: 0;
 }
 
 .table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td {
 padding: 11px;}
 
+/* ------------------------------------
+Project Page #2
+---------------------------------------*/
+
+
+.project-box{
+	border: 1px solid #f3f3f3;
+	padding: 35px;
+	margin-bottom: 40px;
+	box-shadow: 0 4px 4px -4px #f3f3f3;
+}
+
+.l-more{
+	font-size: 16px;
+	color:#00aeef;
+}
+
+.the-projects h5, .the-projects h6{
+	font-size: 16px;
+	line-height: 20px;
+}
+
+.the-projects h6{
+	font-family: 'Proxima N W15 Reg It', Helvetica, Arial;
+	color: #9d9d9d;
+}
+
+.the-projects .l-more{
+	font-size: 14px;
+}
+
+.project-box .project-header-img{
+		float:left;
+	}
 
 /* ------------------------------------
 Author Page 
@@ -1043,8 +1085,43 @@ footer li{
 		padding-right: 0px;
 	}
 
-	
 
+	.project-box .pushtop{
+		margin-top: 0;
+	}
+
+	.project-box .col-md-6{
+		margin-bottom: 5px
+	}
+
+	.project-box p{
+		font-size: 12px;
+		line-height:14px;
+	}
+
+	.project-box h2{
+		font-size: 22px;
+		line-height: 26px;
+	}
+
+	.project-box h4, .project-box h5, .project-box h6 {
+		margin-top: 3px;
+		margin-bottom: 0px;
+	}
+
+	.project-box h4{
+		font-size: 14px;
+		line-height: 16px;
+	}
+	
+	.project-box h5, .project-box h6{
+		font-size: 12px;
+		line-height: 14px;
+	}
+
+	.project-box .project-header-img{
+		float: right;	
+	}
 }
 
 @media (max-width: 480px){
