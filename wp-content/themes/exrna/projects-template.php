@@ -306,7 +306,7 @@ Template Name: Projects 2
 							</div>
 							<div class="col-md-9 col-sm-10 col-xs-8">
 								<p>(UH2/UH3) RFA-RM-12-014</p>
-			                    <h2><a href="<?php bloginfo( 'url' ); ?>/thearpy/" title="clinical utility of extracellular rna for therapy development">Clinical Utility Of Extracellular RNA For Therapy Development <span class="l-more">Learn More <span class="l-more">Learn More <i class="fa fa-long-arrow-right"></i></span></a></h2>
+			                    <h2><a href="<?php bloginfo( 'url' ); ?>/therapy/" title="clinical utility of extracellular rna for therapy development">Clinical Utility Of Extracellular RNA For Therapy Development <span class="l-more">Learn More <span class="l-more">Learn More <i class="fa fa-long-arrow-right"></i></span></a></h2>
 							</div>
 						</div>
 					</div>
