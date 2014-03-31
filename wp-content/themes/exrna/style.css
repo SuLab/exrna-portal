@@ -786,12 +786,11 @@ td.border-less{
 	padding: 10px;
 }
 
-.the-projects h5, .l-more, .funded-projects p, .funded-projects th{
+.the-projects h5, .l-more, .funded-projects p, .funded-projects th, .pjs{
 	font-family:'Proxima N W01 Bold', Helvetica, Arial;
 	text-transform: uppercase;
 }
-
-.funded-projects th{
+.pjs, .funded-projects th{
 	color: #b4b4b4;
 }
 
@@ -823,11 +822,13 @@ Project Page #2
 ---------------------------------------*/
 
 
-.project-box{
+.project-box, .project-cat-box{
 	border: 1px solid #f3f3f3;
-	padding: 35px;
+	padding: 35px 35px 25px 35px;
 	margin-bottom: 40px;
-	box-shadow: 0 4px 4px -4px #f3f3f3;
+	-webkit-box-shadow: 0 4px 4px -1px #f3f3f3;
+	-moz-box-shadow: 0 4px 4px -1px #f3f3f3;
+	box-shadow: 0 4px 4px -1px #f3f3f3;
 }
 
 .l-more{
@@ -849,9 +850,18 @@ Project Page #2
 	font-size: 14px;
 }
 
-.project-box .project-header-img{
+.project-box .project-header-img, .project-cat-box .project-header-img{
 		float:left;
 	}
+
+.project-cat-box h4{
+	font-size: 34px;
+}
+
+.project-cat-box h5, .project-cat-box h6{
+	display: inline;
+	padding-right: 3px;
+}
 
 /* ------------------------------------
 Author Page 
@@ -1006,6 +1016,11 @@ footer li{
 		padding-top: 45px;
 	}
 
+	h1{
+		font-size: 33px;
+		line-height: 37px;
+	}
+
 	
 	.navbar-inverse {
 		margin-top: -46px;
@@ -1081,6 +1096,11 @@ footer li{
 		line-height: 120%;
 	}
 
+	.hm-posts p{
+		font-size: 16px;
+		line-height:22px;
+	}
+
 	.project-content p {
 		padding-right: 0px;
 	}
@@ -1121,6 +1141,22 @@ footer li{
 
 	.project-box .project-header-img{
 		float: right;	
+	}
+
+	.project-cat-box {
+		border: none;
+		padding: 0;
+		margin-bottom: 20px;
+		box-shadow: none;
+		}
+
+	.project-cat-box h4 {
+		font-size: 24px;
+	}
+
+	.project-cat-box h5, .project-cat-box h6 {
+		display: block;
+		padding-right: 0;
 	}
 }
 
