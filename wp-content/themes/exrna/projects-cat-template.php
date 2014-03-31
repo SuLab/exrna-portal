@@ -41,10 +41,11 @@ Template Name: Projects 2 Cat
 		
 	</div>
 </div>
-
-<div class="container pushtop hm-posts">
 <!-- /DMRR -->
+
 <!-- Function -->
+<div class="container pushtop hm-posts">
+
 	<div class="row pushtop">
 		<div class="col-md-9">
 			<p class="post-date">(u19) rfa-rm-12-012</p>
