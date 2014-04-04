@@ -7,30 +7,26 @@
  * @package _tk
  */
 ?>
-			<!--</div><!-- close .*-inner (main-content or sidebar, depending if sidebar is used) -->
-		<!--</div><!-- close .row -->
-	<!--</div><!-- close .container -->
-<!--</div><!-- close .main-content -->
 			
 
 <footer>
 	<div id="footy">
 			<div class="container">
 				<div class="row pushtop">
-					<div class="col-md-1 col-sm-2 col-md-offset-1 ft-nav">
+					<div class="col-md-1 col-sm-2 col-md-offset- ft-nav">
 						<?php dynamic_sidebar( 'footer_1' ); ?>
 					</div>
 					<div class="col-md-1"></div>
 					<div class="col-md-3 col-sm-3">
 						<?php dynamic_sidebar( 'footer_2' ); ?>
 					</div>
-					<div class="col-md-2 col-sm-3">
+					<!-- <div class="col-md-2 col-sm-3">
 						<?php dynamic_sidebar( 'footer_3' ); ?>
-					</div>
+					</div> -->
 					<div class="col-md-2 col-sm-3">
 						<?php dynamic_sidebar( 'footer_4' ); ?>
 					</div>
-					<div class="col-md-2 col-sm-1">
+					<div class="col-md-2 col-sm-1 col-md-offset-2">
 						<a href="<?php bloginfo( 'url' ) ?>/"><img src="<?php bloginfo( 'url' ) ?>/media/exrna-logo-only-black.svg" alt="exRNA" style="max-width:105px;" class="logo img-responsive" onerror="this.onerror=null; this.src='<?php echo esc_url( home_url( '/' ) ); ?>media/exrna-logo-only-black.png'"></a>
 					</div>
 				</div>

@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Projects 2
+Template Name: Project 2 Page
 */
 ?>
 
@@ -8,56 +8,20 @@ Template Name: Projects 2
 <div class="container pushtop">
 	<div class="row">
 		<div class="col-xs-12">
-			<h1>Projects 2</h1>
+			<h1>Projects</h1>
 		</div>
 	</div>
-	<div class="row pushtop"><!-- DMRR -->
-		<div class="project-box funded-projects">
-			<div class="col-sm-12">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="row">
-							<div class="col-3">
-								<img src="http://placehold.it/90x90" alt="" class="img-responsive img-rounded project-header-img ">
-							</div>
-							<div class="col-md-10 col-sm-10 col-xs-8">
-								<p>(u54) rfa-rm-12-010</p>
-			                    <h2><a href="<?php bloginfo( 'url' ); ?>/dmrr/" title="data management and resource repository (dmrr) on extracellular rna (u54) rfa-rm-12-010 ">Data Management And Resource Repository (DMRR) On Extracellular RNA <span class="l-more">Learn More <i class="fa fa-long-arrow-right"></i></span></a></h2>
-							</div>
-						</div>
-					</div>
-				<hr>
-				</div>
-				
-				<div class="row pushtop the-projects">
-					<div class="col-md-6">
-						<div class="row">
-							<div class="col-3">
-								<img src="http://placehold.it/90x90" alt="" class="img-responsive project-header-img ">
-							</div>
-							<div class="col-md-9 col-sm-10 col-xs-8">
-								<h4><a href="<?php bloginfo( 'url' ); ?>/projects/data-management-resource-repository-exrna-atlas/">Data Management and Resource Repository for the exRNA Atlas <span class="l-more"><i class="fa fa-long-arrow-right"></i></span></a></h4>
-		                        <h5>Aleksandar Milosavljevic</h5>
-		                        <h6>Baylor College of Medicine</h6>
-							</div>
-						</div>
-					</div>
-					
-				</div>
-
-			</div>
-		</div>
-	</div><!-- /DMRR -->
+	
 	<div class="row pushtop"><!-- Function -->
 		<div class="project-box funded-projects">
 			<div class="col-sm-12">
 				<div class="row">
 					<div class="col-md-12">
 						<div class="row">
-							<div class="col-3">
+							<!-- <div class="col-3">
 								<img src="http://placehold.it/90x90" alt="" class="img-responsive img-rounded project-header-img ">
-							</div>
-							<div class="col-md-9 col-sm-10 col-xs-8">
+							</div> -->
+							<div class="col-md-9 col-sm-10 col-xs-12">
 								<p>(u19) rfa-rm-12-012</p>
                             	<h2><a href="<?php bloginfo( 'url' ); ?>/function/" title="extracellular rna biogenesis, biodistribution, uptake, and effector function (u19) rfa-rm-12-012">Extracellular RNA Biogenesis, Biodistribution, Uptake, And Effector Function <span class="l-more">Learn More <i class="fa fa-long-arrow-right"></i></span></a></h2>
 							</div>
@@ -145,10 +109,10 @@ Template Name: Projects 2
 				<div class="row">
 					<div class="col-md-12">
 						<div class="row">
-							<div class="col-3">
+							<!-- <div class="col-3">
 								<img src="http://placehold.it/90x90" alt="" class="img-responsive img-rounded project-header-img ">
-							</div>
-							<div class="col-md-9 col-sm-10 col-xs-8">
+							</div> -->
+							<div class="col-md-9 col-sm-10 col-xs-12">
 								<p>(uh2/uh3) rfa-rm-12-013</p>
                           		<h2><a href="<?php bloginfo( 'url' ); ?>/biomarker/" title="clinical utility of extracellular rna for biomarker development">Clinical Utility Of Extracellular RNA For Biomarker Development <span class="l-more">Learn More <i class="fa fa-long-arrow-right"></i></span></a></h2>
                           	</div>
@@ -301,12 +265,12 @@ Template Name: Projects 2
 				<div class="row">
 					<div class="col-md-12">
 						<div class="row">
-							<div class="col-3">
+							<!-- <div class="col-3">
 								<img src="http://placehold.it/90x90" alt="" class="img-responsive img-rounded project-header-img ">
-							</div>
-							<div class="col-md-9 col-sm-10 col-xs-8">
+							</div> -->
+							<div class="col-md-9 col-sm-10 col-xs-12">
 								<p>(UH2/UH3) RFA-RM-12-014</p>
-			                    <h2><a href="<?php bloginfo( 'url' ); ?>/therapy/" title="clinical utility of extracellular rna for therapy development">Clinical Utility Of Extracellular RNA For Therapy Development <span class="l-more">Learn More <span class="l-more">Learn More <i class="fa fa-long-arrow-right"></i></span></a></h2>
+			                    <h2><a href="<?php bloginfo( 'url' ); ?>/therapy/" title="clinical utility of extracellular rna for therapy development">Clinical Utility Of Extracellular RNA For Therapy Development <span class="l-more">Learn More <i class="fa fa-long-arrow-right"></i></span></a></h2>
 							</div>
 						</div>
 					</div>
@@ -320,7 +284,7 @@ Template Name: Projects 2
 								<img src="http://placehold.it/90x90" alt="" class="img-responsive project-header-img ">
 							</div>
 							<div class="col-md-9 col-sm-10 col-xs-8">
-								<h4><a href="<?php bloginfo( 'url' ); ?>/projects/targeting-tumor-derived-exrna-containing-microvesicles-high-throughput-screeni/" title="targeting tumor-derived exrna-containing microvesicles by high throughput screeni">Targeting Tumor-derived exRNA-containing Microvesicles By High Throughput Screeni</a></h4>
+								<h4><a href="<?php bloginfo( 'url' ); ?>/projects/targeting-tumor-derived-exrna-containing-microvesicles-high-throughput-screeni/" title="targeting tumor-derived exrna-containing microvesicles by high throughput screeni">Targeting Tumor-derived exRNA-containing Microvesicles By High Throughput Screeni <span class="l-more"><i class="fa fa-long-arrow-right"></i></span></a></h4>
 					            <h5>Asim B. Abdel-Mageed</h5>
 					            <h6>Tulane University Of Louisiana</h6>
 							</div>
@@ -332,7 +296,7 @@ Template Name: Projects 2
 								<img src="http://placehold.it/90x90" alt="" class="img-responsive project-header-img ">
 							</div>
 							<div class="col-md-9 col-sm-10 col-xs-8">
-								<h4><a href="<?php bloginfo( 'url' ); ?>/projects/exosome-based-therapeutics-huntingtons-disease/" title="exosome based therapeutics in huntingtons disease">Exosome Based Therapeutics In Huntington's Disease</a></h4>
+								<h4><a href="<?php bloginfo( 'url' ); ?>/projects/exosome-based-therapeutics-huntingtons-disease/" title="exosome based therapeutics in huntingtons disease">Exosome Based Therapeutics In Huntington's Disease <span class="l-more"><i class="fa fa-long-arrow-right"></i></span></a></h4>
 					            <h5>Neil Aronin</h5>
 					            <h6>University of Massachusetts Medical School, Worcester</h6>
 							</div>
@@ -347,7 +311,7 @@ Template Name: Projects 2
 								<img src="http://placehold.it/90x90" alt="" class="img-responsive project-header-img ">
 							</div>
 							<div class="col-md-9 col-sm-10 col-xs-8">
-								<h4><a href="<?php bloginfo( 'url' ); ?>/projects/exosome-rna-therapeutics-promote-cna-myelination/" title="exosome rna-therapeutics to promote cns myelination">Exosome RNA-therapeutics To Promote CNA Myelination</a></h4>
+								<h4><a href="<?php bloginfo( 'url' ); ?>/projects/exosome-rna-therapeutics-promote-cna-myelination/" title="exosome rna-therapeutics to promote cns myelination">Exosome RNA-therapeutics To Promote CNA Myelination <span class="l-more"><i class="fa fa-long-arrow-right"></i></span></a></h4>
 					            <h5>Richard P. Kraig</h5>
 					            <h6>University Of Chicago</h6>
 							</div>
@@ -359,7 +323,7 @@ Template Name: Projects 2
 								<img src="http://placehold.it/90x90" alt="" class="img-responsive project-header-img ">
 							</div>
 							<div class="col-md-9 col-sm-10 col-xs-8">
-								<h4><a href="<?php bloginfo( 'url' ); ?>/projects/her2-targeted-exosomal-delivery-therapeutic-mrna-enzyme-pro-drug-therapy/" title="her2-targeted exosomal delivery of therapeutic mrna for enzyme pro-drug therapy">HER2-targeted Exosomal Delivery Of Therapeutic mRNA For Enzyme Pro-drug Therapy</a></h4>
+								<h4><a href="<?php bloginfo( 'url' ); ?>/projects/her2-targeted-exosomal-delivery-therapeutic-mrna-enzyme-pro-drug-therapy/" title="her2-targeted exosomal delivery of therapeutic mrna for enzyme pro-drug therapy">HER2-targeted Exosomal Delivery Of Therapeutic mRNA For Enzyme Pro-drug Therapy <span class="l-more"><i class="fa fa-long-arrow-right"></i></span></a></h4>
 					            <h5>AC Matin</h5>
 					            <h6>Stanford University</h6>
 							</div>
@@ -374,7 +338,7 @@ Template Name: Projects 2
 								<img src="http://placehold.it/90x90" alt="" class="img-responsive project-header-img ">
 							</div>
 							<div class="col-md-9 col-sm-10 col-xs-8">
-								<h4><a href="<?php bloginfo( 'url' ); ?>/projects/regulation-of-renal-and-bone-marrow-injury-by-extracellular-vesicle-non-coding-rn/" title="regulation of renal and bone marrow injury by extracellular vesicle non-coding rn">Regulation Of Renal And Bone Marrow Injury By Extracellular Vesicle Non-coding RN</a></h4>
+								<h4><a href="<?php bloginfo( 'url' ); ?>/projects/regulation-of-renal-and-bone-marrow-injury-by-extracellular-vesicle-non-coding-rn/" title="regulation of renal and bone marrow injury by extracellular vesicle non-coding rn">Regulation Of Renal And Bone Marrow Injury By Extracellular Vesicle Non-coding RN <span class="l-more"><i class="fa fa-long-arrow-right"></i></span></a></h4>
 					            <h5>Peter J. Quesenberry</h5>
 					            <h6>Rhode Island Hospital</h6>
 							</div>
@@ -386,7 +350,7 @@ Template Name: Projects 2
 								<img src="http://placehold.it/90x90" alt="" class="img-responsive project-header-img ">
 							</div>
 							<div class="col-md-9 col-sm-10 col-xs-8">
-								<h4><a href="<?php bloginfo( 'url' ); ?>/projects/targeted-delivery-microrna-loaded-microvesicle-cancer-therapy/" title="targeted delivery of microrna-loaded microvesicle for cancer therapy">Targeted Delivery Of MicroRNA-loaded Microvesicle For Cancer Therapy</a></h4>
+								<h4><a href="<?php bloginfo( 'url' ); ?>/projects/targeted-delivery-microrna-loaded-microvesicle-cancer-therapy/" title="targeted delivery of microrna-loaded microvesicle for cancer therapy">Targeted Delivery Of MicroRNA-loaded Microvesicle For Cancer Therapy <span class="l-more"><i class="fa fa-long-arrow-right"></i></span></a></h4>
 					            <h5>Thomas D. Schmittgen</h5>
 					            <h6>Ohio State University</h6>
 							</div>
@@ -401,7 +365,7 @@ Template Name: Projects 2
 								<img src="http://placehold.it/90x90" alt="" class="img-responsive project-header-img ">
 							</div>
 							<div class="col-md-9 col-sm-10 col-xs-8">
-								<h4><a href="<?php bloginfo( 'url' ); ?>/projects/novel-extra-cellular-rna-based-combinatorial-rna-inhibition-therapy/" title="novel extra cellular rna-based combinatorial rna inhibition therapy">Novel Extra Cellular RNA-based Combinatorial RNA Inhibition Therapy</a></h4>
+								<h4><a href="<?php bloginfo( 'url' ); ?>/projects/novel-extra-cellular-rna-based-combinatorial-rna-inhibition-therapy/" title="novel extra cellular rna-based combinatorial rna inhibition therapy">Novel Extra Cellular RNA-based Combinatorial RNA Inhibition Therapy <span class="l-more"><i class="fa fa-long-arrow-right"></i></span></a></h4>
 					            <h5>Anil K. Sood</h5>
 					            <h6>UT MD Anderson Cancer Center</h6>
 							</div>
@@ -413,7 +377,7 @@ Template Name: Projects 2
 								<img src="http://placehold.it/90x90" alt="" class="img-responsive project-header-img ">
 							</div>
 							<div class="col-md-9 col-sm-10 col-xs-8">
-								<h4><a href="<?php bloginfo( 'url' ); ?>/projects/fruit-exosome-like-particles-therapeutic-delivery-extracellular-mirnas/" title="fruit exosome-like particles for therapeutic delivery of extracellular mirnas">Fruit Exosome-like Particles For Therapeutic Delivery Of Extracellular miRNAs</a></h4>
+								<h4><a href="<?php bloginfo( 'url' ); ?>/projects/fruit-exosome-like-particles-therapeutic-delivery-extracellular-mirnas/" title="fruit exosome-like particles for therapeutic delivery of extracellular mirnas">Fruit Exosome-like Particles For Therapeutic Delivery Of Extracellular miRNAs <span class="l-more"><i class="fa fa-long-arrow-right"></i></span></a></h4>
 					            <h5>Huang-ge Zhang</h5>
 					            <h6>University Of Louisville</h6>
 							</div>
@@ -425,6 +389,43 @@ Template Name: Projects 2
 			</div>
 		</div>
 	</div><!-- /Therapy -->
+	<div class="row pushtop"><!-- DMRR -->
+		<div class="project-box funded-projects">
+			<div class="col-sm-12">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="row">
+							<!-- <div class="col-3">
+								<img src="http://placehold.it/90x90" alt="" class="img-responsive img-rounded project-header-img ">
+							</div> -->
+							<div class="col-md-10 col-sm-10 col-xs-12">
+								<p>(u54) rfa-rm-12-010</p>
+			                    <h2><a href="<?php bloginfo( 'url' ); ?>/dmrr/" title="data management and resource repository (dmrr) on extracellular rna (u54) rfa-rm-12-010 ">Data Management And Resource Repository (DMRR) On Extracellular RNA <span class="l-more">Learn More <i class="fa fa-long-arrow-right"></i></span></a></h2>
+							</div>
+						</div>
+					</div>
+				<hr>
+				</div>
+				
+				<div class="row pushtop the-projects">
+					<div class="col-md-6">
+						<div class="row">
+							<div class="col-3">
+								<img src="http://placehold.it/90x90" alt="" class="img-responsive project-header-img ">
+							</div>
+							<div class="col-md-9 col-sm-10 col-xs-8">
+								<h4><a href="<?php bloginfo( 'url' ); ?>/projects/data-management-resource-repository-exrna-atlas/">Data Management and Resource Repository for the exRNA Atlas <span class="l-more"><i class="fa fa-long-arrow-right"></i></span></a></h4>
+		                        <h5>Aleksandar Milosavljevic</h5>
+		                        <h6>Baylor College of Medicine</h6>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+
+			</div>
+		</div>
+	</div><!-- /DMRR -->
 </div> 
 
 
