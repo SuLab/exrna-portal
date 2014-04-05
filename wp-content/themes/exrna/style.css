@@ -764,6 +764,9 @@ Search Page
 Project Page 
 ---------------------------------------*/
 
+.col-3, .project-cat-box .col-sm-2{display: none !important}
+
+
 .fp{
 	padding: 20px;
 	background-color: #f2f2f2;
