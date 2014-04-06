@@ -166,13 +166,19 @@ get_header() ?>
 
     <!-- Video Load -->
 	 <script>
-			var BV;
+			var BV = new $.BigVideo({useFlashForFirefox:false});
 	    	$(function() {
          
 			// initialize BigVideo
 			BV = new $.BigVideo();
 			BV.init();
-			BV.show("<?php bloginfo( 'url' ); ?>/wp-content/themes/exrna/bigvid/vids/exrnahd.mp4",{ambient:true});
+			if (Modernizr.touch) {
+				    BV.show('<?php bloginfo( 'url' ); ?>/media/exRNA-moviestill-0820.jpg');
+				} else {
+					BV.show("<?php bloginfo( 'url' ); ?>/wp-content/themes/exrna/bigvid/vids/exrnahd.mp4", {altSource:'<?php bloginfo( 'url' ); ?>/wp-content/themes/exrna/bigvid/vids/exrnahd.ogv'}, {ambient:true});
+				}
+
+
 	    });
     </script>
 	

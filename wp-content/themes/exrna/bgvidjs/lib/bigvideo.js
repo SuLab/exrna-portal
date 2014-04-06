@@ -103,9 +103,9 @@
 						.css('top',-(windowW/mediaAspect-windowH)/2)
 						.css('left',0)
 						.css('height',windowW/mediaAspect);
-					$(vidEl+'_html5_api').css('width',$(vidEl+'_html5_api').parent().width()+"px");
+					//$(vidEl+'_html5_api').css('width',$(vidEl+'_html5_api').parent().width()+"px");
 					$(vidEl+'_flash_api')
-						.css('width',windowW)
+						.css('min-width','1200px')
 						.css('height',windowW/mediaAspect);
 				} else {
 					// is image
