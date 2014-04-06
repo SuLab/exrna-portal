@@ -53,10 +53,10 @@
 		    <!-- Your site title as branding in the menu -->
 		    <div id="exrnalogo">
 			    <a class="navbar-brand visible-lg visible-md visible-sm" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
-		    		<img src="<?php echo esc_url( home_url( '/' ) ); ?>media/exrna-logo-black.svg" alt="exRNA" class="logo img-responsive" onerror="this.onerror=null; this.src='<?php echo esc_url( home_url( '/' ) ); ?>media/exrna-logo-black.png'">
+		    		<img src="<?php echo esc_url( home_url( '/' ) ); ?>media/exrna-logo-black.png" alt="exRNA" class="logo img-responsive">
 		    	</a>
 				<a class="navbar-brand hidden-lg hidden-md hidden-sm visible-xs" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
-					<img src="<?php echo esc_url( home_url( '/' ) ); ?>media/exrna-logo-white-small.svg" alt="exRNA" class="logo img-responsive" onerror="this.onerror=null; this.src='<?php echo esc_url( home_url( '/' ) ); ?>media/exrna-logo-white-small.png'">
+					<img src="<?php echo esc_url( home_url( '/' ) ); ?>media/exrna-logo-white-small.png" alt="exRNA" class="logo img-responsive">
 				</a>
 			</div>
 		</div>	

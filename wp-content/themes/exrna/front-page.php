@@ -144,7 +144,7 @@ get_header() ?>
 <script>
 	$('body').addClass('home');
 	$('body').attr('id', 'page');
-	$( '#exrnalogo' ).replaceWith('<a class="navbar-brand visible-lg visible-md visible-sm" href="/" title="exRNA" rel="home"><img src="./media/exrna-logo-white.svg" alt="exRNA" class="logo img-responsive" onerror="this.onerror=null; this.src=/media/exrna-logo-white.png"></a><a class="navbar-brand hidden-lg hidden-md hidden-sm visible-xs navbar-text-logo" href="/" title="exRNA" rel="home"><img src="./media/exrna-logo-white-small.svg" alt="exRNA" class="logo img-responsive" onerror="this.onerror=null; this.src=/media/exrna-logo-white-small.png"></a>');
+	$( '#exrnalogo' ).replaceWith('<a class="navbar-brand visible-lg visible-md visible-sm" href="/" title="exRNA" rel="home"><img src="./media/exrna-logo-white.png" alt="exRNA" class="logo img-responsive"></a><a class="navbar-brand hidden-lg hidden-md hidden-sm visible-xs navbar-text-logo" href="/" title="exRNA" rel="home"><img src="./media/exrna-logo-white-small.svg" alt="exRNA" class="logo img-responsive" onerror="this.onerror=null; this.src=/media/exrna-logo-white-small.png"></a>');
 	$('.modal').each(function(){var src = $(this).find('iframe').attr('src');$(this).on('click', function(){$(this).find('iframe').attr('src', '');$(this).find('iframe').attr('src', src);});});
 	$('#big-video-control').on('click', function(e) {
 	      $('.stopbgvid').toggleClass('fa-play').toggleClass('fa-pause'); //you can list several class names 
@@ -173,7 +173,7 @@ get_header() ?>
 			BV = new $.BigVideo();
 			BV.init();
 			if (Modernizr.touch) {
-				    BV.show('<?php bloginfo( 'url' ); ?>/media/exRNA-moviestill-0820.jpg style="width:100%"');
+				    BV.show('<?php bloginfo( 'url' ); ?>/media/exRNA-moviestill-0820.jpg');
 				} else {
 					BV.show("<?php bloginfo( 'url' ); ?>/wp-content/themes/exrna/bigvid/vids/exrnahd.mp4", {altSource:'<?php bloginfo( 'url' ); ?>/wp-content/themes/exrna/bigvid/vids/exrnahd.ogv'}, {ambient:true});
 				}
