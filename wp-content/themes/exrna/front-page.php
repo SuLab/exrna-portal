@@ -173,7 +173,7 @@ get_header() ?>
 			BV = new $.BigVideo();
 			BV.init();
 			if (Modernizr.touch) {
-				    BV.show('<?php bloginfo( 'url' ); ?>/media/exRNA-moviestill-0820.jpg');
+				    BV.show('<?php bloginfo( 'url' ); ?>/media/exRNA-moviestill-0820.jpg style="width:100%"');
 				} else {
 					BV.show("<?php bloginfo( 'url' ); ?>/wp-content/themes/exrna/bigvid/vids/exrnahd.mp4", {altSource:'<?php bloginfo( 'url' ); ?>/wp-content/themes/exrna/bigvid/vids/exrnahd.ogv'}, {ambient:true});
 				}
