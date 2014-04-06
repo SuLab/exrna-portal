@@ -31,7 +31,7 @@ get_header() ?>
 							<!-- Button trigger modal -->
 
 							<button id="elmodal pausey" class="pausey btn btn-primary btn-block hidden-sm hidden-xs" data-toggle="modal" data-target="#myModal"><p>Full Video <i class="fa fa-play"></i></p></button>
-							<a href="http://www.youtube.com/watch?v=bfMg3RhxNm8"><button class="btn btn-primary btn-block hidden-lg hidden-md"><p>Play Video <i class="fa fa-play"></i></p></button></a>
+							<a href="http://www.youtube.com/watch?v=bfMg3RhxNm8" class="btn btn-primary btn-block hidden-lg hidden-md"><p>Play Video <i class="fa fa-play"></i></p></a>
 
 						</div>
 
@@ -132,7 +132,7 @@ get_header() ?>
 			        
 			      </div>
 			      <div class="modal-body">
-			        <iframe width="853" height="480" src="//www.youtube.com/embed/bfMg3RhxNm8" frameborder="0" allowfullscreen></iframe>
+			        <iframe width="853" height="480" class="center-block" src="//www.youtube.com/embed/bfMg3RhxNm8" frameborder="0" allowfullscreen></iframe>
 			      </div>
 			      
 			    </div><!-- /.modal-content -->
@@ -175,7 +175,7 @@ get_header() ?>
 			if (Modernizr.touch) {
 				    BV.show('<?php bloginfo( 'url' ); ?>/media/exRNA-moviestill-0820.jpg');
 				} else {
-					BV.show("<?php bloginfo( 'url' ); ?>/wp-content/themes/exrna/bigvid/vids/exrnahd.mp4", {altSource:'<?php bloginfo( 'url' ); ?>/wp-content/themes/exrna/bigvid/vids/exrnahd.ogv'}, {ambient:true});
+					BV.show("<?php bloginfo( 'url' ); ?>/wp-content/themes/exrna/bigvid/vids/exrnahd.mp4", {altSource:'<?php bloginfo( 'url' ); ?>/wp-content/themes/exrna/bigvid/vids/exrnahd.ogv', ambient:true, doLoop:true});
 				}
 
 
@@ -190,12 +190,12 @@ get_header() ?>
 	      $('.fa-pause').removeClass('fa-pause').addClass('fa-play');
 	      $('#theButton').removeClass('playing');
 	      BV.getPlayer().pause();
-	      e.preventDefault();
+	      
 	    });
 
     	$('.stopbgvid').on('click', function(e) {
 	      $('.stopbgvid').toggleClass('fa-play').toggleClass('fa-pause'); 
-	      e.preventDefault();
+	      
 	    });
 	    
 	    
@@ -203,10 +203,10 @@ get_header() ?>
 	    $("#theButton").on('click', function(e) {
 		    if($(this).hasClass('playing')) {
 		        BV.getPlayer().pause();
-		        e.preventDefault();   
+		           
 		    } else {
 		        BV.getPlayer().play();
-		        e.preventDefault();
+		        
 		    }
 		    $(this).toggleClass('playing')
 		})
