@@ -28,7 +28,7 @@ get_header(); ?>
 			<div class="sp-content">
 				<div class="row">
 					<div class="col-md-8">
-					<p><span class="projectlead">Project Lead:</span> <?php the_field('contact_pi_project_leader'); ?></p>
+					<p><span class="projectlead">Principal Investigator:</span> <?php the_field('contact_pi_project_leader'); ?></p>
 					<p><span class="projectlead">Contributors:</span> <?php the_field('contributors'); ?></p>
 					</div>
 					<div class="col-md-4">
