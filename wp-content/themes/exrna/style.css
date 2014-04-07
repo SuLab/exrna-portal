@@ -907,12 +907,22 @@ Resources Page
 
 .resource-block{
 	padding: 20px 50px;
+	min-height: 350px;
+}
+
+.resources a{
+	color: #00aeef;
+}
+
+.resource-block p{
+	text-align: left;
 }
 
 p.soon{
 	text-transform: uppercase;
 	font-family:'Proxima N W01 Bold', Helvetica, Arial;
 	color:#b4b4b4;
+	text-align: center;
 }
 
 .resource-left{
@@ -939,6 +949,12 @@ footer li{
 	font-size: 16px;
 	line-height:20px;
 	margin-bottom: 20px;
+}
+
+@media (max-width: 1400px) { 
+	#big-video-vid_html5_api{
+		min-width: 110%;
+	}
 }
 
 @media (min-width: 1199px) { 
@@ -1012,7 +1028,7 @@ footer li{
 	}
 
 	#big-video-vid_html5_api{
-		min-width: 1400px;
+		min-width: 1500px;
 	}
 
 }
@@ -1037,7 +1053,7 @@ footer li{
 	}
 
 	#big-video-vid_html5_api{
-		min-width: 1200px;
+		min-width: 1400px;
 	}
 
 	
