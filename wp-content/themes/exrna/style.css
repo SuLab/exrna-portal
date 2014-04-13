@@ -973,6 +973,23 @@ input[type="submit"]{
 	padding: 15px;
 }
 
+.media-body-wrap footer{
+	height: 10px;
+}
+
+footer.comment-reply{
+	position: relative;
+	background: #fff;
+	height: none;
+	border-top: 0px
+}
+
+.panel{
+	-moz-box-shadow:    none;
+	-webkit-box-shadow: none;
+	box-shadow:  none;
+}
+
 /* ------------------------------------
 Footer 
 ---------------------------------------*/
