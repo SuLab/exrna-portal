@@ -724,7 +724,7 @@ Home Page
 	font-weight: normal;
 }
 
-.post-date, .post-author{
+.post-date, .post-author, .comments, #reply-title, input[type="submit"]{
 	font-size: 16px;
 	font-family:'Proxima N W01 Bold';
 
@@ -901,6 +901,18 @@ Single Project
 	padding-right: 45px;
 }
 
+.project-content img{
+	border: 1px solid #ddd;
+}
+
+.liner{
+	width: 186px;
+	margin-left: 15px;
+	margin-top: 20px;
+	border-top: 4px solid #ddd;
+	margin-bottom: 20px;
+}
+
 /* ------------------------------------
 Resources Page 
 ---------------------------------------*/
@@ -932,6 +944,33 @@ p.soon{
 
 .circle{
 	border-radius: 50%;
+}
+
+/* ------------------------------------
+Comments 
+---------------------------------------*/
+
+#reply-title, .comments{
+	font-size: 18px;
+	color: #9d9d9d;
+	text-transform: uppercase;
+}
+
+input, input[type="password"], input[type="search"], .form-control{
+border: 2px solid #e1e1e1;
+-moz-box-shadow:    inset 0 1px 0 1px #f6f6f6;
+-webkit-box-shadow: inset 0 1px 0 1px #f6f6f6;
+box-shadow:         inset 0 1px 0 1px #f6f6f6;
+border-radius: 0px;
+}
+
+input[type="submit"]{
+	border: none;
+	box-shadow: none;
+	border-radius: 5px;
+	background: #00aeef;
+	color:#fff;
+	padding: 15px;
 }
 
 /* ------------------------------------

@@ -36,6 +36,37 @@ $class = str_replace("class='avatar", "class='img-circle avatar ", $class) ;
 return $class;
 }
 
+//Customize Comments
+add_filter('comment_form_default_fields','custom_fields');
+
+function custom_fields($fields) {
+
+		$commenter = wp_get_current_commenter();
+		$req = get_option( 'require_name_email' );
+		$aria_req = ( $req ? " aria-required='true'" : '' );
+
+		$fields[ 'author' ] = '<p class="row comment-form-author">'.
+			'<label class="col-xs-2" for="author">' . __( 'Name' ) . ( $req ? '<span class="required">*</span>' : '' ). '</label>'.
+			
+			'<input id="author" name="author" type="text" value="'. esc_attr( $commenter['comment_author'] ) .
+			'" size="30" tabindex="1"' . $aria_req . ' /></p>';
+
+		$fields[ 'email' ] = '<p class="row comment-form-email">'.
+			'<label class="col-xs-2" for="email">' . __( 'Email' ) . ( $req ? '<span class="required">*</span>' : '' ). '</label>'.
+			
+			'<input id="email" name="email" type="text" value="'. esc_attr( $commenter['comment_author_email'] ) .
+			'" size="30"  tabindex="2"' . $aria_req . ' /></p>';
+
+		$fields[ 'url' ] = '<p class="row comment-form-url">'.
+			'<label class="col-xs-2" for="url">' . __( 'Website' ) . '</label>'.
+			'<input id="url" name="url" type="text" value="'. esc_attr( $commenter['comment_author_url'] ) .
+			'" size="30"  tabindex="3" /></p>';
+
+	return $fields;
+}
+
+
+
 /**
  * Register our sidebars and widgetized areas.
  *

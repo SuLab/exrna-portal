@@ -20,7 +20,7 @@ get_header(); ?>
 		</article>
 	</div><!-- End Row -->
 	<div class="row">
-		<div class="col-md-6 col-md-offset-1">
+		<div class="col-md-7 col-md-offset-2">
 			<div class="row">
 				<div class="col-xs-4"><div class="hm-post-border"></div></div>
 			</div>
@@ -38,18 +38,22 @@ get_header(); ?>
 				<div class="row">
 					<div class="col-md-12 project-content">
 						<p><?php the_field('abstract_text'); ?></p>
-						<p><a href="<?php the_field('nih_link'); ?>">
-							<span class="post-date">VIEW NIH</span>  <i class="fa fa-long-arrow-right"></i><br>
-							<?php the_field('nih_link'); ?></a>
+						<p style="margin-top:25px">
+							<a href="<?php the_field('nih_link'); ?>">
+								<img src="<?php bloginfo( 'url' ); ?>/media/nih-reporter-logo.jpg" alt="">
+							</a>
+							<div class="row">
+								<div class="liner"></div>
+							</div>
 						</p>
 					</div>
 				</div>
 				
 			</div>
-			<div class="sp-prevnext pushtop">
+			<!-- <div class="sp-prevnext pushtop">
 				<p><?php previous_post('<i class="fa fa-long-arrow-left"></i> %', '', 'yes'); ?><br></p>
 				<p><?php next_post('%  <i class="fa fa-long-arrow-right"></i> ', '', 'yes'); ?></p>
-			</div>
+			</div> -->
 			<div class="sp-comments">
 				<?php while ( have_posts() ) : the_post(); ?>
 
@@ -59,11 +63,11 @@ get_header(); ?>
 						comments_template();
 				?>
 
-			<?php endwhile; // end of the loop. ?>
+				<?php endwhile; // end of the loop. ?>
 			</div>
 		</div>
 		
-		<div class="col-md-4">
+		<!-- <div class="col-md-4">
 			<div class="row sp-sidebar">
 				<div class="col-md-12">
 					<div class="grey blog1">
@@ -103,7 +107,7 @@ get_header(); ?>
 				</div>
 				
 			</div>
-		</div>
+		</div> -->
 	</div><!-- End Row -->
 </div><!-- End Container -->
 
