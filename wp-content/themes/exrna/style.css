@@ -913,6 +913,11 @@ Single Project
 	margin-bottom: 20px;
 }
 
+.project-main-img{
+	margin-left: -15px;
+	margin-bottom: 20px;
+}
+
 /* ------------------------------------
 Resources Page 
 ---------------------------------------*/
@@ -956,7 +961,7 @@ Comments
 	text-transform: uppercase;
 }
 
-input, input[type="password"], input[type="search"], .form-control{
+#comments input,  #comments input[type="password"], #comments input[type="search"],  #comments .form-control{
 border: 2px solid #e1e1e1;
 -moz-box-shadow:    inset 0 1px 0 1px #f6f6f6;
 -webkit-box-shadow: inset 0 1px 0 1px #f6f6f6;
@@ -964,7 +969,7 @@ box-shadow:         inset 0 1px 0 1px #f6f6f6;
 border-radius: 0px;
 }
 
-input[type="submit"]{
+#comments input[type="submit"]{
 	border: none;
 	box-shadow: none;
 	border-radius: 5px;
@@ -1248,6 +1253,10 @@ footer li{
 	.project-cat-box h5, .project-cat-box h6 {
 		display: block;
 		padding-right: 0;
+	}
+
+	.project-main-img{
+		margin-left: 0;
 	}
 }
 
