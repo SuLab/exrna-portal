@@ -75,7 +75,6 @@ get_header(); ?>
 					</div>
 					
 					<p class="comments">Related Projects</p>
-
 					
 					<div class="project-box funded-projects">
 						<?php 
