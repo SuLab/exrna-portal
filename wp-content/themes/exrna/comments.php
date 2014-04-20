@@ -14,9 +14,8 @@ if ( post_password_required() )
 
 
 	<div id="comments" class="comments-area">
-	
-	<p class="comments">Comments</p>
-	<button id="hideshow" class="btn" style="font-size: 12px;">Show Comments</button>
+		<p class="comments"><?php comments_number('There are no comments.', 'There is one comment.', 'There are % Comments.' );?></p>
+	<button id="hideshow" class="btn" style="font-size: 12px;">Show/Add Comments</button>
 			
 	<hr>
 	<div id="content" class="hide">
