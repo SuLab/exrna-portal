@@ -20,6 +20,7 @@
 <script type="text/javascript" src="http://fast.fonts.net/jsapi/ba20ca36-be5d-4953-bf6c-5e8e2e344077.js"></script>
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="<?php bloginfo( 'url' ); ?>/wp-content/themes/exrna/bigvid/bower_components/modernizr/modernizr-2.5.3.min.js"></script>
+
 <?php wp_head(); ?>
 <!-- Google Custom Site Search -->
 <script>
@@ -62,20 +63,21 @@
 			</div>
 		</div>	
 
-		<ul class="nav navbar-nav navbar-right visible-md visible-lg">
+		<ul class="nav navbar-nav navbar-right visible-md visible-lg " style="position: absolute; right: 13.1%;">
 	        <li>
 	        	<a href="<?php bloginfo( 'url' ) ?>/contact/"><i class="fa fa-question"></i></a>
 	        </li>
-	        <li>
-	        	<a href="<?php bloginfo( 'url' ) ?>/search/"><i class="fa fa-search"></i></a></a>
-	        </li>
-	    	<!--<li class="dropdown">
-			  <a data-toggle="dropdown" id="search" href="#"><i class="fa fa-search"></i></a>
-			  <ul class="dropdown-menu" role="menu" aria-labelledby="search">
-			    <li><input type="text" class="form-control" placeholder="Search"></li>
-			  </ul>
-			</li>-->
-	    </ul>	    
+	    </ul> 
+		<div id="sb-search" class="sb-search visible-md visible-lg">
+
+			    <form method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>/search">
+			        <input class="sb-search-input" placeholder="Search exRNA..." type="search" value="" name="q" id="search">
+			        <input class="sb-search-submit" type="submit" value="">
+			        <span class="sb-icon-search fa fa-search"></span>
+			    </form>
+			</div>
+		 
+
 				    <!-- The WordPress Menu goes here -->
 				       <?php wp_nav_menu(
 			                array(

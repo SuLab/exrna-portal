@@ -34,7 +34,11 @@
 	</div>
 </footer>
 
-
+<script src="<?php bloginfo( 'url' ); ?>/wp-content/themes/exrna/js/uisearch.js"></script>
+<script src="<?php bloginfo( 'url' ); ?>/wp-content/themes/exrna/js/classie.js"></script>
+<script>
+    new UISearch( document.getElementById( 'sb-search' ) );
+</script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 <?php wp_footer(); ?>
 <script>
