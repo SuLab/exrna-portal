@@ -1191,6 +1191,10 @@ footer li{
 
  }
 
+ @media (max-width: 1169px){
+ 	.navbar-right{display: none !important}
+ }
+
 @media (min-width: 992px) { 
 	
 
@@ -1208,6 +1212,16 @@ footer li{
 
 	.nav>li>a, .navbar-right>li>a {
 		padding: 7px;
+	}
+
+	.sb-search {
+		top: 35px;
+		right: 2%;
+	}
+
+	.sb-icon-search, .sb-search-submit {
+		width: 35px;
+		height: 35px;
 	}
 
 	.logo {

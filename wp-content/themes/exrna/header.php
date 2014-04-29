@@ -63,12 +63,12 @@
 			</div>
 		</div>	
 
-		<ul class="nav navbar-nav navbar-right visible-md visible-lg " style="position: absolute; right: 13.1%;">
+		<ul class="nav navbar-nav navbar-right  " style="position: absolute; right: 13.1%;">
 	        <li>
 	        	<a href="<?php bloginfo( 'url' ) ?>/contact/"><i class="fa fa-question"></i></a>
 	        </li>
 	    </ul> 
-		<div id="sb-search" class="sb-search visible-md visible-lg">
+		<div id="sb-search" class="sb-search visible-sm visible-md visible-lg" style=" z-index: 9; ">
 
 			    <form method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>/search">
 			        <input class="sb-search-input" placeholder="Search exRNA..." type="search" value="" name="q" id="search">
