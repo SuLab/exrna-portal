@@ -23,6 +23,7 @@
 					<!-- <div class="col-md-2 col-sm-3">
 						<?php dynamic_sidebar( 'footer_3' ); ?>
 					</div> -->
+                    
 					<div class="col-md-2 col-sm-3">
 						<?php dynamic_sidebar( 'footer_4' ); ?>
 					</div>
