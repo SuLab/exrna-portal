@@ -194,7 +194,7 @@ Template Name: Project 2 Page
 								<img src="http://placehold.it/90x90" alt="" class="img-responsive project-header-img ">
 							</div>
 							<div class="col-md-9 col-sm-10 col-xs-12">
-								<h4><a href="<?php bloginfo( 'url' ); ?>/projects/extracellular-non-coding-rna-biomarkers-hepatocellular-cancer/" title="extracellular non-coding rna biomarkers of hepatocellular cancer">eExtracellular Non-coding RNA Biomarkers Of Hepatocellular Cancer <span class="l-more"><i class="fa fa-long-arrow-right"></i></span></a></h4>
+								<h4><a href="<?php bloginfo( 'url' ); ?>/projects/extracellular-non-coding-rna-biomarkers-hepatocellular-cancer/" title="extracellular non-coding rna biomarkers of hepatocellular cancer">Extracellular Non-coding RNA Biomarkers Of Hepatocellular Cancer <span class="l-more"><i class="fa fa-long-arrow-right"></i></span></a></h4>
 		                        <h5>Tushar Patel</h5>
 		                        <h6>Mayo Clinic, Jacksonville</h6>
 							</div>
@@ -284,7 +284,7 @@ Template Name: Project 2 Page
 								<img src="http://placehold.it/90x90" alt="" class="img-responsive project-header-img ">
 							</div>
 							<div class="col-md-9 col-sm-10 col-xs-12">
-								<h4><a href="<?php bloginfo( 'url' ); ?>/projects/targeting-tumor-derived-exrna-containing-microvesicles-high-throughput-screeni/" title="targeting tumor-derived exrna-containing microvesicles by high throughput screeni">Targeting Tumor-derived exRNA-containing Microvesicles By High Throughput Screeni <span class="l-more"><i class="fa fa-long-arrow-right"></i></span></a></h4>
+								<h4><a href="<?php bloginfo( 'url' ); ?>/projects/targeting-tumor-derived-exrna-containing-microvesicles-high-throughput-screening/" title="targeting tumor-derived exrna-containing microvesicles by high throughput screening">Targeting Tumor-derived exRNA-containing Microvesicles By High Throughput Screening <span class="l-more"><i class="fa fa-long-arrow-right"></i></span></a></h4>
 					            <h5>Asim B. Abdel-Mageed</h5>
 					            <h6>Tulane University Of Louisiana</h6>
 							</div>

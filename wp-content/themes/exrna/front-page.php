@@ -177,9 +177,10 @@ get_header() ?>
 				} else {
 					BV.show("<?php bloginfo( 'url' ); ?>/wp-content/themes/exrna/bigvid/vids/exrnahd.mp4", {altSource:'<?php bloginfo( 'url' ); ?>/wp-content/themes/exrna/bigvid/vids/exrnahd.ogv', ambient:true, doLoop:true});
 				}
-
-
 	    });
+
+	    
+
     </script>
 	
     <script>

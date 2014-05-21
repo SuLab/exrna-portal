@@ -21,7 +21,19 @@ get_header(); ?>
 	</div><!-- End Row -->
 	<div class="row">
 		<div class="col-md-3">
-			<img src="http://placehold.it/300x300" alt="" class="project-main-img img-responsive">
+			<?php
+				    // Retrieve The Post's Author ID
+				    $user_id = get_the_author_meta('ID');
+				    // Set the image size. Accepts all registered images sizes and array(int, int)
+				    $size = 'full size';
+
+				    // Get the image URL using the author ID and image size params
+				    $imgURL = get_cupp_meta($user_id, $size);
+					
+				    
+				?>
+			<?php echo '<img src="'. $imgURL .'" alt="'. $alt .'" class=" center-block img-responsive">'; ?>
+
 		</div>
 		<div class="col-md-7 col-md-offset-">
 			<div class="row">
@@ -32,6 +44,7 @@ get_header(); ?>
 				<div class="row">
 					<div class="col-md-8">
 					<p><span class="projectlead">Principal Investigator:</span> <?php the_field('contact_pi_project_leader'); ?></p>
+					<p><span class="projectlead">Principal Investigator:</span> <?php the_author_posts_link(); ?></p>					
 					<p><span class="projectlead">Contributors:</span> <?php the_field('contributors'); ?></p>
 					</div>
 					

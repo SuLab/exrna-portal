@@ -94,4 +94,16 @@ create_widget('Footer1', "footer_1", "Footer 1 Widget Area", "");
 create_widget('Footer2', "footer_2", "Footer 2 Widget Area", "");
 create_widget('Footer3', "footer_3", "Footer 3 Widget Area", "");
 create_widget('Footer4', "footer_4", "Footer 4 Widget Area", "");
+
+
+/* Add Custom Posts to Author.php 
+http://designpx.com/tutorials/custom-post-types-author-archive/
+*/
+
+function custom_post_author_archive($query) {
+    if ($query->is_author)
+        $query->set( 'post_type', array('projects', 'client', 'post') );
+    remove_action( 'pre_get_posts', 'custom_post_author_archive' );
+}
+add_action('pre_get_posts', 'custom_post_author_archive');	
 ?>

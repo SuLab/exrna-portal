@@ -881,6 +881,10 @@ Author Page
 	margin-left: auto;
 }
 
+.author-links a{
+	margin-right: 50px;
+}
+
 /* ------------------------------------
 Single Project 
 ---------------------------------------*/
