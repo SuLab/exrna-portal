@@ -820,6 +820,7 @@ td.border-less{
 	line-height: 24px;
 	font-family: 'Proxima N W01 Reg', Helvetica, Arial;
 	margin-top: 0;
+	text-transform: initial;
 }
 
 .table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td {
