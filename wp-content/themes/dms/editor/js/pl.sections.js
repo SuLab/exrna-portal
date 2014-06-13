@@ -17,8 +17,8 @@ $.plSections = {
 						mode: 'sections'
 					,	run: 'reload'
 					,	confirm: false
-					,	savingText: 'Reloading and Registering Sections'
-					,	refreshText: 'Sections reloaded. Refreshing page!'
+					,	savingText: $.pl.lang("Reloading and Registering Sections")
+					,	refreshText: $.pl.lang("Sections reloaded. Refreshing page!")
 					,	refresh: true
 					, 	log: true
 				}
@@ -50,6 +50,10 @@ $.plSections = {
 
 
 				}
+			, 	stop: function(event, ui){
+					$('body')
+						.removeClass('pl-dragging')
+				}
 		})
 
 		$('.panel-add-new').find( '.x-item.pl-area-sortable' ).draggable({
@@ -69,6 +73,10 @@ $.plSections = {
 
 
 				}
+			, 	stop: function(event, ui){
+					$('body')
+						.removeClass('pl-dragging')
+				}
 		})
 
 
@@ -79,7 +87,7 @@ $.plSections = {
 		var name = element.data('name')
 		, 	image = element.data('image')
 		, 	imageHTML = sprintf('<div class="pl-touchable banner-frame"><div class="pl-vignette pl-touchable-vignette"><img class="section-thumb" src="%s" /></div></div>', image )
-		, 	theHTML = sprintf('<div class="pl-refresh-banner"><div class="banner-content">%s</div></div>', imageHTML	)
+		, 	theHTML = sprintf('<div class="pl-refresh-banner pl-contrast"><div class="banner-content">%s</div></div>', imageHTML	)
 
 
 		$.pageTools.toggleGrid(false, 'show')
@@ -108,17 +116,19 @@ $.plSections = {
 			.addClass( classToAdd )
 			.addClass( sectionClass )
 			
+			
+		// Don't think this is actually needed.
+		var set = $.plDatas.handleNewItemData( element )
+		,	newUniqueID = set.uid
 
-		var newUniqueID = $.pageBuilder.handleCloneData( element )
-
-
-		if(activeLoad){
+		if( activeLoad ){
 			
 			var args = {
 					run: 'load'
 				,	mode: 'sections'
 				,	object: object
 				, 	uniqueID: newUniqueID
+				,	draw: type
 				, 	postSuccess: function(response){
 					
 						if(!response)
@@ -145,7 +155,7 @@ $.plSections = {
 						if(response.notice){
 							element
 								.find(wrapSelect)
-								.append('<div class="loaded-notice"><div class="the-notice">Loaded! Note: For this section, page refresh may be needed for complete functionality (Javascript Loading).</div></div>')
+								.append($.pl.lang("<div class='loaded-notice'><div class='the-notice'>Loaded! Note: For this section, page refresh may be needed for complete functionality (Javascript Loading).</div></div>"))
 
 
 							setTimeout(function () {
@@ -157,7 +167,7 @@ $.plSections = {
 						
 						var newOpts = {}
 						
-						newOpts[newUniqueID] = {
+						newOpts[ newUniqueID ] = {
 							opts: response.opts
 							, name: name
 						}
@@ -168,21 +178,47 @@ $.plSections = {
 				
 					}
 				,	beforeSend: function( ){
+						var Text = $.pl.lang("Loading")
 						element
-							.html('<div class="pl-refresh-banner"><i class="icon-spinner icon-spin"></i> Loading</div>')
+							.html('<div class="pl-refresh-banner pl-contrast"><i class="icon icon-spinner icon-spin"></i> '+Text+'</div>')
 					}
 			}
 
 			$.plAJAX.run( args )
 			
 		} else {
+
+			var Text = $.pl.lang("Loading")
 			
-			$.pageBuilder.reloadConfig( {location: 'passive load', refresh: true} )
+			element
+				.html('<div class="pl-refresh-banner pl-contrast"><i class="icon icon-spinner icon-spin"></i> '+Text+'</div>')
+				
+			setTimeout(function() {
+				element
+					.html('<div class="pl-refresh-banner pl-contrast"><i class="icon icon-thumb-up"></i> Section added! Refresh page to view.</div>')
+					
+			}, 700)
+			
+			
+			// As for the loading argument, this is needed for the saving to process the area as a custom section. 
+			// We were having 
+			
+			var img = element.find( '.banner-content' ).html()
+			,	load = ( element.closest('.custom-section').length && ! element.hasClass('custom-section')) ? 'custom' : 'section'
+			, 	loadArgs = {
+					refresh: false
+					, 	load: load
+					,	object: object
+					, 	uniqueID: newUniqueID
+					,	draw: type
+				}
+
+			$.pageBuilder.reloadConfig( loadArgs )
 			
 		}
 		
 
-		if(!element.hasClass('ui-draggable-dragging'))
+		if( ! element.hasClass('ui-draggable-dragging') )
 			element.show()
 
 

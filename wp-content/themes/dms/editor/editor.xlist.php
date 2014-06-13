@@ -6,7 +6,7 @@ class EditorXList{
 
 	function __construct(){
 
-		add_action('pagelines_editor_scripts', array(&$this, 'scripts'));
+		add_action('pagelines_editor_scripts', array( $this, 'scripts'));
 
 		$this->url = PL_PARENT_URL . '/editor';
 	}
@@ -14,9 +14,9 @@ class EditorXList{
 	function scripts(){
 
 		// Isotope
-		wp_enqueue_script( 'isotope', $this->url . '/js/utils.isotope.js', array('jquery'), PL_CORE_VERSION, true);
+		wp_enqueue_script( 'isotope', PL_JS . '/utils.isotope.min.js', array('jquery'), pl_get_cache_key(), true);
 
-		wp_enqueue_script( 'pl-js-xlist', $this->url . '/js/pl.xlist.js', array('jquery'), PL_CORE_VERSION, true);
+		wp_enqueue_script( 'pl-js-xlist', $this->url . '/js/pl.xlist.js', array('jquery'), pl_get_cache_key(), true);
 
 	}
 
@@ -56,7 +56,7 @@ class EditorXList{
 
 		$thumb = ($args['thumb'] != '') ? sprintf("<div class='x-item-frame'><div class='pl-vignette'>%s</div></div>", $img) : '';
 
-		$icon = ($args['format'] == 'media' && $args['icon'] != '') ? sprintf("<div class='img rtimg'><i class='icon-3x %s'></i></div>", $args['icon']) : '';
+		$icon = ($args['format'] == 'media' && $args['icon'] != '') ? sprintf("<div class='img rtimg'><i class='icon icon-3x %s'></i></div>", $args['icon']) : '';
 
 		$pad_class = ($args['format'] == 'media') ? 'media fix' : '';
 
@@ -78,7 +78,7 @@ class EditorXList{
 				</div>
 			</section>",
 			$args['id'],
-			substr(uniqid(), 0, 6),
+			pl_new_clone_id(),
 			'filter-'.$args['id'],
 			$classes,
 			$datas,

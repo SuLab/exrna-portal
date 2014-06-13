@@ -6,79 +6,146 @@
 
 			var that = this
 			,	map = {}
+			, 	templateClass = 'custom-template'
 
 			$('.pl-region').each( function(regionIndex, o) {
 
 				var region = $(this).data('region')
-				, 	areaConfig = []
+				,	regionSet = that.getRegionMapping( $(this) )
+				, 	regionConfig = {}
 
-				$(this).find('.pl-area').each( function(areaIndex, o2) {
-
-					var area = $(this)
-					,	areaContent	= []
-					, 	areaSet = {}
-
-					$(this).find('.pl-section.level1').each( function(sectionIndex, o3) {
-
-						var section = $(this)
-						,	sectionsTemplate = section.data('template') || ''
-
-						if( sectionsTemplate != "" ){
-
-							$.merge( areaContent, sectionsTemplate )
-
-						} else {
-							set = that.sectionConfig( section )
-							areaContent.push( set )
-
-						}
-
-					})
-
-					areaSet = {
-							name: area.data('name') || ''
-						,	class: area.data('class') || ''
-						,	id: area.attr('id') || ''
-						, 	object: area.data('object') || ''
-						, 	sid: area.data('sid') || ''
-						,  	clone: area.data('clone') || 0
-						,	content: areaContent
-					}
-
-					areaConfig.push( areaSet )
-
-				})
-
-				map[region] = areaConfig
-
+				if( $(this).hasClass( templateClass ) && plIsset( $(this).data( templateClass ) ) ) {
+					regionConfig.ctemplate = $(this).data( templateClass )
+				} 
+			
+				regionConfig.map = regionSet.map
+				
+				map[region] = regionConfig
 			})
 
-		
+			
 			return map
 
 		}
+		
+		, getRegionMapping: function( region ){
+			var that = this
+			,	areasList = []
+			,	settingConfig = []
+			,	scope = ( region.data('region') == 'template') ? 'local' : 'global'
+			,	templateClass = 'custom-section'
+			
+			region.find('.pl-area').each( function(areaIndex, o2) {
+				
+				var areaSet = that.getAreaMapping( $(this) )
+			
+				if( $(this).hasClass( templateClass )  && plIsset( $(this).data( templateClass ) ) ){
+					
+					areaSet.map.ctemplate = $(this).data( templateClass )
+					
+				} 
+					
+				areasList.push( areaSet.map )
+				
+				settingConfig.push( areaSet.settings )
+				
 
-		, sectionConfig: function( section ){
+			})
+			
+				
+			var	set = {
+					map: areasList
+					, settings: settingConfig
+				}
+				
+			return set
+		}
+		
+		, getAreaMapping: function( area ){
+			
+			var that = this
+			,	areaContent	= []
+			,	settings = {}
+			,	scope = ( area.parents(".template-region-wrap").length == 1 ) ? 'local' : 'global'
+			,	UID = area.data('clone')
+
+			area.find('.pl-section.level1').each( function(sectionIndex, o3) {
+
+				var section = $(this)
+				,	sectionsTemplate = section.data('template') || ''
+
+				if( sectionsTemplate != "" ){
+
+					$.merge( areaContent, sectionsTemplate )
+
+				} else {
+					sectionSet = that.sectionConfig( section, scope )
+					
+					settings = $.extend( {}, settings, sectionSet.settings )
+					
+					areaContent.push( sectionSet.map )
+
+				}
+
+			})
+
+			if( plIsset( $.pl.data[ scope ][ UID ] ) )
+				settings[ UID ] = $.pl.data[ scope ][ UID ]
+
+			var UID = area.data('clone')
+			,	map = {
+						name: area.data('name') || ''
+					,	class: area.data('class') || ''
+					,	id: area.attr('id') || ''
+					, 	object: area.data('object') || ''
+					, 	sid: area.data('sid') || ''
+					,  	clone: UID || 0
+					,	content: areaContent
+				}
+			,	set = {
+					map: map
+					, settings: settings
+				}
+			
+			return set
+			
+		}
+
+		, sectionConfig: function( section, scope ){
 
 			var that = this
-			,	set = {}
+			,	map = {}
+			,	settings = {}
+			, 	UID = section.data('clone')
 
-			set.object 	= section.data('object')
-			set.clone 	= section.data('clone')
-			set.sid 	= section.data('sid')
+			map.object 	= section.data('object')
+			map.clone 	= UID
+			map.sid 	= section.data('sid')
 
-			set.span 	= that.getColumnSize( section )[ 4 ]
-			set.offset 	= $.plMapping.getOffsetSize( section )[ 3 ]
-			set.newrow 	= (section.hasClass('force-start-row')) ? 'true' : 'false'
-			set.content = []
+			map.span 	= that.getColumnSize( section )[ 4 ]
+			map.offset 	= $.plMapping.getOffsetSize( section )[ 3 ]
+			map.newrow 	= (section.hasClass('force-start-row')) ? 'true' : 'false'
+			map.content = []
 
 
 			// Recursion
 			section.find( '.pl-section.level2' ).each( function() {
 
-				set.content.push( that.sectionConfig( $(this) ) )
+				var recur = that.sectionConfig( $(this), scope )
+				
+				settings = $.extend( {}, settings, recur.settings )
+				
+				map.content.push( recur.map )
 
 			})
+
+			if( plIsset( $.pl.data[ scope ][ UID ] ) )
+				settings[ UID ] = $.pl.data[ scope ][ UID ]
+			
+			var set = {
+				map: map
+				, settings: settings
+			}
 
 			return set
 
@@ -114,7 +181,7 @@
 		, getColumnSize: function(column, defaultValue) {
 
 			if (column.hasClass("span12") || defaultValue) //full-width
-				return new Array("span12", "span2", "span11", "12/12", 12)
+				return new Array("span12", "span1", "span11", "12/12", 12)
 
 		    else if (column.hasClass("span11")) //five-sixth
 		        return new Array("span11", "span12", "span10", "11/12", 11)
@@ -144,8 +211,10 @@
 				return new Array("span3", "span4", "span2", "3/12", 3)
 
 		    else if (column.hasClass("span2")) // one-sixth
-		        return new Array("span2", "span3", "span12", "2/12", 2)
+		        return new Array("span2", "span3", "span1", "2/12", 2)
 
+			else if (column.hasClass("span1")) // one-twelth?
+			        return new Array("span1", "span2", "span12", "1/12", 1)
 			else
 				return false
 

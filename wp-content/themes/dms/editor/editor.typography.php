@@ -10,9 +10,10 @@ class EditorTypography{
 
 		$this->foundry = $foundry;
 
- 		add_filter('pl_settings_array', array(&$this, 'add_settings'));
-		add_filter('pless_vars', array(&$this, 'add_less_vars'));
-		add_action('wp_print_styles', array(&$this, 'add_google_imports'));
+ 		add_filter('pl_settings_array', array( $this, 'add_settings'));
+		add_filter('pless_vars', array( $this, 'add_less_vars'));
+		add_action('wp_print_styles', array( $this, 'add_google_imports'));
+		
 	}
 
 	function add_less_vars( $vars ){
@@ -34,6 +35,8 @@ class EditorTypography{
 		return $vars;
 	}
 
+	
+	
 	function add_google_imports(){
 
 		$gcss = $this->foundry->google_import( $this->import_fonts, 'link' );
@@ -47,12 +50,14 @@ class EditorTypography{
 			
 		if($gcss != '' )
 			printf( "<link id='master_font_import' rel='stylesheet' type='text/css' href='//fonts.googleapis.com/css?family=%s'>\n", $gcss );
+			
+		
 	}
 
 	function add_settings( $settings ){
 
 		$settings['typography'] = array(
-				'name' 	=> 'Typography',
+				'name' 	=> __( 'Typography', 'pagelines' ),
 				'icon'	=> 'icon-font',
 				'pos'	=> 3,
 				'opts' 	=> $this->options()
@@ -67,13 +72,14 @@ class EditorTypography{
 			
 			array(
 				'type' 	=> 	'multi',
+				'col'	=> 1,
 				'title' => __( 'Primary Text', 'pagelines' ),
 				'help' 		=> __( 'The base font size is a reference that will be scaled for text used throughout the site. ', 'pagelines' ),
 				'opts'	=> array(
 					array(
 						'key'			=> 'font_primary',
 						'type' 			=> 'type',
-						'label' 		=> 'Select Font Face',
+						'label' 		=> __( 'Select Font Face', 'pagelines' ),
 						'default'		=> 'open_sans',
 						
 					),
@@ -90,7 +96,7 @@ class EditorTypography{
 						'key'			=> 'font_primary_weight',
 						'type' 			=> 'select',
 						'classes'		=> 'font-weight',
-						'label'			=> 'Font Weight',
+						'label'			=> __( 'Font Weight', 'pagelines' ),
 						'opts'			=> array(
 							'300'	=> array('name' => 'Light (300)*'),
 							'400'	=> array('name' => 'Normal (400)'),
@@ -98,7 +104,7 @@ class EditorTypography{
 							'800'	=> array('name' => 'Bold (800)')
 						),
 						'default' 		=> '300',
-						'help'			=> __( '*These weights don\'t alwaye have an effect.', 'pagelines' ),
+						'help'			=> __( '*These weights don\'t always have an effect.', 'pagelines' ),
 					),
 					
 				),
@@ -106,14 +112,15 @@ class EditorTypography{
 			),
 			array(
 				'type' 	=> 	'multi',
-				'title' 		=> __( 'Text Headers <small>(h1-h6)</small>', 'pagelines' ),
+				'col'	=> 2,
+				'title' => __( 'Text Headers <small>(h1-h6)</small>', 'pagelines' ),
 				'help' 		=> __( 'Configure the typography for the text headers across your site.', 'pagelines' ),
 				'opts'	=> array(
 					array(
 						'key'			=> 'font_headers',
 						'type' 			=> 'type',
-						'label' 		=> 'Header Font',
-						'default'		=> 'source_sans_pro',
+						'label' 		=> __( 'Header Font', 'pagelines' ),
+						'default'		=> 'open_sans',
 						
 
 					),
@@ -130,7 +137,7 @@ class EditorTypography{
 						'key'			=> 'font_headers_weight',
 						'type' 			=> 'select',
 						'classes'			=> 'font-weight',
-						'label'			=> 'Font Weight',
+						'label'			=> __( 'Font Weight', 'pagelines' ),
 						'opts'			=> array(
 							'300'	=> array('name' => 'Light (300)'),
 							'400'	=> array('name' => 'Normal (400)'),
@@ -144,13 +151,14 @@ class EditorTypography{
 			),
 			array(
 				'type' 	=> 	'multi',
+				'col'	=> 3,
 				'title' => __( 'Extra Fonts', 'pagelines' ),
 				'help' 		=> __( '<p>Add additional <a href="http://www.google.com/fonts" target="_blank">Google fonts</a> to your sites using this option.</p><p>For example, to add "Yellowtail" and "Lato Bold" you would enter: <strong>Yellowtail|Lato:700</strong>.</p><p> You can then reference these fonts in custom CSS.</p>', 'pagelines' ),
 				'opts'	=> array(
 					array(
 						'key'			=> 'font_extra',
 						'type' 			=> 'text',
-						'label' 		=> 'Extra Google Fonts',
+						'label' 		=> __( 'Extra Google Fonts', 'pagelines' ),
 						
 					),
 					

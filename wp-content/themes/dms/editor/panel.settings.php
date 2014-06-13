@@ -6,26 +6,25 @@ class PageLinesSettingsPanel{
 
 	function __construct(){
 
-		add_filter('pl_toolbar_config', array(&$this, 'toolbar'));
-		add_action('pagelines_editor_scripts', array(&$this, 'scripts'));
+		add_filter('pl_toolbar_config', array( $this, 'toolbar'));
+		add_action('pagelines_editor_scripts', array( $this, 'scripts'));
 
 		$this->url = PL_PARENT_URL . '/editor';
 	}
 
 	function scripts(){
 		// Colorpicker
-		wp_enqueue_script( 'css3colorpicker', $this->url . '/js/colorpicker/colorpicker.js', array('jquery'), '1.3.1', true );
+		wp_enqueue_script( 'css3colorpicker', PL_JS . '/colorpicker/colorpicker.js', array('jquery'), pl_get_cache_key(), true );
 
 		// Image Uploader
-		wp_enqueue_script( 'fineupload', $this->url . '/js/fineuploader/jquery.fineuploader-3.2.min.js', array('jquery'), PL_CORE_VERSION, true );
+		wp_enqueue_script( 'fineupload', PL_JS . '/fineuploader/jquery.fineuploader-3.2.min.js', array('jquery'), pl_get_cache_key(), true );
 
-		wp_enqueue_script( 'pl-js-settings', $this->url . '/js/pl.settings.js', array( 'jquery' ), PL_CORE_VERSION, true );
 	}
 
 	function toolbar( $toolbar ){
 
 		$toolbar[ 'settings' ] = array(
-			'name'	=> __( 'Global Options', 'pagelines' ),
+			'name'	=> __( 'Site Settings', 'pagelines' ),
 			'icon'	=> 'icon-globe',
 			'pos'	=> 35,
 			'panel'	=> $this->get_settings_tabs()
@@ -75,11 +74,11 @@ class PageLinesSettingsPanel{
 
 		$basic_scope = (is_page() || $plpg->is_special()) ? 'local' : 'type';
 		
-		$array = array('global', 'type', 'local'); 
+		$array = array('global', 'type', 'local', 'template', 'section'); 
 		
 		foreach($array as $scope){
 			$tabs[ $scope ] = array( 
-				'name'	=> sprintf( '%s <span class="label">%s</span>', __( 'Section Options', 'pagelines' ), $scope ), 
+				'name'	=> sprintf( '%s <span class="label">%s</span>', __( 'Options', 'pagelines' ), $scope ), 
 				'scope' => $scope
 			);
 		}

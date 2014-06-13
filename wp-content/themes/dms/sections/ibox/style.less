@@ -2,10 +2,10 @@
 	text-align: center;
 	.ibox-text h4{
 		margin-bottom: 5px;
+		line-height: 1.4em;
 	}
 	.ibox-desc{
 
-		margin-bottom: 1em;
 		.ibox-link{
 			display: block;
 			margin-top: .5em;
@@ -18,53 +18,80 @@
 			}
 		}
 	}
-
-
+	
+	&:hover .ibox-icon-border{
+		//.scale( 1.1 );
+		//.translate3d(0, 5px, 0);
+		
+	}
 
 	.ibox-media{
 		text-align: center;
-		
+		a{color: inherit;}
+		.pl-counter{
+			font-size: 80px;
+			font-weight: 600;
+			letter-spacing: -1px;
+			line-height: 1em;
+		}
 		.ibox-icon-border{
-			margin-bottom: @baseLineHeight/2;
+			margin-bottom: 12px;
 			display: inline-block;
 			text-align: center;
-			overflow: hidden;
-			.border-radius(500px);
-			img{
-				.border-radius(500px);
+			.transition(all 0.2s ease-in-out);
+		
+			border-radius: 500px;
+			position: relative;
+			.invert-icon{
+				position: absolute; 
+				width: 100%; 
+				height: 100%;
+				border-radius: 500px;
+				z-index: 0;
+				left: 0;
+				top: 0;
+				opacity: 0;
+				.transition(all 0.2s ease-in-out);
 			}
+			.iii{
+				position: relative; 
+				z-index: 10;
+			}
+			
 			&.media-type-image {
-				.background-size(cover);
+				overflow: hidden;
+				
+				img{
+					border-radius: 500px;
+				}
+				background-size: cover;
 				display: block;
 				margin-right: auto;
 				margin-left: auto;
 			}
 			&.media-type-icon {
-				.border-radius(500px);
-				width: 90px;
-				height: 90px;
-				line-height: 106px;
-
-				border: 1px solid transparent;
-				.transition(all 0.2s ease-in-out);
+		
 				i{
-					font-size: 40px;
-					
+					font-size: 80px;
 					display: inline-block;
 				}
-				&:hover{
-					background: @textColor;
-					i{
-						color:@baseColor;
-					}
-				}
+				
 			}
 		}
 		
 	}
+	
+		
 	&.top-aligned{
+		.ibox-desc{
+			max-width: 300px;
+			margin: 0 auto;
+		}
 		.ibox-media{
-			max-width: 60%;
+			max-width: 70%;
+			&.wrap-count{
+				max-width: 100%;
+			}
 			margin-right: auto;
 			margin-left: auto;
 			.media-type-image {
@@ -72,18 +99,28 @@
 				height: 0; 
 				padding: 50% 0;
 			}
+			
 		}
+		
 	}
 	&.left-aligned{
 		text-align: left;
 		.ibox-icon-border{
+			.pl-counter{
+				font-size: 25px;
+				line-height: 1em;
+			}
+			&.media-type-count{
+				min-width: 100px;
+				text-align: right;
+			}
 			&.media-type-icon {
-
-				width: 70px;
-				height: 70px;
-				line-height: 85px;
+				background: transparent;
+				width: 40px;
+				height: 40px;
+				line-height: 40px;
 				i{
-					font-size: 35px;
+					font-size: 30px;
 				}
 
 			}

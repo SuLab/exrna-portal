@@ -123,7 +123,7 @@ input[type="color"],
 .uneditable-input {
   background-color: @inputBackground;
   border: 1px solid @inputBorder;
-  .box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
+  //.box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
   .transition(~"border linear .2s, box-shadow linear .2s");
 
   // Focus state
@@ -166,7 +166,7 @@ input[type="file"] {
 
 // Make select elements obey height by applying a border
 select {
-  width: 220px; // default input width + 10px of padding that doesn't get applied
+
   border: 1px solid @inputBorder;
   background-color: @inputBackground; // Chrome on Linux and Mobile Safari need background-color
 }
@@ -661,40 +661,51 @@ legend + .control-group {
 /* Placeholder */
 .placeholder();
 
+.pl-searcher{
+	cursor: pointer;
+	input::-webkit-input-placeholder { text-transform: uppercase; letter-spacing: 1px; color: rgba(0,0,0,.2); }
+	input::-moz-placeholder { text-transform: uppercase; letter-spacing: 1px; color: rgba(0,0,0,.2); }
+}
 /* @ Search Form */
 .searchform {
 	position: relative;
-	width: 170px;
-	margin: 3px 5px 3px 0;
+//	width: 190px;
+	margin: 3px 0 3px 0;
 	display: inline-block;
+	input::-webkit-input-placeholder { text-transform: uppercase; letter-spacing: 1px; }
+	input::-moz-placeholder { text-transform: uppercase; }
+	.btn-search{
+		position: absolute;
+		z-index: 10;
+		left: 5px;
+		top: 1px;
+		color: #000;
+		&:hover{
+			cursor: pointer;
+			opacity: .6;
+		}
+	}
 	.searchfield{
-		width: 23px;
+		.border-radius( 3px);
 		height: 23px;
 		padding: 5px 5px 5px 12px;
 		margin: 0;
-		float:right;
-		background: @baseContrast url(@{plRoot}/images/search-btn@2x.png) no-repeat 4px 50%;
-		background-size: 14px 14px;
-		.border-radius(13px);
+		cursor: default;
+		
 		font-family: @buttonFontFamily;
 		font-size: 11px;
 		line-height: 1.2em;
-		border: 1px solid darken(@baseContrast, 6);
-		border-right: 1px solid darken(@baseContrast, 9);
-		border-bottom: 1px solid darken(@baseContrast, 9);
 		.transition(all .7s);
-		text-indent: 30px;
-		box-shadow: inset 1px 1px 0 rgba(255,255,255,.2);
+		text-indent: 15px;
+		box-sizing: border-box;
+		width: 100%;
 		&:focus{
-			.box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
-			border: 1px solid darken(@baseContrast, 6);
-			border-top: 1px solid darken(@baseContrast, 12);
-			border-left: 1px solid darken(@baseContrast, 12);
-			text-indent: 0;
-			padding-left: 28px;
+			cursor: text;
+			box-shadow: none;
+			
 			background-color:#fff;
 			color:#000;
-			width: 150px;
+			
 		}
 	}
 
@@ -722,32 +733,26 @@ input[type="button"],
 .button,
 input[type="reset"],
 .reset{
-	padding: 4px 9px;
+	vertical-align: top;
+	padding: 5px 9px;
 	cursor: pointer;
 	text-decoration: none;
 	.box-sizing(content-box);
 	.border-radius(2px);
-	color:#000000;
-	text-shadow:0 1px 0 rgba(255,255,255,0.5);
-	border:1px solid #CCC;
-	#gradient > .vertical(#ffffff, #EEE);
-	box-shadow: inset 1px 1px 0px #FFF;
-	font-family: @buttonFontFamily;
-
+	color: @pl-text;;
+	border:1px solid darken(@baseContrastSlight, 20%);
+	background:  @baseContrastSlight;
+	
+	font-family: @defaultFont;
 	&:hover{
-		color:#000000;
-		text-decoration: none;
-		text-shadow:0 1px 0 rgba(255,255,255,0.5);
-		border:1px solid #aeaeae;
-		#gradient > .vertical(#f3f3f3, #cfcfcf);
+		opacity: .8;
 	}
-	&:active{
-		color:#000000;
-		text-shadow:0 1px 0 rgba(255,255,255,0.5);
-		border:1px solid #8e8e8e;
-		#gradient > .vertical(#afafaf, #d3d3d3);
-		box-shadow: none;
+	&:active {
+		box-shadow: inset 0 2px 2px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
+		background-color: darken(@baseContrast, 5%);
+		outline: 0;
 	}
+	
 }
 
 input[type="image"]{

@@ -22,16 +22,6 @@ class PageLinesSecondNav extends PageLinesSection {
 	*/
 	function section_persistent(){
 
-			$metatab_array = array(
-					'_second_nav_menu' => array(
-						'type' 			=> 'select_menu',
-						'title' 		=> __( 'Select Secondary Nav Menu', 'pagelines' ),
-						'shortexp' 		=> __( 'Select the menu you would like to use for your secondary nav.', 'pagelines' ),
-						'inputlabel'	=> __( 'Select Secondary Navigation Menu', 'pagelines' )
-					)
-				);
-
-			add_global_meta_options( $metatab_array );
 
 	}
 
@@ -40,7 +30,7 @@ class PageLinesSecondNav extends PageLinesSection {
 	*/
    	function section_template() {
 
-		$second_menu = (ploption('_second_nav_menu', $this->oset)) ? ploption('_second_nav_menu', $this->oset) : null;
+		$second_menu = ( pl_setting('_second_nav_menu' ) ) ? pl_setting( '_second_nav_menu' ) : null;
 
 		if(isset($second_menu)){
 
@@ -55,7 +45,7 @@ class PageLinesSecondNav extends PageLinesSection {
 				)
 			);
 
-		}elseif(ploption('nav_use_hierarchy', $this->oset))
+		}elseif( pl_setting( 'nav_use_hierarchy' ) )
 			pagelines_page_subnav();
 	}
 }

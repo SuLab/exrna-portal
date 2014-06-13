@@ -1,13 +1,18 @@
 <?php
 
 
-define('PL_SETTINGS', 'pl-settings');
-function pl_settings_default(){
-	return array( 'draft' => array(), 'live' => array() );
-}
+/*
+ * The main settings slug -- used in global and meta options
+ */ 
+//define('PL_SETTINGS', 'pl-settings');
+
+
 
 function pl_setting( $key, $args = array() ){
 	global $plopts;
+
+	if( has_filter( "pl_setting-$key" ) )
+		return apply_filters( "pl_setting-$key", $val );
 
 	if(!is_object($plopts)){
 		$plpg = new PageLinesPage;
@@ -15,13 +20,16 @@ function pl_setting( $key, $args = array() ){
 		$plopts = new PageLinesOpts;
 	}
 
-	$setting = $plopts->get_setting( $key, $args );
+	$setting = $plopts->get_global_setting( $key, $args );
 
-	return do_shortcode( $setting );
+	if( is_array( $setting) )
+		return $setting; 
+	else 
+		return do_shortcode( $setting );
 
 }
 
-function pl_setting_update( $args_or_key, $value = false, $mode = 'draft', $scope = 'global' ){
+function pl_setting_update( $args_or_key, $value = false, $scope = 'global', $mode = 'draft' ){
 	$settings_handler = new PageLinesSettings;
 
 	if( is_array($args_or_key) ){
@@ -41,23 +49,7 @@ function pl_setting_update( $args_or_key, $value = false, $mode = 'draft', $scop
 
 }
 
-function pl_global( $key ){
-	
-	$settings = pl_opt( PL_SETTINGS, pl_settings_default() );
-	
- 	return (isset($settings[pl_get_mode()][$key])) ? $settings[pl_get_mode()][$key] : false;
-	
-}
 
-function pl_global_update( $key, $value ){
-	
-	$settings = pl_opt( PL_SETTINGS, pl_settings_default() );
-	
-	$settings[ pl_get_mode() ][$key] = $value; 
-	
-	pl_opt_update( PL_SETTINGS, $settings);
-	
-}
 
 function pl_local( $metaID, $key ){
 	
@@ -67,11 +59,15 @@ function pl_local( $metaID, $key ){
 	
 }
 
-function pl_local_update( $metaID, $key, $value ){
+function pl_local_update( $metaID, $key, $value, $mode = 'draft' ){
 	
 	$settings = pl_meta($metaID, PL_SETTINGS, pl_settings_default() );
 	
-	$settings[ pl_get_mode() ][$key] = $value; 
+	if( $mode == 'both'){
+		$settings[ 'draft' ][$key] = $value; 
+		$settings[ 'live' ][$key] = $value; 
+	} else 
+		$settings[ $mode ][$key] = $value; 
 	
 	pl_meta_update($metaID, PL_SETTINGS, $settings);
 		
@@ -178,17 +174,15 @@ class PageLinesData {
  *  PageLines Settings Interface
  */
 class PageLinesSettings extends PageLinesData {
-
-	var $pl_settings = PL_SETTINGS;
-	var $default = array( 'draft' => array(), 'live' => array() );
+	
 
 	function global_settings(){
 
-		$set = $this->opt( PL_SETTINGS );
+		$set = pl_get_global_settings();
 
 		// Have to move this to an action because ploption calls pl_setting before all settings are loaded
 		if( !$set || empty($set['draft']) || empty($set['live']) )
-			add_action('pl_after_settings_load', array(&$this, 'set_default_settings'));
+			add_action('pl_after_settings_load', 'set_default_settings');
 
 		return $this->get_by_mode($set);
 
@@ -204,96 +198,39 @@ class PageLinesSettings extends PageLinesData {
 			$fileOpts->import( $fileOpts->file_exists() , $opts);
 	}
 
-
-	/*
-	 *  Resets global options to an empty set
-	 */
-	function reset_global(){
-
-		$set = $this->opt( PL_SETTINGS, $this->default );
+	function import_from_child() {
+		$fileOpts = new EditorFileOpts;
+		$fileOpts->import( trailingslashit( get_stylesheet_directory() ) . 'pl-config.json', array() );
 		
-		$set['draft'] = $this->default['draft'];
-		
-		$this->opt_update( PL_SETTINGS, $set );
-		
-		$this->set_default_settings();
-	
-	
-		return $set;
+		// only do this once!! The user will still have the option to import again under import/export menus.
+		set_theme_mod( 'import_from_child', true );
 	}
+
+	function import_from_child_cancelled() {
+		set_theme_mod( 'import_from_child', true );
+	}
+
 	/*
 	 *  Resets all cached data including any detected cache plugins.
 	 */
 	function reset_caches() {
-		do_action( 'extend_flush' );
-		pl_flush_draft_caches( false );
-		$cache_key = substr(uniqid(), -6);
-		set_theme_mod( 'pl_cache_key', $cache_key );
+		global $dms_cache;
+		
+		// clear draft css
+		$dms_cache->purge('draft');
+		//clear sections cache
+		$dms_cache->purge('sections');
+		// clear live css
+		$dms_cache->purge('live_css');
+
+		// reset css/js cachekey
+		pagelines_reset_pl_cache_key();
 	}
 
 	/*
 	 *  Resets local options to an empty set based on ID (works for type ID)
 	 */
-	function reset_local( $metaID ){
-
-		$set = $this->meta( $metaID, PL_SETTINGS, $this->default );
-
-		$set['draft'] = $this->default['draft'];
-
-		$this->meta_update( $metaID, PL_SETTINGS, $set );
-
-	}
-
-	/*
-	 *  Sets default values for global settings
-	 */
-	function set_default_settings(){
-
-		$set = $this->opt( $this->pl_settings );
-
-		$settings_defaults = $this->get_default_settings();
-
-		if( !$set )
-			$set = $this->default;
-
-		if(empty($set['draft']))
-			$set['draft']['settings'] = $settings_defaults;
-
-		if(empty($set['live']))
-			$set['live']['settings'] = $settings_defaults;
-
-		$this->opt_update( $this->pl_settings, $set);
-
-	}
-
-	/*
-	 *  Grabs global settings engine array, and default values (set in array)
-	 */
-	function get_default_settings(){
-		$settings_object = new EditorSettings;
-
-		$settings = $settings_object->get_set();
-
-
-		$defaults = array();
-		foreach($settings as $tab => $tab_settings){
-			foreach($tab_settings['opts'] as $index => $opt){
-				if($opt['type'] == 'multi'){
-					foreach($opt['opts'] as $subi => $sub_opt){
-						if(isset($sub_opt['default'])){
-							$defaults[ $sub_opt['key'] ] = $sub_opt['default'];
-						}
-					}
-				}
-				if(isset($opt['default'])){
-					$defaults[ $opt['key'] ] = $opt['default'];
-				}
-			}
-		}
-
-		return $defaults;
-	}
-
+	
 
 
 	/*
@@ -305,7 +242,8 @@ class PageLinesSettings extends PageLinesData {
 			'key'	=> '',
 			'val'	=> '',
 			'mode'	=> 'draft',
-			'scope'	=> 'global'
+			'scope'	=> 'global', 
+			'uid'	=> 'settings'
 		);
 
 		$a = wp_parse_args( $args, $defaults );
@@ -314,24 +252,36 @@ class PageLinesSettings extends PageLinesData {
 		$mode = $a['mode'];
 		$key = $a['key'];
 		$val = $a['val'];
+		$uid = $a['uid'];
 
-		// Allow for an array of key/value pairs
-		$set = ( !is_array($val) && $key != '' ) ? array( $key => $val ) : $val;
+		$parse_value = array( $key => $val );
 
 		if( $scope == 'global'){
 
-			$settings = $this->opt( PL_SETTINGS, pl_settings_default() );
+			$settings = pl_get_global_settings();
 			
-			$old_settings = (isset($settings[ $mode ]['settings'])) ? $settings[ $mode ]['settings'] : array();
-
+			$old_settings = (isset($settings[ $mode ][ $uid ])) ? $settings[ $mode ][ $uid ] : array();
 	
-			$settings[ $mode ]['settings'] = wp_parse_args($set, $old_settings);
+			$settings[ $mode ][ $uid ] = wp_parse_args(  $parse_value, $old_settings);
 
-			pl_opt_update( PL_SETTINGS, $settings );
+			pl_update_global_settings( $settings );
 			
-			echo $set; 
+		} elseif ( $scope == 'local' || $scope == 'type' ){
+			global $plpg;
+			
+			$theID = ($scope == 'local') ? $plpg->id : $plpg->typeid;
+			
+			$settings = $this->meta( $theID, PL_SETTINGS, pl_settings_default() );
+			
+			$old_settings = (isset($settings[ $mode ][ $uid ])) ? $settings[ $mode ][ $uid ] : array();
+		
+			$settings[ $mode ][ $uid ] = wp_parse_args(  $parse_value, $old_settings);
 
+			
+			pl_meta_update( $theID, PL_SETTINGS, $settings );
 		}
+	
+
 	}
 
 
@@ -417,36 +367,60 @@ class PageLinesSettings extends PageLinesData {
  */
 class PageLinesOpts extends PageLinesSettings {
 
-	function __construct( ){
+	function __construct( $mode = 'detect' ){
 
 		global $plpg; 
 		$this->page = (isset($plpg)) ? $plpg : new PageLinesPage;
 	
+		$this->mode = $mode; 
 
 		$this->local = $this->local_settings();
 		$this->type = $this->type_settings();
 		$this->global = $this->global_settings();
 		$this->regions = (isset($this->global['regions'])) ? $this->global['regions'] : array();
+		
+		// Get settings from MAP
+		
 		$this->set = $this->page_settings();
+		
+		/*-- Going to load this after the map --*/
+		$this->page_settings = false;
 
 	}
 	
+	/*
+	 * This must come after map is set up, 
+	 * this way we can add/remove/substitute settings based on map config
+	 */ 
+	function load_page_settings(){
+		
+		$this->page_settings = apply_filters( 'pl_load_page_settings', $this->page_settings() );
+		
+	}
+	
+	/*
+	 * Gets settings for a section based on its unique ID
+	 * Used heavily in the handler as it assigns each set to meta for use with $this->opt() in sections
+	 */
 	function get_set( $uniqueID ){
 		
-		if( isset($this->set[ $uniqueID ]) )
-			return $this->set[ $uniqueID ]; 
+		$page_settings = ( ! $this->page_settings ) ?  $this->load_page_settings() : $this->page_settings;
+		
+		if( isset($page_settings[ $uniqueID ]) )
+			return $page_settings[ $uniqueID ]; 
 		else 	
 			return array();
 		
 	}
 
 
+	/* 
+	 * Use a cascade to get page's settings
+	 */ 
 	function page_settings(){
 
 		$set = $this->settings_cascade( $this->local, $this->settings_cascade($this->type, $this->global));
-		
-		//$set = wp_parse_args( $this->local, $this->global );
-		 
+			
 		return $set;
 
 	}
@@ -471,24 +445,51 @@ class PageLinesOpts extends PageLinesSettings {
 		return $this->get_by_mode($set);
 
 	}
+	
+	function get_global_setting( $key, $args = array() ){
+		$settings = $this->global; 
+		
+		$not_set = (isset($args['default'])) ? $args['default'] : false;
+		
+		$index = ( isset( $args['clone_id']) ) ? $args['clone_id'] : 'settings';
+
+		return ( isset( $settings[ $index ][ $key ] ) ) ? $settings[ $index ][ $key ] : $not_set;
+		
+	}
 
 	function get_setting( $key, $args = array() ){
 
+		$scope = (isset($args['scope'])) ? $args['scope'] : 'cascade';
+		
+		if( $scope == 'local' ){
+		
+			$settings = $this->local; 
+		
+		} elseif( $scope == 'type' ){
+		
+			$settings = $this->type; 
+		
+		} elseif( $scope == 'global' ){
+		
+			$settings = $this->global; 
+		
+		}else 
+			$settings = $this->set; 
+		
 		$not_set = (isset($args['default'])) ? $args['default'] : false;
-
-
+		
 		$index = ( isset( $args['clone_id']) ) ? $args['clone_id'] : 'settings';
 
-		return ( isset( $this->set[ $index ][ $key ] ) ) ? $this->set[ $index ][ $key ] : $not_set;
+		return ( isset( $settings[ $index ][ $key ] ) ) ? $settings[ $index ][ $key ] : $not_set;
 
 	}
 
 
 	function get_by_mode( $set ){
+		
+		$mode = ( $this->mode == 'detect' ) ? pl_get_mode() : $this->mode; 
 
-		$set = wp_parse_args( $set, $this->default );
-
-		$mode = (pl_draft_mode()) ? 'draft' : 'live';
+		$set = wp_parse_args( $set, pl_settings_default() );
 
 		return $set[ $mode ];
 	}
@@ -580,18 +581,6 @@ function pl_meta_setting( $key, $metaID ){
 
 }
 
-function pl_global_setting( $key ){
-
-	global $pldrft;
-
-	$mode = $pldrft->mode;
-
-	$set = pl_opt( PL_SETTINGS );
-
-	$settings = ( isset($set[ $mode ]) ) ? $set[ $mode ] : array();
-
-	return ( isset( $settings[ $key ] ) ) ? $settings[ $key ] : false;
-}
 
 /*
  *
@@ -600,19 +589,17 @@ function pl_global_setting( $key ){
  */
 function pl_settings( $mode = 'draft', $metaID = false ){
 
-	$default = array( 'draft' => array(), 'live' => array() );
-
 	if( $metaID ){
 
-		$set = pl_meta( $metaID, PL_SETTINGS, $default );
+		$set = pl_meta( $metaID, PL_SETTINGS, pl_settings_default() );
 
 	} else {
 
-		$set = pl_opt(PL_SETTINGS, $default);
+		$set = pl_get_global_settings();
 
 	}
 
-	$settings = ( isset($set[ $mode ]) ) ? $set[ $mode ] : $default;
+	$settings = ( isset($set[ $mode ]) ) ? $set[ $mode ] : pl_settings_default();
 
 	return $settings;
 
@@ -620,39 +607,60 @@ function pl_settings( $mode = 'draft', $metaID = false ){
 
 function pl_settings_update( $new_settings, $mode = 'draft', $metaID = false ){
 
-	$default = array( 'draft' => array(), 'live' => array() );
+	do_action( 'pl_settings_update_action' );
 
 
-	if( $metaID )
-		$settings = pl_meta( $metaID, PL_SETTINGS );
+	if ( $metaID )
+		$settings = pl_get_meta_settings( $metaID );
 	else
-		$settings = pl_opt(PL_SETTINGS);
+		$settings = pl_get_global_settings();
 
 	// in case of empty, use live/draft default
-	$settings = wp_parse_args($settings, pl_settings_default());
+	$settings = wp_parse_args( $settings, pl_settings_default() );
 
-	$settings[ $mode ] = $new_settings;
-//	$settings[ $mode ] = wp_parse_args( $new_settings, $settings );
+	// forgot why we stripslashes, if you remember, comment!
+	$settings[ $mode ] = stripslashes_deep( $new_settings );
 
 	// lets do some clean up
 	// Gonna clear out all the empty values and arrays
 	// Also, needs to be array or... deletehammer
-	foreach($settings[$mode] as $uniqueID => $the_settings){
-		
-		if(is_array($the_settings)){
-			foreach($the_settings as $setting_key => $val){
-				if( $val === '' && $val !== 0 )
-					unset( $settings[ $mode ][ $uniqueID ][ $setting_key ] );
-			}
-		}
-		
-		
-	}
+	foreach ( $settings[ $mode ] as $uniqueID => &$the_settings )
+	{	
+		if ( !is_array( $the_settings ) )
+			continue;
 
-	if( $metaID )
+		foreach ( $the_settings as $setting_key => &$val )
+		{
+			if ( $val === '' ) {
+				unset( $the_settings[ $setting_key ] );
+			}
+			
+			// if a numeric index was set (bug)
+			if ( is_numeric( $setting_key ) ) {
+				unset( $the_settings[ $setting_key ] );
+			}
+		
+			// accordion prevent null values from being saved and bloating things
+			if ( is_array( $val ) )
+			{
+				foreach ( $val as $val_key => &$val_val )
+				{
+					if ( $val_val == 'false' || empty( $val_val ) ) {
+						unset( $val[ $val_key ] );
+					}
+				}
+				unset( $val_val );
+			}
+				
+		}
+		unset( $val );
+	}
+	unset( $the_settings );
+
+	if ( $metaID )
 		pl_meta_update( $metaID, PL_SETTINGS, $settings );
 	else
-		pl_opt_update( PL_SETTINGS, $settings );
+		pl_update_global_settings( $settings );
 
 	return $settings;
 }
@@ -660,83 +668,19 @@ function pl_settings_update( $new_settings, $mode = 'draft', $metaID = false ){
 function pl_revert_settings( $metaID = false ){
 
 	if( $metaID ){
-		$set = pl_meta( $metaID, PL_SETTINGS, pl_settings_default() );
+		$settings = pl_meta( $metaID, PL_SETTINGS, pl_settings_default() );
 
 	} else {
-		$set = pl_opt(PL_SETTINGS, pl_settings_default());
+		$settings = pl_get_global_settings();
 	}
 
-	$set['draft'] = $set['live'];
+	$settings['draft'] = $settings['live'];
 
 	if( $metaID )
-		pl_meta_update( $metaID, PL_SETTINGS, $set );
+		pl_meta_update( $metaID, PL_SETTINGS, $settings );
 	else
-		pl_opt_update( PL_SETTINGS, $set );
+		pl_update_global_settings( $settings );
 
 }
 
-function pl_publish_settings( $pageID, $typeID ){
-
-	$settings = array();
-
-	$settings['local'] = pl_meta( $pageID, PL_SETTINGS );
-	$settings['type'] = pl_meta( $typeID, PL_SETTINGS );
-	$settings['global'] = pl_opt( PL_SETTINGS  );
-
-	foreach($settings as $scope => $set){
-
-		$set = wp_parse_args($set, array('live'=> array(), 'draft' => array()));
-
-		$set['live'] = $set['draft'];
-
-		$settings[ $scope ] = $set;
-
-	}
-
-	
-	set_theme_mod( 'pl_cache_key', substr(uniqid(), -6) );
-
-	pl_meta_update( $pageID, PL_SETTINGS, $settings['local'] );
-	pl_meta_update( $typeID, PL_SETTINGS, $settings['type'] );
-	pl_opt_update( PL_SETTINGS, $settings['global'] );
-
-
-
-	// Flush less
-	do_action( 'extend_flush' );
-
-}
-
-/*
- *
- * Type Option
- *
- */
-
-/*
- *
- * Global Option
- *
- */
-function pl_opt_global( $mode = 'draft' ){
-	$default = array( 'draft' => array(), 'live' => array() );
-
-	$option_set = pl_opt(PL_SETTINGS, $default);
-
-	return $option_set[ $mode ];
-}
-
-function pl_opt_update_global( $set, $mode = 'draft'){
-
-	$default = array( 'draft' => array(), 'live' => array() );
-
-	$option_set = pl_opt(PL_SETTINGS, $default);
-
-	if($mode == 'draft'){
-		$option_set['draft'] = wp_parse_args($set, $option_set['draft']);
-	}
-
-	pl_opt_update( PL_SETTINGS, $option_set );
-
-}
 

@@ -8,6 +8,49 @@
  * @subpackage  Sections
  * @since       2.2
  *
+ *  SHORTCODE TABLE OF CONTENTS
+ *  1.  Bookmark
+ *  2.  Pagename
+ *  3.  Theme URL
+ *  4.  Google Maps
+ *  5.  Google Charts
+ *  6.  Post Feed
+ *  7.  Dynamic Box
+ *  8.  Container
+ *  9.  Post Edit
+ *  10. Post Categories
+ *  11. Post Tags
+ *  12. Post Type
+ *  13. Post Comments
+ *  14. Post Authors Archive
+ *  15. Post Author URL
+ *  16. Post Author Display Name
+ *  17. Post Date
+ *  18. Pinterest Button
+ *      Google Plus
+ *      Linkedin Share
+ *  19. Tweet Button
+ *  20. Like Button
+ *  21. Show Authors
+ *  22. Codebox
+ *  23. Labels
+ *  24. Badgets
+ *  25. Alertbox
+ *  26. Blockquote
+ *  27. Button
+ *  28. Button Group
+ *  29. Button Dropdown
+ *  30. Split Button Dropdown
+ *  31. Tooltip
+ *  32. Popover
+ *  32. Accordion
+ *  34. Carousel
+ *  35. Tabs
+ *  36. Modal Popup
+ *  37. Post Time
+ *  38. PageLines Buttons (orig)
+ *  39. Enqueue jQuery
+ *  40. Enqueue Bootstrap JS
  */
 
 class PageLines_ShortCodes {
@@ -19,6 +62,12 @@ class PageLines_ShortCodes {
 
 		// Make widgets process shortcodes
 		add_filter( 'widget_text', 'do_shortcode' );
+
+		add_action('wp_footer',array( $this, 'print_carousel_js' ), 21);
+		
+		add_action('wp_footer',array( $this, 'print_shortcode_js' ), 21);
+		
+
 	}
 
 	private function shortcodes_core() {
@@ -76,7 +125,11 @@ class PageLines_ShortCodes {
 			'pl_video'					=>	array( 'function' => 'pl_video_shortcode' ),
 			'pl_child_url'				=>	array( 'function' => 'pl_child_url' ),
 			'pl_site_url'				=>	array( 'function' => 'pl_site_url' ),
-			'pl_parent_url'				=>	array( 'function' => 'get_themeurl' )
+			'pl_parent_url'				=>	array( 'function' => 'get_coreurl' ),
+			'pl_theme_url'				=>	array( 'function' => 'get_themeurl' ),
+			'pl_author_avatar'			=> 	array( 'function' => 'pl_author_avatar' ),
+			'pl_karma'					=> 	array( 'function' => 'pl_karma_shortcode' ),
+			'pl_themename'				=>	array( 'function' => 'pl_themename')
 			);
 
 		return $core;
@@ -100,8 +153,15 @@ class PageLines_ShortCodes {
 		return do_shortcode( substr( $str, $stpos, $len ) );
 	}
 
+	// 3. Function for getting template path
+	// USAGE: [themeurl]
+	function get_coreurl( $atts ) {
+		return pl_get_template_directory_uri();
+	}
 
-
+	function get_themeurl( $atts ) {
+		return get_template_directory_uri();
+	}
 
 	/**
 	 * 9. This function produces the edit post link for logged in users
@@ -212,17 +272,18 @@ class PageLines_ShortCodes {
 	 * 13. This function produces the comment link
 	 *
 	 * @example <code>[post_comments]</code> is the default usage
-	 * @example <code>[post_comments zero="No Comments" one="1 Comment" more="% Comments"]</code>
+	 * @example <code>[post_comments zero="No Comments" one="1 Comment" more="% Comments" output="link"]</code>
 	 */
 	function pagelines_post_comments_shortcode( $atts ) {
 
 		$defaults = array(
-			'zero' => __( 'Add Comment', 'pagelines' ),
-			'one' => __( "<span class='num'>1</span> Comment", 'pagelines' ),
-			'more' => __( "<span class='num'>%</span> Comments", 'pagelines' ),
+			'zero' => __( "Add Comment", 'pagelines' ),
+			'one' => __( "1 Comment", 'pagelines' ),
+			'more' => __( "% Comments", 'pagelines' ),
 			'hide_if_off' => 'disabled',
-			'before' => '',
-			'after' => ''
+			'before' 	=> '',
+			'after' 	=> '',
+			'output'	=> 'span'
 		);
 		$atts = shortcode_atts( $defaults, $atts );
 
@@ -236,7 +297,10 @@ class PageLines_ShortCodes {
 
 		$comments = sprintf( '<a href="%s">%s</a>', $this->get_comment_link(), $comments );
 
-		$output = sprintf( '<span class="post-comments sc">%2$s%1$s%3$s</span>', $comments, $atts['before'], $atts['after'] );
+		if( $atts['output'] == 'link')
+			$output = $comments;
+		else 
+			$output = sprintf( '<span class="post-comments sc">%2$s%1$s%3$s</span>', $comments, $atts['before'], $atts['after'] );
 
 		return apply_filters( 'pagelines_post_comments_shortcode', $output, $atts );
 	}
@@ -252,7 +316,7 @@ class PageLines_ShortCodes {
 	}
 
 	/**
-	 * 14. This function produces the author of the post (link to author archive)
+	 * This function produces the author of the post (link to author archive)
 	 *
 	 * @example <code>[post_author_posts_link]</code> is the default usage
 	 * @example <code>[post_author_posts_link before="<b>" after="</b>"]</code>
@@ -261,7 +325,8 @@ class PageLines_ShortCodes {
 
 		$defaults = array(
 			'before' => '',
-			'after' => ''
+			'after' => '', 
+			'class'	=> ''
 		);
 		$atts = shortcode_atts( $defaults, $atts );
 
@@ -270,10 +335,14 @@ class PageLines_ShortCodes {
 		the_author_posts_link();
 		$author = ob_get_clean();
 
-		$output = sprintf( '<span class="author vcard sc">%2$s<span class="fn">%1$s</span>%3$s</span>', $author, $atts['before'], $atts['after'] );
+		$output = sprintf( '<span class="author vcard sc %4$s">%2$s<span class="fn">%1$s</span>%3$s</span>', $author, $atts['before'], $atts['after'], $atts['class'] );
 
 		return apply_filters( 'pagelines_post_author_shortcode', $output, $atts );
 	}
+	
+
+	
+	
 
 	/**
 	 * 15. This function produces the author of the post (link to author URL)
@@ -344,6 +413,8 @@ class PageLines_ShortCodes {
 		);
 		$atts = shortcode_atts( $defaults, $atts );
 
+
+		
 		$output = sprintf( '<time class="date time published updated sc" datetime="%5$s">%1$s%3$s%4$s%2$s</time> ',
 						$atts['before'],
 						$atts['after'],
@@ -355,33 +426,47 @@ class PageLines_ShortCodes {
 		return apply_filters( 'pagelines_post_date_shortcode', $output, $atts );
 
 	}
-
-	/**
-	 * 21. This function/shortcode will show all authors on a post
-	 *
-	 * @example <code>[show_authors]</code> is the default usage
-	 * @example <code>[show_authors]</code>
-	 */
-	function show_multiple_authors() {
-
-		if( class_exists( 'CoAuthorsIterator' ) ) {
-
-			$i = new CoAuthorsIterator();
-			$return = '';
-			$i->iterate();
-			$return .= '<a href="'.get_author_posts_url( get_the_author_meta( 'ID' ) ).'">'.get_the_author_meta( 'display_name' ).'</a>';
-			while( $i->iterate() ){
-				$return.= $i->is_last() ? ' and ' : ', ';
-				$return .= '<a href="'.get_author_posts_url( get_the_author_meta( 'ID' ) ).'">'.get_the_author_meta( 'display_name' ).'</a>';
+	
+	function print_shortcode_js(){
+		
+		global $shortcode_js, $shortcode_js_run;
+		if( isset( $shortcode_js_run ) )
+			return;
+		if( isset($shortcode_js) && is_array($shortcode_js) ){
+			$shortcode_js = array_unique( $shortcode_js );
+			foreach( $shortcode_js as $js_set ){
+				echo $js_set;
 			}
-
-			return $return;
-
-		} else {
-			//fallback
 		}
+		$shortcode_js_run = true;	
 	}
 
+		function print_carousel_js() {
+
+			global $carousel_js;
+
+			if ( ! isset($carousel_js) )
+				return;
+			echo "<!-- carousel_js -->\n";
+
+			if ( isset($carousel_js) && is_array($carousel_js) ) : ?>
+				<script type="text/javascript">
+				(function($) {
+				<?php
+
+					foreach ($carousel_js as $c) {
+						printf("\n$('#%s').carousel({ interval: %s })",
+							$c['id'],
+							( 'pause' == $c['speed'] ) ? 0 : $c['speed']
+							);
+					}
+				?>
+
+			})(jQuery);
+	</script>
+			<?php
+			endif;
+		}
 
 
 	/**
@@ -412,26 +497,80 @@ class PageLines_ShortCodes {
 
 	}
 
+	/**
+	 * Produces an Author Avatar
+	 *
+	 * @example <code>[pl_author_avatar size="100"]</code> is the default usage
+	 */
+	function pl_author_avatar( $atts ) {
+
+		global $post;
+		
+		if( ! isset( $post ) )
+			return;
+
+		$defaults = array(
+			'size' => '100'
+		);
+		$atts = shortcode_atts( $defaults, $atts );
+		
+		$author_url = get_author_posts_url($post->post_author);
+
+		$author_email = get_the_author_meta('email', $post->post_author);
+		
+		$avatar = get_avatar( $author_email, $atts['size'] );
+
+		return sprintf('<a href="%s">%s</a>', $author_url, $avatar);
+	}
+	
+	/**
+	 * Produces a karma counter for post
+	 *
+	 * @example <code>[pl_karma]</code> is the default usage
+	 */
+	function pl_karma_shortcode( $atts ) {
+
+		global $post;
+
+		if( ! isset( $post ) )
+			return;
+
+		$defaults = array(
+			'classes' => '',
+			'post'	  => ''
+		);
+		$atts = shortcode_atts( $defaults, $atts );
+
+		return pl_karma( false, $atts );
+	}
+
 	function pl_child_url() {
 		return get_stylesheet_directory_uri();
 	}
-
+	
 	function pl_site_url() {
 		return home_url();
 	}
 
-	// USAGE: [themeurl]
-	function get_themeurl( $atts ) {
-		return get_template_directory_uri();
+	function pl_themename() {
+		return PL_NICETHEMENAME;
 	}
 
 	private function register_shortcodes( $shortcodes ) {
 
 		foreach ( $shortcodes as $shortcode => $data ) {
-			if( method_exists( $this, $data['function'] ) )
-				add_shortcode( $shortcode, array( &$this, $data['function']) );
+			add_shortcode( $shortcode, array( $this, $data['function']) );
 		}
 	}
+
+	// for wporg version we need to return blank .. so we dont show broken shortcodes.
+	
+	function pl_pinterest_button($args) { return false; }
+	function pl_googleplus_button($args) { return false; }
+	function pl_linkedinshare_button($args) { return false; }
+	function pl_twitter_button($args) { return false; }
+	function pl_facebook_shortcode($args) { return false; }
+	
 //
 } // end of class
 //

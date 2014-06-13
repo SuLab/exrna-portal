@@ -19,24 +19,113 @@
  */
 class PageLinesShareBar extends PageLinesSection {
 
-	/**
-     * Section template.
-     *
-     * @version 2.2 - added conditional check for no social sites being chosen.
-     */
+	function section_opts(){
+
+		$the_urls = array();
+
+		$icons = $this->the_icons();
+
+		foreach($icons as $icon){
+			$the_urls[] = array(
+				'label'	=> ui_key($icon) . ' Disable?',
+				'key'	=> $this->id.'_disable_'.$icon,
+				'type'	=> 'check',
+				'scope'	=> 'global',
+			);
+		}
+
+		$opts = array(
+
+			array(
+				'type'	=> 'multi',
+				'key'	=> 'config',
+				'title'	=> __( 'Config', 'pagelines' ),
+				'col'	=> 1,
+				'opts'	=> array(
+					array(
+						'type'	=> 'text',
+						'key'	=> 'text',
+						'label'	=> __( 'Description Text', 'pagelines' ),
+
+					),
+					array(
+						'type'	=> 'select',
+						'key'	=> 'align',
+						'label'	=> __( 'Alignment', 'pagelines' ),
+						'opts'	=> array(
+							'right'		=> array( 'name' => __( 'Social links on right', 'pagelines' ) ),
+							'center'	=> array( 'name' => __( 'Social links in center', 'pagelines' ) ),
+							'left'		=> array( 'name' => __( 'Social links on left', 'pagelines' ) ),
+						),
+					),
+				)
+
+			),
+			array(
+				'type'	=> 'multi',
+				'key'	=> 'sl_urls',
+				'title'	=> __( 'Share Button Disable', 'pagelines' ),
+
+				'col'	=> 2,
+				'opts'	=> $the_urls
+
+			)
+
+
+		);
+
+		return $opts;
+
+	}
+
+	function the_icons( ){
+
+		$icons = array(
+			'facebook',
+			'linkedin',
+			'twitter',
+			'pinterest',
+		);
+
+
+
+		return $icons;
+
+	}
     function section_template() {
 
-        if( ! $this->get_shares() ) {
-            echo setup_section_notify( $this, __( 'You have no shares setup, please look at Global Options > Social & Local; or deactivate the Sharebar from the Blog Post Template.', 'pagelines' ), add_query_arg( array( 'tablink' => 'settings', 'tabsublink' => 'social_media' ), site_url() ), __( 'Social Settings', 'pagelines' ), false );
-            return;
-        }
+		$align = $this->opt('align');
 
-        $text = __( 'Share &rarr;', 'pagelines' );
+		if( $align == 'left' )
+			$align_class = 'alignleft';
+		elseif( $align == 'right' )
+			$align_class = 'alignright';
+		else
+			$align_class = '';
+
+		$txt = $this->opt('text');
+
+		$txt = ( $txt ) ? sprintf('<div class="txt-wrap pla-from-bottom pl-animation subtle"><div class="txt">%s</div></div>', $txt) : '';
+
         ?>
 
         <div class="pl-sharebar">
             <div class="pl-sharebar-pad">
-                <?php echo $this->get_shares(); ?>
+				<div class="pl-social-counters pl-animation-group <?php echo $align_class;?>">
+					<?php
+						$classes = 'pl-animation pla-from-top subtle icon';
+						
+						echo do_shortcode( sprintf( '[pl_karma classes="%s"]', $classes ) );
+
+						foreach( $this->the_icons() as $key => $icon ){
+							if( ! pl_setting( $this->id.'_disable_'.$icon ) )
+								echo pl_get_social_button( array('btn' => $icon, 'classes' => $classes) );
+						}
+
+					?>
+
+				</div>
+				<?php echo $txt; ?>
                 <div class="clear"></div>
             </div>
         </div>
@@ -56,252 +145,11 @@ class PageLinesShareBar extends PageLinesSection {
 
 		$out = '';
 
-		if(pl_setting('share_google'))
-			$out .= self::google(array('permalink' => $perm));
 
-		if(pl_setting('share_twitter'))
-			$out .= self::twitter(array('permalink' => $perm, 'title' => $title));
-
-		if(pl_setting('share_facebook'))
-			$out .= self::facebook(array('permalink' => $perm));
-
-		if(pl_setting('share_linkedin'))
-			$out .= self::linkedin(array('permalink' => $perm, 'title' => $title));
-
-		if(pl_setting('share_pinterest'))
-			$out .= self::pinterest(array('permalink' => $perm, 'image' => $thumb, 'desc' => $desc));
 
 		return $out;
 	}
 
-	/**
-	 *
-	 * Pinterest Button
-	 *
-	 */
-	function pinterest( $args ){
 
-		$defaults = array(
-			'permalink'	=> '',
-			'width'		=> '80',
-			'title'		=> '',
-			'image'		=> '',
-			'desc'		=> ''
-		);
-
-		$a = wp_parse_args($args, $defaults);
-		ob_start();
-		?>
-
-		<div class="pin_wrap"><a href="http://pinterest.com/pin/create/button/?url=<?php echo $a['permalink'];?>&media=<?php echo urlencode($a['image']);?>&description=<?php echo urlencode($a['desc']);?>" class="pin-it-button" count-layout="none"><img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It" /></a></div>
-		<script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>
-		<?php
-
-		return ob_get_clean();
-
-
-	}
-
-
-	/**
-	 *
-	 * LinkedIn Button
-	 *
-	 */
-	function linkedin( $args ){
-
-		$defaults = array(
-			'permalink'	=> '',
-			'width'		=> '80',
-			'title'		=> '',
-		);
-
-		$a = wp_parse_args($args, $defaults);
-		ob_start();
-		?>
-			<script src="http://platform.linkedin.com/in.js" type="text/javascript"></script>
-			<script width="100" type="IN/Share" data-url="<?php echo $a['permalink'];?>" data-width="<?php echo $a['width'];?>" data-counter="right"></script>
-
-		<?php
-
-		return ob_get_clean();
-
-
-	}
-
-
-	/**
-	 *
-	 * StumbleUpon Button
-	 *
-	 */
-	function stumbleupon( $args ){
-
-		$defaults = array(
-			'permalink'	=> '',
-			'width'		=> '80',
-			'title'		=> '',
-		);
-
-		$a = wp_parse_args($args, $defaults);
-		ob_start();
-		?>
-			<su:badge layout="2" ></su:badge>
-
-			 <script type="text/javascript">
-			 (function() {
-			     var li = document.createElement('script'); li.type = 'text/javascript'; li.async = true;
-			      li.src = 'https://platform.stumbleupon.com/1/widgets.js';
-			      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(li, s);
-			 })();
-			 </script>
-
-		<?php
-
-		return ob_get_clean();
-
-
-	}
-
-
-	/**
-	*
-	* Buffer Social Button
-	*
-	*/
-	function buffer( $args ){
-
-		$defaults = array(
-			'permalink'	=> '',
-			'width'		=> '80',
-			'title'		=> '',
-			'handle'	=> pl_setting('twittername')
-		);
-
-		$a = wp_parse_args($args, $defaults);
-
-
-		return sprintf(
-			'<a href="http://bufferapp.com/add" class="buffer-add-button" data-text="%s" data-url="%s" data-count="horizontal" data-via="%s">Buffer</a><script type="text/javascript" src="http://static.bufferapp.com/js/button.js"></script>',
-			$a['title'],
-			$a['permalink'],
-			$a['handle']
-		);
-
-
-	}
-
-	/**
-	*
-	* Twitter Button
-	*
-	*/
-	function twitter( $args ){
-
-		$defaults = array(
-			'permalink'	=> '',
-			'width'		=> '80',
-			'hash'		=> pl_setting('site-hashtag'),
-			'handle'	=> pl_setting('twittername'),
-			'title'		=> '',
-		);
-
-		$a = wp_parse_args($args, $defaults);
-
-		ob_start();
-
-			// Twitter
-			printf(
-				'<a href="https://twitter.com/share" class="twitter-share-button" data-url="%s" data-text="%s" data-via="%s" data-hashtags="%s">Tweet</a>',
-				$a['permalink'],
-				$a['title'],
-				$a['handle'],
-				$a['hash']
-			);
-
-		?>
-		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-
-		<?php
-
-		return ob_get_clean();
-
-	}
-
-
-	/**
-	*
-	* Google Plus Button
-	*
-	*/
-	function google( $args ){
-
-		$defaults = array(
-			'permalink'	=> '',
-			'width'		=> '80',
-		);
-
-		$a = wp_parse_args($args, $defaults);
-
-		ob_start();
-
-			// G+
-			printf('<div class="g-plusone" data-size="medium" data-width="%s" data-href="%s"></div>', $a['width'], $a['permalink']);
-
-		?>
-		<!-- Place this render call where appropriate -->
-		<script type="text/javascript">
-		  (function() {
-		    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-		    po.src = 'https://apis.google.com/js/plusone.js';
-		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-		  })();
-		</script>
-
-		<?php
-
-		return ob_get_clean();
-
-	}
-
-
-	/**
-	*
-	* @TODO document
-	*
-	*/
-	function facebook( $args ){
-
-		$defaults = array(
-			'permalink'	=> '',
-			'width'		=> '80',
-		);
-
-		$a = wp_parse_args($args, $defaults);
-
-		$app_id = '';
-		if( pl_setting( 'facebook_app_id' ) )
-			$app_id = sprintf( '&appId=%s', pl_setting( 'facebook_app_id' ) );
-
-		ob_start();
-			// Facebook
-			?>
-			<script>(function(d, s, id) {
-					var js, fjs = d.getElementsByTagName(s)[0];
-					if (d.getElementById(id)) return;
-					js = d.createElement(s); js.id = id;
-					js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1<?php echo $app_id; ?>";
-					fjs.parentNode.insertBefore(js, fjs);
-					}(document, 'script', 'facebook-jssdk'));
-			</script>
-			<?php
-			printf(
-				'<div class="fb-like" data-href="%s" data-send="false" data-layout="button_count" data-width="%s" data-show-faces="false" data-font="arial" style="vertical-align: top"></div>',
-				$a['permalink'],
-				$a['width']);
-
-		return ob_get_clean();
-
-	}
 
 }

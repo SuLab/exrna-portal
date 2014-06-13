@@ -37,6 +37,8 @@ class PageLinesPage {
 			$this->type_name = ucwords( str_replace('_', ' ', $this->type()) );
 
 		}
+		
+
 
 	}
 
@@ -49,37 +51,40 @@ class PageLinesPage {
 		return $d;
 	}
 
+	function template_mode(){
+
+		if( $this->type == 'page' || $this->is_special()){
+			return 'local';
+		} else {
+			return 'type';
+		}
+
+	}
+
+	
 	function template(){
 
-		$page = pl_local( $this->id, 'page-template' );
-		$type = pl_local( $this->typeid, 'page-template' );
-		$gbl = pl_global( 'page-template' );
-
-		if( $page && $page != 'default' )
-			$tpl = $page;
-		elseif( $type && $type != 'default' )
-			$tpl = $type;
-		elseif( $gbl )
-			$tpl = $gbl;
-		else
-			$tpl = 'default';
-
-		return $tpl;
+		global $pl_custom_template;
+		
+		if( isset($pl_custom_template) && isset($pl_custom_template['key']))
+			return $pl_custom_template['key']; 
+		else 
+			return 'custom (no template)';
 
 	}
 
 	function id(){
 		global $post;
-		if(!$this->is_special() && isset($post) && is_object($post))
+		if(!$this->is_special() && isset($post) && is_object($post) && 0 != $post->ID)
 			return $post->ID;
 		else
 			return $this->special_id();
 
 	}
 
-	function special_id(){
+	function special_id( $type = false ){
 
-		$index = $this->special_index_lookup();
+		$index = $this->special_index_lookup( $type );
 
 		$id = $this->special_base + $index;
 
@@ -87,7 +92,9 @@ class PageLinesPage {
 
 	}
 
-	function special_index_lookup(){
+	function special_index_lookup( $type = false ){
+
+		$type = ( $type ) ? $type : $this->type();
 
 		$lookup_array = array(
 			'blog',
@@ -101,22 +108,26 @@ class PageLinesPage {
 			'404_page'
 		);
 		
-		$index = array_search( $this->type(), $lookup_array );
 		
-		if( !$index )
-			$index = pl_create_int_from_string( $this->type() ); 
+		
+		$index = array_search( $type, $lookup_array );
+		
+		if( !$index ){
+			$index = pl_create_int_from_string( $type );	
+		} 
 
 		return $index;
 
 	}
 
 	function type(){
+		global $pl_404;
 
-		if( is_404() )
+		if( is_404() && $pl_404 )
 			$type = '404_page';
 
-		elseif( pl_is_cpt('archive') )
-			$type = get_post_type_plural();
+		elseif( is_post_type_archive() )
+			$type = pl_get_post_type_plural();
 
 		elseif( is_tag() )
 			$type = 'tag';
@@ -146,21 +157,17 @@ class PageLinesPage {
 		elseif( is_single() )
 			$type = 'post';
 
-		else
+		else{
 			$type = 'other';
+		
+		}
+			
 
 		return $type;
 
 	}
 	
-	function page_scope(){
-		if(is_page() || $this->page->is_special()){
-			return 'local';
-		} else {
-			return 'type';
-		}
-	}
-
+	
 	function is_special(){
 
 		if ( is_404() || is_home() || is_search() || is_archive() )
@@ -170,6 +177,22 @@ class PageLinesPage {
 
 	}
 
+	function is_blog_page_type(){
+
+		if ( $this->type == 'blog' 
+			|| $this->type == 'category' 
+			|| $this->type == 'post' 
+			|| $this->type == 'archive' 
+			|| $this->type == 'author' 
+			|| $this->type == 'tag' 
+			|| $this->type == 'search' 
+		)
+			return true;
+		else
+			return false;
+
+	}
+	
 	function is_posts_page(){
 
 		if ( is_home() || is_search() || is_archive() || is_category() )
@@ -177,6 +200,14 @@ class PageLinesPage {
 		else
 			return false;
 
+	}
+	
+	function pl_standard_post_page(){
+
+		if( $this->type == 'other' || false !== ( strpos( $this->type, 'forum') ) )
+			return false;
+		else 
+			return true;
 	}
 
 
@@ -196,5 +227,14 @@ function pl_type_slug(){
 	global $plpg; 
 	return $plpg->type; 
 }
+function pl_special_id( $type = false ){
+	
+	$page_handler = new PageLinesPage; 
+	return $page_handler->special_id( $type ); 
+	
+}
 
-
+function pl_standard_post_page(){
+	global $plpg; 
+	return $plpg->pl_standard_post_page();
+}

@@ -11,9 +11,6 @@
 
 class PLWatermark extends PageLinesSection {
 
-	function section_persistent(){
-	
-	}
 
 	function section_opts(){
 		$opts = array(
@@ -51,12 +48,53 @@ class PLWatermark extends PageLinesSection {
 
 			),
 			array(
-				'type' 	=> 	'help',
-				'title' 		=> __( 'Setting Up Social Shares', 'pagelines' ),
-				'help' 		=> __( 'To set up social, you need to set your global social user names under "options" > "social &amp; local"<br/><br/> After you have done that, these values will fill automatically.', 'pagelines' ),
+ 				'type' 	=> 	'help',
+ 				'type' 	=> 	'multi',
+ 				'title' => __( 'Follow Buttons', 'pagelines' ),
+  				'col'	=> 2,
+	 			'opts'	=> array(
+			  		array(
+			  			'key'			=> 'pl_watermark_no_facebook',
+			  			'type' 			=> 'check',
+			  			'label'			=> __( 'Hide Facebook?', 'pagelines' ),
+			  			'imgsize'			=> '44'
+			  		),
+			  		array(
+			  			'key'			=> 'pl_watermark_no_gplus',
+			  			'type' 			=> 'check',
+			  			'label'			=> __( 'Hide Google Plus?', 'pagelines' ),
+			  			'default' 		=> '1'
+			  		),
+			  		array(
+			  			'key'			=> 'pl_watermark_no_twitter',
+			  			'type' 			=> 'check',
+			  			'label'			=> __( 'Hide Twitter?', 'pagelines' ),
+			  		),
+			  	),
 
+  			),
+			array(
+				'type'	=> 'multi',
+				'key'	=> 'sl_config', 
+				'title'	=> 'Global Social Handles',
+				'col'	=> 3,
+				'opts'	=> array(
+					array(
+						'type'	=> 'text',
+						'key'	=> 'twittername', 
+						'label'	=> 'Twitter Handle (Username)',
+						'scope'	=> 'global'
+					),
+					array(
+						'type'	=> 'text',
+						'key'	=> 'facebook_name', 
+						'label'	=> 'Facebook Handle (Username)',
+						'scope'	=> 'global'
+					),
+				)
 
 			),
+ 
 		); 
 		
 		return $opts;
@@ -64,12 +102,10 @@ class PLWatermark extends PageLinesSection {
 
 
    function section_template() {
-	
-		add_action('wp_footer', array(&$this, 'socializer_scripts'));
-	
+		
 		$home = home_url();
-		$twitter = $this->opt('twittername'); 
-		$facebook = $this->opt('facebook_name');
+		$twitter = pl_setting('twittername'); 
+		$facebook = pl_setting('facebook_name');
 		
 		$twitter = ($twitter) ? $twitter : 'pagelines';
 		$facebook = ($facebook) ? $facebook : 'pagelines';
@@ -103,55 +139,22 @@ class PLWatermark extends PageLinesSection {
 	<div class="pl-watermark">
 		<div class="pl_global_social stack-element">
 
-			<div class="fb-like" data-href="<?php echo $facebook_url;?>" data-send="false" data-layout="button_count" data-width="90" data-show-faces="false" data-font="arial" style="vertical-align: top"></div>
+			<?php 
 
-			<div class="g-plusone" data-size="medium" data-width="80" data-href="<?php echo $home; ?>"></div>
+				if( ! $this->opt('pl_watermark_no_facebook') && ! has_action( 'pl_watermark_no_facebook' ) )
+		  			echo do_shortcode( sprintf( '[like_button url="http://www.facebook.com/%s"]', $facebook ));
 
-			<a href="<?php echo $twitter_url;?>" class="twitter-follow-button" data-width="150px" data-show-count="true" data-lang="en" data-show-screen-name="false">&nbsp;</a>
+				if( ! $this->opt('pl_watermark_no_gplus') && ! has_action( 'pl_watermark_no_gplus' ) ) 
+		  			echo do_shortcode('[googleplus]');
 
+				if( ! $this->opt('pl_watermark_no_twitter') && ! has_action( 'pl_watermark_no_twitter' ) )
+		  			echo do_shortcode('[twitter_button type="follow"]');
+			
+			?>
 		</div>
-		<div class="powered-by stack-element" style="display: block; visibility: visible; opacity: 1;">
-			<?php echo $powered;?>
-		</div>
+	
 		<?php echo $watermark; ?>
 	</div>
 	<?php
-	
-	
-	
-
-
 	}
-	
-	function socializer_scripts(){
-		
-		$app_id = '';
-		if( $this->opt( 'facebook_app_id' ) )
-			$app_id = sprintf( '&appId=%s', $this->opt( 'facebook_app_id' ) );
-		?>
-
-		<div id="fb-root"></div>
-		<script>(function(d, s, id) {
-		  var js, fjs = d.getElementsByTagName(s)[0];
-		  if (d.getElementById(id)) return;
-		  js = d.createElement(s); js.id = id;
-		  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1<?php echo $app_id; ?>";
-		  fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));</script>
-
-
-		<!-- Place this render call where appropriate -->
-		<script type="text/javascript">
-		  (function() {
-		    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-		    po.src = 'https://apis.google.com/js/plusone.js';
-		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-		  })();
-		</script>
-
-		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-
-		<?php 
-	}
-
 }

@@ -31,8 +31,8 @@
 		this.$tabnav =  $('.tabs-nav')
 
 		this.resizer = $('.resizer-handle')
-		this.closer = $('.btn-closer')
-		this.offBtn = $('.btn-pl-toggle')
+		this.closer = $('.el-closer')
+		this.offBtn = $('.el-pl-toggle')
 		this.handleHeight = 29
 
 		this.resizePanel()
@@ -88,9 +88,13 @@
 			.hide()
 
 		this.closer
-			.fadeIn()
+			.css('display', 'block')
 
-
+		// throw resize event 
+		setTimeout(function(){
+			$(window).trigger('resize')
+		}, 500)
+		
 
 		return that // chaining
 	}
@@ -125,10 +129,15 @@
 			.hide()
 
 		this.offBtn
-			.fadeIn()
+			.css('display', 'block')
 
 		that.$pusher
 			.height(that.handleHeight)
+			
+		// throw resize event 
+		setTimeout(function(){
+			$(window).trigger('resize')
+		}, 500)
 
       }
 

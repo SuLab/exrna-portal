@@ -1,6 +1,6 @@
 <?php
 /*
-	Section: Section Area
+	Section: Canvas Area
 	Author: PageLines
 	Author URI: http://www.pagelines.com
 	Description: Creates a full width area with a nested content width region for placing sections and columns.
@@ -12,33 +12,19 @@
 
 class PLSectionArea extends PageLinesSection {
 
-
-	function section_persistent(){
-	
-		add_filter('pl_layout_settings', array(&$this, 'add_global_options'));
-	}
-	
-	function add_global_options( $settings ){
-		$settings[] = array(
-
-			'key'			=> 'layout_areas',
-			'type' 			=> 'multi',
-			'label' 	=> __( 'Section Areas', 'pagelines' ),
-			'opts'	=> array(
-				array(
-					'key'		=> 'section_area_default_pad',
-					'type' 		=> 'count_select',
-					'label' 	=> __( 'Default Area Padding (px)', 'pagelines' ),
-					'count_start'	=> 0,
-					'count_number'	=> 200,
-					'suffix'		=> 'px',
-					'help'	 	=> __( 'If sections are added to full width areas, the area will be givin this default padding.', 'pagelines' )
-				),
-				
-			),
-		);
+	function section_head(){
 		
-		return $settings;
+		// Upgrade area background options from 1.1 > 1.2
+		$upgrade_options = array(
+			'pl_area_image'		=> $this->id.'_background',
+			'pl_area_bg_repeat'	=> $this->id.'_repeat',
+			'pl_area_bg'		=> $this->id.'_theme',
+			'pl_area_bg_color_enable'	=> $this->id.'_color_enable',
+			'pl_area_bg_color'	=> $this->id.'_color',
+		); 
+
+		$this->upgrade_section_options( $upgrade_options );
+	
 	}
 	
 	function section_opts(){
@@ -56,6 +42,7 @@ class PLSectionArea extends PageLinesSection {
 					'type' 			=> 'count_select_same',
 					'count_start'	=> 0,
 					'count_number'	=> 200,
+					'count_mult'	=> 10,
 					'suffix'		=> 'px',
 					'label' 	=> __( 'Area Padding (px)', 'pagelines' ),
 				),
@@ -64,9 +51,15 @@ class PLSectionArea extends PageLinesSection {
 					'type' 			=> 'count_select_same',
 					'count_start'	=> 0,
 					'count_number'	=> 200,
+					'count_mult'	=> 10,
 					'suffix'		=> 'px',
 					'label' 	=> __( 'Area Padding Bottom (if different)', 'pagelines' ),
-				)
+				),
+				array(
+					'key'			=> 'pl_area_height',
+					'type' 			=> 'text',
+					'label' 	=> __( 'Area Minimum Height (px)', 'pagelines' ),
+				),
 			),
 			
 
@@ -76,81 +69,50 @@ class PLSectionArea extends PageLinesSection {
 
 			'key'			=> 'pl_area_styling',
 			'type' 			=> 'multi',
+			'col'			=> 3,
 			'label' 	=> __( 'Area Styling', 'pagelines' ),
 			'opts'	=> array(
-				// array(
-				// 
-				// 				'key'			=> 'pl_area_class',
-				// 				'type' 			=> 'text',
-				// 				'label' 	=> __( 'Styling Classes', 'pagelines' ),
-				// 				'help'		=> __( 'Separate with a space " "', 'pagelines' ),
-				// 			),
-				array(
-
-					'key'			=> 'pl_area_bg',
-					'type' 			=> 'select',
-					'opts'	=> array(
-						'pl-trans'		=> array('name'=> 'Transparent Background and Default Text Color'),
-						'pl-contrast'	=> array('name'=> 'Contast Color and Default Text Color'),
-						'pl-black'		=> array('name'=> 'Black Background &amp; White Text'),
-						'pl-grey'		=> array('name'=> 'Dark Grey Background &amp; White Text'),
-						'pl-dark-img'	=> array('name'=> 'Image-Dark: Embossed Light Text.'),
-						'pl-light-img'	=> array('name'=> 'Image-Light: Embossed Dark Text.'),
-						'pl-base'		=> array('name'=> 'Base Background and Default Text Color'),
-					),
-					'label' 	=> __( 'Area Theme', 'pagelines' ),
-
-				),
-				array(
-					'key'			=> 'pl_area_height',
-					'type' 			=> 'text',
-					'label' 	=> __( 'Area Minimum Height (px)', 'pagelines' ),
-				)
-			),
-			
-
-		);
-		
-		$options[] = array(
-
-			'key'			=> 'pl_area_bg',
-			'type' 			=> 'multi',
-			'label' 	=> __( 'Area Background', 'pagelines' ),
-			'opts'	=> array(
-				array(
-
-					'key'			=> 'pl_area_image',
-					'type' 			=> 'image_upload',
-					'sizelimit'		=> 800000,
-					'label' 	=> __( 'Background Image', 'pagelines' ),
-				),
-				array(
-					'key'			=> 'pl_area_bg_repeat',
-					'type' 			=> 'check',
-					'label' 	=> __( 'Repeat Background Image', 'pagelines' ),
-				),
 				array(
 					'key'			=> 'pl_area_parallax',
-					'type' 			=> 'check',
-					'label' 	=> __( 'Enable Background Parallax', 'pagelines' ),
-				)
+					'type' 			=> 'select',
+					'opts'			=> array(
+						''						=> array('name' => "No Scroll Effect"),
+						'pl-parallax'			=> array('name' => "Parallaxed Background Image"),
+						'pl-scroll-translate'	=> array('name' => "Translate Content on Scroll"),
+						'pl-window-height'		=> array('name' => "Set to height of window"),
+					),
+					'label' 	=> __( 'Scrolling effects and sizing.', 'pagelines' ),
+				),
+				
+				
 			),
-			
 
 		);
 		
+	
 		
-		
-		
-
-
 		return $options;
 	}
 	
+	
+	
 	function before_section_template( $location = '' ) {
 
-		$this->wrapper_classes['background'] = $this->opt('pl_area_bg');
-		//$this->wrapper_classes['user_classes'] = $this->opt('pl_area_class');
+		$this->alt_standard_title = true;
+
+
+
+		
+		$scroll_effect = $this->opt('pl_area_parallax');
+		
+		if( $scroll_effect && $scroll_effect == 1 ){
+			$scroll_effect = 'pl-parallax';
+		}
+		
+	
+
+		$this->wrapper_classes['scroll'] = $scroll_effect;
+		
 
 	}
 
@@ -163,15 +125,17 @@ class PLSectionArea extends PageLinesSection {
 		$style = '';
 		$inner_style = '';
 		
+		
+		// Use alt mode for this
+		$title = ( $this->opt('pl_standard_title') ) ? sprintf( '<h2 class="pl-section-title pla-from-top subtle pl-animation">%s</h2>', $this->opt('pl_standard_title') ) : '';
+		
 		$inner_style .= ($this->opt('pl_area_height')) ? sprintf('min-height: %spx;', $this->opt('pl_area_height')) : '';
 		
-		$style .= ($this->opt('pl_area_image')) ? sprintf('background-image: url(%s);', $this->opt('pl_area_image')) : '';
 		
-		$classes = ($this->opt('pl_area_parallax')) ? 'pl-parallax' : '';
-		$classes .= ($this->opt('pl_area_bg_repeat')) ? ' pl-bg-repeat' : ' pl-bg-cover';
+		$classes = '';
 		
 		// If there is no output, there should be no padding or else the empty area will have height.
-		if ( $section_output ) {
+		if ( $section_output || $title != '' ) {
 			
 			// global
 			$default_padding = pl_setting('section_area_default_pad', array('default' => '20'));
@@ -192,10 +156,13 @@ class PLSectionArea extends PageLinesSection {
 			$pad_css = ''; 
 			$content_class = '';
 		}
-			
+		
+		
 	?>
 	<div class="pl-area-wrap <?php echo $classes;?>" style="<?php echo $style;?>">
+		
 		<div class="pl-content <?php echo $content_class;?>">
+			<?php echo $title; ?>
 			<div class="pl-inner area-region pl-sortable-area editor-row" style="<?php echo $inner_style;?>">
 				<?php  echo $section_output; ?>
 			</div>

@@ -13,13 +13,13 @@ class PageLinesExtendPanel{
 	}
 
 	function scripts(){
-		wp_enqueue_script( 'pl-js-extend', $this->url . '/js/pl.extend.js', array( 'jquery' ), PL_CORE_VERSION, true );
+		wp_enqueue_script( 'pl-js-extend', $this->url . '/js/pl.extend.js', array( 'jquery' ), pl_get_cache_key(), true );
 	}
 
 	function toolbar( $toolbar ){
 		$toolbar['pl-extend'] = array(
 			'name'	=> __( 'Store', 'pagelines' ),
-			'icon'	=> 'icon-gears',
+			'icon'	=> 'icon-download',
 			'pos'	=> 80,
 			'panel'	=> array(
 				'heading'	=> __( "Extend PageLines", 'pagelines' ),
@@ -30,13 +30,8 @@ class PageLinesExtendPanel{
 					'call'	=> array($this, 'the_store_callback'),
 					'icon'	=> 'icon-gears'
 				),
-				'heading2'	=> "<i class='icon-filter'></i> Filters",
-				// 'plus'		=> array(
-				// 	'name'	=> 'Plus Extensions',
-				// 	'href'	=> '#store',
-				// 	'filter'=> '.plus',
-				// 	'icon'	=> 'icon-plus-sign'
-				// ),
+				'heading2'	=> "<i class='icon icon-filter'></i> Filters",
+
 				'featured'		=> array(
 					'name'	=> __( 'Featured', 'pagelines' ),
 					'href'	=> '#store',
@@ -138,7 +133,7 @@ class PageLinesExtendPanel{
 				var url = sprintf('http://api.pagelines.com/v4/search/index.php?s=%s&callback=?',s)
 				
 				jQuery.getJSON(url,function(result){
-					//plPrint(result)
+
 					
 					jQuery(".store-search-results").append("<li><strong>" + result.results + " results</strong><?php _e( ' found for ', 'pagelines' ); ?>
 					<strong>" + s + "</strong></li>");
@@ -149,13 +144,13 @@ class PageLinesExtendPanel{
 						
 						if(demo) {
 							demo = sprintf( ' <a href="%s" class="btn btn-mini"><?php _e( 'Demo ', 'pagelines' ); ?>
-							<i class="icon-picture" target="_blank"></i></a>', demo)
+							<i class="icon icon-picture" target="_blank"></i></a>', demo)
 						} else {
 							demo = ''
 						}
 						
 						var btns = sprintf('<br/><a href="%s" class="btn btn-mini"><?php _e( 'Overview ', 'pagelines' ); ?>
-						<i class="icon-external-link" target="_blank"></i></a>%s', field.overview, demo)
+						<i class="icon icon-external-link" target="_blank"></i></a>%s', field.overview, demo)
 						
 						var output = sprintf('<div class="img" style="max-width: 130px;"><img src="%s" /></div><div class="bd"><h4>%s</h4><p>%s %s</p></div>', field.thumb, field.name, field.description, btns)
 						
@@ -194,7 +189,7 @@ class PageLinesExtendPanel{
 			if($item['price'] == '0')
 				$sub = __('Free!', 'pagelines'); 
 			elseif( $item['price'] == '' )
-				$sub = __('<i class="icon-sun"></i> Karma', 'pagelines'); 
+				$sub = __('<i class="icon icon-sun"></i> Karma', 'pagelines'); 
 			else 
 				$sub = '$'.$item['price'];
 				

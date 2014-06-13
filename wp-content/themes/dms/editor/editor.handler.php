@@ -53,8 +53,15 @@ class PageLinesTemplateHandler {
 		$this->regions = new PageLinesRegions;
 		
 
-		$this->map = $this->map_handler->get_map( $this->page );
+		$this->map = $this->map_handler->get_map();
 
+		// NEW SECTIONS SETTINGS MODE
+		$this->uids = $this->get_uids( $this->map );
+		
+		global $sections_data_handler;
+		
+		$this->sections_data = $sections_data_handler->get_section_data( $this->uids );
+		
 		$this->parse_config();
 
 		$this->opts_config = $this->get_options_config();
@@ -62,27 +69,80 @@ class PageLinesTemplateHandler {
 		$this->setup_processing();
 
 		if( $this->draft->show_editor() ){
-			add_action( 'wp_footer', array( &$this, 'json_blob' ) );
+			add_action( 'wp_footer', array( $this, 'json_blob' ) );
 		}
 
 	}
+	
+	function get_section_settings( $uid ){
+		
+		if( isset( $this->sections_data[ $uid ] ) ){
+			return $this->sections_data[ $uid ]; 
+		} else 
+			return array(); 
+	}
+	
+	
+	function get_uids( $map ){
+		$uids = array(); 
+	
+		foreach($this->map as $region => $g){
+
+			if( !isset($g) || !is_array($g) )
+				continue;
+
+			foreach($g as $area => $a){
+
+				if( isset( $a['clone'] ))
+					$uids[] = $a['clone']; 
+			
+				if( !isset($a['content']) || !is_array($a['content']) )
+					continue;
+
+				foreach($a['content'] as $key => &$meta){
+
+
+					if( isset( $meta['clone'] ))
+						$uids[] = $meta['clone'];
+						
+					if( isset($meta['content']) && is_array($meta['content']) && !empty($meta['content'])){
+						foreach($meta['content'] as $subkey => $sub_meta){
+							
+							if( isset( $sub_meta['clone'] ))
+								$uids[] = $sub_meta['clone'];
+								
+						
+						}
+					
+					}
+				}
+			
+			}
+		}
+
+
+	
+		return $uids;
+	
+		
+	}
 
 	function json_blob(){
+		ob_start();
 		?><script>
 			!function ($) {
-
+				
+				
 				$.pl = {
 					data: {
-						local:  <?php echo json_encode( pl_arrays_to_objects( $this->current_page_data('local') ) ); ?>
+						list: <?php echo json_encode( pl_arrays_to_objects( $this->sections_data) ); ?>
+							
+						,	local:  <?php echo json_encode( pl_arrays_to_objects( $this->current_page_data('local') ) ); ?>
 						
+						,  type:  <?php echo json_encode( pl_arrays_to_objects( $this->current_page_data('type') ) ); ?>
 						
-						, type:  <?php echo json_encode( pl_arrays_to_objects( $this->current_page_data('type') ) ); ?>
-						
-						
-						, global:  <?php echo json_encode( pl_arrays_to_objects( $this->current_page_data('global') ) ); ?>
+						,  global:  <?php echo json_encode( pl_arrays_to_objects( $this->current_page_data('global') ) ); ?>
 					}
-					
-					, map: { header: {}, footer: {}, template: {} }
 					
 					, flags: {
 							refreshOnSave: false
@@ -91,14 +151,17 @@ class PageLinesTemplateHandler {
 						,	layoutMode: '<?php echo $this->layout->get_layout_mode();?>'
 						,	saving: false
 					}
-					
+					, lang: function( args ){
+						var gt = new Gettext()
+						return gt.gettext( args )
+					}
 					, config: {
 						userID: '<?php echo $this->get_user_id();?>'
 						, currentURL: '<?php echo $this->current_url();?>'
 						, siteURL: '<?php echo site_url();?>'
 						, nonce: '<?php echo wp_create_nonce( "tgmpa-install" ); ?>'
 						, pageTemplate: '<?php echo $this->page->template; ?>'
-						, templateMode: '<?php echo $this->get_template_mode(); ?>'
+						, templateMode: '<?php echo $this->page->template_mode(); ?>'
 						, pageID: '<?php echo $this->page->id; ?>'
 						, typeID: '<?php echo $this->page->typeid; ?>'
 						, pageTypeID: '<?php echo $this->page->type; ?>'
@@ -106,6 +169,7 @@ class PageLinesTemplateHandler {
 						, devMode: <?php echo $this->get_dev_mode();?>
 						, CacheKey: '<?php echo pl_get_cache_key(); ?>'
 						, isSpecial: '<?php echo $this->page->is_special(); ?>'
+						, isPro: <?php echo ( pl_is_wporg() ) ? "false\n" : "true\n"; ?>
 						, opts: <?php echo json_encode( pl_arrays_to_objects( $this->get_options_config() ) ); ?>
 						, settings: <?php echo json_encode( pl_arrays_to_objects( $this->siteset->get_set('site') ) ); ?>
 						, panels: <?php echo json_encode( pl_arrays_to_objects( $this->get_panels_settings() ) ); ?>
@@ -114,46 +178,59 @@ class PageLinesTemplateHandler {
 						, extensions: <?php echo json_encode( pl_arrays_to_objects( $this->extensions->get_list() ) ); ?>
 						, icons: <?php echo json_encode( pl_arrays_to_objects( pl_icon_array() ) ); ?>
 						, btns: <?php echo json_encode( pl_arrays_to_objects( pl_button_classes() ) ); ?>
+						, themes: <?php echo json_encode( pl_arrays_to_objects( pl_theme_classes() ) ); ?>
+						, imgSizes: <?php echo json_encode( pl_arrays_to_objects( pl_get_image_sizes() ) ); ?>
 						, animations: <?php echo json_encode( pl_arrays_to_objects( pl_animation_array() ) ); ?>
+						, taxes: <?php echo json_encode( pl_arrays_to_objects( pl_get_all_taxonomies() ) ); ?>
 						, urls: {
 							adminURL: '<?php echo admin_url(); ?>'
 							, editPost: '<?php echo $this->edit_post_link(); ?>'
 							, menus: '<?php echo admin_url( "nav-menus.php" );?>'
-							, widgets: '<?php echo $this->edit_post_link();?>'
-							, StyleSheetURL: '<?php echo get_stylesheet_directory_uri(); ?>'
+							, widgets: '<?php echo $this->edit_post_link();?>'							
+							, CoreURL: '<?php echo pl_get_template_directory_uri(); ?>'
 							, ParentStyleSheetURL: '<?php echo get_template_directory_uri(); ?>'
+							, ChildStyleSheetURL: '<?php echo get_stylesheet_directory_uri(); ?>'
 							, siteURL: '<?php echo home_url(); ?>'
-							, mediaLibrary: '<?php echo $this->media_library_link(); ?>'
+							, mediaLibrary: '<?php echo pl_media_library_link(); ?>'
+							, mediaLibrary: '<?php echo pl_media_library_link(); ?>'
+							, mediaLibraryVideo: '<?php echo pl_media_library_link("video"); ?>'
+							, addMedia: '<?php echo admin_url("media-new.php"); ?>'
 						}
+						<?php echo $this->json_blob_objects();?>
 					}
 
+				
 				}
 
-
+					
 			}(window.jQuery);
 		</script>
 		<?php
+		
+		if( defined( 'PL_DEV' ) && PL_DEV )
+			pl_add_perform_data( ob_get_length(), __( 'Data Length', 'pagelines' ), __( 'Characters', 'pagelines' ), __( 'The total number of characters in the data blob. Watching size can be good to detect data leaks or other strange behavior.', 'pagelines' ) ); 
+	
+		echo apply_filters( 'pl_data_blob', ob_get_clean()); 
 
 	}
 	
-	function media_library_link(){
+	function json_blob_objects(){
 		
+		// blob objects to add to json blob // format: array( 'name' => array() )
+		$blob_objects = apply_filters('pl_json_blob_objects', array()); 
 		
-		global $post;
-
-		if( empty($post->ID) )
-			$post_id = 0; 
-		else 
-			$post_id = $post->ID;
-
-		$image_library_url = add_query_arg( 'post_id', (int) $post_id, admin_url('media-upload.php') );
-		$image_library_url = add_query_arg( 'type', 'image', $image_library_url );
-		$image_library_url = add_query_arg( 'tab', 'library', $image_library_url);
+		$output = '';
+		if( ! empty($blob_objects) ){
+			
+			foreach( $blob_objects as $name => $array ){
+				$output .= sprintf('%s, %s:%s', "\n", $name, json_encode( pl_arrays_to_objects( $array ) ));
+			}
+		}
 		
-		$image_library_url = add_query_arg( array( 'context' => 'pl-custom-attach', 'TB_iframe' => 1), $image_library_url );
+		return $output;
 		
-		return $image_library_url;
 	}
+	
 	
 	function get_panels_settings(){
 		global $pl_user_theme_tabs; 
@@ -165,17 +242,7 @@ class PageLinesTemplateHandler {
 		
 		return $settings;
 	}
-	
-	function get_template_mode(){
 		
-		if(is_page() || $this->page->is_special()){
-			return 'local';
-		} else {
-			return 'type';
-		}
-		
-	}
-	
 	function get_dev_mode(){
 		return ( is_pl_debug() ) ? 'true' : 'false';
 	}
@@ -211,14 +278,14 @@ class PageLinesTemplateHandler {
 			'id'		=> $key,
 			'object'	=> $key,
 			'offset'	=> 0,
-			'clone'		=> substr(uniqid(), -6),
-			'unique'	=> substr(uniqid(), -6),
 			'content'	=> array(),
 			'span'		=> 12,
 			'newrow'	=> 'false',
-		
+			'clone'		=> pl_new_clone_id()
 		);
 
+		$defaults['unique'] = $defaults['clone'];
+		
 		return $defaults;
 	}
 
@@ -226,33 +293,56 @@ class PageLinesTemplateHandler {
 		$current_user = wp_get_current_user();
 		return $current_user->ID;
 	}
+	
+	function load_new_section_from_map( $s ){
+		global $sections_data_handler;
+		
+		$newID = pl_new_clone_id();
+		
+		if( isset( $s['settings'] ) ){
+			
+			$sections_data_handler->create_items( array( $newID => $s['settings'] ) );
+			
+			$this->sections_data[ $newID ] = $s['settings'];
+			
+		}
+		
+		return $newID;
+		
+	}
 
 	function parse_config(){
 		
 		$clone_was_set = false;
 		
-		
-		foreach($this->map as $group => &$g){
+		foreach($this->map as $region => &$g){
 
-			if( !isset($g) || !is_array($g) )
-				continue;
+			if( !isset($g) || !is_array($g) || empty( $g )){
+				
+				$g = array( array('object' => 'PLSectionArea'));
+				
+			}
+			
 
 			foreach($g as $area => &$a){
 			
-			
-				if( !isset( $a['object'] ) || !$a['object'] ){
+				// If object isn't set, create blank section area
+				if( ! isset( $a['object'] ) || ! $a['object'] )
 					$a['object'] = 'PLSectionArea';
+			
+				// If no ID, set up as new section
+				if( !isset( $a['clone'] ) ){
+				
+					$a['clone'] = $this->load_new_section_from_map( $a );
+					
+					$clone_was_set = true;
+					
 				}
 			
 				$a = wp_parse_args( $a, $this->meta_defaults( $area ) );
 				
-				$a['set'] = $this->optset->get_set( $a['clone'] ); 
-				
-				// Lets get rid of the number based clone system
-				if( strlen( $a['clone'] ) < 3 ){
-					$a['clone'] = pl_new_clone_id();
-					$clone_was_set = true;
-				}
+				$a['set'] = $this->get_section_settings( $a['clone'] ); 
+				$a['draw']	= 'area';
 					
 				
 				$this->section_list[ ] = $a;
@@ -263,24 +353,29 @@ class PageLinesTemplateHandler {
 
 				foreach($a['content'] as $key => &$meta){
 
-					$meta = wp_parse_args($meta, $this->meta_defaults($key));
-					$meta['set'] = $this->optset->get_set( $meta['clone'] ); 
-
-					if( strlen( $meta['clone'] ) < 3 ){
-						$meta['clone'] = pl_new_clone_id();
+					if( !isset( $meta['clone'] ) ){
+					
+						$meta['clone'] = $this->load_new_section_from_map( $meta );
 						$clone_was_set = true;
+					
 					}
+
+					$meta = wp_parse_args($meta, $this->meta_defaults($key));
+					$meta['set'] = $this->get_section_settings( $meta['clone'] ); 
+					$meta['draw']	= 'content';
+					
 
 					if(!empty($meta['content'])){
 						foreach($meta['content'] as $subkey => &$sub_meta){
 							
-							$sub_meta = wp_parse_args($sub_meta, $this->meta_defaults($subkey));
-							$sub_meta['set'] = $this->optset->get_set( $sub_meta['clone'] ); 
-							
-							if( strlen( $sub_meta['clone'] ) < 3 ){
-								$sub_meta['clone'] = pl_new_clone_id();
+							if( !isset( $sub_meta['clone'] ) ){
+								$sub_meta['clone'] = $this->load_new_section_from_map( $sub_meta );
 								$clone_was_set = true;
 							}
+							
+							$sub_meta = wp_parse_args($sub_meta, $this->meta_defaults($subkey));
+							$sub_meta['set'] = $this->get_section_settings( $sub_meta['clone'] ); 
+							$sub_meta['draw']	= 'content';
 							
 							$this->section_list[  ] = $sub_meta;
 							$this->section_list_unique[$sub_meta['object']] = $sub_meta;
@@ -301,25 +396,14 @@ class PageLinesTemplateHandler {
 		}
 
 		
+		
+
 		// This sets a map for the page, if it isn't set with new clone IDs the options wont
 		// work until a user action causes the map to be saved, non-ideal
-		if( $clone_was_set )
-			$this->map_handler->save_map_draft( $this->page->id, $this->page->typeid, $this->map, $this->get_template_mode() ); 
+		if( $clone_was_set ){
 		
+			pagelines_add_bodyclass('pl-save-map-on-load');
 	
-
-		// add passive sections (not in drag drop but added through options/hooks)
-		global $passive_sections;
-
-		if(is_array($passive_sections) && !empty($passive_sections)){
-			foreach($passive_sections as $key){
-				 
-				$meta = wp_parse_args(array(), $this->meta_defaults($key));
-				$meta['set'] = $this->optset->get_set( $meta['clone'] ); 
-				
-				$this->section_list[  ] = $meta;
-				$this->section_list_unique[ $meta['object'] ] = $meta;
-			}
 		}
 	}
 
@@ -345,39 +429,13 @@ class PageLinesTemplateHandler {
 
 	}
 
-	// function load_section_settings( $meta ){
-	// 
-	// 		$settings = array();
-	// 
-	// 		$sid = $meta['sid'];
-	// 		$clone = $meta['clone'];
-	// 
-	// 		foreach( $this->opts_config[ $sid ]['opts'] as $index => $o ){
-	// 
-	// 			if( $o['type'] == 'multi' ){
-	// 
-	// 				foreach( $o['opts'] as $sub_index => $sub_o ){
-	// 					$settings[ $sub_o['key'] ] = (  isset($sub_o['val'][$clone]) ) ? $sub_o['val'][$clone] : '';
-	// 				}
-	// 
-	// 			} else {
-	// 				$settings[ $o['key'] ] = (  isset($o['val'][$clone]) ) ? $o['val'][$clone] : '';
-	// 			}
-	// 
-	// 		}
-	// 
-	// 
-	// 		return $settings;
-	// 	}
-
-
 	function get_options_config(){
 
 		$opts_config = array();
 
 
 		// BACKWARDS COMPATIBILITY
-		add_action('override_metatab_register', array(&$this, 'get_opts_from_optionator'), 10, 2);
+		add_action('override_metatab_register', array( $this, 'get_opts_from_optionator'), 10, 2);
 
 		foreach($this->section_list as $key => $meta){
 
@@ -459,7 +517,7 @@ class PageLinesTemplateHandler {
 					unset($o); // set by reference
 				}
 
-				$opts = array_merge($opts, pl_standard_section_options());
+				$opts = array_merge( $opts, pl_standard_section_options( $s ) );
 
 				$opts_config[ $s->meta['clone'] ][ 'opts' ] = $opts;
 
@@ -469,7 +527,7 @@ class PageLinesTemplateHandler {
 
 		}
 
-		remove_action('override_metatab_register', array(&$this, 'get_opts_from_optionator'), 10, 2);
+		remove_action('override_metatab_register', array( $this, 'get_opts_from_optionator'), 10, 2);
 
 
 		foreach($opts_config as $item => &$i){
@@ -478,7 +536,7 @@ class PageLinesTemplateHandler {
 		unset($i);
 
 
-		return $opts_config;
+		return apply_filters( 'get_options_config', $opts_config );
 	}
 
 
@@ -538,50 +596,28 @@ class PageLinesTemplateHandler {
 		if($scope == 'local'){
 
 			$d = pl_settings( $this->draft->mode, $this->page->id );
-			
-			// ** Backwards Compatible Stuff ** //
-			if(!is_pagelines_special()){
-				foreach($this->opts_list as $key => $opt){
-
-					$val = plmeta( $opt, array('post_id' => $this->page->id) );
-
-					if( !isset($d[ $opt ]) && $val != '')
-						$d[$opt] = array( pl_html($val) );
-				}
-			}
+		
 
 		} elseif($scope == 'type'){
 
 			$d = pl_settings( $this->draft->mode, $this->page->typeid );
+			
+		} elseif($scope == 'section') {
 
-			// ** Backwards Compatible Stuff **
-			$old_special = get_option('pagelines-special');
+			global $sections_handler;
+			
+			$d = $sections_handler->get_user_section_settings();
+		
+		} elseif($scope == 'template') {
 
-			if( isset( $old_special[ $this->page->type ] ) ){
-				foreach($this->opts_list as $key => $opt){
+			global $pl_custom_template;
+			
+			$d = ( ! empty( $pl_custom_template ) ) ? $pl_custom_template['settings'] : array();
 
-					if( !isset($d[ $opt ]) && isset($old_special[ $this->page->type ][ $opt ]) && !empty($old_special[ $this->page->type ][ $opt ]) )
-						$d[$opt] = array( pl_html($old_special[ $this->page->type ][ $opt ]));
+		} elseif( $scope == 'global' ) {
 
-				}
-			}
-
-		} else {
-
-			$d = pl_settings( $this->draft->mode );
-
-			// ** Backwards Compatible Stuff **
-			$old_special = get_option('pagelines-special');
-
-			if( isset( $old_special[ 'default' ] ) ){
-				foreach($this->opts_list as $key => $opt){
-
-					if(!isset($d[ $opt ]) && isset($old_special[ 'default' ][ $opt ]) && !empty($old_special[ 'default' ][ $opt ]) )
-						$d[ $opt ] = array( pl_html($old_special[ 'default' ][ $opt ]) );
-
-				}
-			}
-
+			$d = pl_get_global_settings( pl_get_mode() );
+			
 		}
 
 
@@ -736,6 +772,20 @@ class PageLinesTemplateHandler {
 			$s->level = $level;
 
 			$s->setup_oset( $meta['clone'] ); // refactor
+			
+			
+			// Hiding section on specific page.
+			$hide_on_pages = $s->opt( 'pl_hide_on_page' );
+			
+			$hide_section = false;
+			
+			if( $hide_on_pages != false ){
+				$hide_on_pages_ids = explode( ',', $hide_on_pages );
+				
+				if(  in_array( $this->page->id, $hide_on_pages_ids ) )
+					$hide_section = true;
+			}
+				
 
 			if( has_filter( 'pagelines_render_section' ) ) {
 				$output = apply_filters( 'pagelines_render_section', $s, $this );
@@ -745,10 +795,10 @@ class PageLinesTemplateHandler {
 				$output = ob_get_clean();	
 			}
 	
-			$render = (!isset($output) || $output == '') ? false : true;
+			$render = ( ! isset($output) || $output == '' || $hide_section ) ? false : true;
 
 			if( ! $render && current_user_can( 'edit_theme_options' ) ){
-				$output = pl_blank_template(); 
+				$output = pl_blank_template( $s->name ); 
 				$render = true;
 			}
 
@@ -758,6 +808,17 @@ class PageLinesTemplateHandler {
 			if( $render ){
 				
 				$s->wrapper_classes['user_classes'] = $s->opt('pl_area_class');
+				
+				$s->wrapper_classes['option_classes'] = pl_get_area_classes( $s );
+				
+				$s->wrapper_styles = pl_get_area_styles( $s ); 
+				
+				$s->wrapper_styles['user'] = $s->opt('pl_standard_styles');
+				
+				
+				
+				// set to true if standard title is to be placed non standard 
+				$s->alt_standard_title = false;
 				
 				$s->before_section_template( );
 
@@ -827,22 +888,18 @@ class PageLinesTemplateHandler {
 	}
 
 	function before_section( $s ){
+		
 		echo pl_source_comment($s->name . ' | Section Template', 2); // Add Comment
 
 		pagelines_register_hook('pagelines_before_'.$s->id, $s->id); // hook
 
-		// Rename to prevent conflicts
-		// TODO remove this or check to remove this strange non-algorhythmic code
-		if ( 'comments' == $s->id )
-			$sid = 'wp-comments';
-		elseif ( 'content' == $s->id )
-			$sid = 'content-area';
-		else
-			$sid = $s->id;
+		$sid = $s->id;
 
 		$clone 	= $s->meta['clone'];
 
 		$edition = $s->sinfo['edition'];
+		
+		$datas = array();
 		
 		if(!pl_is_pro()){
 			$edition = $s->sinfo['edition'];
@@ -856,6 +913,19 @@ class PageLinesTemplateHandler {
 			$class[] = 'pl-area pl-area-sortable area-tag';
 			$controls = $this->areas->area_controls( $s );
 			$pad_class = 'pl-area-pad';
+			
+			/* - User Sections Classes - */
+			if( isset( $s->meta['ctemplate'] ) ){
+				$class[] = 'custom-section editing-locked';
+				
+				
+				
+				$datas[] = sprintf( "data-custom-section='%s'", $s->meta['ctemplate'] );
+				
+				$datas[] = sprintf( "data-custom-name='%s'", pl_custom_section_name($s->meta['ctemplate']) );
+			}
+			
+			
 		} else {
 			// Content Section Stuff
 			$span 	= (isset($s->meta['span'])) ? sprintf('span%s', $s->meta['span']) : 'span12';
@@ -866,23 +936,38 @@ class PageLinesTemplateHandler {
 			$class[] = $offset;
 			$class[] = $newrow;
 			$controls = $this->editor->section_controls( $s );
+			
 			$pad_class = 'pl-section-pad';
 		}
 
+		$styles = $s->wrapper_styles;
 
 		$class = array_merge( $class, $s->wrapper_classes, (array) explode( ' ', $s->special_classes ) );
 		$class = array_unique( array_filter( $class ) ); // ensure no empties or duplicates
 
+		$video = pl_standard_video_bg( $s );
+		
+		$title = ( ! $s->alt_standard_title ) ? $s->opt('pl_standard_title') : false;
+		
+		if( $title ){
+			$attr = 'class="pl-section-title pla-from-top subtle pl-animation" data-sync="pl_standard_title"';
+			$title = ( $s->level == 0 ) ? sprintf( '<h2 %s>%s</h2>', $attr, $title ) : sprintf( '<h3 %s>%s</h3>', $attr, $title );
+		}
+		
 		printf(
-			'<section id="%s" data-object="%s" data-sid="%s" data-clone="%s" class="%s section-%s">%s<div class="%s fix">',
+			'<section id="%s" data-object="%s" data-sid="%s" data-clone="%s" %s class="%s section-%s" style="%s">%s%s<div class="%s fix">%s',
 			$s->id.$clone,
 			$s->class_name,
 			$s->id,
 			$clone,
+			implode(" ", $datas),
 			implode(" ", $class),
 			$sid,
+			implode(" ", $styles),
 			$controls,
-			$pad_class
+			$video,
+			$pad_class,
+			$title
 		);
 
 		pagelines_register_hook('pagelines_outer_'.$s->id, $s->id); // hook
@@ -891,10 +976,12 @@ class PageLinesTemplateHandler {
  	}
 
 	function after_section( $s ){
+		
+		$controls_foot = ''; // ( $s->level == 0 ) ? '' : $this->editor->section_controls_footer( $s );
 
 		pagelines_register_hook('pagelines_inside_bottom_'.$s->id, $s->id);
 
-		printf('</div></section>');
+		printf('</div>%s</section>', $controls_foot);
 
 		pagelines_register_hook('pagelines_after_'.$s->id, $s->id);
 	}
@@ -921,8 +1008,37 @@ class PageLinesTemplateHandler {
 		return ( isset($this->factory[ $section ]) && is_object($this->factory[ $section ]) ) ? true : false;
 	}
 
-}
+	function image( $opt, $default = '', $classes = array(), $alt = '' ) {
 
+		$default = ( '' != $default ) ? $default : PL_IMAGES . '/dms.png';
+		$image = ( '' != $this->opt( $opt ) ) ? $this->opt( $opt ) : $default;
+	
+		if( ! empty( $classes ) )
+			$classes = implode( ' ', $classes );
+		else
+			$classes = false;
+		
+		if( '' != $opt && '' != $this->opt( $opt . '_alt' ) ) {
+			$alt = sprintf( ' data-sync="%s" alt="%s" title="%s" %s',
+			$opt,
+			$this->opt( $opt . '_alt' ),
+			$this->opt( $opt . '_alt' ),
+			( '' != $classes ) ? sprintf( 'class="%s"', $classes ) : ''
+			);
+		} else {
+			$alt = sprintf( ' data-sync="%s" %s alt="%s" title="%s"',
+			$opt,
+			( '' != $classes ) ? sprintf( 'class="%s"', $classes ) : '',
+			$alt,
+			$alt
+			);
+		}
+		return sprintf( '<img src="%s"%s />',
+			$image,
+			$alt
+		);
+	}
+}
 
 /**
  * For use inside of sections

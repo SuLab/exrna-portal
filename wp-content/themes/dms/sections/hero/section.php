@@ -47,6 +47,7 @@ class PLheroUnit extends PageLinesSection {
 			array(
 				'key'			=> 'pagelines_herounit_image',
 				'type'			=> 'image_upload',
+				'has_alt'		=> true,
 				'label'			=> __( 'Upload Custom Image', 'pagelines' ) ),
             array(
                 'key'			=> 'herounit_reverse',
@@ -58,6 +59,7 @@ class PLheroUnit extends PageLinesSection {
 			array(
 				'title'			=> __( 'Content Widths', 'pagelines' ),
 				'type'			=> 'multi',
+				'col'			=> 2,
 				'opts'			=> array(
 
 			array(
@@ -83,57 +85,60 @@ class PLheroUnit extends PageLinesSection {
 				'type'			=> 'select',
 				'opts'			=> array(
 
-				'span3'			=> array( 'name' => '25%' ),
-				'span4'			=> array( 'name' => '33%' ),
-				'span6'			=> array( 'name' => '50%' ),
-				'span8'			=> array( 'name' => '66%' ),
-				'span9'			=> array( 'name' => '75%' ),
-				'span7'			=> array( 'name' => '90%' )
-										)
-									)
-								)
-							),
+					'span3'			=> array( 'name' => '25%' ),
+					'span4'			=> array( 'name' => '33%' ),
+					'span6'			=> array( 'name' => '50%' ),
+					'span8'			=> array( 'name' => '66%' ),
+					'span9'			=> array( 'name' => '75%' ),
+					'span7'			=> array( 'name' => '90%' )
+				)
+			)
+		)
+	),
 
-			array(
+	array(
 				'title'			=> __( 'Hero Action Button', 'pagelines' ),
+				'col'			=> 2,
 				'type'			=> 'multi',
 				'opts'			=> array(
 
-			array(
-				'key'			=> 'herounit_button_link',
-				'type'			=> 'text',
-				'label'			=> __( 'Button link destination (URL - Required)', 'pagelines' ) ),
+					array(
+						'key'			=> 'herounit_button_link',
+						'type'			=> 'text',
+						'label'			=> __( 'Button link destination (URL - Required)', 'pagelines' ) ),
 
-			array(
-				'key'			=> 'herounit_button_text',
-				'type'			=> 'text',
-				'label'			=> __( 'Hero Button Text', 'pagelines' ) ),
+					array(
+						'key'			=> 'herounit_button_text',
+						'type'			=> 'text',
+						'label'			=> __( 'Hero Button Text', 'pagelines' ) ),
 
-			array(
-				'key'			=> 'herounit_button_target',
-				'type'			=> 'check',
-				'default'		=> false,
-				'label'			=> __( 'Open link in new window', 'pagelines' ) ),
+					array(
+						'key'			=> 'herounit_button_target',
+						'type'			=> 'check',
+						'default'		=> false,
+						'label'			=> __( 'Open link in new window', 'pagelines' ) ),
 
-			array(
-				'label'			=> __( 'Select Button Color', 'pagelines' ),
-				'key'			=> 'herounit_button_theme',
-				'default'		=> 'primary',
-				'type'			=> 'select',
-				'opts'			=> array(
+					array(
+						'label'			=> __( 'Select Button Color', 'pagelines' ),
+						'key'			=> 'herounit_button_theme',
+						'default'		=> 'primary',
+						'type'			=> 'select',
+						'opts'			=> array(
 
-				'primary'		=> array( 'name' => __( 'Blue', 'pagelines' ) ),
-				'warning'		=> array( 'name' => __( 'Orange', 'pagelines' ) ),
-				'important'		=> array( 'name' => __( 'Red', 'pagelines' ) ),
-				'success'		=> array( 'name' => __( 'Green', 'pagelines' ) ),
-				'info'			=> array( 'name' => __( 'Light Blue', 'pagelines' ) ),
-				'reverse'		=> array( 'name' => __( 'Grey', 'pagelines' ) )
-										)
-									)
-								)
-							)
-						);
-	return $opts;
+							'primary'		=> array( 'name' => __( 'Blue', 'pagelines' ) ),
+							'warning'		=> array( 'name' => __( 'Orange', 'pagelines' ) ),
+							'important'		=> array( 'name' => __( 'Red', 'pagelines' ) ),
+							'success'		=> array( 'name' => __( 'Green', 'pagelines' ) ),
+							'info'			=> array( 'name' => __( 'Light Blue', 'pagelines' ) ),
+							'reverse'		=> array( 'name' => __( 'Grey', 'pagelines' ) )
+						)
+					)
+				)
+			)
+		);
+	
+		return $opts;
+	
 	}
 
 
@@ -142,16 +147,16 @@ class PLheroUnit extends PageLinesSection {
 	*/
    function section_template() {
 
-		$hero_lt_width = $this->opt( 'herounit_left_width', $this->oset );
-		$hero_rt_width = $this->opt( 'herounit_right_width', $this->oset );
+		$hero_lt_width = $this->opt( 'herounit_left_width' );
+		$hero_rt_width = $this->opt( 'herounit_right_width' );
    		$hero_title = $this->opt( 'pagelines_herounit_title', $this->tset );
 		$hero_tag = $this->opt( 'pagelines_herounit_tagline', $this->tset );
 		$hero_img = $this->opt( 'pagelines_herounit_image', $this->tset );
-		$hero_butt_link = $this->opt( 'herounit_button_link', $this->oset );
-		$hero_butt_text = $this->opt( 'herounit_button_text', $this->oset );
-		$hero_butt_target = ( $this->opt( 'herounit_button_target', $this->oset ) ) ? ' target="_blank"': '';
-		$hero_butt_theme = $this->opt( 'herounit_button_theme', $this->oset );
-        $hero_reverse = ( $this->opt( 'herounit_reverse', $this->oset ) ) ? 'pl-hero-reverse': '';
+		$hero_butt_link = $this->opt( 'herounit_button_link' );
+		$hero_butt_text = $this->opt( 'herounit_button_text' );
+		$hero_butt_target = ( $this->opt( 'herounit_button_target' ) ) ? ' target="_blank"': '';
+		$hero_butt_theme = $this->opt( 'herounit_button_theme' );
+        $hero_reverse = ( $this->opt( 'herounit_reverse' ) ) ? 'pl-hero-reverse': '';
 
 		if ( ! $hero_rt_width )
 			$hero_rt_width = 'span6';
@@ -187,8 +192,12 @@ class PLheroUnit extends PageLinesSection {
 	   	if( $hero_rt_width )
 			printf( '<div class="pl-hero-image %s">', $hero_rt_width);
 
-		if( $hero_img )
-			printf( '<div class="hero_image"><img class="pl-imageframe" data-sync="pagelines_herounit_image" src="%s" /></div>', apply_filters( 'pl_hero_image', $hero_img ) );
+		if( $this->opt( 'pagelines_herounit_image' ) )
+		
+		
+			printf( '<div class="hero_image">%s</div>', 
+			apply_filters( 'pl_hero_image', $this->image( 'pagelines_herounit_image', false, array( 'pl-imageframe' ) ) )
+			);
 
 		?>
 			</div>

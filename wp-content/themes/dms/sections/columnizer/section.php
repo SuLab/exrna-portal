@@ -23,7 +23,7 @@ class PageLinesColumnizer extends PageLinesSection {
 
 	function change_markup( $params ){
 
-		$cols = ($this->opt('columnizer_cols')) ? $this->opt('columnizer_cols') : 3;
+		$cols = $this->opt( 'columnizer_cols', array( 'default' => 3 ) );
 
 
 		$params[0]['before_widget'] = sprintf('<div class="span%s">%s', $cols, $params[0]['before_widget']);
@@ -73,30 +73,33 @@ class PageLinesColumnizer extends PageLinesSection {
 
 			array(
 				'key'	=> 'columnizer_help',
+				'col'	=> 2,
 				'type'	=> 'link',
 				'url'	=> admin_url( 'widgets.php' ),
 				'title'	=> __( 'Widgetized Areas Help', 'pagelines' ),
-				'label'		=>	sprintf( '<i class="icon-retweet"></i> %s', __( 'Edit Widgetized Areas', 'pagelines' ) ),
+				'label'		=>	sprintf( '<i class="icon icon-retweet"></i> %s', __( 'Edit Widgetized Areas', 'pagelines' ) ),
 				'help'		=> __( "This section uses widgetized areas that are created and edited in inside your admin.", 'pagelines' ),
 			),
 			array(
 				'key'	=> 'columnizer_description',
+				'col'	=> 2,
 				'type'	=> 'textarea',
-
+				
 				'title'		=> __( 'Column Site Description', 'pagelines' ),
 				'label'		=>	__( 'Column Site Description', 'pagelines' ),
 				'help'		=> __( "If you use the default display of the columnizer, this field is used as a description of your company. You may want to add your address or links.", 'pagelines' ),
 			)
 		);
 
-		if(!class_exists('CustomSidebars')){
+		if( !class_exists('CustomSidebars') && !function_exists('otw_sml_plugin_init') ){
 			$opts[] = array(
 				'key'	=> 'widgetizer_custom_sidebars',
 				'type'	=> 'link',
-				'url'	=> 'http://wordpress.org/extend/plugins/custom-sidebars/',
-				'title'	=> __( 'Get Custom Sidebars', 'pagelines' ),
-				'label'		=>	'<i class="icon-external-link"></i> Check out plugin',
-				'help'		=> "We have detected that you don't have the Custom Sidebars plugin installed. We recommend you install this plugin to create custom widgetized areas on demand.",
+				'col'	=> 3,
+				'url'	=> 'http://wordpress.org/plugins/sidebar-manager-light/screenshots/',
+				'title'	=> __( 'Get A Sidebars Plugin', 'pagelines' ),
+				'label'		=> __( '<i class="icon icon-external-link"></i> Check out Sidebar Manager plugin', 'pagelines' ),
+				'help'		=> __( "We have detected that you don't either the Custom Sidebars or Sidebar Manager plugins installed. We recommend you install a plugin that allows you to create custom widgetized areas on demand.", 'pagelines' ),
 			);
 		}
 
@@ -119,9 +122,9 @@ class PageLinesColumnizer extends PageLinesSection {
 			$this->width = 0;
 			$this->count = 1;
 
-			add_filter('dynamic_sidebar_params', array(&$this, 'change_markup'));
+			add_filter('dynamic_sidebar_params', array( $this, 'change_markup'));
 			pagelines_draw_sidebar( $area );
-			remove_filter('dynamic_sidebar_params', array(&$this, 'change_markup'));
+			remove_filter('dynamic_sidebar_params', array( $this, 'change_markup'));
 
 		} else {
 			printf ('<ul class="columnizer row fix sidebar_widgets">%s</ul>', $this->get_default() );
@@ -133,90 +136,37 @@ class PageLinesColumnizer extends PageLinesSection {
 
 	function get_default(){
 		ob_start();
-
-
-		$twitter = $this->opt('twittername');
-		$facebook = $this->opt('facebook_name');
 		?>
 
-		<li id="the_default_widget_social" class="span3 widget">
-			<div class="widget-pad">
-				<h3 class="widget-title"><?php _e('Stay in Touch!','pagelines'); ?></h3>
-				<div class="textwidget">
-					<p>
-					Thanks for stopping by! Please make sure to stay in touch.
-					</p>
-					<ul>
-					<?php
-					if($twitter)
-						printf('<li><a href="http://www.twitter.com/%1$s"><i class="icon-twitter"></i> Twitter</a></li>', $twitter);
-
-					if($facebook)
-						printf('<li><a href="http://www.facebook.com/%1$s"><i class="icon-facebook"></i> Facebook</a></li>', $facebook);
-
-						printf('<li><a href="%s"><i class="icon-rss"></i> Subscribe</a></li>', get_bloginfo( 'rss2_url' ) );
-					?>
-					</ul>
-
-				</div>
-			</div>
-		</li>
-
-		<?php
-
-		?>
 		<li id="the_default_widget_latest" class="span3 widget">
 			<div class="widget-pad">
-				<h3 class="widget-title"><?php _e('The Latest','pagelines'); ?></h3>
+				<h3 class="widget-title"><?php _e('Latest Posts','pagelines'); ?></h3>
 				<ul class="media-list">
-					<?php
-
-					foreach( get_posts( array('numberposts' => 3) ) as $p ){
-						$img = (has_post_thumbnail( $p->ID )) ? sprintf('<div class="img"><a class="the-media" href="%s" style="background-image: url(%s)"></a></div>', get_permalink( $p->ID ), pl_the_thumbnail_url( $p->ID, 'thumbnail')) : '';
-
-						printf(
-							'<li class="media fix">%s<div class="bd"><a class="title" href="%s">%s</a><span class="excerpt">%s</span></div></li>',
-							$img,
-							get_permalink( $p->ID ),
-							$p->post_title,
-							pl_short_excerpt($p->ID)
-						);
-
-					} ?>
-
-
+				<?php pl_recent_posts(); ?>
 				</ul>
 			</div>
 		</li>
 
-		<li id="the_default_widget_tags" class="span3 widget">
+		<li id="the_default_widget_latest" class="span3 widget">
 			<div class="widget-pad">
-				<h3 class="widget-title"><?php _e('Tags','pagelines'); ?></h3>
-				<div class="tags-list">
-					<?php
-
-					wp_tag_cloud( array('number'=> 6, 'smallest' => 10, 'largest' => 10) );
-					 ?>
-
-
-				</div>
-			</div>
-			<div class="widget-pad">
-				<h3 class="widget-title"><?php _e('Categories','pagelines'); ?></h3>
-				<ul class="media-list">
-					<?php
-
-					echo wp_list_categories( array( 'number' => 5, 'depth' => 1, 'title_li' => '', 'orderby' => 'count' ));
-					 ?>
-
-
+				<h3 class="widget-title"><?php _e('Recent Comments','pagelines'); ?></h3>
+				<ul class="quote-list">
+					<?php  pl_recent_comments();  ?>
 				</ul>
 			</div>
 		</li>
-
+		
+		<li id="the_default_widget_latest" class="span3 widget">
+			<div class="widget-pad">
+				<h3 class="widget-title"><?php _e('Top Categories','pagelines'); ?></h3>
+				<ul class="media-list">
+			<?php  echo  pl_popular_taxonomy();  ?>
+				</ul>
+			</div>
+		</li>
 		<li id="the_default_widget_more" class="span3 widget">
 			<div class="widget-pad">
-				<h3 class="widget-title"><?php _e('More Info','pagelines'); ?></h3>
+				<h3 class="widget-title"><?php _e('About','pagelines'); ?> <?php bloginfo('name'); ?></h3>
 				<div class="textwidget">
 					<?php
 

@@ -5,10 +5,10 @@
 	min-height: 20px;
 	padding: 19px;
 	margin: @baseLineHeight 0;
-	#gradient > .vertical(darken(@pl-base,5%), darken(@pl-base,3%));
+	background: @baseContrast;
 	border: 1px solid rgba(0,0,0,.1);
 	.box-sizing(border-box);
-	.border-radius(1px);
+	border-radius: 1px;
 	> .btn{
 		margin-right: 10px;
 	}
@@ -16,14 +16,20 @@
 		border-color: darken(@dark-base,8);
 		border-color: rgba(0,0,0,.15);
 	}
+	h2, h3, h4{
+		margin-top: 0;
+	}
+	p:last-child{
+		margin-bottom: 0;
+	}
 }
 
 // Sizes
 .well-large {
   padding: 24px;
-  .border-radius(4px);
+  border-radius: 4px;
 }
 .well-small {
   padding: 9px;
-  .border-radius(2px);
+  border-radius: 2px;
 }

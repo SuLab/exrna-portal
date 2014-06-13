@@ -1,549 +1,633 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: DMS\n"
-"POT-Creation-Date: 2013-11-05 18:32-0000\n"
-"PO-Revision-Date: 2013-11-05 18:33-0000\n"
+"POT-Creation-Date: 2014-03-24 21:00-0000\n"
+"PO-Revision-Date: 2014-03-24 21:02-0000\n"
 "Last-Translator: Simon <simon@pagelines.com>\n"
 "Language-Team: \n"
+"Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.7\n"
+"X-Generator: Poedit 1.6.4\n"
 "X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
 "_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_ex:1,2c;"
 "esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
 "lang\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPath-1: ..\n"
 
-#: ../comments.php:23
-msgid "Comments are closed."
+#: ../dms/admin/admin.account.php:65 ../dms/admin/admin.editor.php:128
+msgid "Pro Activated!"
 msgstr ""
 
-#: ../comments.php:38
-msgid ""
-"This post is password protected. Enter the password to view any comments."
+#: ../dms/admin/admin.account.php:68 ../dms/admin/admin.editor.php:119
+msgid "Site Not Activated"
 msgstr ""
 
-#: ../comments.php:44
-#, php-format
-msgid "One Response to %2$s"
-msgid_plural "%1$s Responses to %2$s"
-msgstr[0] ""
-msgstr[1] ""
-
-#: ../comments.php:52
-msgid "<span class='meta-nav'>&larr;</span> Older Comments"
-msgstr ""
-
-#: ../comments.php:53
-msgid "Newer Comments <span class='meta-nav'>&rarr;</span>"
-msgstr ""
-
-#: ../admin/admin.actions.php:18
+#: ../dms/admin/admin.actions.php:21
 msgid "DMS Tools"
 msgstr ""
 
-#: ../admin/admin.actions.php:34
+#: ../dms/admin/admin.actions.php:37
 msgid "PageLines DMS"
 msgstr ""
 
-#: ../admin/admin.actions.php:102
-#, php-format
-msgid ""
-"<div class='config-error'><h2>PHP Version Problem</h2>Looks like you are "
-"using PHP version: <strong>%s</strong>. To run this framework you will need "
-"PHP <strong>5.0</strong> or better...<br/><br/> Don't worry though! Just "
-"check with your host about a quick upgrade.</div>"
+#: ../dms/admin/admin.actions.php:155
+msgid "dismiss this notice"
 msgstr ""
 
-#: ../admin/admin.editor.php:18
+#: ../dms/admin/admin.actions.php:156
+msgid "This theme recommends"
+msgstr ""
+
+#: ../dms/admin/admin.actions.php:157
+msgid "a plugin"
+msgid_plural "some plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../dms/admin/admin.actions.php:158
+msgid "from the WordPress Plugins Repository."
+msgstr ""
+
+#: ../dms/admin/admin.editor.php:18
 msgid "PageLines DMS Settings"
 msgstr ""
 
-#: ../admin/admin.editor.php:22
+#: ../dms/admin/admin.editor.php:22
 msgid "Editing Your Site With DMS"
 msgstr ""
 
-#: ../admin/admin.editor.php:26
+#: ../dms/admin/admin.editor.php:26 ../dms/includes/init.install.php:375
 msgid "Welcome to DMS!"
 msgstr ""
 
-#: ../admin/admin.editor.php:31
+#: ../dms/admin/admin.editor.php:31
+msgid "Your PageLines Account"
+msgstr ""
+
+#: ../dms/admin/admin.editor.php:35
+msgid "Activate Your Account"
+msgstr ""
+
+#: ../dms/admin/admin.editor.php:40
 msgid "DMS Fallbacks"
 msgstr ""
 
-#: ../admin/admin.editor.php:32
+#: ../dms/admin/admin.editor.php:41
 msgid ""
 "Below are secondary fallbacks to the DMS code editors. You may need these if "
 "you create errors or issues on the front end."
 msgstr ""
 
-#: ../admin/admin.editor.php:36
+#: ../dms/admin/admin.editor.php:45
 msgid "DMS LESS Fallback"
 msgstr ""
 
-#: ../admin/admin.editor.php:40
+#: ../dms/admin/admin.editor.php:49
 msgid "DMS Header Scripts Fallback"
 msgstr ""
 
-#: ../admin/admin.editor.php:54
+#: ../dms/admin/admin.editor.php:63
 msgid ""
 "Editing with DMS is done completely on the front end of your site. This "
 "allows you to customize in a way that feels more direct and intuitive than "
 "when using the admin."
 msgstr ""
 
-#: ../admin/admin.editor.php:55
+#: ../dms/admin/admin.editor.php:64
 msgid "Just visit the front end of your site (as an admin) and get started!"
 msgstr ""
 
-#: ../admin/admin.editor.php:57
+#: ../dms/admin/admin.editor.php:66
 msgid "Edit Site Using DMS"
 msgstr ""
 
-#: ../admin/admin.editor.php:69
-msgid "Save LESS"
-msgstr ""
-
-#: ../admin/admin.editor.php:81
-msgid "Save Scripts"
-msgstr ""
-
-#: ../editor/editor.account.php:199
-msgid "DMS"
-msgstr ""
-
-#: ../editor/editor.account.php:207
-msgid "Your Account"
-msgstr ""
-
-#: ../editor/editor.account.php:213
-msgid "Getting Started"
-msgstr ""
-
-#: ../editor/editor.account.php:219
-msgid "Support"
-msgstr ""
-
-#: ../editor/editor.account.php:441
-msgid "Get PRO stuff free with Karma."
-msgstr ""
-
-#: ../editor/editor.account.php:443
-msgid ""
-"For every friend you invite who joins and installs PageLines, we'll give you "
-"and your friend 50 karma points! Karma points can be redeemed as cash with "
-"PageLines."
-msgstr ""
-
-#: ../editor/editor.account.php:447
-msgid "Invite Friends by Email"
-msgstr ""
-
-#: ../editor/editor.account.php:450
-msgid "Add emails (Comma separated)"
-msgstr ""
-
-#: ../editor/editor.account.php:452
-msgid "Invite"
-msgstr ""
-
-#: ../editor/editor.account.php:455 ../editor/editor.account.php:467
-msgid " Add/Update Account Info"
-msgstr ""
-
-#: ../editor/editor.account.php:457
-msgid "Name and invite link needed."
-msgstr ""
-
-#: ../editor/editor.account.php:462
-msgid "Your Invite Link"
-msgstr ""
-
-#: ../editor/editor.account.php:483
-msgid " Your Karma"
-msgstr ""
-
-#: ../editor/editor.account.php:489
-msgid " Current"
-msgstr ""
-
-#: ../editor/editor.account.php:496
-msgid " Lifetime"
-msgstr ""
-
-#: ../editor/editor.account.php:505
-msgid "Get karma"
-msgstr ""
-
-#: ../editor/editor.account.php:507
-msgid "Use karma"
-msgstr ""
-
-#: ../editor/editor.account.php:509
-msgid "Learn more about karma"
-msgstr ""
-
-#: ../editor/editor.account.php:561 ../editor/editor.interface.php:347
-#: ../editor/js/pl.editor.js:175
-msgid "Saving"
-msgstr ""
-
-#: ../editor/editor.account.php:566
-msgid "Site Not Activated"
-msgstr ""
-
-#: ../editor/editor.account.php:575
-msgid "Pro Activated!"
-msgstr ""
-
-#: ../editor/editor.account.php:579
+#: ../dms/admin/admin.editor.php:132
 msgid "Update Info"
 msgstr ""
 
-#: ../editor/editor.account.php:581
+#: ../dms/admin/admin.editor.php:134
 msgid "Deactivate"
 msgstr ""
 
-#: ../editor/editor.account.php:591
-msgid "PageLines Account"
+#: ../dms/admin/admin.editor.php:143
+msgid "Your PageLines account email."
 msgstr ""
 
-#: ../editor/editor.account.php:599
-msgid "Pro Activation Key"
-msgstr ""
-
-#: ../editor/editor.account.php:600
-msgid "optional"
-msgstr ""
-
-#: ../editor/editor.account.php:602
+#: ../dms/admin/admin.editor.php:148
 msgid "Enter Pro Key"
 msgstr ""
 
-#: ../editor/editor.account.php:608
-msgid "Update"
+#: ../dms/admin/admin.editor.php:148
+msgid "PageLines Updates and Support Activation Key."
 msgstr ""
 
-#: ../editor/editor.account.php:617
-msgid "PageLines Account Info"
+#: ../dms/admin/admin.editor.php:156
+msgid "Update Account"
 msgstr ""
 
-#: ../editor/editor.account.php:624
-msgid "PageLines account not added or incorrect."
+#: ../dms/admin/admin.editor.php:169
+msgid "Save LESS"
 msgstr ""
 
-#: ../editor/editor.account.php:625
-msgid "Add account to configure PageLines APIs, karma system and store access."
+#: ../dms/admin/admin.editor.php:181
+msgid "Save Scripts"
 msgstr ""
 
-#: ../editor/editor.account.php:631
-msgid "Profile"
+#: ../dms/admin/admin.postmeta.php:9
+msgid "Gallery"
 msgstr ""
 
-#: ../editor/editor.account.php:641
-msgid "My Account"
+#: ../dms/admin/admin.postmeta.php:16
+msgid "Gallery Slider"
 msgstr ""
 
-#: ../editor/editor.account.php:643
-msgid "Edit Profile"
+#: ../dms/admin/admin.postmeta.php:17
+msgid "Would you like to turn your gallery into a slider?"
 msgstr ""
 
-#: ../editor/editor.account.php:668
-msgid "Congratulations!"
+#: ../dms/admin/admin.postmeta.php:34
+msgid "Quote Settings"
 msgstr ""
 
-#: ../editor/editor.account.php:675
-msgid "Setup PageLines Account"
+#: ../dms/admin/admin.postmeta.php:41
+msgid "Quote Content"
 msgstr ""
 
-#: ../editor/editor.account.php:678
-msgid "Getting Started Video"
+#: ../dms/admin/admin.postmeta.php:42
+msgid "Please type the text for your quote here."
 msgstr ""
 
-#: ../editor/editor.account.php:689
-msgid "The PageLines Experience"
+#: ../dms/admin/admin.postmeta.php:57
+msgid "Link Settings"
 msgstr ""
 
-#: ../editor/editor.account.php:692
-msgid "We want you to have a most amazing time as a PageLines customer."
+#: ../dms/admin/admin.postmeta.php:64 ../sections/propricing/section.php:80
+msgid "Link URL"
 msgstr ""
 
-#: ../editor/editor.account.php:694
-msgid "That's why we have a ton of people standing by to make you happy."
+#: ../dms/admin/admin.postmeta.php:65
+msgid "Please input the URL for your link. I.e. http://www.pagelines.com"
 msgstr ""
 
-#: ../editor/editor.account.php:698
-msgid "PageLines Forum"
+#: ../dms/admin/admin.postmeta.php:79
+msgid "Video Settings"
 msgstr ""
 
-#: ../editor/editor.account.php:700
-msgid "DMS Documentation"
+#: ../dms/admin/admin.postmeta.php:86
+msgid "M4V File URL"
 msgstr ""
 
-#: ../editor/editor.actions.php:332
+#: ../dms/admin/admin.postmeta.php:87
+msgid "Please upload the .m4v video file."
+msgstr ""
+
+#: ../dms/admin/admin.postmeta.php:93
+msgid "OGV File URL"
+msgstr ""
+
+#: ../dms/admin/admin.postmeta.php:94
+msgid "Please upload the .ogv video file"
+msgstr ""
+
+#: ../dms/admin/admin.postmeta.php:100
+msgid "Preview Image"
+msgstr ""
+
+#: ../dms/admin/admin.postmeta.php:101
+msgid "Image should be at least 680px wide.Only applies to self hosted videos."
+msgstr ""
+
+#: ../dms/admin/admin.postmeta.php:107
+msgid "Embedded Code"
+msgstr ""
+
+#: ../dms/admin/admin.postmeta.php:108
+msgid ""
+"If the video is an embed rather than self hosted, enter in a Vimeo or "
+"Youtube embed code here."
+msgstr ""
+
+#: ../dms/admin/admin.postmeta.php:122
+msgid "Audio Settings"
+msgstr ""
+
+#: ../dms/admin/admin.postmeta.php:129
+msgid "MP3 File URL"
+msgstr ""
+
+#: ../dms/admin/admin.postmeta.php:130
+msgid "Please enter in the .mp3 file URL"
+msgstr ""
+
+#: ../dms/admin/admin.postmeta.php:136
+msgid "OGA File URL"
+msgstr ""
+
+#: ../dms/admin/admin.postmeta.php:137
+msgid "Please enter in the URL to the .ogg or .oga file"
+msgstr ""
+
+#: ../dms/admin/admin.postmeta.php:203 ../dms/editor/js/pl.optpanel.js:1742
+msgid "Upload"
+msgstr ""
+
+#: ../dms/admin/admin.postmeta.php:204
+msgid "Remove Upload"
+msgstr ""
+
+#: ../dms/admin/admin.postmeta.php:212
+msgid "Add Media"
+msgstr ""
+
+#: ../dms/admin/admin.postmeta.php:214
+msgid "Remove Media"
+msgstr ""
+
+#: ../dms/editor/editor.actions.php:289
 msgid "Unsupported file type!"
 msgstr ""
 
-#: ../editor/editor.actions.php:335
+#: ../dms/editor/editor.actions.php:292
 #, php-format
 msgid "Upload Error: %s"
 msgstr ""
 
-#: ../editor/editor.actions.php:375
+#: ../dms/editor/editor.actions.php:335
 msgid "Install DMS Utilities"
 msgstr ""
 
-#: ../editor/editor.actions.php:376
+#: ../dms/editor/editor.actions.php:336
 msgid ""
-"Your site is \"Pro activated\" but you have not installed the DMS Pro tools "
-"plugin. Grab the plugin on <a href=\"http://www.pagelines.com/my-account\" "
-">PageLines.com &rarr; My-Account</a>."
+"Your site is \"Pro activated\" but we have detected that the DMS Pro Tools "
+"plugin is not activated. Grab this plugin if you have not installed it yet "
+"on <a href=\"http://www.pagelines.com/my-account\" >PageLines.com &rarr; My-"
+"Account</a>."
 msgstr ""
 
-#: ../editor/editor.actions.php:392
-msgid "Upgrade to Pro!"
+#: ../dms/editor/editor.actions.php:355
+msgid "Install the PageLines Updater plugin"
 msgstr ""
 
-#: ../editor/editor.actions.php:394
+#: ../dms/editor/editor.actions.php:355
 msgid ""
-"You are currently using the basic DMS version. Pro activate this site for "
-"tons more features and support."
+"to activate this site and get updates for your PageLines themes and plugins."
 msgstr ""
 
-#: ../editor/editor.actions.php:396
-msgid "Learn More About Pro"
+#: ../dms/editor/editor.actions.php:482
+msgid "Select This For Option"
 msgstr ""
 
-#: ../editor/editor.actions.php:398
-msgid "Already a Pro?"
+#: ../dms/editor/editor.actions.php:505
+msgid "Your Media Library"
 msgstr ""
 
-#: ../editor/editor.actions.php:399
-msgid "Activate Site"
+#: ../dms/editor/editor.actions.php:526 ../dms/editor/editor.templates.php:433
+msgid "Template"
 msgstr ""
 
-#: ../editor/editor.actions.php:494
-msgid "Select This Image For Option"
+#: ../dms/editor/editor.areas.php:39 ../dms/editor/editor.areas.php:41
+msgid "Area Settings"
 msgstr ""
 
-#: ../editor/editor.actions.php:516 ../editor/js/pl.optpanel.js:1514
-msgid "Media Library"
-msgstr ""
-
-#: ../editor/editor.areas.php:57 ../editor/editor.interface.php:541
+#: ../dms/editor/editor.areas.php:57 ../dms/editor/editor.interface.php:592
 msgid "Delete"
 msgstr ""
 
-#: ../editor/editor.areas.php:59 ../editor/editor.interface.php:540
+#: ../dms/editor/editor.areas.php:59 ../dms/editor/editor.interface.php:591
 msgid "Clone"
 msgstr ""
 
-#: ../editor/editor.areas.php:61
+#: ../dms/editor/editor.areas.php:62
+msgid "Save As Section"
+msgstr ""
+
+#: ../dms/editor/editor.areas.php:64
 msgid "Move"
 msgstr ""
 
-#: ../editor/editor.areas.php:63 ../editor/editor.interface.php:539
-#: ../includes/class.objects.php:109
+#: ../dms/editor/editor.areas.php:66 ../dms/editor/editor.interface.php:590
+#: ../dms/includes/class.objects.php:109
 msgid "Edit"
 msgstr ""
 
-#: ../editor/editor.color.php:186
+#: ../dms/editor/editor.areas.php:68
+msgid "Break Link"
+msgstr ""
+
+#: ../dms/editor/editor.color.php:179
 msgid "Color <span class=\"spamp\">&amp;</span> BG"
 msgstr ""
 
-#: ../editor/editor.color.php:201
+#: ../dms/editor/editor.color.php:194
 msgid "Site Base Colors"
 msgstr ""
 
-#: ../editor/editor.color.php:202
+#: ../dms/editor/editor.color.php:195
 msgid ""
-"The \"base\" color are a few standard colors used throughout DMS that "
+"The \"base\" colors are a few standard colors used throughout DMS that "
 "plugins may use to calculate contrast or other colors to make sure "
 "everything looks great."
 msgstr ""
 
-#: ../editor/editor.color.php:207
+#: ../dms/editor/editor.color.php:200
 msgid "Background Base Color"
 msgstr ""
 
-#: ../editor/editor.color.php:214
+#: ../dms/editor/editor.color.php:207
 msgid "Text Base Color"
 msgstr ""
 
-#: ../editor/editor.color.php:222
+#: ../dms/editor/editor.color.php:215
 msgid "Link Base Color"
 msgstr ""
 
-#: ../editor/editor.color.php:232 ../sections/pl_area/section.php:128
+#: ../dms/editor/editor.color.php:225 ../dms/includes/lib.editor.php:902
 msgid "Background Image"
 msgstr ""
 
-#: ../editor/editor.color.php:241
+#: ../dms/editor/editor.color.php:234
 msgid "Page Background Image"
 msgstr ""
 
-#: ../editor/editor.color.php:253
-msgid "Background Image Settings"
-msgstr ""
-
-#: ../editor/editor.color.php:259
+#: ../dms/editor/editor.color.php:242
 msgid "Fit image to page?"
 msgstr ""
 
-#: ../editor/editor.color.php:262
+#: ../dms/editor/editor.color.php:245
 msgid ""
 "If you use this option the image will be fit \"responsively\" to the "
 "background of your page. This means the settings below will have no effect."
 msgstr ""
 
-#: ../editor/editor.color.php:267
+#: ../dms/editor/editor.color.php:250
 msgid "Background Repeat"
 msgstr ""
 
-#: ../editor/editor.color.php:270
+#: ../dms/editor/editor.color.php:253
 msgid "No Repeat"
 msgstr ""
 
-#: ../editor/editor.color.php:271
+#: ../dms/editor/editor.color.php:254
 msgid "Repeat"
 msgstr ""
 
-#: ../editor/editor.color.php:272
+#: ../dms/editor/editor.color.php:255
 msgid "Repeat Horizontally"
 msgstr ""
 
-#: ../editor/editor.color.php:273
+#: ../dms/editor/editor.color.php:256
 msgid "Repeat Vertically"
 msgstr ""
 
-#: ../editor/editor.color.php:281
+#: ../dms/editor/editor.color.php:264
 msgid "Vertical Background Position in Percent"
 msgstr ""
 
-#: ../editor/editor.color.php:292
+#: ../dms/editor/editor.color.php:275
 msgid "Horizontal Background Position in Percent"
 msgstr ""
 
-#: ../editor/editor.color.php:303
+#: ../dms/editor/editor.color.php:286
 msgid "Set Background Attachment"
 msgstr ""
 
-#: ../editor/editor.color.php:306
+#: ../dms/editor/editor.color.php:289
 msgid "Scroll"
 msgstr ""
 
-#: ../editor/editor.color.php:307
+#: ../dms/editor/editor.color.php:290
 msgid "Fixed"
 msgstr ""
 
-#: ../editor/editor.importexport.php:18
+#: ../dms/editor/editor.developer.php:72
+msgid "Editor Memory"
+msgstr ""
+
+#: ../dms/editor/editor.developer.php:73
+msgid "Amount of memory used by the DMS editor in MB during this page load."
+msgstr ""
+
+#: ../dms/editor/editor.developer.php:78
+msgid "Queries"
+msgstr ""
+
+#: ../dms/editor/editor.developer.php:79
+msgid "Total Queries"
+msgstr ""
+
+#: ../dms/editor/editor.developer.php:80
+msgid "The number of database queries during the WordPress/Editor execution."
+msgstr ""
+
+#: ../dms/editor/editor.developer.php:85 ../dms/editor/editor.developer.php:92
+#: ../dms/editor/editor.section.data.php:191
+msgid "Seconds"
+msgstr ""
+
+#: ../dms/editor/editor.developer.php:86
+msgid "Total Time"
+msgstr ""
+
+#: ../dms/editor/editor.developer.php:87
+msgid "Total time to render this page including WordPress and DMS editor."
+msgstr ""
+
+#: ../dms/editor/editor.developer.php:93
+msgid "Editor Time"
+msgstr ""
+
+#: ../dms/editor/editor.developer.php:94
+msgid "Amount of time it took to load this page once DMS had started."
+msgstr ""
+
+#: ../dms/editor/editor.developer.php:127
+msgid "Developer Tools"
+msgstr ""
+
+#: ../dms/editor/editor.developer.php:150
+msgid "Logging"
+msgstr ""
+
+#: ../dms/editor/editor.developer.php:157
+msgid "Nothing appears to have been logged."
+msgstr ""
+
+#: ../dms/editor/editor.developer.php:164
+msgid "Performance"
+msgstr ""
+
+#: ../dms/editor/editor.developer.php:170
+msgid "No performance data exists on the page."
+msgstr ""
+
+#: ../dms/editor/editor.developer.php:176 ../dms/editor/panel.settings.php:81
+msgid "Options"
+msgstr ""
+
+#: ../dms/editor/editor.developer.php:206
+msgid "Enable LESS dev mode"
+msgstr ""
+
+#: ../dms/editor/editor.developer.php:207
+msgid "LESS Developer Mode"
+msgstr ""
+
+#: ../dms/editor/editor.developer.php:208
+#, php-format
+msgid ""
+"Less subsystem will check files for changed less code on every pageload and "
+"recompile if there are changes. %s"
+msgstr ""
+
+#: ../dms/editor/editor.developer.php:214
+msgid "Enable no cache mode"
+msgstr ""
+
+#: ../dms/editor/editor.developer.php:215
+msgid "No Cache Mode"
+msgstr ""
+
+#: ../dms/editor/editor.developer.php:216
+msgid "Disables all caching including all CSS/LESS."
+msgstr ""
+
+#: ../dms/editor/editor.developer.php:239
+msgid "DMS LESS Dev"
+msgstr ""
+
+#: ../dms/editor/editor.developer.php:243
+msgid "DMS No Cache Mode!"
+msgstr ""
+
+#: ../dms/editor/editor.fileopts.php:69
+msgid "Cheatin’ uh?"
+msgstr ""
+
+#: ../dms/editor/editor.handler.php:210
+msgid "Data Length"
+msgstr ""
+
+#: ../dms/editor/editor.handler.php:210
+msgid "Characters"
+msgstr ""
+
+#: ../dms/editor/editor.handler.php:210
+msgid ""
+"The total number of characters in the data blob. Watching size can be good "
+"to detect data leaks or other strange behavior."
+msgstr ""
+
+#: ../dms/editor/editor.importexport.php:18
 msgid "Import + Export"
 msgstr ""
 
-#: ../editor/editor.importexport.php:42
+#: ../dms/editor/editor.importexport.php:42
 msgid "Import Page Templates"
 msgstr ""
 
-#: ../editor/editor.importexport.php:44
+#: ../dms/editor/editor.importexport.php:44
 msgid "Add new templates and overwrite ones with the same name."
 msgstr ""
 
-#: ../editor/editor.importexport.php:51
+#: ../dms/editor/editor.importexport.php:51
 msgid "Import New Global Settings"
 msgstr ""
 
-#: ../editor/editor.importexport.php:53
+#: ../dms/editor/editor.importexport.php:53
 msgid "Overwrite global settings with ones from this import."
 msgstr ""
 
-#: ../editor/editor.importexport.php:60
+#: ../dms/editor/editor.importexport.php:60
 msgid "Import Post Type Settings"
 msgstr ""
 
-#: ../editor/editor.importexport.php:62
+#: ../dms/editor/editor.importexport.php:62
 msgid "Overwrite post type settings with ones from this import."
 msgstr ""
 
-#: ../editor/editor.importexport.php:70
+#: ../dms/editor/editor.importexport.php:70
 msgid "DMS Config Import"
 msgstr ""
 
-#: ../editor/editor.importexport.php:75
+#: ../dms/editor/editor.importexport.php:75
 msgid "Select config file (.json)"
 msgstr ""
 
-#: ../editor/editor.importexport.php:84
+#: ../dms/editor/editor.importexport.php:84
 msgid "Child Theme Config Import"
 msgstr ""
 
-#: ../editor/editor.importexport.php:88
+#: ../dms/editor/editor.importexport.php:88
 msgid "Load Child Theme Config"
 msgstr ""
 
-#: ../editor/editor.importexport.php:91
+#: ../dms/editor/editor.importexport.php:91
 msgid ""
 "Reset theme settings using custom config file from child theme.<br />\n"
 "\t\t\t\t\t<strong>Note:</strong> Once you have completed this action, you "
 "may want to publish these changes to your live site."
 msgstr ""
 
-#: ../editor/editor.importexport.php:108
+#: ../dms/editor/editor.importexport.php:108
 msgid "Select User Templates"
 msgstr ""
 
-#: ../editor/editor.importexport.php:116
+#: ../dms/editor/editor.importexport.php:116
 msgid "Select All"
 msgstr ""
 
-#: ../editor/editor.importexport.php:116
+#: ../dms/editor/editor.importexport.php:116
 msgid "Deselect All"
 msgstr ""
 
-#: ../editor/editor.importexport.php:137 ../editor/panel.settings.php:51
+#: ../dms/editor/editor.importexport.php:137
+#: ../dms/editor/panel.settings.php:51
 msgid "Global Settings"
 msgstr ""
 
-#: ../editor/editor.importexport.php:141
+#: ../dms/editor/editor.importexport.php:141
 msgid "Export Site Global Settings"
 msgstr ""
 
-#: ../editor/editor.importexport.php:143
+#: ../dms/editor/editor.importexport.php:143
 msgid ""
 "This will export your sites global settings. This includes everything in the "
 "options panel, as well as settings directed at sections in your \"global\" "
 "regions like your header and footer."
 msgstr ""
 
-#: ../editor/editor.importexport.php:148
+#: ../dms/editor/editor.importexport.php:148
 msgid "Post Type Settings"
 msgstr ""
 
-#: ../editor/editor.importexport.php:153
+#: ../dms/editor/editor.importexport.php:153
 msgid "Export Post Type Settings"
 msgstr ""
 
-#: ../editor/editor.importexport.php:155
+#: ../dms/editor/editor.importexport.php:155
 msgid ""
 "This exports settings such as the template defaults for various post types."
 msgstr ""
 
-#: ../editor/editor.importexport.php:160
+#: ../dms/editor/editor.importexport.php:160
 msgid "Theme Config Publishing"
 msgstr ""
 
-#: ../editor/editor.importexport.php:170
+#: ../dms/editor/editor.importexport.php:170
 msgid "(Disabled! No child theme active)"
 msgstr ""
 
-#: ../editor/editor.importexport.php:170
+#: ../dms/editor/editor.importexport.php:170
 msgid "Publish Configuration to Child Theme (No Download File)"
 msgstr ""
 
-#: ../editor/editor.importexport.php:172
+#: ../dms/editor/editor.importexport.php:172
 msgid ""
 "Check this to publish your site configuration as a theme configuration file "
 "in your themes root directory. When a user activates your theme it will ask "
@@ -551,292 +635,387 @@ msgid ""
 "the theme."
 msgstr ""
 
-#: ../editor/editor.importexport.php:178 ../editor/editor.interface.php:342
+#: ../dms/editor/editor.importexport.php:178
+#: ../dms/editor/editor.interface.php:393
 msgid "Publish"
 msgstr ""
 
-#: ../editor/editor.importexport.php:179
+#: ../dms/editor/editor.importexport.php:179
 msgid "Download DMS Config"
 msgstr ""
 
-#: ../editor/editor.importexport.php:195
+#: ../dms/editor/editor.importexport.php:195
 msgid "Export DMS Config"
 msgstr ""
 
-#: ../editor/editor.importexport.php:201
+#: ../dms/editor/editor.importexport.php:201
 msgid "Import DMS Config"
 msgstr ""
 
-#: ../editor/editor.interface.php:152
+#: ../dms/editor/editor.interface.php:162
 msgid "Deactivate Editor (View Live)"
 msgstr ""
 
-#: ../editor/editor.interface.php:165
+#: ../dms/editor/editor.interface.php:175
 msgid "Preview (alt+a)"
 msgstr ""
 
-#: ../editor/editor.interface.php:323
+#: ../dms/editor/editor.interface.php:182
+msgid "PageLines.com"
+msgstr ""
+
+#: ../dms/editor/editor.interface.php:239
+msgid "Activate PageLines Editor"
+msgstr ""
+
+#: ../dms/editor/editor.interface.php:245
+msgid "Please use Google Chrome to edit with DMS"
+msgstr ""
+
+#: ../dms/editor/editor.interface.php:273
 msgid "Undo All Unpublished Changes"
 msgstr ""
 
-#: ../editor/editor.interface.php:325
+#: ../dms/editor/editor.interface.php:275
 msgid "Undo Unpublished Global Changes"
 msgstr ""
 
-#: ../editor/editor.interface.php:328
+#: ../dms/editor/editor.interface.php:278
 msgid "Undo Unpublished Post Type Changes"
 msgstr ""
 
-#: ../editor/editor.interface.php:330
+#: ../dms/editor/editor.interface.php:280
 msgid "Undo Unpublished Local Changes"
 msgstr ""
 
-#: ../editor/editor.interface.php:332
+#: ../dms/editor/editor.interface.php:282
 msgid "No Unpublished Changes"
 msgstr ""
 
-#: ../editor/editor.interface.php:339
+#: ../dms/editor/editor.interface.php:390
 msgid "Refresh needed to view changes."
 msgstr ""
 
-#: ../editor/editor.interface.php:341
+#: ../dms/editor/editor.interface.php:392
 msgid "Publish Live"
 msgstr ""
 
-#: ../editor/editor.interface.php:350
+#: ../dms/editor/editor.interface.php:398
+msgid "Saving"
+msgstr ""
+
+#: ../dms/editor/editor.interface.php:401
 msgid "Width"
 msgstr ""
 
-#: ../editor/editor.interface.php:530
+#: ../dms/editor/editor.interface.php:581
 msgid "Decrease Width"
 msgstr ""
 
-#: ../editor/editor.interface.php:531
+#: ../dms/editor/editor.interface.php:582
 msgid "Column Width"
 msgstr ""
 
-#: ../editor/editor.interface.php:532
+#: ../dms/editor/editor.interface.php:583
 msgid "Increase Width"
 msgstr ""
 
-#: ../editor/editor.interface.php:533
+#: ../dms/editor/editor.interface.php:584
 msgid "Offset Left"
 msgstr ""
 
-#: ../editor/editor.interface.php:534
+#: ../dms/editor/editor.interface.php:585
 msgid "Offset Amount"
 msgstr ""
 
-#: ../editor/editor.interface.php:535
+#: ../dms/editor/editor.interface.php:586
 msgid "Offset Right"
 msgstr ""
 
-#: ../editor/editor.interface.php:536
+#: ../dms/editor/editor.interface.php:587
 msgid "Force to New Row"
 msgstr ""
 
-#: ../editor/editor.layout.php:25
+#: ../dms/editor/editor.layout.php:25
 msgid "Layout <span class=\"spamp\">&amp;</span> Nav"
 msgstr ""
 
-#: ../editor/editor.layout.php:43
-msgid "Select Layout Mode"
+#: ../dms/editor/editor.layout.php:43
+msgid "Layout Configuration"
 msgstr ""
 
-#: ../editor/editor.layout.php:44
+#: ../dms/editor/editor.layout.php:48
+msgid "Select Content Width Mode"
+msgstr ""
+
+#: ../dms/editor/editor.layout.php:49
 msgid "Layout Mode"
 msgstr ""
 
-#: ../editor/editor.layout.php:46
+#: ../dms/editor/editor.layout.php:51
 msgid "Pixel Width Based Layout"
 msgstr ""
 
-#: ../editor/editor.layout.php:47
+#: ../dms/editor/editor.layout.php:52
 msgid "Percentage Width Based Layout"
 msgstr ""
 
-#: ../editor/editor.layout.php:50
-msgid ""
-"Select pixel width mode and your site maximum width will be controlled by "
-"pixels.<br/><br/> If you select \"percent\" width the width of your content "
-"will be a percentage of window size."
-msgstr ""
-
-#: ../editor/editor.layout.php:55
+#: ../dms/editor/editor.layout.php:59
 msgid "Select Layout Display"
 msgstr ""
 
-#: ../editor/editor.layout.php:56
+#: ../dms/editor/editor.layout.php:60
 msgid "Display Mode"
 msgstr ""
 
-#: ../editor/editor.layout.php:58
+#: ../dms/editor/editor.layout.php:62
 msgid "Full Width Display"
 msgstr ""
 
-#: ../editor/editor.layout.php:59
+#: ../dms/editor/editor.layout.php:63
 msgid "Boxed Display"
 msgstr ""
 
-#: ../editor/editor.layout.php:62
+#: ../dms/editor/editor.layout.php:81
+msgid "Default Navigation Setup"
+msgstr ""
+
+#: ../dms/editor/editor.layout.php:82
 msgid ""
-"\"Full\" display mode allows areas to be the full width of the window, with "
-"content width sections.<br/><br/> \"Boxed\" mode contains everything in a "
-"central content box. Boxed mode is ideal for use with background images."
-msgstr ""
-
-#: ../editor/editor.layout.php:75
-msgid "Global Navigation Setup"
-msgstr ""
-
-#: ../editor/editor.layout.php:80
-msgid "Select Primary Navigation Menu"
-msgstr ""
-
-#: ../editor/editor.layout.php:82
-msgid ""
-"This will be used in mobile menus and optionally other places throughout "
+"These will be used in mobile menus and optionally other places throughout "
 "your site."
 msgstr ""
 
-#: ../editor/editor.layout.php:87
-msgid "Select Secondary Navigation Menu"
+#: ../dms/editor/editor.layout.php:87
+msgid "Primary Navigation Menu"
 msgstr ""
 
-#: ../editor/editor.layout.php:89
-msgid ""
-"This will be shown subtly in areas throughout the site and in your mobile "
-"menu."
+#: ../dms/editor/editor.layout.php:94
+msgid "Secondary Navigation Menu"
 msgstr ""
 
-#: ../editor/editor.loader.php:99
+#: ../dms/editor/editor.loader.php:64
 msgid "Loading DMS Editor"
 msgstr ""
 
-#: ../editor/editor.loader.php:102
-msgid ""
-"Issues loading? See the <a href=\"http://docs.pagelines.com/support-"
-"troubleshooting/common-issues\" target=\"_blank\">troubleshooting guide</a>."
+#: ../dms/editor/editor.objects.php:24 ../dms/editor/editor.sections.php:464
+#: ../dms/editor/editor.sections.php:492
+msgid "No Name"
 msgstr ""
 
-#: ../editor/editor.regions.php:20
-msgid "Global Scope Region"
+#: ../dms/editor/editor.section.data.php:191
+msgid "Section Data Query"
 msgstr ""
 
-#: ../editor/editor.regions.php:24
-msgid "Local Scope Region"
+#: ../dms/editor/editor.section.data.php:191
+msgid "Time for section data DB query and configuration."
 msgstr ""
 
-#: ../editor/editor.settings.config.php:21
+#: ../dms/editor/editor.sections.php:37
+msgid "<i class='icon icon-random'></i> Drag to Add"
+msgstr ""
+
+#: ../dms/editor/editor.sections.php:39
+msgid "Your Sections"
+msgstr ""
+
+#: ../dms/editor/editor.sections.php:41
+msgid "Drag on to page to add"
+msgstr ""
+
+#: ../dms/editor/editor.sections.php:42
+msgid "Reload Sections"
+msgstr ""
+
+#: ../dms/editor/editor.sections.php:48
+msgid "Get More Sections"
+msgstr ""
+
+#: ../dms/editor/editor.sections.php:52
+msgid "<i class='icon icon-filter'></i> Filters"
+msgstr ""
+
+#: ../dms/editor/editor.sections.php:58 ../dms/editor/editor.sections.php:167
+msgid "Components"
+msgstr ""
+
+#: ../dms/editor/editor.sections.php:66 ../dms/editor/editor.sections.php:168
+msgid "Layouts"
+msgstr ""
+
+#: ../dms/editor/editor.sections.php:72 ../dms/editor/editor.sections.php:169
+#: ../dms/editor/editor.sections.php:288 ../dms/editor/editor.sections.php:299
+msgid "Full Width"
+msgstr ""
+
+#: ../dms/editor/editor.sections.php:78 ../dms/editor/editor.sections.php:170
+msgid "Post Layouts"
+msgstr ""
+
+#: ../dms/editor/editor.sections.php:84 ../dms/editor/editor.sections.php:171
+msgid "Galleries"
+msgstr ""
+
+#: ../dms/editor/editor.sections.php:90 ../dms/editor/editor.sections.php:172
+msgid "Navigation"
+msgstr ""
+
+#: ../dms/editor/editor.sections.php:96 ../dms/editor/editor.sections.php:173
+msgid "Sliders"
+msgstr ""
+
+#: ../dms/editor/editor.sections.php:102 ../dms/editor/editor.sections.php:174
+msgid "Social"
+msgstr ""
+
+#: ../dms/editor/editor.sections.php:108 ../dms/editor/editor.sections.php:175
+msgid "Widgetized"
+msgstr ""
+
+#: ../dms/editor/editor.sections.php:114 ../dms/editor/panel.code.php:37
+msgid "Custom"
+msgstr ""
+
+#: ../dms/editor/editor.sections.php:121 ../dms/editor/editor.sections.php:176
+msgid "Miscellaneous"
+msgstr ""
+
+#: ../dms/editor/editor.sections.php:152
+msgid "Add To Page"
+msgstr ""
+
+#: ../dms/editor/editor.sections.php:257
+msgid "<span class=\"badge badge-important\">PRO ONLY</span>"
+msgstr ""
+
+#: ../dms/editor/editor.sections.php:288
+msgid "Content Width"
+msgstr ""
+
+#: ../dms/editor/editor.sections.php:466
+msgid "No description given."
+msgstr ""
+
+#: ../dms/editor/editor.sections.php:493
+msgid "No Description Entered."
+msgstr ""
+
+#: ../dms/editor/editor.sections.register.php:25
+#, php-format
+msgid "Theme: %s"
+msgstr ""
+
+#: ../dms/editor/editor.settings.config.php:21
 msgid "Site Images"
 msgstr ""
 
-#: ../editor/editor.settings.config.php:28
+#: ../dms/editor/editor.settings.config.php:28
 msgid "Social <span class=\"spamp\">&amp;</span> Local"
 msgstr ""
 
-#: ../editor/editor.settings.config.php:35
+#: ../dms/editor/editor.settings.config.php:35
 msgid "Advanced"
 msgstr ""
 
-#: ../editor/editor.settings.config.php:42
+#: ../dms/editor/editor.settings.config.php:42
 msgid "Resets"
 msgstr ""
 
-#: ../editor/editor.settings.config.php:85
-msgid "<i class=\"icon-home\"></i> Set Site Homepage"
+#: ../dms/editor/editor.settings.config.php:85
+msgid "<i class=\"icon icon-home\"></i> Set Site Homepage"
 msgstr ""
 
-#: ../editor/editor.settings.config.php:89
+#: ../dms/editor/editor.settings.config.php:89
 msgid "Site Homepage"
 msgstr ""
 
-#: ../editor/editor.settings.config.php:93
-msgid "<i class=\"icon-link\"></i> Permalinks"
+#: ../dms/editor/editor.settings.config.php:93
+msgid "<i class=\"icon icon-link\"></i> Permalinks"
 msgstr ""
 
-#: ../editor/editor.settings.config.php:97
+#: ../dms/editor/editor.settings.config.php:97
 msgid "Manage Permalinks"
 msgstr ""
 
-#: ../editor/editor.settings.config.php:102
-msgid "<i class=\"icon-reorder\"></i> Manage Menus"
+#: ../dms/editor/editor.settings.config.php:102
+msgid "<i class=\"icon icon-reorder\"></i> Manage Menus"
 msgstr ""
 
-#: ../editor/editor.settings.config.php:107
+#: ../dms/editor/editor.settings.config.php:107
 msgid "Manage Menus"
 msgstr ""
 
-#: ../editor/editor.settings.config.php:113
-msgid "<i class=\"icon-retweet\"></i> Manage Widgets"
+#: ../dms/editor/editor.settings.config.php:113
+msgid "<i class=\"icon icon-retweet\"></i> Manage Widgets"
 msgstr ""
 
-#: ../editor/editor.settings.config.php:117
+#: ../dms/editor/editor.settings.config.php:117
 msgid "Manage Widgetized Areas"
 msgstr ""
 
-#: ../editor/editor.settings.config.php:123
-msgid "<i class=\"icon-cog\"></i> Site Settings"
+#: ../dms/editor/editor.settings.config.php:123
+msgid "<i class=\"icon icon-cog\"></i> Site Settings"
 msgstr ""
 
-#: ../editor/editor.settings.config.php:127
+#: ../dms/editor/editor.settings.config.php:127
+#: ../dms/editor/panel.settings.php:27
 msgid "Site Settings"
 msgstr ""
 
-#: ../editor/editor.settings.config.php:132
-msgid "<i class=\"icon-download\"></i> Plugins Admin"
+#: ../dms/editor/editor.settings.config.php:132
+msgid "<i class=\"icon icon-download\"></i> Plugins Admin"
 msgstr ""
 
-#: ../editor/editor.settings.config.php:136
+#: ../dms/editor/editor.settings.config.php:136
 msgid "Manage Extensions"
 msgstr ""
 
-#: ../editor/editor.settings.config.php:145
-msgid "<i class=\"icon-ambulance\"></i> View Debug Info"
+#: ../dms/editor/editor.settings.config.php:145
+msgid "<i class=\"icon icon-ambulance\"></i> View Debug Info"
 msgstr ""
 
-#: ../editor/editor.settings.config.php:149
+#: ../dms/editor/editor.settings.config.php:149
 msgid "Debug Enabled"
 msgstr ""
 
-#: ../editor/editor.settings.config.php:163
+#: ../dms/editor/editor.settings.config.php:163
 msgid "Upload Favicon (32px by 32px)"
 msgstr ""
 
-#: ../editor/editor.settings.config.php:167
+#: ../dms/editor/editor.settings.config.php:167
 msgid "Favicon Image"
 msgstr ""
 
-#: ../editor/editor.settings.config.php:168
+#: ../dms/editor/editor.settings.config.php:168
 msgid ""
 "Enter the full URL location of your custom <strong>favicon</strong> which is "
 "visible in browser favorites and tabs.<br/> <strong>Must be .png or .ico "
 "file - 32px by 32px</strong>."
 msgstr ""
 
-#: ../editor/editor.settings.config.php:177
-msgid "Upload Login Image (160px Height)"
+#: ../dms/editor/editor.settings.config.php:177
+msgid "Upload Login Image (80px Height)"
 msgstr ""
 
-#: ../editor/editor.settings.config.php:180
+#: ../dms/editor/editor.settings.config.php:180
 msgid "Login Page Image"
 msgstr ""
 
-#: ../editor/editor.settings.config.php:182
+#: ../dms/editor/editor.settings.config.php:182
 msgid ""
 "This image will be used on the login page to your admin. Use an image that "
 "is approximately <strong>80px</strong> in height."
 msgstr ""
 
-#: ../editor/editor.settings.config.php:188
+#: ../dms/editor/editor.settings.config.php:188
 msgid "Upload Touch Image (144px by 144px)"
 msgstr ""
 
-#: ../editor/editor.settings.config.php:191
+#: ../dms/editor/editor.settings.config.php:191
 msgid "Mobile Touch Image"
 msgstr ""
 
-#: ../editor/editor.settings.config.php:193
+#: ../dms/editor/editor.settings.config.php:193
 msgid ""
 "Enter the full URL location of your Apple Touch Icon which is visible when "
 "your users set your site as a <strong>webclip</strong> in Apple Iphone and "
@@ -844,379 +1023,424 @@ msgid ""
 "gif or .png format."
 msgstr ""
 
-#: ../editor/editor.settings.config.php:211
+#: ../dms/editor/editor.settings.config.php:208
+msgid "Select icon for Social Counter"
+msgstr ""
+
+#: ../dms/editor/editor.settings.config.php:216
 msgid "Your Twitter Username"
 msgstr ""
 
-#: ../editor/editor.settings.config.php:212
+#: ../dms/editor/editor.settings.config.php:217
 msgid "Twitter Integration"
 msgstr ""
 
-#: ../editor/editor.settings.config.php:213
+#: ../dms/editor/editor.settings.config.php:218
 msgid ""
 "This places your Twitter feed on the site. Leave blank if you want to hide "
 "or not use."
 msgstr ""
 
-#: ../editor/editor.settings.config.php:225
+#: ../dms/editor/editor.settings.config.php:230
 msgid "Your Facebook Page Name"
 msgstr ""
 
-#: ../editor/editor.settings.config.php:226
+#: ../dms/editor/editor.settings.config.php:231
 msgid "Facebook Page"
 msgstr ""
 
-#: ../editor/editor.settings.config.php:227
+#: ../dms/editor/editor.settings.config.php:232
 msgid ""
 "Enter the name component of your Facebook page URL. (For example, what comes "
 "after the facebook url: www.facebook.com/[name])"
 msgstr ""
 
-#: ../editor/editor.settings.config.php:232
+#: ../dms/editor/editor.settings.config.php:237
 msgid "Your Facebook App ID"
 msgstr ""
 
-#: ../editor/editor.settings.config.php:233
+#: ../dms/editor/editor.settings.config.php:238
 msgid "Facebook App ID"
 msgstr ""
 
-#: ../editor/editor.settings.config.php:234
+#: ../dms/editor/editor.settings.config.php:239
 msgid "Add your Facebook Application ID here."
 msgstr ""
 
-#: ../editor/editor.settings.config.php:243
+#: ../dms/editor/editor.settings.config.php:248
 msgid "Your Website Hashtag"
 msgstr ""
 
-#: ../editor/editor.settings.config.php:244
+#: ../dms/editor/editor.settings.config.php:249
 msgid "Website Hashtag"
 msgstr ""
 
-#: ../editor/editor.settings.config.php:245
+#: ../dms/editor/editor.settings.config.php:250
 msgid ""
 "This hashtag will be used in social media (e.g. Twitter) and elsewhere to "
 "create feeds."
 msgstr ""
 
-#: ../editor/editor.settings.config.php:251
-msgid "Sharebar Options"
-msgstr ""
-
-#: ../editor/editor.settings.config.php:256
-msgid "Enable Google+"
-msgstr ""
-
-#: ../editor/editor.settings.config.php:262
-msgid "Enable Facebook"
-msgstr ""
-
-#: ../editor/editor.settings.config.php:268
-msgid "Enable Twitter"
-msgstr ""
-
-#: ../editor/editor.settings.config.php:274
-msgid "Enable LinkedIn"
-msgstr ""
-
-#: ../editor/editor.settings.config.php:279
-msgid "Enable Pinterest"
-msgstr ""
-
-#: ../editor/editor.settings.config.php:284
-msgid "Enable Buffer"
-msgstr ""
-
-#: ../editor/editor.settings.config.php:289
-msgid "Enable Stumbleupon"
-msgstr ""
-
-#: ../editor/editor.settings.config.php:304
+#: ../dms/editor/editor.settings.config.php:264
 msgid "Debug Options"
 msgstr ""
 
-#: ../editor/editor.settings.config.php:309
+#: ../dms/editor/editor.settings.config.php:269
 msgid "Enable debug?"
 msgstr ""
 
-#: ../editor/editor.settings.config.php:310
+#: ../dms/editor/editor.settings.config.php:270
 msgid "PageLines debug"
 msgstr ""
 
-#: ../editor/editor.settings.config.php:311
+#: ../dms/editor/editor.settings.config.php:271
 #, php-format
 msgid "This information can be useful in the forums if you have a problem. %s"
 msgstr ""
 
-#: ../editor/editor.settings.config.php:319
+#: ../dms/editor/editor.settings.config.php:279
 msgid "Disable Error Notices?"
 msgstr ""
 
-#: ../editor/editor.settings.config.php:320
+#: ../dms/editor/editor.settings.config.php:280
 msgid "Less Notices"
 msgstr ""
 
-#: ../editor/editor.settings.config.php:321
+#: ../dms/editor/editor.settings.config.php:281
 msgid "Disable any error notices sent to wp-admin by the less system"
 msgstr ""
 
-#: ../editor/editor.settings.config.php:328
+#: ../dms/editor/editor.settings.config.php:288
 msgid "Enable Code Prettify?"
 msgstr ""
 
-#: ../editor/editor.settings.config.php:329
+#: ../dms/editor/editor.settings.config.php:289
 msgid "Google Prettify Code"
 msgstr ""
 
-#: ../editor/editor.settings.config.php:330
+#: ../dms/editor/editor.settings.config.php:290
 msgid ""
 "Add a class of 'prettyprint' to code or pre tags, or optionally use the "
 "[pl_codebox] shortcode. Wrap the codebox shortcode using [pl_raw] if "
 "Wordpress inserts line breaks."
 msgstr ""
 
-#: ../editor/editor.settings.config.php:336
+#: ../dms/editor/editor.settings.config.php:296
 msgid "Enter Partner Link"
 msgstr ""
 
-#: ../editor/editor.settings.config.php:337
+#: ../dms/editor/editor.settings.config.php:297
 msgid "PageLines Affiliate/Partner Link"
 msgstr ""
 
-#: ../editor/editor.settings.config.php:338
+#: ../dms/editor/editor.settings.config.php:298
 msgid ""
 "If you are a <a target='_blank' href='http://www.pagelines.com'>PageLines "
 "Partner</a> enter your link here and the footer link will become a partner "
 "or affiliate link."
 msgstr ""
 
-#: ../editor/editor.settings.config.php:344
+#: ../dms/editor/editor.settings.config.php:304
 msgid "Install Class"
 msgstr ""
 
-#: ../editor/editor.settings.config.php:345
+#: ../dms/editor/editor.settings.config.php:305
 msgid "Current Install Class"
 msgstr ""
 
-#: ../editor/editor.settings.config.php:346
+#: ../dms/editor/editor.settings.config.php:306
 msgid ""
 "Use this option to add a class to the &gt;body&lt; element of the website. "
 "This can be useful when using the same child theme on several installations "
 "or sub domains and can be used to control CSS customizations."
 msgstr ""
 
-#: ../editor/editor.settings.config.php:361
-msgid "<i class=\"icon-undo\"></i> Reset Global Settings"
+#: ../dms/editor/editor.settings.config.php:314
+msgid "Enable Alternative CSS URLS"
 msgstr ""
 
-#: ../editor/editor.settings.config.php:362
+#: ../dms/editor/editor.settings.config.php:315
+msgid ""
+"Some hosts with aggressive caches have issues with the CSS files, this is a "
+"possible workaround."
+msgstr ""
+
+#: ../dms/editor/editor.settings.config.php:330
+msgid "<i class=\"icon icon-undo\"></i> Reset Global Settings"
+msgstr ""
+
+#: ../dms/editor/editor.settings.config.php:331
 msgid "Reset Global Site Settings"
 msgstr ""
 
-#: ../editor/editor.settings.config.php:363
+#: ../dms/editor/editor.settings.config.php:332
 msgid ""
 "Use this button to reset all global settings to their default state. <br/"
 "><strong>Note:</strong> Once you've completed this action, you may want to "
 "publish these changes to your live site."
 msgstr ""
 
-#: ../editor/editor.settings.config.php:369
-msgid "<i class=\"icon-undo\"></i> Reset Current Page Settings"
+#: ../dms/editor/editor.settings.config.php:338
+msgid "<i class=\"icon icon-undo\"></i> Reset Current Page Settings"
 msgstr ""
 
-#: ../editor/editor.settings.config.php:370
+#: ../dms/editor/editor.settings.config.php:339
 msgid "Reset Current Page Settings"
 msgstr ""
 
-#: ../editor/editor.settings.config.php:371
+#: ../dms/editor/editor.settings.config.php:340
 msgid ""
 "Use this button to reset all settings on the current page back to their "
 "default state. <br/><strong>Note:</strong> Once you've completed this "
 "action, you may want to publish these changes to your live site."
 msgstr ""
 
-#: ../editor/editor.settings.config.php:378
-msgid "<i class=\"icon-trash\"></i> Flush Caches"
+#: ../dms/editor/editor.settings.config.php:346
+msgid "<i class=\"icon icon-undo\"></i> Reset Current Post Type Settings"
 msgstr ""
 
-#: ../editor/editor.settings.config.php:379
+#: ../dms/editor/editor.settings.config.php:347
+msgid "Reset Current Post Type Settings"
+msgstr ""
+
+#: ../dms/editor/editor.settings.config.php:348
+msgid ""
+"Use this button to reset all settings on the current post type back to their "
+"default state. <br/><strong>Note:</strong> Once you've completed this "
+"action, you may want to publish these changes to your live site."
+msgstr ""
+
+#: ../dms/editor/editor.settings.config.php:355
+msgid "<i class=\"icon icon-trash\"></i> Flush Caches"
+msgstr ""
+
+#: ../dms/editor/editor.settings.config.php:356
 msgid "Clear all CSS/LESS cached data."
 msgstr ""
 
-#: ../editor/editor.settings.config.php:380
+#: ../dms/editor/editor.settings.config.php:357
 msgid ""
 "Use this button to purge the stored LESS/CSS data. This will also clear "
 "cached pages if wp-super-cache or w3-total-cache are detected."
 msgstr ""
 
-#: ../editor/editor.settings.config.php:396
+#: ../dms/editor/editor.settings.config.php:381
 msgid "Standard Options"
 msgstr ""
 
-#: ../editor/editor.settings.config.php:402
-msgid "Styling Classes"
+#: ../dms/editor/editor.settings.config.php:386
+msgid "Standard Title"
 msgstr ""
 
-#: ../editor/editor.settings.config.php:403
-msgid "Separate with a space \" \""
+#: ../dms/editor/editor.settings.config.php:392
+msgid "Custom Styling Classes"
 msgstr ""
 
-#: ../editor/editor.templates.php:202
+#: ../dms/editor/editor.settings.config.php:397
+msgid "Inline CSS Styling"
+msgstr ""
+
+#: ../dms/editor/editor.settings.config.php:398
+msgid "Use sparingly. Example: \"text-transform:uppercase; font-size: 80%;\""
+msgstr ""
+
+#: ../dms/editor/editor.settings.config.php:403
+msgid "Hide on specific pages or posts? (IDs Comma Separated)"
+msgstr ""
+
+#: ../dms/editor/editor.settings.config.php:404
+#, php-format
+msgid ""
+"Applicable in global regions. Enter Page IDs (comma separated) to hide this "
+"section only on those pages.%s"
+msgstr ""
+
+#: ../dms/editor/editor.templates.php:258
+#: ../dms/editor/editor.templates.php:263
+msgid "Page Setup"
+msgstr ""
+
+#: ../dms/editor/editor.templates.php:265
 msgid "Templates"
 msgstr ""
 
-#: ../editor/editor.templates.php:207 ../editor/js/pl.optpanel.js:1148
-msgid "Page Templates"
+#: ../dms/editor/editor.templates.php:271
+msgid "Page Info"
 msgstr ""
 
-#: ../editor/editor.templates.php:209
-msgid "Your Templates"
+#: ../dms/editor/editor.templates.php:320
+msgid "Load"
 msgstr ""
 
-#: ../editor/editor.templates.php:215 ../editor/editor.templates.php:333
-msgid "Save New Template"
+#: ../dms/editor/editor.templates.php:323
+msgid "Active"
 msgstr ""
 
-#: ../editor/editor.templates.php:249
-msgid "Load Template"
-msgstr ""
-
-#: ../editor/editor.templates.php:252
-msgid "Active Template"
-msgstr ""
-
-#: ../editor/editor.templates.php:257
+#: ../dms/editor/editor.templates.php:328
 msgid "Actions"
 msgstr ""
 
-#: ../editor/editor.templates.php:262
+#: ../dms/editor/editor.templates.php:333
 msgid "Update Template with Current Configuration"
 msgstr ""
 
-#: ../editor/editor.templates.php:267
+#: ../dms/editor/editor.templates.php:338
 msgid "Set as Page Global Default"
 msgstr ""
 
-#: ../editor/editor.templates.php:272
+#: ../dms/editor/editor.templates.php:343
 msgid "Delete This Template"
 msgstr ""
 
-#: ../editor/editor.templates.php:320
-msgid ""
-"Fill out this form and the current template will be saved for use throughout "
-"your site."
+#: ../dms/editor/editor.templates.php:375
+msgid "Save Current Page As New Template"
 msgstr ""
 
-#: ../editor/editor.templates.php:322
-msgid ""
-"<strong>Note:</strong> Both the current page's local settings and section "
-"configurations will be saved."
-msgstr ""
-
-#: ../editor/editor.templates.php:325
+#: ../dms/editor/editor.templates.php:378
 msgid "Template Name (required)"
 msgstr ""
 
-#: ../editor/editor.templates.php:329
+#: ../dms/editor/editor.templates.php:382
 msgid "Template Description"
 msgstr ""
 
-#: ../editor/editor.templates.php:355
-msgid "No Name"
+#: ../dms/editor/editor.templates.php:386
+msgid "Save New Template"
 msgstr ""
 
-#: ../editor/editor.templates.php:509
+#: ../dms/editor/editor.templates.php:405
+msgid "Current Page Type"
+msgstr ""
+
+#: ../dms/editor/editor.templates.php:406
+msgid "The classification of WordPress page."
+msgstr ""
+
+#: ../dms/editor/editor.templates.php:412
+msgid "Current Type ID"
+msgstr ""
+
+#: ../dms/editor/editor.templates.php:413
+msgid ""
+"A meta ID associated with this type of page. Used for settings for entire "
+"type."
+msgstr ""
+
+#: ../dms/editor/editor.templates.php:419
+msgid "Current Page ID"
+msgstr ""
+
+#: ../dms/editor/editor.templates.php:420
+msgid "A meta ID associated with this specific page."
+msgstr ""
+
+#: ../dms/editor/editor.templates.php:426
+msgid "Template Handling"
+msgstr ""
+
+#: ../dms/editor/editor.templates.php:427
+msgid "The scope of template handling. \"Page\" or \"type\" wide."
+msgstr ""
+
+#: ../dms/editor/editor.templates.php:434
+msgid "The ID of the current template being used."
+msgstr ""
+
+#: ../dms/editor/editor.templates.php:466
+msgid "DMS Page Setup"
+msgstr ""
+
+#: ../dms/editor/editor.templates.php:518
+msgid "Load PageLines Template"
+msgstr ""
+
+#: ../dms/editor/editor.templates.php:531
+msgid "(no parent)"
+msgstr ""
+
+#: ../dms/editor/editor.templates.php:539
+msgid "Parent Page"
+msgstr ""
+
+#: ../dms/editor/editor.templates.php:544
+msgid "Page Order"
+msgstr ""
+
+#: ../dms/editor/editor.templates.php:564 ../dms/editor/js/pl.optpanel.js:826
 msgid "Default"
 msgstr ""
 
-#: ../editor/editor.templates.php:510
+#: ../dms/editor/editor.templates.php:565
 msgid "Standard page configuration. (Content and Primary Sidebar.)"
 msgstr ""
 
-#: ../editor/editor.templates.php:517
+#: ../dms/editor/editor.templates.php:572
 msgid "Feature Template"
 msgstr ""
 
-#: ../editor/editor.templates.php:518
+#: ../dms/editor/editor.templates.php:573
 msgid ""
 "A page template designed to quickly and concisely show off key features or "
 "points. (RevSlider, iBoxes, Flipper)"
 msgstr ""
 
-#: ../editor/editor.templates.php:539
+#: ../dms/editor/editor.templates.php:594
 msgid "Landing Page"
 msgstr ""
 
-#: ../editor/editor.templates.php:540
+#: ../dms/editor/editor.templates.php:595
 msgid "A simple page design with highlight section and postloop (content)."
 msgstr ""
 
-#: ../editor/editor.templates.php:566
-msgid "DMS Page Setup"
-msgstr ""
-
-#: ../editor/editor.templates.php:618
-msgid "Load PageLines Template"
-msgstr ""
-
-#: ../editor/editor.templates.php:631
-msgid "(no parent)"
-msgstr ""
-
-#: ../editor/editor.templates.php:639
-msgid "Parent Page"
-msgstr ""
-
-#: ../editor/editor.templates.php:644
-msgid "Page Order"
-msgstr ""
-
-#: ../editor/editor.typography.php:69
+#: ../dms/editor/editor.typography.php:60
 msgid "Typography"
 msgstr ""
 
-#: ../editor/editor.typography.php:85
+#: ../dms/editor/editor.typography.php:76
 msgid "Primary Text"
 msgstr ""
 
-#: ../editor/editor.typography.php:86
+#: ../dms/editor/editor.typography.php:77
 msgid ""
 "The base font size is a reference that will be scaled for text used "
 "throughout the site. "
 msgstr ""
 
-#: ../editor/editor.typography.php:91
+#: ../dms/editor/editor.typography.php:82
 msgid "Select Font Face"
 msgstr ""
 
-#: ../editor/editor.typography.php:101 ../editor/editor.typography.php:142
+#: ../dms/editor/editor.typography.php:92
+#: ../dms/editor/editor.typography.php:133
 msgid "Base Font Size"
 msgstr ""
 
-#: ../editor/editor.typography.php:108 ../editor/editor.typography.php:149
+#: ../dms/editor/editor.typography.php:99
+#: ../dms/editor/editor.typography.php:140
 msgid "Font Weight"
 msgstr ""
 
-#: ../editor/editor.typography.php:116
+#: ../dms/editor/editor.typography.php:107
 msgid "*These weights don't always have an effect."
 msgstr ""
 
-#: ../editor/editor.typography.php:125
+#: ../dms/editor/editor.typography.php:116
 msgid "Text Headers <small>(h1-h6)</small>"
 msgstr ""
 
-#: ../editor/editor.typography.php:126
+#: ../dms/editor/editor.typography.php:117
 msgid "Configure the typography for the text headers across your site."
 msgstr ""
 
-#: ../editor/editor.typography.php:131
+#: ../dms/editor/editor.typography.php:122
 msgid "Header Font"
 msgstr ""
 
-#: ../editor/editor.typography.php:164
+#: ../dms/editor/editor.typography.php:155
 msgid "Extra Fonts"
 msgstr ""
 
-#: ../editor/editor.typography.php:165
+#: ../dms/editor/editor.typography.php:156
 msgid ""
 "<p>Add additional <a href=\"http://www.google.com/fonts\" target=\"_blank"
 "\">Google fonts</a> to your sites using this option.</p><p>For example, to "
@@ -1225,1404 +1449,1169 @@ msgid ""
 "p>"
 msgstr ""
 
-#: ../editor/editor.typography.php:170
+#: ../dms/editor/editor.typography.php:161
 msgid "Extra Google Fonts"
 msgstr ""
 
-#: ../editor/panel.code.php:37
-msgid "Custom"
+#: ../dms/editor/editor.updates.php:31
+msgid "PageLines Club Membership"
 msgstr ""
 
-#: ../editor/panel.code.php:42
+#: ../dms/editor/editor.updates.php:33
+msgid ""
+"Activating this will automatically give you updates to any PageLines Product "
+"detected."
+msgstr ""
+
+#: ../dms/editor/editor.updates.php:97
+msgid ""
+"Install the PageLines Updater plugin</a> to activate a key and get updates "
+"for your PageLines themes and plugins."
+msgstr ""
+
+#: ../dms/editor/editor.updates.php:103
+msgid ""
+"Activate the PageLines Updater plugin</a> to activate your key and get "
+"updates for your PageLines themes and plugins."
+msgstr ""
+
+#: ../dms/editor/mobile.menu.php:12
+msgid "Mobile Navigation"
+msgstr ""
+
+#: ../dms/editor/panel.code.php:42
 msgid "Custom Design"
 msgstr ""
 
-#: ../editor/panel.code.php:45 ../editor/panel.code.php:70
-#: ../editor/panel.code.php:74
+#: ../dms/editor/panel.code.php:45 ../dms/editor/panel.code.php:71
 msgid "Custom LESS/CSS"
 msgstr ""
 
-#: ../editor/panel.code.php:50 ../editor/panel.code.php:87
+#: ../dms/editor/panel.code.php:50
 msgid "Custom Scripts"
 msgstr ""
 
-#: ../editor/panel.code.php:75
+#: ../dms/editor/panel.code.php:72
 msgid "Tip"
 msgstr ""
 
-#: ../editor/panel.code.php:75
+#: ../dms/editor/panel.code.php:72
 msgid "Hit [Cmd&#8984;+Return] or [Ctrl+Return] to Preview Live"
 msgstr ""
 
-#: ../editor/panel.code.php:91
+#: ../dms/editor/panel.code.php:85
 msgid "Custom Javascript or Header HTML"
 msgstr ""
 
-#: ../editor/panel.extend.php:21
+#: ../dms/editor/panel.extend.php:21
 msgid "Store"
 msgstr ""
 
-#: ../editor/panel.extend.php:25
+#: ../dms/editor/panel.extend.php:25
 msgid "Extend PageLines"
 msgstr ""
 
-#: ../editor/panel.extend.php:27
+#: ../dms/editor/panel.extend.php:27
 msgid "PageLines Store"
 msgstr ""
 
-#: ../editor/panel.extend.php:41
+#: ../dms/editor/panel.extend.php:36
 msgid "Featured"
 msgstr ""
 
-#: ../editor/panel.extend.php:48
+#: ../dms/editor/panel.extend.php:43
 msgid "Sections"
 msgstr ""
 
-#: ../editor/panel.extend.php:54
+#: ../dms/editor/panel.extend.php:49
 msgid "Plugins"
 msgstr ""
 
-#: ../editor/panel.extend.php:60
+#: ../dms/editor/panel.extend.php:55
 msgid "Themes"
 msgstr ""
 
-#: ../editor/panel.extend.php:66
+#: ../dms/editor/panel.extend.php:61
 msgid "Free"
 msgstr ""
 
-#: ../editor/panel.extend.php:72
+#: ../dms/editor/panel.extend.php:67
 msgid "Premium"
 msgstr ""
 
-#: ../editor/panel.extend.php:84 ../includes/lib.elements.php:93
+#: ../dms/editor/panel.extend.php:79 ../dms/includes/lib.elements.php:176
+#: ../dms/includes/lib.utils.php:106
 msgid "Search"
 msgstr ""
 
-#: ../editor/panel.extend.php:99
+#: ../dms/editor/panel.extend.php:94
 msgid "Upload a .zip extension into your PageLines install using this tool."
 msgstr ""
 
-#: ../editor/panel.extend.php:101
+#: ../dms/editor/panel.extend.php:96
 msgid "Extension File (zip file - required)"
 msgstr ""
 
-#: ../editor/panel.extend.php:104
+#: ../dms/editor/panel.extend.php:99
 msgid "Upload Extension"
 msgstr ""
 
-#: ../editor/panel.extend.php:116
+#: ../dms/editor/panel.extend.php:111
 msgid "Search the PageLines store for extensions."
 msgstr ""
 
-#: ../editor/panel.extend.php:121
+#: ../dms/editor/panel.extend.php:116
 msgid "Search Store"
 msgstr ""
 
-#: ../editor/panel.extend.php:143
+#: ../dms/editor/panel.extend.php:138
 msgid " found for "
 msgstr ""
 
-#: ../editor/panel.extend.php:151
+#: ../dms/editor/panel.extend.php:146
 msgid "Demo "
 msgstr ""
 
-#: ../editor/panel.extend.php:157
+#: ../dms/editor/panel.extend.php:152
 msgid "Overview "
 msgstr ""
 
-#: ../editor/panel.extend.php:192 ../editor/panel.extend.php:195
+#: ../dms/editor/panel.extend.php:187 ../dms/editor/panel.extend.php:190
 msgid "Free!"
 msgstr ""
 
-#: ../editor/panel.extend.php:197
-msgid "<i class=\"icon-sun\"></i> Karma"
+#: ../dms/editor/panel.extend.php:192
+msgid "<i class=\"icon icon-sun\"></i> Karma"
 msgstr ""
 
-#: ../editor/panel.sections.php:21
-msgid "Add To Page"
-msgstr ""
-
-#: ../editor/panel.sections.php:25
-msgid "<i class='icon-random'></i> Drag to Add"
-msgstr ""
-
-#: ../editor/panel.sections.php:27
-msgid "Your Sections"
-msgstr ""
-
-#: ../editor/panel.sections.php:29
-msgid "Drag on to page to add"
-msgstr ""
-
-#: ../editor/panel.sections.php:30
-msgid "Reload Sections"
-msgstr ""
-
-#: ../editor/panel.sections.php:36
-msgid "Get More Sections"
-msgstr ""
-
-#: ../editor/panel.sections.php:40
-msgid "<i class='icon-filter'></i> Filters"
-msgstr ""
-
-#: ../editor/panel.sections.php:42 ../editor/panel.sections.php:113
-msgid "Components"
-msgstr ""
-
-#: ../editor/panel.sections.php:48 ../editor/panel.sections.php:114
-msgid "Layouts"
-msgstr ""
-
-#: ../editor/panel.sections.php:54 ../editor/panel.sections.php:115
-msgid "Full Width"
-msgstr ""
-
-#: ../editor/panel.sections.php:60 ../editor/panel.sections.php:116
-msgid "Post Layouts"
-msgstr ""
-
-#: ../editor/panel.sections.php:66 ../editor/panel.sections.php:117
-msgid "Galleries"
-msgstr ""
-
-#: ../editor/panel.sections.php:72 ../editor/panel.sections.php:118
-msgid "Navigation"
-msgstr ""
-
-#: ../editor/panel.sections.php:78 ../editor/panel.sections.php:119
-msgid "Sliders"
-msgstr ""
-
-#: ../editor/panel.sections.php:84 ../editor/panel.sections.php:120
-msgid "Social"
-msgstr ""
-
-#: ../editor/panel.sections.php:90 ../editor/panel.sections.php:121
-msgid "Widgetized"
-msgstr ""
-
-#: ../editor/panel.sections.php:96 ../editor/panel.sections.php:122
-msgid "Miscellaneous"
-msgstr ""
-
-#: ../editor/panel.sections.php:191
-msgid "<span class=\"badge badge-important\">PRO ONLY</span>"
-msgstr ""
-
-#: ../editor/panel.settings.php:27
-msgid "Settings"
-msgstr ""
-
-#: ../editor/panel.settings.php:34 ../editor/panel.settings.php:73
-#: ../editor/panel.settings.php:81
+#: ../dms/editor/panel.settings.php:34 ../dms/editor/panel.settings.php:73
 msgid "Section Options"
 msgstr ""
 
-#: ../editor/panel.themes.php:23
-msgid "Theme"
+#: ../dms/editor/panel.themes.php:17
+msgid "Theme Opts"
 msgstr ""
 
-#: ../editor/panel.themes.php:39
-msgid "Your Themes"
-msgstr ""
-
-#: ../editor/panel.themes.php:46
-msgid "Import Config"
-msgstr ""
-
-#: ../editor/panel.themes.php:53
-msgid "Get More Themes"
-msgstr ""
-
-#: ../editor/panel.themes.php:74
-msgid "Theme Options"
-msgstr ""
-
-#: ../editor/panel.themes.php:127
-msgid ""
-" <span class=\"badge badge-info\"><i class=\"icon-ok\"></i> Active</span>"
-msgstr ""
-
-#: ../editor/panel.themes.php:173 ../editor/panel.themes.php:193
-msgid "Theme does not exist or is not allowed"
-msgstr ""
-
-#: ../editor/panel.themes.php:235
-msgid " this is the end of the world.... >> "
-msgstr ""
-
-#: ../includes/class.register.php:358
-msgid "<h2>Unable to fetch from API</h2>"
-msgstr ""
-
-#: ../includes/class.shortcodes.php:317
+#: ../dms/includes/class.shortcodes.php:174
 msgid "<span class='editpage sc'>Edit</span>"
 msgstr ""
 
-#: ../includes/class.shortcodes.php:367
+#: ../dms/includes/class.shortcodes.php:224
 msgid "Tagged With: "
 msgstr ""
 
-#: ../includes/class.shortcodes.php:391
+#: ../dms/includes/class.shortcodes.php:248
 msgid "Type: "
 msgstr ""
 
-#: ../includes/class.shortcodes.php:422
+#: ../dms/includes/class.shortcodes.php:279
 msgid "Add Comment"
 msgstr ""
 
-#: ../includes/class.shortcodes.php:423
-msgid "<span class='num'>1</span> Comment"
+#: ../dms/includes/class.shortcodes.php:280
+msgid "1 Comment"
 msgstr ""
 
-#: ../includes/class.shortcodes.php:424
-msgid "<span class='num'>%</span> Comments"
+#: ../dms/includes/class.shortcodes.php:281
+msgid "% Comments"
 msgstr ""
 
-#: ../includes/class.shortcodes.php:501
+#: ../dms/includes/class.shortcodes.php:367
 #, php-format
 msgid "Visit %s&#8217;s website"
 msgstr ""
 
-#: ../includes/class.shortcodes.php:1342 ../editor/js/pl.xlist.js:119
-msgid "Close"
-msgstr ""
-
-#: ../includes/deprecated.php:272
+#: ../dms/includes/deprecated.php:272
 #, php-format
 msgid ""
 "%1$s is <strong>deprecated</strong> since version %2$s of PageLines DMS! Use "
 "%3$s instead."
 msgstr ""
 
-#: ../includes/deprecated.php:274
+#: ../dms/includes/deprecated.php:274
 #, php-format
 msgid ""
 "%1$s is <strong>deprecated</strong> since version %2$s of PageLines DMS with "
 "no alternative available."
 msgstr ""
 
-#: ../includes/deprecated.php:1349
+#: ../dms/includes/deprecated.php:1349
 msgid "No Image"
 msgstr ""
 
-#: ../includes/deprecated.php:1557 ../includes/deprecated.php:1558
+#: ../dms/includes/deprecated.php:1557 ../dms/includes/deprecated.php:1558
 msgid "Add New "
 msgstr ""
 
-#: ../includes/deprecated.php:1559 ../includes/deprecated.php:1560
+#: ../dms/includes/deprecated.php:1559 ../dms/includes/deprecated.php:1560
 msgid "Edit "
 msgstr ""
 
-#: ../includes/deprecated.php:1561 ../includes/deprecated.php:1562
+#: ../dms/includes/deprecated.php:1561 ../dms/includes/deprecated.php:1562
 msgid "View "
 msgstr ""
 
-#: ../includes/less.legacy.php:453
+#: ../dms/includes/init.install.php:221
+msgid "Congratulations!"
+msgstr ""
+
+#: ../dms/includes/init.install.php:222
+msgid "You are up and running with PageLines DMS."
+msgstr ""
+
+#: ../dms/includes/init.install.php:225
+msgid "View Your Blog Page <i class=\"icon icon-angle-right\"></i>"
+msgstr ""
+
+#: ../dms/includes/init.install.php:228
+msgid "View User Guide <i class=\"icon icon-angle-down\"></i>"
+msgstr ""
+
+#: ../dms/includes/init.install.php:241
+msgid "Stay in Touch"
+msgstr ""
+
+#: ../dms/includes/init.install.php:242
+msgid ""
+"New to PageLines? Stay in touch by following us on Facebook and Twitter."
+"<p>[like_button url=\"http://www.facebook.com/pagelines/\" ] [twitter_button "
+"type=\"follow\" handle=\"pagelines\"]</p>"
+msgstr ""
+
+#: ../dms/includes/init.install.php:246
+msgid "Forum"
+msgstr ""
+
+#: ../dms/includes/init.install.php:247
+msgid ""
+"Have questions? We are happy to help, just search or post on PageLines Forum."
+msgstr ""
+
+#: ../dms/includes/init.install.php:252
+msgid "Docs"
+msgstr ""
+
+#: ../dms/includes/init.install.php:253
+msgid ""
+"Time to dig in. Check out the Docs for specifics on creating your dream "
+"website."
+msgstr ""
+
+#: ../dms/includes/init.install.php:337
+msgid "PageLines Getting Started"
+msgstr ""
+
+#: ../dms/includes/less.legacy.php:459
 #, php-format
 msgid ""
 "%s/* CSS was compiled at %s and took %s seconds using %sMB of unicorn dust%s."
 "*/"
 msgstr ""
 
-#: ../includes/less.legacy.php:505
+#: ../dms/includes/less.legacy.php:516
 msgid "LESS Compile error!"
 msgstr ""
 
-#: ../includes/less.legacy.php:512
+#: ../dms/includes/less.legacy.php:523
 #, php-format
 msgid "Error in %s Less code: %s"
 msgstr ""
 
-#: ../includes/less.legacy.php:739
+#: ../dms/includes/less.legacy.php:783
 #, php-format
 msgid ""
 "%s/* CSS was compiled in legacy mode at %s and took %s seconds using %sMB of "
 "unicorn dust%s.*/"
 msgstr ""
 
-#: ../includes/lib.editor.php:72
-msgid "(Pro Edition Only)"
+#: ../dms/includes/lib.editor.php:251
+msgid "No Animation"
 msgstr ""
 
-#: ../includes/lib.elements.php:39
+#: ../dms/includes/lib.editor.php:252
+msgid "Fade"
+msgstr ""
+
+#: ../dms/includes/lib.editor.php:253
+msgid "Scale"
+msgstr ""
+
+#: ../dms/includes/lib.editor.php:254
+msgid "From Left"
+msgstr ""
+
+#: ../dms/includes/lib.editor.php:255
+msgid "From Right"
+msgstr ""
+
+#: ../dms/includes/lib.editor.php:256
+msgid "From Bottom"
+msgstr ""
+
+#: ../dms/includes/lib.editor.php:257
+msgid "From Top"
+msgstr ""
+
+#: ../dms/includes/lib.editor.php:895
+msgid "Background Options"
+msgstr ""
+
+#: ../dms/includes/lib.editor.php:907
+msgid "Repeat Background?"
+msgstr ""
+
+#: ../dms/includes/lib.editor.php:912
+msgid "Background Theme"
+msgstr ""
+
+#: ../dms/includes/lib.editor.php:917
+msgid "Background Video"
+msgstr ""
+
+#: ../dms/includes/lib.editor.php:922
+msgid "Background Color Enable"
+msgstr ""
+
+#: ../dms/includes/lib.editor.php:927
+msgid "Background Color"
+msgstr ""
+
+#: ../dms/includes/lib.editor.php:945 ../sections/masonic/section.php:49
+msgid "Select Post Type"
+msgstr ""
+
+#: ../dms/includes/lib.editor.php:953 ../sections/flipper/section.php:74
+#: ../sections/masonic/section.php:65
+msgid "Total Posts Loaded"
+msgstr ""
+
+#: ../dms/includes/lib.editor.php:958
+msgid "Element Sorting"
+msgstr ""
+
+#: ../dms/includes/lib.editor.php:961 ../sections/flipper/section.php:137
+#: ../sections/masonic/section.php:106
+msgid "Date Descending (default)"
+msgstr ""
+
+#: ../dms/includes/lib.editor.php:962 ../sections/flipper/section.php:138
+#: ../sections/masonic/section.php:107
+msgid "Date Ascending"
+msgstr ""
+
+#: ../dms/includes/lib.editor.php:963 ../sections/flipper/section.php:139
+#: ../sections/masonic/section.php:108
+msgid "Random"
+msgstr ""
+
+#: ../dms/includes/lib.editor.php:969 ../sections/flipper/section.php:148
+#: ../sections/masonic/section.php:117
+msgid "Meta Key"
+msgstr ""
+
+#: ../dms/includes/lib.editor.php:974 ../sections/flipper/section.php:155
+#: ../sections/masonic/section.php:124
+msgid "Meta Key Value"
+msgstr ""
+
+#: ../dms/includes/lib.editor.php:975 ../sections/flipper/section.php:149
+#: ../sections/masonic/section.php:118
+msgid ""
+"Select only posts which have a certain meta key and corresponding meta "
+"value. Useful for featured posts, or similar."
+msgstr ""
+
+#: ../dms/includes/lib.elements.php:81
 msgid "Add Widgets &rarr;"
 msgstr ""
 
-#: ../includes/lib.elements.php:126
+#: ../dms/includes/lib.elements.php:122
+msgid "Comments are closed."
+msgstr ""
+
+#: ../dms/includes/lib.elements.php:137
+msgid ""
+"This post is password protected. Enter the password to view any comments."
+msgstr ""
+
+#: ../dms/includes/lib.elements.php:143
+#, php-format
+msgid "One Response to %2$s"
+msgid_plural "%1$s Responses to %2$s"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../dms/includes/lib.elements.php:151
+msgid "<span class='meta-nav'>&larr;</span> Older Comments"
+msgstr ""
+
+#: ../dms/includes/lib.elements.php:152
+msgid "Newer Comments <span class='meta-nav'>&rarr;</span>"
+msgstr ""
+
+#: ../dms/includes/lib.elements.php:227
 msgid "&larr; Previous Entries"
 msgstr ""
 
-#: ../includes/lib.elements.php:129
+#: ../dms/includes/lib.elements.php:230
 msgid "Next Entries &rarr;"
 msgstr ""
 
-#: ../includes/lib.elements.php:166
+#: ../dms/includes/lib.elements.php:257
 #, php-format
 msgid ""
 "<ul class='inline-list'>Please select a nav menu for this area in the <a "
 "href='%s'>WordPress menu admin</a>.</ul>"
 msgstr ""
 
-#: ../includes/lib.elements.php:272
+#: ../dms/includes/lib.elements.php:363
 msgid "edit"
 msgstr ""
 
-#: ../includes/lib.head.php:65
+#: ../dms/includes/lib.head.php:65
 msgid "Google Profile URL"
 msgstr ""
 
-#: ../includes/lib.head.php:299
+#: ../dms/includes/lib.head.php:314
 #, php-format
 msgid "Page %s"
 msgstr ""
 
-#: ../includes/lib.head.php:321
+#: ../dms/includes/lib.head.php:336
 msgid "|"
 msgstr ""
 
-#: ../includes/lib.head.php:333
+#: ../dms/includes/lib.head.php:348
 #, php-format
 msgid "Search Results: %s"
 msgstr ""
 
-#: ../includes/lib.head.php:337
+#: ../dms/includes/lib.head.php:352
 #, php-format
 msgid "Page: %s"
 msgstr ""
 
-#: ../includes/lib.utils.php:140
-#, php-format
-msgid "Configure %s <i class=\"icon-arrow-right\"></i>"
+#: ../dms/includes/lib.theming.php:69
+#: ../dms/sections/postloop/class.posts.php:696
+#: ../dms/sections/postloop/section.php:264
+msgid "Nothing Found"
 msgstr ""
 
-#: ../includes/lib.utils.php:144
+#: ../dms/includes/lib.theming.php:71
+#: ../dms/sections/postloop/class.posts.php:698
+#: ../dms/sections/postloop/section.php:266
+msgid "Try another search?"
+msgstr ""
+
+#: ../dms/includes/lib.theming.php:71
+#: ../dms/sections/postloop/class.posts.php:698
+#: ../dms/sections/postloop/section.php:266
+msgid "Sorry, what you are looking for isn't here."
+msgstr ""
+
+#: ../dms/includes/lib.utils.php:100
+msgid "Blog"
+msgstr ""
+
+#: ../dms/includes/lib.utils.php:103
+msgid "Category"
+msgstr ""
+
+#: ../dms/includes/lib.utils.php:109
+msgid "Tag"
+msgstr ""
+
+#: ../dms/includes/lib.utils.php:112 ../dms/sections/postauthor/section.php:67
+msgid "Author"
+msgstr ""
+
+#: ../dms/includes/lib.utils.php:115
+msgid "Archive"
+msgstr ""
+
+#: ../dms/includes/lib.utils.php:118
+msgid "404 Error!"
+msgstr ""
+
+#: ../dms/includes/lib.utils.php:133 ../dms/sections/postsinfo/section.php:31
+msgid "Currently viewing the category:"
+msgstr ""
+
+#: ../dms/includes/lib.utils.php:137
+msgid "Showing search results for"
+msgstr ""
+
+#: ../dms/includes/lib.utils.php:141 ../dms/sections/postsinfo/section.php:33
+msgid "Currently viewing the tag:"
+msgstr ""
+
+#: ../dms/includes/lib.utils.php:149 ../dms/sections/postsinfo/section.php:40
+msgid "Posts by:"
+msgstr ""
+
+#: ../dms/includes/lib.utils.php:151 ../dms/sections/postsinfo/section.php:42
+msgid "From the daily archives:"
+msgstr ""
+
+#: ../dms/includes/lib.utils.php:153 ../dms/sections/postsinfo/section.php:44
+msgid "From the monthly archives:"
+msgstr ""
+
+#: ../dms/includes/lib.utils.php:155 ../dms/sections/postsinfo/section.php:46
+msgid "From the yearly archives:"
+msgstr ""
+
+#: ../dms/includes/lib.utils.php:170 ../dms/sections/postsinfo/section.php:57
+msgid "Viewing archives for "
+msgstr ""
+
+#: ../dms/includes/lib.utils.php:400
+#, php-format
+msgid "Configure %s <i class=\"icon icon-arrow-right\"></i>"
+msgstr ""
+
+#: ../dms/includes/lib.utils.php:404
 msgid "Configure this section"
 msgstr ""
 
-#: ../includes/library.pagelines.php:14
+#: ../dms/includes/library.pagelines.php:22
+msgid "Upgrade to Pro!"
+msgstr ""
+
+#: ../dms/includes/library.pagelines.php:24
+msgid ""
+"You are currently using the basic DMS version. Pro activate this site for "
+"tons more features and support."
+msgstr ""
+
+#: ../dms/includes/library.pagelines.php:26
+msgid "Learn More About Pro"
+msgstr ""
+
+#: ../dms/includes/library.pagelines.php:50
+msgid "(Pro Edition Only)"
+msgstr ""
+
+#: ../dms/includes/library.pagelines.php:77
 msgid "Dashboard"
 msgstr ""
 
-#: ../sections/columnizer/section.php:52
+#: ../dms/includes/library.pagelines.php:1042 ../dms/editor/js/pl.xlist.js:157
+msgid "Close"
+msgstr ""
+
+#: ../dms/includes/utils.karma.php:99
+msgid "Give Karma"
+msgstr ""
+
+#: ../dms/includes/utils.karma.php:103
+msgid "You already gave karma!"
+msgstr ""
+
+#: ../dms/sections/columnizer/section.php:52
 msgid "Columnizer Configuration"
 msgstr ""
 
-#: ../sections/columnizer/section.php:59
+#: ../dms/sections/columnizer/section.php:59
 msgid "Select Widgetized Area"
 msgstr ""
 
-#: ../sections/columnizer/section.php:60
+#: ../dms/sections/columnizer/section.php:60
 msgid "Select widgetized area"
 msgstr ""
 
-#: ../sections/columnizer/section.php:61
+#: ../dms/sections/columnizer/section.php:61
 msgid "Select the widgetized area you would like to use with this instance."
 msgstr ""
 
-#: ../sections/columnizer/section.php:69
+#: ../dms/sections/columnizer/section.php:69
 msgid "Number of Grid Columns for Each Widget (12 Col Grid)"
 msgstr ""
 
-#: ../sections/columnizer/section.php:79
+#: ../dms/sections/columnizer/section.php:79
 msgid "Widgetized Areas Help"
 msgstr ""
 
-#: ../sections/columnizer/section.php:80
+#: ../dms/sections/columnizer/section.php:80
 msgid "Edit Widgetized Areas"
 msgstr ""
 
-#: ../sections/columnizer/section.php:81
+#: ../dms/sections/columnizer/section.php:81
 msgid ""
 "This section uses widgetized areas that are created and edited in inside "
 "your admin."
 msgstr ""
 
-#: ../sections/columnizer/section.php:88 ../sections/columnizer/section.php:89
+#: ../dms/sections/columnizer/section.php:88
+#: ../dms/sections/columnizer/section.php:89
 msgid "Column Site Description"
 msgstr ""
 
-#: ../sections/columnizer/section.php:90
+#: ../dms/sections/columnizer/section.php:90
 msgid ""
 "If you use the default display of the columnizer, this field is used as a "
 "description of your company. You may want to add your address or links."
 msgstr ""
 
-#: ../sections/columnizer/section.php:100
+#: ../dms/sections/columnizer/section.php:100
 msgid "Get A Sidebars Plugin"
 msgstr ""
 
-#: ../sections/columnizer/section.php:101
-msgid "<i class=\"icon-external-link\"></i> Check out Sidebar Manager plugin"
+#: ../dms/sections/columnizer/section.php:101
+msgid ""
+"<i class=\"icon icon-external-link\"></i> Check out Sidebar Manager plugin"
 msgstr ""
 
-#: ../sections/columnizer/section.php:102
+#: ../dms/sections/columnizer/section.php:102
 msgid ""
 "We have detected that you don't either the Custom Sidebars or Sidebar "
 "Manager plugins installed. We recommend you install a plugin that allows you "
 "to create custom widgetized areas on demand."
 msgstr ""
 
-#: ../sections/columnizer/section.php:147
-msgid "Stay in Touch!"
+#: ../dms/sections/columnizer/section.php:147
+msgid "Latest Posts"
 msgstr ""
 
-#: ../sections/columnizer/section.php:173
-msgid "The Latest"
+#: ../dms/sections/columnizer/section.php:156
+msgid "Recent Comments"
 msgstr ""
 
-#: ../sections/columnizer/section.php:197 ../sections/rapidtabs/section.php:56
-#: ../sections/rapidtabs/section.php:138
-msgid "Tags"
+#: ../dms/sections/columnizer/section.php:165
+msgid "Top Categories"
 msgstr ""
 
-#: ../sections/columnizer/section.php:208
-#: ../sections/sb_primary/section.php:42
-msgid "Categories"
+#: ../dms/sections/columnizer/section.php:173
+msgid "About"
 msgstr ""
 
-#: ../sections/columnizer/section.php:222 ../editor/js/pl.optpanel.js:817
-#: ../editor/js/pl.optpanel.js:908
-msgid "More Info"
-msgstr ""
-
-#: ../sections/flipper/section.php:47
-msgid "Flipper Setup"
-msgstr ""
-
-#: ../sections/flipper/section.php:55
-msgid "Which post type should Flipper use?"
-msgstr ""
-
-#: ../sections/flipper/section.php:56
-msgid ""
-"<strong>Note</strong><br/> Post types for this section must have \"featured "
-"images\" enabled and be public.<br/><strong>Tip</strong><br/> Use a plugin "
-"to create custom post types for use with Flipper."
-msgstr ""
-
-#: ../sections/flipper/section.php:69
-msgid "Max Number of Posts Shown"
-msgstr ""
-
-#: ../sections/flipper/section.php:70
-msgid ""
-"This controls the maximum number of posts shown. A smaller amount may be "
-"shown based on layout width."
-msgstr ""
-
-#: ../sections/flipper/section.php:77
-msgid "Select Image Size"
-msgstr ""
-
-#: ../sections/flipper/section.php:84
-msgid "Flipper Title"
-msgstr ""
-
-#: ../sections/flipper/section.php:86
-msgid "Options to control the text and link in the Flipper title."
-msgstr ""
-
-#: ../sections/flipper/section.php:91
-msgid "Flipper Title Text"
-msgstr ""
-
-#: ../sections/flipper/section.php:96
-msgid "Hide Title Link?"
-msgstr ""
-
-#: ../sections/flipper/section.php:108
-msgid "Flipper Meta"
-msgstr ""
-
-#: ../sections/flipper/section.php:109
-msgid ""
-"Use shortcodes to control the dynamic meta info. Example shortcodes you can "
-"use are: <ul><li><strong>[post_categories]</strong> - List of categories</"
-"li><li><strong>[post_edit]</strong> - Link for admins to edit the post</"
-"li><li><strong>[post_tags]</strong> - List of post tags</li><li><strong>"
-"[post_comments]</strong> - Link to post comments</li><li><strong>"
-"[post_author_posts_link]</strong> - Author and link to archive</"
-"li><li><strong>[post_author_link]</strong> - Link to author URL</"
-"li><li><strong>[post_author]</strong> - Post author with no link</"
-"li><li><strong>[post_time]</strong> - Time of post</li><li><strong>"
-"[post_date]</strong> - Date of post</li><li><strong>[post_type]</strong> - "
-"Type of post</li></ul>"
-msgstr ""
-
-#: ../sections/flipper/section.php:117
-msgid "Total Posts Loaded"
-msgstr ""
-
-#: ../sections/flipper/section.php:126
-msgid "Meta Key"
-msgstr ""
-
-#: ../sections/flipper/section.php:127
-msgid ""
-"Select only posts which have a certain meta key and corresponding meta "
-"value. Useful for featured posts, or similar."
-msgstr ""
-
-#: ../sections/flipper/section.php:133
-msgid "Meta Key Value"
-msgstr ""
-
-#: ../sections/flipper/section.php:148
-msgid "Only applies for standard blog posts."
-msgstr ""
-
-#: ../sections/flipper/section.php:157
-msgid "Additional Post Selection"
-msgstr ""
-
-#: ../sections/flipper/section.php:219
-msgid " / View All"
-msgstr ""
-
-#: ../sections/flipper/section.php:224
-msgid " / View Blog"
-msgstr ""
-
-#: ../sections/flipper/section.php:266
-#: ../sections/postloop/class.posts.php:505
-msgid "View"
-msgstr ""
-
-#: ../sections/hero/section.php:27
-msgid "Hero Settings"
-msgstr ""
-
-#: ../sections/hero/section.php:34
-msgid "Heading"
-msgstr ""
-
-#: ../sections/hero/section.php:39
-msgid "Subtext"
-msgstr ""
-
-#: ../sections/hero/section.php:44
-msgid "Hero Image"
-msgstr ""
-
-#: ../sections/hero/section.php:50
-msgid "Upload Custom Image"
-msgstr ""
-
-#: ../sections/hero/section.php:55
-msgid "Reverse the Hero unit (image on left)"
-msgstr ""
-
-#: ../sections/hero/section.php:59
-msgid "Content Widths"
-msgstr ""
-
-#: ../sections/hero/section.php:65
-msgid "Text Area Width"
-msgstr ""
-
-#: ../sections/hero/section.php:81
-msgid "Image Area Width"
-msgstr ""
-
-#: ../sections/hero/section.php:99
-msgid "Hero Action Button"
-msgstr ""
-
-#: ../sections/hero/section.php:107
-msgid "Button link destination (URL - Required)"
-msgstr ""
-
-#: ../sections/hero/section.php:112
-msgid "Hero Button Text"
-msgstr ""
-
-#: ../sections/hero/section.php:118 ../sections/icallout/section.php:57
-msgid "Open link in new window"
-msgstr ""
-
-#: ../sections/hero/section.php:121 ../sections/masthead/section.php:118
-#: ../sections/masthead/section.php:300 ../sections/masthead/section.php:335
-msgid "Select Button Color"
-msgstr ""
-
-#: ../sections/hero/section.php:127 ../sections/masthead/section.php:302
-#: ../sections/masthead/section.php:337 ../sections/navbar/section.php:65
-#: ../sections/navbar/section.php:370 ../sections/navbar/section.php:382
-msgid "Blue"
-msgstr ""
-
-#: ../sections/hero/section.php:128 ../sections/masthead/section.php:303
-#: ../sections/masthead/section.php:338 ../sections/navbar/section.php:67
-#: ../sections/navbar/section.php:372 ../sections/navbar/section.php:384
-msgid "Orange"
-msgstr ""
-
-#: ../sections/hero/section.php:129 ../sections/masthead/section.php:304
-#: ../sections/masthead/section.php:339 ../sections/navbar/section.php:68
-#: ../sections/navbar/section.php:373 ../sections/navbar/section.php:385
-msgid "Red"
-msgstr ""
-
-#: ../sections/hero/section.php:130 ../sections/masthead/section.php:305
-#: ../sections/masthead/section.php:340
-msgid "Green"
-msgstr ""
-
-#: ../sections/hero/section.php:131 ../sections/masthead/section.php:306
-#: ../sections/masthead/section.php:341
-msgid "Light Blue"
-msgstr ""
-
-#: ../sections/hero/section.php:132 ../sections/masthead/section.php:307
-#: ../sections/masthead/section.php:342
-msgid "Grey"
-msgstr ""
-
-#: ../sections/hero/section.php:166
-msgid "The Hero!"
-msgstr ""
-
-#: ../sections/hero/section.php:167
-msgid "Now just set up your Hero section options"
-msgstr ""
-
-#: ../sections/highlight/section.php:29
+#: ../dms/sections/highlight/section.php:29
 msgid "Select Format"
 msgstr ""
 
-#: ../sections/highlight/section.php:31
+#: ../dms/sections/highlight/section.php:31
 msgid "Highlight Format"
 msgstr ""
 
-#: ../sections/highlight/section.php:33 ../sections/highlight/section.php:123
+#: ../dms/sections/highlight/section.php:33
 msgid "Image on top of text"
 msgstr ""
 
-#: ../sections/highlight/section.php:34 ../sections/highlight/section.php:124
+#: ../dms/sections/highlight/section.php:34
 msgid "Image on bottom of text"
 msgstr ""
 
-#: ../sections/highlight/section.php:35 ../sections/highlight/section.php:125
+#: ../dms/sections/highlight/section.php:35
 msgid "No text, just the image"
 msgstr ""
 
-#: ../sections/highlight/section.php:41
+#: ../dms/sections/highlight/section.php:41
 msgid "Highlight Text"
 msgstr ""
 
-#: ../sections/highlight/section.php:48 ../sections/highlight/section.php:97
-#: ../sections/highlight/section.php:104
+#: ../dms/sections/highlight/section.php:48
 msgid "Highlight Header Text (Optional)"
 msgstr ""
 
-#: ../sections/highlight/section.php:54 ../sections/highlight/section.php:110
+#: ../dms/sections/highlight/section.php:54
 msgid "Highlight Subheader Text (Optional)"
 msgstr ""
 
-#: ../sections/highlight/section.php:62
+#: ../dms/sections/highlight/section.php:62
 msgid "Highlight Image and Format"
 msgstr ""
 
-#: ../sections/highlight/section.php:68 ../sections/highlight/section.php:116
+#: ../dms/sections/highlight/section.php:68
 msgid "Upload Splash Image"
 msgstr ""
 
-#: ../sections/highlight/section.php:73 ../sections/highlight/section.php:130
+#: ../dms/sections/highlight/section.php:73
 msgid "Add frame to image?"
 msgstr ""
 
-#: ../sections/highlight/section.php:98
-msgid "Add the main header text for the highlight section."
-msgstr ""
-
-#: ../sections/highlight/section.php:121
-msgid "Highlight Image Style"
-msgstr ""
-
-#: ../sections/highlight/section.php:167
+#: ../dms/sections/highlight/section.php:103
 msgid "Here's to the crazy ones..."
 msgstr ""
 
-#: ../sections/highlight/section.php:168
+#: ../dms/sections/highlight/section.php:104
 msgid "This is your Highlight section. Set up the options to configure."
 msgstr ""
 
-#: ../sections/ibox/section.php:23
+#: ../dms/sections/ibox/section.php:23
 msgid "iBox Configuration"
 msgstr ""
 
-#: ../sections/ibox/section.php:33
-msgid "Number of iBoxes to Configure"
-msgstr ""
-
-#: ../sections/ibox/section.php:41
+#: ../dms/sections/ibox/section.php:33
 msgid "Number of Columns for Each Box (12 Col Grid)"
 msgstr ""
 
-#: ../sections/ibox/section.php:47
+#: ../dms/sections/ibox/section.php:39
 msgid "Icon Font"
 msgstr ""
 
-#: ../sections/ibox/section.php:48
+#: ../dms/sections/ibox/section.php:40
+msgid "Counter"
+msgstr ""
+
+#: ../dms/sections/ibox/section.php:41
 msgid "Images"
 msgstr ""
 
-#: ../sections/ibox/section.php:49
+#: ../dms/sections/ibox/section.php:42
 msgid "Text Only, No Media"
 msgstr ""
 
-#: ../sections/ibox/section.php:52
+#: ../dms/sections/ibox/section.php:45
 msgid "Select iBox Media Type"
 msgstr ""
 
-#: ../sections/ibox/section.php:58
+#: ../dms/sections/ibox/section.php:51
 msgid "Media on Top"
 msgstr ""
 
-#: ../sections/ibox/section.php:59
+#: ../dms/sections/ibox/section.php:52
 msgid "Media at Left"
 msgstr ""
 
-#: ../sections/ibox/section.php:62
+#: ../dms/sections/ibox/section.php:55
 msgid "Select the iBox Media Location"
 msgstr ""
 
-#: ../sections/ibox/section.php:72
+#: ../dms/sections/ibox/section.php:65
 msgid "iBoxes Setup"
 msgstr ""
 
-#: ../sections/ibox/section.php:73
+#: ../dms/sections/ibox/section.php:66
 msgid "iBox"
 msgstr ""
 
-#: ../sections/ibox/section.php:77
+#: ../dms/sections/ibox/section.php:70
 msgid "iBox Title"
 msgstr ""
 
-#: ../sections/ibox/section.php:82
+#: ../dms/sections/ibox/section.php:75
 msgid "iBox Text"
 msgstr ""
 
-#: ../sections/ibox/section.php:87
+#: ../dms/sections/ibox/section.php:80
 msgid "iBox Link (Optional)"
 msgstr ""
 
-#: ../sections/ibox/section.php:92
+#: ../dms/sections/ibox/section.php:85
 msgid "iBox Class (Optional)"
 msgstr ""
 
-#: ../sections/ibox/section.php:97
-msgid "iBox Icon"
+#: ../dms/sections/ibox/section.php:90
+msgid "Icon (Icon Mode)"
 msgstr ""
 
-#: ../sections/ibox/section.php:102
-msgid "iBox Image"
+#: ../dms/sections/ibox/section.php:95
+msgid "Count Number (Counter Mode)"
 msgstr ""
 
-#: ../sections/ibox/section.php:162 ../sections/ibox/section.php:276
+#: ../dms/sections/ibox/section.php:100
+msgid "Box Image (Image Mode)"
+msgstr ""
+
+#: ../dms/sections/ibox/section.php:105
+msgid "Icon/Count Color"
+msgstr ""
+
+#: ../dms/sections/ibox/section.php:167 ../dms/sections/ibox/section.php:293
+#: ../sections/revslider/section.php:198
 msgid "More"
 msgstr ""
 
-#: ../sections/ibox/section.php:271
+#: ../dms/sections/ibox/section.php:288
 msgid "iBox "
 msgstr ""
 
-#: ../sections/icallout/section.php:24
-msgid "Callout Format"
-msgstr ""
-
-#: ../sections/icallout/section.php:26
-msgid "Text on top of button"
-msgstr ""
-
-#: ../sections/icallout/section.php:27
-msgid "Text/Button Inline"
-msgstr ""
-
-#: ../sections/icallout/section.php:32 ../sections/icallout/section.php:38
-msgid "Callout Text"
-msgstr ""
-
-#: ../sections/icallout/section.php:51
-msgid "URL"
-msgstr ""
-
-#: ../sections/icallout/section.php:62
-msgid "Text on Button"
-msgstr ""
-
-#: ../sections/icallout/section.php:67
-msgid "Button Color"
-msgstr ""
-
-#: ../sections/icallout/section.php:89
-msgid "Call to action!"
-msgstr ""
-
-#: ../sections/masthead/section.php:47 ../sections/masthead/section.php:246
-msgid "Masthead Splash Options"
-msgstr ""
-
-#: ../sections/masthead/section.php:53 ../sections/masthead/section.php:252
-msgid "Upload custom image"
-msgstr ""
-
-#: ../sections/masthead/section.php:58 ../sections/masthead/section.php:256
-msgid "Masthead Video (optional, to be used instead of image)"
-msgstr ""
-
-#: ../sections/masthead/section.php:63 ../sections/masthead/section.php:260
-msgid "Maximum width of splash in px (default is full width)"
-msgstr ""
-
-#: ../sections/masthead/section.php:66 ../sections/masthead/section.php:263
-msgid ""
-"Upload an image to serve as a splash image, or use an embed code for full "
-"width video."
-msgstr ""
-
-#: ../sections/masthead/section.php:71
-msgid "Masthead Text"
-msgstr ""
-
-#: ../sections/masthead/section.php:72 ../sections/masthead/section.php:269
-msgid " Text"
-msgstr ""
-
-#: ../sections/masthead/section.php:77 ../sections/masthead/section.php:271
-#: ../sections/mediabox/section.php:30 ../sections/popthumbs/section.php:69
-#: ../sections/propricing/section.php:53
-msgid "Title"
-msgstr ""
-
-#: ../sections/masthead/section.php:82 ../sections/masthead/section.php:272
-msgid "Tagline"
-msgstr ""
-
-#: ../sections/masthead/section.php:94
-msgid "Masthead Action Button "
-msgstr ""
-
-#: ../sections/masthead/section.php:99 ../sections/masthead/section.php:284
-#: ../sections/masthead/section.php:319
-msgid "Enter the link destination (URL - Required)"
-msgstr ""
-
-#: ../sections/masthead/section.php:105 ../sections/masthead/section.php:289
-#: ../sections/masthead/section.php:324
-msgid "Masthead Button Text"
-msgstr ""
-
-#: ../sections/masthead/section.php:112 ../sections/masthead/section.php:295
-#: ../sections/masthead/section.php:330
-msgid "Open link in new window."
-msgstr ""
-
-#: ../sections/masthead/section.php:130 ../sections/masthead/section.php:350
-msgid "Masthead Menu"
-msgstr ""
-
-#: ../sections/masthead/section.php:131 ../sections/masthead/section.php:351
-msgid "Select Masthead Menu"
-msgstr ""
-
-#: ../sections/masthead/section.php:136 ../sections/masthead/section.php:356
-msgid "Masthead Meta"
-msgstr ""
-
-#: ../sections/masthead/section.php:137 ../sections/masthead/section.php:357
-msgid "Enter Masthead Meta Text"
-msgstr ""
-
-#: ../sections/masthead/section.php:194
-msgid "Start Here"
-msgstr ""
-
-#: ../sections/masthead/section.php:247
-msgid ""
-"Enter the options for the masthead splash image. If no options are "
-"specified, no image will be shown."
-msgstr ""
-
-#: ../sections/masthead/section.php:268
-msgid "Enter text for your masthead banner section"
-msgstr ""
-
-#: ../sections/masthead/section.php:274
-msgid "The text for the masthead section"
-msgstr ""
-
-#: ../sections/masthead/section.php:279
-msgid "Masthead Action Button 1"
-msgstr ""
-
-#: ../sections/masthead/section.php:280 ../sections/masthead/section.php:315
-msgid ""
-"Enter the options for the masthead button. If no options are specified, no "
-"button will be shown."
-msgstr ""
-
-#: ../sections/masthead/section.php:314
-msgid "Masthead Action Button 2"
-msgstr ""
-
-#: ../sections/masthead/section.php:348
-msgid "Choose a Wordpress menu to display (optional)"
-msgstr ""
-
-#: ../sections/masthead/section.php:354
-msgid "Enter text to be shown on Masthead (optional)"
-msgstr ""
-
-#: ../sections/mediabox/section.php:18
+#: ../dms/sections/mediabox/section.php:29
 msgid "MediaBox Media"
 msgstr ""
 
-#: ../sections/mediabox/section.php:25
+#: ../dms/sections/mediabox/section.php:36
 msgid "MediaBox Image"
 msgstr ""
 
-#: ../sections/mediabox/section.php:35
+#: ../dms/sections/mediabox/section.php:42 ../sections/masthead/section.php:73
+#: ../sections/popthumbs/section.php:69 ../sections/propricing/section.php:53
+msgid "Title"
+msgstr ""
+
+#: ../dms/sections/mediabox/section.php:47
 msgid "Text and Embed HTML"
 msgstr ""
 
-#: ../sections/mediabox/section.php:36
+#: ../dms/sections/mediabox/section.php:48
 msgid ""
 "Enter rich media \"embed\" HTML in this field to add videos, etc.. instead "
 "of an image."
 msgstr ""
 
-#: ../sections/mediabox/section.php:50
+#: ../dms/sections/mediabox/section.php:62
 msgid "Text/Media Alignment"
 msgstr ""
 
-#: ../sections/mediabox/section.php:52
+#: ../dms/sections/mediabox/section.php:64
 msgid "Align Center (Default)"
 msgstr ""
 
-#: ../sections/mediabox/section.php:53
+#: ../dms/sections/mediabox/section.php:65 ../sections/docker/section.php:57
 msgid "Align Left"
 msgstr ""
 
-#: ../sections/mediabox/section.php:54
+#: ../dms/sections/mediabox/section.php:66 ../sections/docker/section.php:56
 msgid "Align Right"
 msgstr ""
 
-#: ../sections/mediabox/section.php:61
+#: ../dms/sections/mediabox/section.php:67
+msgid "None"
+msgstr ""
+
+#: ../dms/sections/mediabox/section.php:74
 msgid "MediaBox Min Height (px)"
 msgstr ""
 
-#: ../sections/mediabox/section.php:62
+#: ../dms/sections/mediabox/section.php:75
 msgid ""
 "Required for \"cover\" mode. Otherwise the mediabox will be drawn at the "
 "height of the media."
 msgstr ""
 
-#: ../sections/mediabox/section.php:67
+#: ../dms/sections/mediabox/section.php:80
 msgid "Disable Media Vertical Centering?"
 msgstr ""
 
-#: ../sections/mediabox/section.php:72 ../sections/textbox/section.php:70
+#: ../dms/sections/mediabox/section.php:85
+#: ../dms/sections/textbox/section.php:97
 msgid "Viewport Animation"
 msgstr ""
 
-#: ../sections/mediabox/section.php:73 ../sections/textbox/section.php:71
+#: ../dms/sections/mediabox/section.php:86
+#: ../dms/sections/textbox/section.php:98
 msgid "Optionally animate the appearance of this section on view."
 msgstr ""
 
-#: ../sections/mediabox/section.php:86
+#: ../dms/sections/mediabox/section.php:99
 msgid "MediaBox Background Image"
 msgstr ""
 
-#: ../sections/navbar/section.php:61 ../sections/navbar/section.php:379
-msgid "Standard NavBar - Select Theme"
+#: ../dms/sections/navbar/section.php:28
+msgid "Main Nav Section"
 msgstr ""
 
-#: ../sections/navbar/section.php:63
-msgid "Base Color"
-msgstr ""
-
-#: ../sections/navbar/section.php:64 ../sections/navbar/section.php:369
-#: ../sections/navbar/section.php:381
-msgid "Black (Default)"
-msgstr ""
-
-#: ../sections/navbar/section.php:66 ../sections/navbar/section.php:371
-#: ../sections/navbar/section.php:383
-msgid "Light Grey"
-msgstr ""
-
-#: ../sections/navbar/section.php:72
-msgid "NavBar Theme"
-msgstr ""
-
-#: ../sections/navbar/section.php:73 ../sections/navbar/section.php:391
-msgid ""
-"The NavBar comes with several color options. Select one to automatically "
-"configure."
-msgstr ""
-
-#: ../sections/navbar/section.php:79
-msgid "NavBar Menu"
-msgstr ""
-
-#: ../sections/navbar/section.php:80 ../sections/navbar/section.php:412
-msgid "The NavBar uses WordPress menus. Select one for use."
-msgstr ""
-
-#: ../sections/navbar/section.php:85 ../sections/simple_nav/section.php:34
-#: ../sections/simple_nav/section.php:40 ../editor/js/pl.optpanel.js:687
-msgid "Select Menu"
-msgstr ""
-
-#: ../sections/navbar/section.php:94
-msgid "NavBar Configuration Options"
-msgstr ""
-
-#: ../sections/navbar/section.php:99 ../sections/navbar/section.php:100
-#: ../sections/navbar/section.php:445 ../sections/navbar/section.php:446
-msgid "NavBar Title"
-msgstr ""
-
-#: ../sections/navbar/section.php:101 ../sections/navbar/section.php:448
-msgid ""
-"Add text to the NavBar to serve as a title, but only displayed on small "
-"screens."
-msgstr ""
-
-#: ../sections/navbar/section.php:106 ../sections/navbar/section.php:422
-msgid "Activate dropdowns on hover."
-msgstr ""
-
-#: ../sections/navbar/section.php:113
-msgid "Align Menu Right? (Defaults Left)"
-msgstr ""
-
-#: ../sections/navbar/section.php:118
-msgid "Hide Search?"
-msgstr ""
-
-#: ../sections/navbar/section.php:135 ../sections/navbar/section.php:206
-msgid "NavBar"
-msgstr ""
-
-#: ../sections/navbar/section.php:152 ../sections/navbar/section.php:153
-#: ../sections/navbar/section.php:344 ../sections/navbar/section.php:345
-msgid "Enable Fixed Navigation Bar"
-msgstr ""
-
-#: ../sections/navbar/section.php:154 ../sections/navbar/section.php:347
-msgid ""
-"Use this feature to add the NavBar section as a fixed navigation bar on the "
-"top of your site."
-msgstr ""
-
-#: ../sections/navbar/section.php:162 ../sections/navbar/section.php:163
+#: ../dms/sections/navbar/section.php:41 ../dms/sections/navbar/section.php:42
 msgid "NavBar Logo"
 msgstr ""
 
-#: ../sections/navbar/section.php:164 ../sections/navbar/section.php:356
+#: ../dms/sections/navbar/section.php:43
 msgid ""
 "Use this feature to add the NavBar section as a fixed navigation bar on the "
 "top of your site.<br/><br/><strong>Notes:</strong> <br/>1. Only visible in "
 "Fixed Mode.<br/>2. Image Height is constricted to a maximum 29px."
 msgstr ""
 
-#: ../sections/navbar/section.php:293
+#: ../dms/sections/navbar/section.php:55
+msgid "Standard NavBar - Select Theme"
+msgstr ""
+
+#: ../dms/sections/navbar/section.php:57
+msgid "Base Color"
+msgstr ""
+
+#: ../dms/sections/navbar/section.php:58
+msgid "Black"
+msgstr ""
+
+#: ../dms/sections/navbar/section.php:59 ../sections/hero/section.php:128
+msgid "Blue"
+msgstr ""
+
+#: ../dms/sections/navbar/section.php:60
+msgid "Light Grey"
+msgstr ""
+
+#: ../dms/sections/navbar/section.php:61 ../sections/hero/section.php:129
+msgid "Orange"
+msgstr ""
+
+#: ../dms/sections/navbar/section.php:62 ../sections/hero/section.php:130
+msgid "Red"
+msgstr ""
+
+#: ../dms/sections/navbar/section.php:66
+msgid "NavBar Theme"
+msgstr ""
+
+#: ../dms/sections/navbar/section.php:67
+msgid ""
+"The NavBar comes with several color options. Select one to automatically "
+"configure."
+msgstr ""
+
+#: ../dms/sections/navbar/section.php:73
+msgid "NavBar Menu"
+msgstr ""
+
+#: ../dms/sections/navbar/section.php:74
+msgid "The NavBar uses WordPress menus. Select one for use."
+msgstr ""
+
+#: ../dms/sections/navbar/section.php:79
+#: ../dms/sections/simple_nav/section.php:34
+#: ../dms/sections/simple_nav/section.php:40 ../sections/navi/section.php:70
+msgid "Select Menu"
+msgstr ""
+
+#: ../dms/sections/navbar/section.php:88
+msgid "NavBar Configuration Options"
+msgstr ""
+
+#: ../dms/sections/navbar/section.php:94
+msgid "Activate dropdowns on hover."
+msgstr ""
+
+#: ../dms/sections/navbar/section.php:101
+msgid "Align Menu Right? (Defaults Left)"
+msgstr ""
+
+#: ../dms/sections/navbar/section.php:107 ../sections/navi/section.php:75
+msgid "Hide Search?"
+msgstr ""
+
+#: ../dms/sections/navbar/section.php:164
 msgid "MENU"
 msgstr ""
 
-#: ../sections/navbar/section.php:346 ../sections/navbar/section.php:355
-msgid "Applies a fixed navigation bar to the top of your site"
-msgstr ""
-
-#: ../sections/navbar/section.php:353
-msgid "Fixed NavBar Logo"
-msgstr ""
-
-#: ../sections/navbar/section.php:354
-msgid "Fixed NavBar - NavBar Logo"
-msgstr ""
-
-#: ../sections/navbar/section.php:367
-msgid "Fixed NavBar - Select Theme"
-msgstr ""
-
-#: ../sections/navbar/section.php:389
-msgid "NavBar and Fixed NavBar Theme"
-msgstr ""
-
-#: ../sections/navbar/section.php:390
-msgid "Select the color and theme of the NavBar"
-msgstr ""
-
-#: ../sections/navbar/section.php:402
-msgid "Fixed NavBar - Select Menu"
-msgstr ""
-
-#: ../sections/navbar/section.php:407
-msgid "Standard NavBar - Select Menu"
-msgstr ""
-
-#: ../sections/navbar/section.php:410
-msgid "NavBar and Fixed NavBar Menu"
-msgstr ""
-
-#: ../sections/navbar/section.php:411
-msgid "Select the WordPress Menu for the NavBar(s)"
-msgstr ""
-
-#: ../sections/navbar/section.php:426
-msgid "Fixed NavBar - Align Menu Right? (Defaults Left)"
-msgstr ""
-
-#: ../sections/navbar/section.php:429
-msgid "Fixed NavBar - Hide Searchform?"
-msgstr ""
-
-#: ../sections/navbar/section.php:432
-msgid "Standard NavBar - Align Menu Right? (Defaults Left)"
-msgstr ""
-
-#: ../sections/navbar/section.php:435
-msgid "Standard NavBar - Hide Searchform?"
-msgstr ""
-
-#: ../sections/navbar/section.php:438
-msgid "Configure Options for NavBars"
-msgstr ""
-
-#: ../sections/navbar/section.php:439
-msgid "NavBar and Fixed NavBar Configuration Options"
-msgstr ""
-
-#: ../sections/navbar/section.php:440
-msgid "Control various appearance options for the NavBars"
-msgstr ""
-
-#: ../sections/navbar/section.php:447
-msgid "Applies text to NavBar on small screens. Not available on Fixed NavBar"
-msgstr ""
-
-#: ../sections/noposts/section.php:22
+#: ../dms/sections/noposts/section.php:22
 msgid ""
 "Direct Previewing <em>of</em> &quot;Special Post Types&quot; Not "
 "Available... Yet"
 msgstr ""
 
-#: ../sections/noposts/section.php:23
+#: ../dms/sections/noposts/section.php:23
 msgid ""
 "Sorry, direct previewing of special post types such as <strong>features</"
 "strong> or <strong>boxes</strong> is unavailable. This WordPress "
 "functionality is new and rapidly developing, so it should be available soon."
 msgstr ""
 
-#: ../sections/noposts/section.php:25
+#: ../dms/sections/noposts/section.php:25
 msgid ""
 "To preview a &quot;custom post type&quot; just view a page with that &quot;"
 "section&quot; on it."
 msgstr ""
 
-#: ../sections/noposts/section.php:30
+#: ../dms/sections/noposts/section.php:30
 msgid "404!"
 msgstr ""
 
-#: ../sections/noposts/section.php:31
+#: ../dms/sections/noposts/section.php:31
 msgid "Sorry, This Page Does not exist."
 msgstr ""
 
-#: ../sections/noposts/section.php:31
+#: ../dms/sections/noposts/section.php:31
 msgid "Go"
 msgstr ""
 
-#: ../sections/noposts/section.php:31
+#: ../dms/sections/noposts/section.php:31
 msgid "home"
 msgstr ""
 
-#: ../sections/noposts/section.php:31
+#: ../dms/sections/noposts/section.php:31
 msgid "or try a search?"
 msgstr ""
 
-#: ../sections/pl_area/section.php:27
-msgid "Section Area Layout"
-msgstr ""
-
-#: ../sections/pl_area/section.php:32
-msgid "Default Area Padding (px)"
-msgstr ""
-
-#: ../sections/pl_area/section.php:36
-msgid ""
-"If sections are added to full width areas, the area will be givin this "
-"default padding."
-msgstr ""
-
-#: ../sections/pl_area/section.php:53
+#: ../dms/sections/pl_area/section.php:38
 msgid "Set Area Padding"
 msgstr ""
 
-#: ../sections/pl_area/section.php:61
+#: ../dms/sections/pl_area/section.php:47
 msgid "Area Padding (px)"
 msgstr ""
 
-#: ../sections/pl_area/section.php:69
+#: ../dms/sections/pl_area/section.php:56
 msgid "Area Padding Bottom (if different)"
 msgstr ""
 
-#: ../sections/pl_area/section.php:81
-msgid "Area Styling"
-msgstr ""
-
-#: ../sections/pl_area/section.php:103
-msgid "Area Theme"
-msgstr ""
-
-#: ../sections/pl_area/section.php:109
+#: ../dms/sections/pl_area/section.php:61
 msgid "Area Minimum Height (px)"
 msgstr ""
 
-#: ../sections/pl_area/section.php:121
-msgid "Area Background"
+#: ../dms/sections/pl_area/section.php:73
+msgid "Area Styling"
 msgstr ""
 
-#: ../sections/pl_area/section.php:133
-msgid "Repeat Background Image"
+#: ../dms/sections/pl_area/section.php:84
+msgid "Scrolling effects and sizing."
 msgstr ""
 
-#: ../sections/pl_area/section.php:138
-msgid "Enable Background Parallax"
+#: ../dms/sections/plcolumn/section.php:22
+msgid "Make Boxed Column?"
 msgstr ""
 
-#: ../sections/popthumbs/section.php:42
-msgid "PopThumb Configuration"
+#: ../dms/sections/plcolumn/section.php:23
+msgid "Adds a border around column for better visual organization."
 msgstr ""
 
-#: ../sections/popthumbs/section.php:51
-msgid "Number of Columns for Each Thumb (12 Col Grid)"
-msgstr ""
-
-#: ../sections/popthumbs/section.php:62
-msgid "PopThumbs Setup"
-msgstr ""
-
-#: ../sections/popthumbs/section.php:63 ../sections/popthumbs/section.php:80
-msgid "Thumb"
-msgstr ""
-
-#: ../sections/popthumbs/section.php:74
-msgid "Text"
-msgstr ""
-
-#: ../sections/popthumbs/section.php:85
-msgid "Image"
-msgstr ""
-
-#: ../sections/postauthor/section.php:35
+#: ../dms/sections/postauthor/section.php:34
 msgid "Author Setup"
 msgstr ""
 
-#: ../sections/postauthor/section.php:37
+#: ../dms/sections/postauthor/section.php:36
 msgid ""
 "This section uses the author's profile information. Set that in your admin."
 msgstr ""
 
-#: ../sections/postauthor/section.php:68
-msgid "Author"
-msgstr ""
-
-#: ../sections/postauthor/section.php:77
+#: ../dms/sections/postauthor/section.php:76
 msgid "Visit Authors Website &rarr;"
 msgstr ""
 
-#: ../sections/postauthor/section.php:80
+#: ../dms/sections/postauthor/section.php:79
 msgid "Authors Google Profile &rarr;"
 msgstr ""
 
-#: ../sections/postloop/class.posts.php:37
-#: ../sections/postloop/section.php:186
+#: ../dms/sections/postloop/class.posts.php:37
+#: ../dms/sections/postloop/section.php:430
 msgid "Read More &raquo;"
 msgstr ""
 
-#: ../sections/postloop/class.posts.php:240
+#: ../dms/sections/postloop/class.posts.php:240
 msgid "<div class='pagination'><span class='desc'>pages:</span><ul>"
 msgstr ""
 
-#: ../sections/postloop/class.posts.php:253
+#: ../dms/sections/postloop/class.posts.php:253
 msgid "<span class='note'>Tagged with &rarr;</span> "
 msgstr ""
 
-#: ../sections/postloop/class.posts.php:405
+#: ../dms/sections/postloop/class.posts.php:405
 msgid "Link To"
 msgstr ""
 
-#: ../sections/postloop/class.posts.php:430
-#: ../sections/postloop/class.posts.php:435
+#: ../dms/sections/postloop/class.posts.php:430
+#: ../dms/sections/postloop/class.posts.php:435
 msgid "On"
 msgstr ""
 
-#: ../sections/postloop/class.posts.php:430
-#: ../sections/postloop/class.posts.php:435
+#: ../dms/sections/postloop/class.posts.php:430
+#: ../dms/sections/postloop/class.posts.php:435
 msgid "By"
 msgstr ""
 
-#: ../sections/postloop/class.posts.php:435
+#: ../dms/sections/postloop/class.posts.php:435
 msgid "In"
 msgstr ""
 
-#: ../sections/postloop/class.posts.php:696
+#: ../dms/sections/postloop/class.posts.php:505
+msgid "View"
+msgstr ""
+
+#: ../dms/sections/postloop/class.posts.php:696
+#: ../dms/sections/postloop/section.php:264
 #, php-format
 msgid "No results for &quot;%s&quot;"
 msgstr ""
 
-#: ../sections/postloop/class.posts.php:696
-msgid "Nothing Found"
-msgstr ""
-
-#: ../sections/postloop/class.posts.php:698
-msgid "Try another search?"
-msgstr ""
-
-#: ../sections/postloop/class.posts.php:698
-msgid "Sorry, what you are looking for isn't here."
-msgstr ""
-
-#: ../sections/postloop/section.php:28
+#: ../dms/sections/postloop/section.php:30
 msgid "Edit Post Content"
 msgstr ""
 
-#: ../sections/postloop/section.php:29
-msgid "<i class=\"icon-edit\"></i> Edit Post Info"
+#: ../dms/sections/postloop/section.php:31
+msgid "<i class=\"icon icon-edit\"></i> Edit Post Info"
 msgstr ""
 
-#: ../sections/postloop/section.php:30
+#: ../dms/sections/postloop/section.php:32
 msgid ""
 "This section uses WordPress posts. Edit post information using WordPress "
 "admin."
 msgstr ""
 
-#: ../sections/postloop/section.php:37
-msgid "Page Title"
+#: ../dms/sections/postloop/section.php:41
+msgid "Hide Media on archives"
 msgstr ""
 
-#: ../sections/postloop/section.php:43
+#: ../dms/sections/postloop/section.php:49 ../sections/flipper/section.php:66
+#: ../sections/masonic/section.php:55
+msgid "Select Thumb Size"
+msgstr ""
+
+#: ../dms/sections/postloop/section.php:58
+msgid "Enter Meta Information"
+msgstr ""
+
+#: ../dms/sections/postloop/section.php:59
+msgid "Meta Information"
+msgstr ""
+
+#: ../dms/sections/postloop/section.php:60
+#: ../dms/sections/postloop/section.php:331
+msgid ""
+"Use shortcodes to control the dynamic information in your metabar. Example "
+"shortcodes you can use are: <ul><li><strong>[post_categories]</strong> - "
+"List of categories</li><li><strong>[post_edit]</strong> - Link for admins to "
+"edit the post</li><li><strong>[post_tags]</strong> - List of post tags</"
+"li><li><strong>[post_comments]</strong> - Link to post comments</"
+"li><li><strong>[post_author_posts_link]</strong> - Author and link to "
+"archive</li><li><strong>[post_author_link]</strong> - Link to author URL</"
+"li><li><strong>[post_author]</strong> - Post author with no link</"
+"li><li><strong>[post_time]</strong> - Time of post</"
+"li><li><strong>[post_date]</strong> - Date of post</"
+"li><li><strong>[post_type]</strong> - Type of post</li></ul>"
+msgstr ""
+
+#: ../dms/sections/postloop/section.php:78
+msgid "Enable Legacy Mode"
+msgstr ""
+
+#: ../dms/sections/postloop/section.php:79
+msgid "Enable Legacy"
+msgstr ""
+
+#: ../dms/sections/postloop/section.php:80
+msgid ""
+"The Legacy loop (< DMS 1.2) useful for upgrading. Unsupported in future "
+"releases."
+msgstr ""
+
+#: ../dms/sections/postloop/section.php:231
+msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: ../dms/sections/postloop/section.php:234
+msgid "Pages:"
+msgstr ""
+
+#: ../dms/sections/postloop/section.php:245
+msgid "Read More"
+msgstr ""
+
+#: ../dms/sections/postloop/section.php:247
+msgid "Read More <i class=\"icon icon-angle-right\"></i>"
+msgstr ""
+
+#: ../dms/sections/postloop/section.php:280
 msgid "Layout <span class=\"spamp\">&amp;</span> Config"
 msgstr ""
 
-#: ../sections/postloop/section.php:52
+#: ../dms/sections/postloop/section.php:288
+msgid "Page Title"
+msgstr ""
+
+#: ../dms/sections/postloop/section.php:296
 msgid "Magazine Layout Mode"
 msgstr ""
 
-#: ../sections/postloop/section.php:53
+#: ../dms/sections/postloop/section.php:297
 msgid "List Layout Mode"
 msgstr ""
 
-#: ../sections/postloop/section.php:55 ../sections/postloop/section.php:56
+#: ../dms/sections/postloop/section.php:299
+#: ../dms/sections/postloop/section.php:300
 msgid "Posts Layout Mode"
 msgstr ""
 
-#: ../sections/postloop/section.php:57
+#: ../dms/sections/postloop/section.php:301
 msgid ""
 "Choose between two magazine or blog layout mode. <br/><br/> <strong>Magazine "
 "Layout Mode</strong><br/> Magazine layout mode makes use of post "
@@ -2634,179 +2623,169 @@ msgid ""
 "main content column."
 msgstr ""
 
-#: ../sections/postloop/section.php:66
+#: ../dms/sections/postloop/section.php:310
 msgid "Number of Full Width Posts? (Mag. Mode)"
 msgstr ""
 
-#: ../sections/postloop/section.php:67
+#: ../dms/sections/postloop/section.php:311
 msgid "Full Width Posts (Magazine Layout Mode Only)"
 msgstr ""
 
-#: ../sections/postloop/section.php:68
+#: ../dms/sections/postloop/section.php:312
 msgid ""
 "Select the number of posts you would like shown at the full width of the "
 "main content column in magazine layout mode (the rest will be half-width "
 "post <strong>clips</strong>)."
 msgstr ""
 
-#: ../sections/postloop/section.php:75
+#: ../dms/sections/postloop/section.php:319
 msgid "Show Full Post Content"
 msgstr ""
 
-#: ../sections/postloop/section.php:76
+#: ../dms/sections/postloop/section.php:320
 msgid "Optionally show full post content on special post listing pages."
 msgstr ""
 
-#: ../sections/postloop/section.php:84
+#: ../dms/sections/postloop/section.php:328
 msgid "Meta Config"
 msgstr ""
 
-#: ../sections/postloop/section.php:87
-msgid ""
-"Use shortcodes to control the dynamic information in your metabar. Example "
-"shortcodes you can use are: <ul><li><strong>[post_categories]</strong> - "
-"List of categories</li><li><strong>[post_edit]</strong> - Link for admins to "
-"edit the post</li><li><strong>[post_tags]</strong> - List of post tags</"
-"li><li><strong>[post_comments]</strong> - Link to post comments</"
-"li><li><strong>[post_author_posts_link]</strong> - Author and link to "
-"archive</li><li><strong>[post_author_link]</strong> - Link to author URL</"
-"li><li><strong>[post_author]</strong> - Post author with no link</"
-"li><li><strong>[post_time]</strong> - Time of post</li><li><strong>"
-"[post_date]</strong> - Date of post</li><li><strong>[post_type]</strong> - "
-"Type of post</li></ul>"
-msgstr ""
-
-#: ../sections/postloop/section.php:92
+#: ../dms/sections/postloop/section.php:336
 msgid "Select Meta Mode"
 msgstr ""
 
-#: ../sections/postloop/section.php:93
+#: ../dms/sections/postloop/section.php:337
 msgid "Meta Mode"
 msgstr ""
 
-#: ../sections/postloop/section.php:98
+#: ../dms/sections/postloop/section.php:342
 msgid ""
 "Instead of the standard metabar (beneath post title), you can use author "
 "meta mode. This mode displays the author avatar and publish date on left."
 msgstr ""
 
-#: ../sections/postloop/section.php:105
+#: ../dms/sections/postloop/section.php:349
 msgid "Configure Full Width Post Metabar"
 msgstr ""
 
-#: ../sections/postloop/section.php:106
+#: ../dms/sections/postloop/section.php:350
 msgid "Post Meta Information"
 msgstr ""
 
-#: ../sections/postloop/section.php:114 ../sections/postloop/section.php:115
+#: ../dms/sections/postloop/section.php:358
+#: ../dms/sections/postloop/section.php:359
 msgid "Configure Clip Metabar"
 msgstr ""
 
-#: ../sections/postloop/section.php:122
+#: ../dms/sections/postloop/section.php:366
 msgid "Thumbs"
 msgstr ""
 
-#: ../sections/postloop/section.php:133 ../sections/postloop/section.php:149
+#: ../dms/sections/postloop/section.php:377
+#: ../dms/sections/postloop/section.php:393
 msgid "Left Justified"
 msgstr ""
 
-#: ../sections/postloop/section.php:134 ../sections/postloop/section.php:150
+#: ../dms/sections/postloop/section.php:378
+#: ../dms/sections/postloop/section.php:394
 msgid "On Top"
 msgstr ""
 
-#: ../sections/postloop/section.php:135 ../sections/postloop/section.php:151
+#: ../dms/sections/postloop/section.php:379
+#: ../dms/sections/postloop/section.php:395
 msgid "Left, In Excerpt"
 msgstr ""
 
-#: ../sections/postloop/section.php:136 ../sections/postloop/section.php:152
+#: ../dms/sections/postloop/section.php:380
+#: ../dms/sections/postloop/section.php:396
 msgid "Right, In Excerpt"
 msgstr ""
 
-#: ../sections/postloop/section.php:138
+#: ../dms/sections/postloop/section.php:382
 msgid "Full Width Thumbs Layout"
 msgstr ""
 
-#: ../sections/postloop/section.php:139
+#: ../dms/sections/postloop/section.php:383
 msgid ""
 "Use this option to configure how thumbs will be shown in full-width posts on "
 "your blog page."
 msgstr ""
 
-#: ../sections/postloop/section.php:154
+#: ../dms/sections/postloop/section.php:398
 msgid "Clip Thumbs Layout"
 msgstr ""
 
-#: ../sections/postloop/section.php:155
+#: ../dms/sections/postloop/section.php:399
 msgid ""
 "Use this option to configure how thumbs will be shown in clips. These are "
 "the smaller <strong>magazine</strong> style excerpts on your blog page."
 msgstr ""
 
-#: ../sections/postloop/section.php:161
+#: ../dms/sections/postloop/section.php:405
 msgid "Hide thumbs?"
 msgstr ""
 
-#: ../sections/postloop/section.php:162
+#: ../dms/sections/postloop/section.php:406
 msgid "Post Thumbnails"
 msgstr ""
 
-#: ../sections/postloop/section.php:163
+#: ../dms/sections/postloop/section.php:407
 msgid "Use this option to hide or show thumbs for posts on pages."
 msgstr ""
 
-#: ../sections/postloop/section.php:172
+#: ../dms/sections/postloop/section.php:416
 msgid "Excerpts"
 msgstr ""
 
-#: ../sections/postloop/section.php:179
+#: ../dms/sections/postloop/section.php:423
 msgid "Hide excerpts?"
 msgstr ""
 
-#: ../sections/postloop/section.php:180
+#: ../dms/sections/postloop/section.php:424
 msgid "Hide Post Excerpt"
 msgstr ""
 
-#: ../sections/postloop/section.php:181
+#: ../dms/sections/postloop/section.php:425
 msgid ""
 "Excerpts are short pieces of content that are shown to give users a preview "
 "of a post. Hide them using this option."
 msgstr ""
 
-#: ../sections/postloop/section.php:188
+#: ../dms/sections/postloop/section.php:432
 msgid "Continue Reading Link Text"
 msgstr ""
 
-#: ../sections/postloop/section.php:189
+#: ../dms/sections/postloop/section.php:433
 msgid "Excerpts <strong>Continue Reading</strong> Text"
 msgstr ""
 
-#: ../sections/postloop/section.php:190
+#: ../dms/sections/postloop/section.php:434
 msgid ""
 "This text will be used as the link to your full article when viewing "
 "articles on your posts page (when excerpts are turned on)."
 msgstr ""
 
-#: ../sections/postloop/section.php:197
+#: ../dms/sections/postloop/section.php:441
 msgid "Number of words."
 msgstr ""
 
-#: ../sections/postloop/section.php:198
+#: ../dms/sections/postloop/section.php:442
 msgid "Excerpt Length"
 msgstr ""
 
-#: ../sections/postloop/section.php:199
+#: ../dms/sections/postloop/section.php:443
 msgid "Excerpts are set to 55 words by default."
 msgstr ""
 
-#: ../sections/postloop/section.php:206
+#: ../dms/sections/postloop/section.php:450
 msgid "Allowed Tags"
 msgstr ""
 
-#: ../sections/postloop/section.php:207
+#: ../dms/sections/postloop/section.php:451
 msgid "Allow Tags in Excerpt"
 msgstr ""
 
-#: ../sections/postloop/section.php:208
+#: ../dms/sections/postloop/section.php:452
 msgid ""
 "By default WordPress strips all HTML tags from excerpts. You can use this "
 "option to allow certain tags. Simply enter the allowed tags in this field. "
@@ -2815,750 +2794,449 @@ msgid ""
 "strong> to disallow all tags."
 msgstr ""
 
-#: ../sections/postsinfo/section.php:29
+#: ../dms/sections/postsinfo/section.php:29
 msgid "Search results for"
 msgstr ""
 
-#: ../sections/postsinfo/section.php:31
-msgid "Currently viewing the category:"
+#: ../dms/sections/sb_primary/section.php:42
+msgid "Categories"
 msgstr ""
 
-#: ../sections/postsinfo/section.php:33
-msgid "Currently viewing the tag:"
-msgstr ""
-
-#: ../sections/postsinfo/section.php:40
-msgid "Posts by:"
-msgstr ""
-
-#: ../sections/postsinfo/section.php:42
-msgid "From the daily archives:"
-msgstr ""
-
-#: ../sections/postsinfo/section.php:44
-msgid "From the monthly archives:"
-msgstr ""
-
-#: ../sections/postsinfo/section.php:46
-msgid "From the yearly archives:"
-msgstr ""
-
-#: ../sections/postsinfo/section.php:57
-msgid "Viewing archives for "
-msgstr ""
-
-#: ../sections/propricing/section.php:28
-msgid "ProPricing Configuration"
-msgstr ""
-
-#: ../sections/propricing/section.php:38
-msgid "Number of Columns for Each Plan (12 Col Grid)"
-msgstr ""
-
-#: ../sections/propricing/section.php:48
-msgid "Pricing Setup"
-msgstr ""
-
-#: ../sections/propricing/section.php:49
-msgid "Column"
-msgstr ""
-
-#: ../sections/propricing/section.php:58
-msgid "Price"
-msgstr ""
-
-#: ../sections/propricing/section.php:63
-msgid "Before Price Text"
-msgstr ""
-
-#: ../sections/propricing/section.php:65
-msgid "Typically you will add the monetary unit here. E.g. \"$\""
-msgstr ""
-
-#: ../sections/propricing/section.php:69
-msgid "After Price Text"
-msgstr ""
-
-#: ../sections/propricing/section.php:71
-msgid "Typically you will add the recurring amount here. E.g. \"/ MO\""
-msgstr ""
-
-#: ../sections/propricing/section.php:75
-msgid "Sub Text"
-msgstr ""
-
-#: ../sections/propricing/section.php:80
-msgid "Link URL"
-msgstr ""
-
-#: ../sections/propricing/section.php:85
-msgid "Link Text"
-msgstr ""
-
-#: ../sections/propricing/section.php:90
-msgid "Button Theme"
-msgstr ""
-
-#: ../sections/propricing/section.php:95
-msgid "Attributes"
-msgstr ""
-
-#: ../sections/propricing/section.php:97
-msgid "Add each attribute on a new line. Add a \"*\" in front to add emphasis."
-msgstr ""
-
-#: ../sections/quickslider/section.php:157
-#: ../sections/revslider/section.php:22
-msgid "Slider Configuration"
-msgstr ""
-
-#: ../sections/quickslider/section.php:164
-msgid "Select Transition Type"
-msgstr ""
-
-#: ../sections/quickslider/section.php:166
-msgid "Use Fading Transition"
-msgstr ""
-
-#: ../sections/quickslider/section.php:167
-msgid "Use Slide/Horizontal Transition"
-msgstr ""
-
-#: ../sections/quickslider/section.php:174
-msgid "Use Both Arrow and Slide Control Navigation"
-msgstr ""
-
-#: ../sections/quickslider/section.php:175
-msgid "No Navigation"
-msgstr ""
-
-#: ../sections/quickslider/section.php:176
-msgid "Slide Controls Only"
-msgstr ""
-
-#: ../sections/quickslider/section.php:177
-msgid "Arrow Navigation Only"
-msgstr ""
-
-#: ../sections/quickslider/section.php:179
-msgid "Slider Navigation Mode"
-msgstr ""
-
-#: ../sections/quickslider/section.php:185
-msgid "Animate Slideshow Automatically?"
-msgstr ""
-
-#: ../sections/quickslider/section.php:197
-#: ../sections/revslider/section.php:39
-msgid "Slides Setup"
-msgstr ""
-
-#: ../sections/quickslider/section.php:198
-#: ../sections/revslider/section.php:40
-msgid "Slide"
-msgstr ""
-
-#: ../sections/quickslider/section.php:202
-#: ../sections/revslider/section.php:44
-msgid "Slide Background Image"
-msgstr ""
-
-#: ../sections/quickslider/section.php:205
-#: ../sections/revslider/section.php:47
-msgid "For high resolution, 2000px wide x 800px tall images. (2MB Limit)"
-msgstr ""
-
-#: ../sections/quickslider/section.php:211
-#: ../sections/revslider/section.php:53
-msgid "Slide Text"
-msgstr ""
-
-#: ../sections/quickslider/section.php:216
-#: ../sections/revslider/section.php:58
-msgid "Slide Link URL"
-msgstr ""
-
-#: ../sections/quickslider/section.php:221
-#: ../sections/revslider/section.php:63
-msgid "Slide Text Location"
-msgstr ""
-
-#: ../sections/rapidtabs/section.php:53
-msgid "Popular"
-msgstr ""
-
-#: ../sections/rapidtabs/section.php:54
-msgid "Recent"
-msgstr ""
-
-#: ../sections/rapidtabs/section.php:55 ../sections/rapidtabs/section.php:105
-msgid "Comments"
-msgstr ""
-
-#: ../sections/rapidtabs/section.php:61
-msgid "Popular Posts"
-msgstr ""
-
-#: ../sections/rapidtabs/section.php:83
-msgid "Recent Posts"
-msgstr ""
-
-#: ../sections/revslider/section.php:29
-msgid "Time Per Slide (in Milliseconds)"
-msgstr ""
-
-#: ../sections/revslider/section.php:73
-msgid "Slide Transition"
-msgstr ""
-
-#: ../sections/revslider/section.php:79
-msgid "Slide Extra Elements"
-msgstr ""
-
-#: ../sections/revslider/section.php:81
-msgid ""
-"Add extra Revolution Slider markup here. Rev slider is based on Revolution "
-"Slider, a jQuery plugin. It supports a wide array of functionality including "
-"video embeds and additional transitions if you can handle HTML. Check out "
-"the <a href=\"http://www.orbis-ingenieria.com/code/documentation/"
-"documentation.html\" target=\"_blank\">docs here</a>."
-msgstr ""
-
-#: ../sections/revslider/section.php:284
-msgid "Read More"
-msgstr ""
-
-#: ../sections/sb_primary/section.php:51
+#: ../dms/sections/sb_primary/section.php:51
 msgid "Archives"
 msgstr ""
 
-#: ../sections/sb_primary/section.php:60
+#: ../dms/sections/sb_primary/section.php:60
 msgid "Calendar"
 msgstr ""
 
-#: ../sections/sb_primary/section.php:69
+#: ../dms/sections/sb_primary/section.php:69
 msgid "Meta"
 msgstr ""
 
-#: ../sections/sb_primary/section.php:74
+#: ../dms/sections/sb_primary/section.php:74
 msgid "Entries (RSS)"
 msgstr ""
 
-#: ../sections/sharebar/section.php:30
-msgid ""
-"You have no shares setup, please look at Global Options > Social & Local; or "
-"deactivate the Sharebar from the Blog Post Template."
-msgstr ""
-
-#: ../sections/sharebar/section.php:30
-msgid "Social Settings"
-msgstr ""
-
-#: ../sections/sharebar/section.php:34
-msgid "Share &rarr;"
-msgstr ""
-
-#: ../sections/simple_nav/section.php:25
+#: ../dms/sections/simple_nav/section.php:25
 msgid "Simple Nav Section"
 msgstr ""
 
-#: ../sections/simple_nav/section.php:35
+#: ../dms/sections/simple_nav/section.php:35
 msgid "The SimpleNav uses WordPress menus. Select one for use."
 msgstr ""
 
-#: ../sections/simple_nav/section.php:50
+#: ../dms/sections/simple_nav/section.php:50
 msgid "Select Alignment"
 msgstr ""
 
-#: ../sections/starbars/section.php:29
-msgid "StarBar Configuration"
-msgstr ""
-
-#: ../sections/starbars/section.php:38 ../sections/starbars/section.php:211
-msgid "Number of StarBars to Configure"
-msgstr ""
-
-#: ../sections/starbars/section.php:44 ../sections/starbars/section.php:216
-msgid "Starbar Total Count (Number)"
-msgstr ""
-
-#: ../sections/starbars/section.php:45
-msgid ""
-"This number will be used to calculate the percent of the bar filled. The "
-"StarBar values will be shown as a percentage of this value. Default is 100."
-msgstr ""
-
-#: ../sections/starbars/section.php:52 ../sections/starbars/section.php:221
-msgid "Starbar Modifier (Text Added to Stats)"
-msgstr ""
-
-#: ../sections/starbars/section.php:53
-msgid "This will be added to the stat number."
-msgstr ""
-
-#: ../sections/starbars/section.php:63 ../sections/starbars/section.php:230
-msgid "Starbar Format"
-msgstr ""
-
-#: ../sections/starbars/section.php:69 ../sections/starbars/section.php:235
-msgid "StarBar Title (Optional)"
-msgstr ""
-
-#: ../sections/starbars/section.php:82
-msgid "Descriptor"
-msgstr ""
-
-#: ../sections/starbars/section.php:86
-msgid "Value"
-msgstr ""
-
-#: ../sections/starbars/section.php:88
-msgid "Shown as a percentage of the StarBar total in the config."
-msgstr ""
-
-#: ../sections/starbars/section.php:95
-msgid "<i class=\"icon-star\"></i> StarBar #"
-msgstr ""
-
-#: ../sections/starbars/section.php:252
-#, php-format
-msgid "Starbar #%s Description"
-msgstr ""
-
-#: ../sections/starbars/section.php:256
-#, php-format
-msgid "Starbar #%s Value"
-msgstr ""
-
-#: ../sections/starbars/section.php:262
-msgid "StarBar Values"
-msgstr ""
-
-#: ../sections/starbars/section.php:269
-msgid "Starbar"
-msgstr ""
-
-#: ../sections/textbox/section.php:23
+#: ../dms/sections/textbox/section.php:34
 msgid "Title (Optional)"
 msgstr ""
 
-#: ../sections/textbox/section.php:28
+#: ../dms/sections/textbox/section.php:40
 msgid "Text Content"
 msgstr ""
 
-#: ../sections/textbox/section.php:42
+#: ../dms/sections/textbox/section.php:48
+msgid "Textbox Font Size"
+msgstr ""
+
+#: ../dms/sections/textbox/section.php:66
+msgid "Title wrapper"
+msgstr ""
+
+#: ../dms/sections/textbox/section.php:89
 msgid "Padding <small>(CSS Shorthand)</small>"
 msgstr ""
 
-#: ../sections/textbox/section.php:43
+#: ../dms/sections/textbox/section.php:90
 msgid ""
 "This option uses CSS padding shorthand. For example, use \"15px 30px\" for "
 "15px padding top/bottom, and 30 left/right."
 msgstr ""
 
-#: ../sections/textbox/section.php:52
-msgid "Textbox Font Size"
-msgstr ""
-
-#: ../sections/watermark/section.php:22
+#: ../dms/sections/watermark/section.php:22
 msgid "Website Watermark"
 msgstr ""
 
-#: ../sections/watermark/section.php:23
+#: ../dms/sections/watermark/section.php:23
 msgid ""
 "The website watermark is a small version of your logo for your footer. "
 "Recommended width/height is 90px."
 msgstr ""
 
-#: ../sections/watermark/section.php:29
+#: ../dms/sections/watermark/section.php:29
 msgid "Watermark Image"
 msgstr ""
 
-#: ../sections/watermark/section.php:36
+#: ../dms/sections/watermark/section.php:36
 msgid "Watermark Link (Blank for None)"
 msgstr ""
 
-#: ../sections/watermark/section.php:42
+#: ../dms/sections/watermark/section.php:42
 msgid "Watermark Link alt text"
 msgstr ""
 
-#: ../sections/watermark/section.php:43
+#: ../dms/sections/watermark/section.php:43
 msgid "Build a website with PageLines"
 msgstr ""
 
-#: ../sections/watermark/section.php:48
+#: ../dms/sections/watermark/section.php:48
 msgid "Hide Watermark"
 msgstr ""
 
-#: ../sections/watermark/section.php:55
+#: ../dms/sections/watermark/section.php:56
 msgid "Setting Up Social Shares"
 msgstr ""
 
-#: ../sections/watermark/section.php:56
+#: ../dms/sections/watermark/section.php:57
 msgid ""
 "To set up social, you need to set your global social user names under "
 "\"options\" > \"social &amp; local\"<br/><br/> After you have done that, "
 "these values will fill automatically."
 msgstr ""
 
-#: ../sections/watermark/section.php:83
+#: ../dms/sections/watermark/section.php:84
 msgid "was created with"
 msgstr ""
 
-#: ../editor/js/pl.ajax.js:21
+#: ../dms/editor/js/pl.ajax.js:21
 msgid "Are you sure?"
 msgstr ""
 
-#: ../editor/js/pl.ajax.js:24
+#: ../dms/editor/js/pl.ajax.js:24 ../dms/editor/js/pl.editor.js:713
 msgid "Refreshing page..."
 msgstr ""
 
-#: ../editor/js/pl.ajax.js:147
+#: ../dms/editor/js/pl.ajax.js:175
 msgid "Saving Settings"
 msgstr ""
 
-#: ../editor/js/pl.ajax.js:149
+#: ../dms/editor/js/pl.ajax.js:177
 msgid "Settings successfully saved! Refreshing page..."
 msgstr ""
 
-#: ../editor/js/pl.ajax.js:173
+#: ../dms/editor/js/pl.ajax.js:201
 msgid ""
 "<h3>Turn Off DMS Editor?</h3><p>(Note: Draft mode is disabled when editor is "
 "off.)</p>"
 msgstr ""
 
-#: ../editor/js/pl.ajax.js:181
+#: ../dms/editor/js/pl.ajax.js:209
 msgid "Deactivating..."
 msgstr ""
 
-#: ../editor/js/pl.ajax.js:186
+#: ../dms/editor/js/pl.ajax.js:214
 msgid "Editor deactivated! Reloading page."
 msgstr ""
 
-#: ../editor/js/pl.ajax.js:236
-#, c-format
+#: ../dms/editor/js/pl.ajax.js:264
+#, javascript-format
 msgid ""
 "<h3>Are you sure?</h3><p>This will revert <strong>%s</strong> changes to "
 "your last published configuration.</p>"
 msgstr ""
 
-#: ../editor/js/pl.ajax.js:237
+#: ../dms/editor/js/pl.ajax.js:265
 msgid "Reverting Draft"
 msgstr ""
 
-#: ../editor/js/pl.ajax.js:238 ../editor/js/pl.templates.js:113
+#: ../dms/editor/js/pl.ajax.js:266
 msgid "Template successfully updated!"
 msgstr ""
 
-#: ../editor/js/pl.areas.js:123
+#: ../dms/editor/js/pl.areas.js:203
 msgid ""
 "<h3>Are you sure?</h3><p>This action will delete this area and all its "
 "elements from this page.</p>"
 msgstr ""
 
-#: ../editor/js/pl.editor.js:204
-msgid "Refreshing Page"
-msgstr ""
-
-#: ../editor/js/pl.editor.js:475
-msgid ""
-"<h3>Welcome to DMS!</h3><p>A cutting-edge drag & drop design management "
-"system for your website. <br/>Watch the video below for help getting started."
-"</p><iframe width='700' height='420' src='//www.youtube.com/embed/"
-"BracDuhEHls?rel=0&vq=hd720' frameborder='0' allowfullscreen></iframe>"
-msgstr ""
-
-#: ../editor/js/pl.editor.js:682
+#: ../dms/editor/js/pl.editor.js:547
 msgid "Learn more about being a PRO"
 msgstr ""
 
-#: ../editor/js/pl.editor.js:685
+#: ../dms/editor/js/pl.editor.js:550
 msgid "<h4>This capability is pro edition only.</h4>"
 msgstr ""
 
-#: ../editor/js/pl.editor.js:689
+#: ../dms/editor/js/pl.editor.js:554
 msgid "Edit (Pro Only)"
 msgstr ""
 
-#: ../editor/js/pl.editor.js:690
+#: ../dms/editor/js/pl.editor.js:555
 msgid ""
 "<h4>This is a Pro Section</h4>Editing Pro sections requires Pro Membership."
 "<br/>"
 msgstr ""
 
-#: ../editor/js/pl.editor.js:744
+#: ../dms/editor/js/pl.editor.js:613
 msgid ""
 "<h3>Are you sure?</h3><p>This will remove this section and its settings from "
 "this page.</p>"
 msgstr ""
 
-#: ../editor/js/pl.optpanel.js:112
-msgid "There are no options for this section."
+#: ../dms/editor/js/pl.optpanel.js:115
+msgid "There are no options available."
 msgstr ""
 
-#: ../editor/js/pl.optpanel.js:114 ../editor/js/pl.optpanel.js:115
+#: ../dms/editor/js/pl.optpanel.js:117 ../dms/editor/js/pl.optpanel.js:118
 msgid "No Options"
 msgstr ""
 
-#: ../editor/js/pl.optpanel.js:124
+#: ../dms/editor/js/pl.optpanel.js:127
 msgid "scope"
 msgstr ""
 
-#: ../editor/js/pl.optpanel.js:426
-msgid "Option"
-msgstr ""
-
-#: ../editor/js/pl.optpanel.js:535
+#: ../dms/editor/js/pl.optpanel.js:595
 msgid "Refresh for preview."
 msgstr ""
 
-#: ../editor/js/pl.optpanel.js:535
+#: ../dms/editor/js/pl.optpanel.js:595
 msgid "Syncs with element."
 msgstr ""
 
-#: ../editor/js/pl.optpanel.js:634
+#: ../dms/editor/js/pl.optpanel.js:716
 msgid "Remove"
 msgstr ""
 
-#: ../editor/js/pl.optpanel.js:689
+#: ../dms/editor/js/pl.optpanel.js:784
+msgid "About HTML5 Video"
+msgstr ""
+
+#: ../dms/editor/js/pl.optpanel.js:784
+msgid ""
+"Different browsers have different ways of handling html5 videos.<br />At the "
+"time of testing the best way to get cross browser support is to use an mp4 "
+"AND an ogv file.<br />mp4 = MPEG 4 files with H264 video codec and AAC "
+"audio<br />ogv = Ogg files with Theora video codec and Vorbis audio"
+msgstr ""
+
+#: ../dms/editor/js/pl.optpanel.js:828
 msgid "Configure Menus"
 msgstr ""
 
-#: ../editor/js/pl.optpanel.js:723
-msgid "reverse"
-msgstr ""
-
-#: ../editor/js/pl.optpanel.js:754
+#: ../dms/editor/js/pl.optpanel.js:888
 msgid "SELECT"
 msgstr ""
 
-#: ../editor/js/pl.optpanel.js:817
+#: ../dms/editor/js/pl.optpanel.js:981 ../dms/editor/js/pl.optpanel.js:1085
+msgid "More Info"
+msgstr ""
+
+#: ../dms/editor/js/pl.optpanel.js:981
 msgid ""
 "Select which registered thumbnail size to use for the images. To add new "
 "sizes see: <a href='http://codex.wordpress.org/Function_Reference/"
 "add_image_size'>The Codex</a>"
 msgstr ""
 
-#: ../editor/js/pl.optpanel.js:863
+#: ../dms/editor/js/pl.optpanel.js:1031
 msgid "Edit Sets"
 msgstr ""
 
-#: ../editor/js/pl.optpanel.js:884
+#: ../dms/editor/js/pl.optpanel.js:1052
 msgid "Select Font"
 msgstr ""
 
-#: ../editor/js/pl.optpanel.js:886
+#: ../dms/editor/js/pl.optpanel.js:1054
 msgid "Font Preview"
 msgstr ""
 
-#: ../editor/js/pl.optpanel.js:887
+#: ../dms/editor/js/pl.optpanel.js:1055
 msgid "The quick brown fox jumps over the lazy dog"
 msgstr ""
 
-#: ../editor/js/pl.optpanel.js:898
+#: ../dms/editor/js/pl.optpanel.js:1067
 msgid "Type Still Needed"
 msgstr ""
 
-#: ../editor/js/pl.optpanel.js:944
+#: ../dms/editor/js/pl.optpanel.js:1141
 msgid "global site options"
 msgstr ""
 
-#: ../editor/js/pl.optpanel.js:944
+#: ../dms/editor/js/pl.optpanel.js:1143
+msgid "post type options"
+msgstr ""
+
+#: ../dms/editor/js/pl.optpanel.js:1145
 msgid "local page options"
 msgstr ""
 
-#: ../editor/js/pl.optpanel.js:946
-#, c-format
+#: ../dms/editor/js/pl.optpanel.js:1147
+#, javascript-format
 msgid ""
 "<h3>Are you sure?</h3><p>This will reset <strong>%s</strong> to their "
 "defaults.<br/>(Once reset, this will still need to be published live.)</p>"
 msgstr ""
 
-#: ../editor/js/pl.optpanel.js:951
+#: ../dms/editor/js/pl.optpanel.js:1152
 msgid "<span class='btn btn-mini btn-info'>Page Templates</span>&nbsp;"
 msgstr ""
 
-#: ../editor/js/pl.optpanel.js:952
+#: ../dms/editor/js/pl.optpanel.js:1153
 msgid "<span class='btn btn-mini btn-info'>Global Options</span>&nbsp;"
 msgstr ""
 
-#: ../editor/js/pl.optpanel.js:953
+#: ../dms/editor/js/pl.optpanel.js:1154
 msgid "<span class='btn btn-mini btn-info'>Type Options</span>"
 msgstr ""
 
-#: ../editor/js/pl.optpanel.js:954
+#: ../dms/editor/js/pl.optpanel.js:1155
 msgid "Resetting Options"
 msgstr ""
 
-#: ../editor/js/pl.optpanel.js:955
+#: ../dms/editor/js/pl.optpanel.js:1156
 msgid "Successfully Reset. Refreshing page"
 msgstr ""
 
-#: ../editor/js/pl.optpanel.js:959 ../editor/js/pl.optpanel.js:1153
-#, c-format
+#: ../dms/editor/js/pl.optpanel.js:1160 ../dms/editor/js/pl.optpanel.js:1356
+#, javascript-format
 msgid ""
 "<h3>Are you sure?</h3><p>Importing this file will replace the following "
 "settings.<br /><strong>%s%s%s</strong></p>"
 msgstr ""
 
-#: ../editor/js/pl.optpanel.js:960
+#: ../dms/editor/js/pl.optpanel.js:1161
 msgid "Importing From Child Theme"
 msgstr ""
 
-#: ../editor/js/pl.optpanel.js:961
+#: ../dms/editor/js/pl.optpanel.js:1162
 msgid "Successfully Imported. Refreshing page"
 msgstr ""
 
-#: ../editor/js/pl.optpanel.js:992
+#: ../dms/editor/js/pl.optpanel.js:1193
 msgid "Flushing Caches"
 msgstr ""
 
-#: ../editor/js/pl.optpanel.js:994
+#: ../dms/editor/js/pl.optpanel.js:1195
 msgid "Success! Refreshing page"
 msgstr ""
 
-#: ../editor/js/pl.optpanel.js:1005
+#: ../dms/editor/js/pl.optpanel.js:1206
 msgid ""
 "<h3>Are you sure?</h3><p>This will write all settings to a config file in "
 "your child theme named pl-config.json</p>"
 msgstr ""
 
-#: ../editor/js/pl.optpanel.js:1014
+#: ../dms/editor/js/pl.optpanel.js:1215
 msgid "Exporting Options"
 msgstr ""
 
-#: ../editor/js/pl.optpanel.js:1124
-msgid "Refresh Page for Image Uploader"
+#: ../dms/editor/js/pl.optpanel.js:1325
+msgid "Refresh Page for Image Upload Button"
 msgstr ""
 
-#: ../editor/js/pl.optpanel.js:1149
+#: ../dms/editor/js/pl.optpanel.js:1351
+msgid "Page Templates"
+msgstr ""
+
+#: ../dms/editor/js/pl.optpanel.js:1352
 msgid "Global Options"
 msgstr ""
 
-#: ../editor/js/pl.optpanel.js:1150
+#: ../dms/editor/js/pl.optpanel.js:1353
 msgid "Type Options"
 msgstr ""
 
-#: ../editor/js/pl.optpanel.js:1171
+#: ../dms/editor/js/pl.optpanel.js:1382
+msgid "Import Failed!"
+msgstr ""
+
+#: ../dms/editor/js/pl.optpanel.js:1383
+msgid "Looks like you tried to upload"
+msgstr ""
+
+#: ../dms/editor/js/pl.optpanel.js:1389
 msgid "<h3>Settings Imported</h3>"
 msgstr ""
 
-#: ../editor/js/pl.optpanel.js:1183
+#: ../dms/editor/js/pl.optpanel.js:1407
 msgid "Imported Settings"
 msgstr ""
 
-#: ../editor/js/pl.optpanel.js:1184
+#: ../dms/editor/js/pl.optpanel.js:1408
 msgid "Importing"
 msgstr ""
 
-#: ../editor/js/pl.optpanel.js:1509
-msgid "Upload Image"
+#: ../dms/editor/js/pl.optpanel.js:1747
+msgid "Library"
 msgstr ""
 
-#: ../editor/js/pl.saving.js:15
+#: ../dms/editor/js/pl.saving.js:17
 msgid "Saving."
 msgstr ""
 
-#: ../editor/js/pl.saving.js:17
+#: ../dms/editor/js/pl.saving.js:19
 msgid "Successfully saved! Refreshing page..."
 msgstr ""
 
-#: ../editor/js/pl.sections.js:20
+#: ../dms/editor/js/pl.sections.js:20
 msgid "Reloading and Registering Sections"
 msgstr ""
 
-#: ../editor/js/pl.sections.js:21
+#: ../dms/editor/js/pl.sections.js:21
 msgid "Sections reloaded. Refreshing page!"
 msgstr ""
 
-#: ../editor/js/pl.sections.js:148
+#: ../dms/editor/js/pl.sections.js:158
 msgid ""
 "<div class='loaded-notice'><div class='the-notice'>Loaded! Note: For this "
 "section, page refresh may be needed for complete functionality (Javascript "
 "Loading).</div></div>"
 msgstr ""
 
-#: ../editor/js/pl.sections.js:172
+#: ../dms/editor/js/pl.sections.js:181 ../dms/editor/js/pl.sections.js:191
 msgid "Loading"
 msgstr ""
 
-#: ../editor/js/pl.templates.js:29
+#: ../dms/editor/js/pl.templates.js:68
 msgid ""
-"<h3>Are you sure?</h3><p>Loading a new template will overwrite the current "
-"page's configuration.</p>"
+"<h4>Unlink Template</h4>This will remove the current pages connection to a "
+"template? Are you sure?"
 msgstr ""
 
-#: ../editor/js/pl.templates.js:30
-msgid "Loading Template"
-msgstr ""
-
-#: ../editor/js/pl.templates.js:32 ../editor/js/pl.themes.js:32
-msgid "Successfully Loaded. Refreshing page"
-msgstr ""
-
-#: ../editor/js/pl.templates.js:53
+#: ../dms/editor/js/pl.templates.js:121
 msgid ""
 "<h3>Are you sure?</h3><p>This will delete this template. All pages using "
 "this template will be reverted to their default page configuration.</p>"
 msgstr ""
 
-#: ../editor/js/pl.templates.js:54
-msgid "Deleting Template"
-msgstr ""
-
-#: ../editor/js/pl.templates.js:84
-msgid "Saving Template"
-msgstr ""
-
-#: ../editor/js/pl.templates.js:85
-msgid "Successfully Saved. Refreshing page"
-msgstr ""
-
-#: ../editor/js/pl.templates.js:110
+#: ../dms/editor/js/pl.templates.js:176
 msgid ""
-"<h3>Are you sure?</h3><p>This action will overwrite this template and its "
-"configuration. All pages using this template will be updated with the new "
-"config as well.</p>"
+"<h3>Are you sure?</h3><p>This action will set the current page to this "
+"template. All pages using this template will be updated with the new config "
+"as well.</p>"
 msgstr ""
 
-#: ../editor/js/pl.templates.js:111
-msgid "Updating Template"
-msgstr ""
-
-#: ../editor/js/pl.themes.js:13
+#: ../dms/editor/js/pl.themes.js:15
 msgid "<h3>Are you sure?</h3> <p>This will activate this theme sitewide.</p>"
 msgstr ""
 
-#: ../editor/js/pl.themes.js:14
+#: ../dms/editor/js/pl.themes.js:16
 msgid "Activating Theme"
 msgstr ""
 
-#: ../editor/js/pl.themes.js:16
+#: ../dms/editor/js/pl.themes.js:19
 msgid "Successfully Activated. Refreshing page"
 msgstr ""
 
-#: ../editor/js/pl.themes.js:29
-msgid ""
-"<h3>Activate Theme Preview?</h3> <p>This will activate a theme preview "
-"sitewide.<br/>(while in draft mode)</p>"
-msgstr ""
-
-#: ../editor/js/pl.themes.js:30
-msgid "Loading Theme Preview"
-msgstr ""
-
-#: ../editor/js/pl.themes.js:45
+#: ../dms/editor/js/pl.themes.js:33
 msgid "Activate"
 msgstr ""
 
-#: ../editor/js/pl.xlist.js:67
+#: ../dms/editor/js/pl.xlist.js:67
 msgid "Drag Thumb to Page"
 msgstr ""
 
-#: ../editor/js/pl.xlist.js:121
+#: ../dms/editor/js/pl.xlist.js:159
+msgid "Delete Section"
+msgstr ""
+
+#: ../dms/editor/js/pl.xlist.js:163
 msgid "Description"
 msgstr ""
 
-#: ../editor/js/pl.xlist.js:125
+#: ../dms/editor/js/pl.xlist.js:171
 msgid "Drag This"
 msgstr ""

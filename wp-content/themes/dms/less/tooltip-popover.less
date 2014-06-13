@@ -4,12 +4,13 @@
 .tooltip {
   position: absolute;
   z-index: @zindexTooltip;
+font-family: @defaultFont;
   display: block;
   visibility: visible;
   padding: 5px;
   font-size: 11px;
-  .opacity(0);
-  &.in     { .opacity(80); }
+  opacity: 0;
+  &.in     { opacity: .8; }
   &.top    { margin-top:  -2px; }
   &.right  { margin-left:  2px; }
   &.bottom { margin-top:   2px; }
@@ -21,7 +22,7 @@
 }
 .tooltip-inner {
 	font-weight: normal;
-  max-width: 200px;
+  max-width: 300px;
   padding: 3px 8px;
   color: @tooltipColor;
   text-shadow: none;

@@ -13,9 +13,11 @@ function pl_editor_actions(){
 	$run = $postdata['run'];
 	$pageID = $postdata['pageID'];
 	$typeID = $postdata['typeID'];
+	
+	$response['dataAmount'] = ( isset( $_SERVER['CONTENT_LENGTH'] ) ) ? (int) $_SERVER['CONTENT_LENGTH'] : 'No Value';
 
 	if($mode == 'save'){
-
+		
 		$draft = new EditorDraft;
 		$tpl = new EditorTemplates;
 		$map = $postdata['map_object'] = new PageLinesTemplates( $tpl );
@@ -23,20 +25,9 @@ function pl_editor_actions(){
 		if ( $run == 'map' || $run == 'all' || $run == 'draft' || $run == 'publish'){
 
 			$draft->save_draft( $pageID, $typeID, $postdata['pageData'] );
-			//
-			// if( ($run == 'map' || $run == 'all') && isset($postdata['map']) ){
-			//
-			// 	$template_mode = (isset($postdata['templateMode'])) ? $postdata['templateMode'] : 'type';
-			//
-			// 	$response['changes'] = $map->save_map_draft( $pageID, $typeID, $postdata['map'], $template_mode );
-			//
-			// }
 
 
 		}
-
-		if ( $run == 'publish' )
-			pl_publish_settings( $pageID, $typeID );
 
 		elseif ( $run == 'revert' )
 			$draft->revert( $postdata, $map );
@@ -48,14 +39,16 @@ function pl_editor_actions(){
 
 		if( $run == 'reload'){
 
-			global $load_sections;
-			$available = $load_sections->pagelines_register_sections( true, false );
+			global $editorsections;
+			$editorsections->reset_sections();
+			$available = $editorsections->get_sections();
 			$response['result'] = $available;
 			
 		} elseif( $run == 'load' ){
 
 			$section_object = $postdata['object'];
 			$section_unique_id = $postdata['uniqueID'];
+			$draw = $postdata['draw'];
 
 			global $pl_section_factory;
 
@@ -70,13 +63,14 @@ function pl_editor_actions(){
 				// needs to be set.. ??
 				$s->meta['content'] = array();
 				$s->meta['unique']	= '';
+				$s->meta['draw']	= $draw;
 				
 				
 				$opts = $s->section_opts();
 
 				$opts = (is_array($opts)) ? $opts : array();
 
-				$response['opts'] = array_merge($opts, pl_standard_section_options());
+				$response['opts'] = array_merge($opts, pl_standard_section_options( $s ));
 
 				ob_start();
 					$s->active_loading = true;
@@ -102,83 +96,6 @@ function pl_editor_actions(){
 		}
 
 
-	} elseif( $mode == 'themes'){
-
-		$theme = new EditorThemeHandler;
-
-		if( $run == 'activate' ){
-			$response = $theme->activate( $response );
-			pl_flush_draft_caches( false );
-		}
-
-
-	} elseif ( $mode == 'templates' ){
-
-		$tpl = new EditorTemplates;
-
-		if ( $run == 'load' ){
-
-			$metaID = (isset($postdata['templateMode']) && $postdata['templateMode'] == 'type') ? $typeID : $pageID;
-
-			$response['loaded'] = $tpl->load_template( $metaID, $postdata['key'] );
-
-		} elseif ( $run == 'update'){
-
-			$key = ( isset($postdata['key']) ) ? $postdata['key'] : false;
-
-			$template_map = $postdata['map']['template'];
-
-			$response['tpl'] = $tpl->update_template( $key, $template_map, $postdata['settings'], $pageID );
-
-		} elseif ( $run == 'delete'){
-
-			$key = ( isset($postdata['key']) ) ? $postdata['key'] : false;
-
-			$tpl->delete_template( $key );
-
-		} elseif ( $run == 'save' ){
-
-			$template_map = $postdata['map']['template'];
-			$settings = $postdata['settings'];
-
-			$name = (isset($postdata['template-name'])) ? $postdata['template-name'] : false;
-			$desc = (isset($postdata['template-desc'])) ? $postdata['template-desc'] : '';
-
-			if( $name )
-				$tpl->create_template($name, $desc, $template_map, $settings, $pageID);
-
-		} elseif( $run == 'set_type' ){
-
-			$field = 'page-template';
-			$value = $postdata['value'];
-
-			$previous_val = pl_local( $typeID, $field );
-
-			if( $previous_val == $value )
-				pl_local_update( $typeID, $field, false );
-			else
-				pl_local_update( $typeID, $field, $value );
-
-			$response['result'] = pl_local( $typeID, $field );
-
-
-		} elseif( $run == 'set_global' ){
-
-			$field = 'page-template';
-			$value = $postdata['value'];
-
-			$previous_val = pl_global( $field );
-
-			if($previous_val == $value)
-				pl_global_update( $field, false );
-			else
-				pl_global_update( $field, $value );
-
-
-			$response['result'] = pl_global( $field );
-
-		}
-
 	} elseif ( $mode == 'settings' ){
 
 		$plpg = new PageLinesPage( array( 'mode' => 'ajax', 'pageID' => $pageID, 'typeID' => $typeID ) );
@@ -187,13 +104,17 @@ function pl_editor_actions(){
 
 		if ($run == 'reset_global'){
 
-			$response['settings'] = $settings->reset_global();
+			reset_global_settings();
 
 		} elseif( $run == 'reset_local' ){
 
-			$settings->reset_local( $pageID );
+			pl_reset_meta_settings( $pageID );
 
-		} elseif( $run == 'delete' ){
+		} elseif( $run == 'reset_type' ){
+
+			pl_reset_meta_settings( $typeID );
+
+		}elseif( $run == 'delete' ){
 
 			// delete clone index by keys
 
@@ -216,6 +137,10 @@ function pl_editor_actions(){
 
 		} elseif( 'reset_cache' == $run ) {
 			$settings->reset_caches();
+		} elseif( $run == 'import_from_child' ) {
+			$settings->import_from_child();
+		} elseif( $run == 'import_from_child_cancelled' ) {
+			$settings->import_from_child_cancelled();
 		}
 
 	} else {
@@ -225,6 +150,19 @@ function pl_editor_actions(){
 
 
 	// RESPONSE
+	echo json_encode(  pl_arrays_to_objects( $response ) );
+
+	die(); // don't forget this, always returns 0 w/o
+}
+
+/* 
+ * System for handling admin ajax
+ **/
+add_action('wp_ajax_pl_admin_ajax', 'pl_admin_ajax');
+function pl_admin_ajax(){
+	$response = array( 'post' => $_POST );
+	$response = apply_filters( 'pl_ajax_'.$_POST['mode'], $response, $_POST ); 
+	
 	echo json_encode(  pl_arrays_to_objects( $response ) );
 
 	die(); // don't forget this, always returns 0 w/o
@@ -254,7 +192,7 @@ function pl_upload_config_file(){
 		$response['import_file'] = $file;
 		$response['post'] = $_POST;
 	} else {
-		$reponse['import_error'] = 'filename?';
+		$response['import_error'] = $filename;
 	}
 
 	echo json_encode(  pl_arrays_to_objects( $response ) );
@@ -279,6 +217,8 @@ function pl_editor_mode(){
 	die();
 }
 
+
+
 add_action('wp_ajax_pl_dms_admin_actions', 'pl_dms_admin_actions');
 function pl_dms_admin_actions(){
 	$response = array();
@@ -292,9 +232,16 @@ function pl_dms_admin_actions(){
 	pl_setting_update($field, $value);
 
 	echo json_encode(  pl_arrays_to_objects( $response ) );
-	if( $lessflush )
-		pl_flush_draft_caches( false );
+	if( $lessflush ) {
+		global $dms_cache;
+		$dms_cache->purge_all();
+	}
 	die();
+}
+
+function pl_tmp_mime_overide ( $existing_mimes = array() ) {
+	$existing_mimes['svg'] = 'image/svg+xml';
+	return $existing_mimes;
 }
 
 
@@ -305,12 +252,12 @@ function pl_up_image (){
 
 	$files_base = $_FILES[ 'qqfile' ];
 
+	add_filter( 'upload_mimes', 'pl_tmp_mime_overide' );
 	$arr_file_type = wp_check_filetype( basename( $files_base['name'] ));
-
 	$uploaded_file_type = $arr_file_type['type'];
 
 	// Set an array containing a list of acceptable formats
-	$allowed_file_types = array( 'image/jpg','image/jpeg','image/gif','image/png', 'image/x-icon');
+	$allowed_file_types = array( 'image/jpg','image/jpeg','image/gif','image/png', 'image/x-icon', 'image/svg+xml');
 
 	if( in_array( $uploaded_file_type, $allowed_file_types ) ) {
 
@@ -325,7 +272,10 @@ function pl_up_image (){
 
 		// ( if applicable-Update option here)
 
-		$name = 'PageLines- ' . addslashes( $files_base['name'] );
+		$name = sprintf( '%s%s',
+			apply_filters( 'pl_up_image_prefix', 'PageLines-' ),
+			addslashes( $files_base['name'] )
+		);
 
 		$attachment = array(
 						'guid'				=> $uploaded_file['url'],
@@ -351,51 +301,233 @@ function pl_up_image (){
 		echo json_encode( array( 'url' => $url, 'success' => TRUE, 'attach_id' => $attach_id ) );
 
 	}
-	
-	die(); // don't forget this, always returns 0 w/o
-	
+	remove_filter( 'upload_mimes', 'pl_tmp_mime_overide' );
+	die(); // don't forget this, always returns 0 w/o	
 }
 
 add_filter( 'pagelines_global_notification', 'pagelines_check_folders_dms');
+add_filter( 'pagelines_global_notification', 'pagelines_check_dms_plugin');
+add_filter( 'pagelines_global_notification', 'pagelines_check_updater');
+
 function pagelines_check_folders_dms( $note ) {
-	
-	
+		
 	$folder = basename( get_template_directory() );
 
-	if( 'dms' != $folder ){
+	if( 'dms' != $folder && ! defined( 'DMS_CORE' ) ){
 		
 		ob_start(); ?>
 
-			<div class="alert alert-important">
+			<div class="alert editor-alert">
 				<button type="button" class="close" data-dismiss="alert" href="#">&times;</button>
-			  	<strong><i class="icon-warning-sign"></i> Install Problem!</strong><p>it looks like you have DMS installed in the wrong folder.<br />DMS must be installed in wp-content/themes/<strong>dms</strong>/ and not wp-content/themes/<strong><?php echo $folder; ?></strong>/</p>
+			  	<?php printf( "<strong><i class='icon icon-warning-sign'></i> %s %s<br />%s: %s</div>", 
+					__( 'Install Problem!', 'pagelines' ),
+					__( "PageLines DMS must be installed in a folder called 'dms' to work with child themes and extensions.", 'pagelines' ),
+					__( 'Current path', 'pagelines' ),
+					get_template_directory()
+				);
+		$note .= ob_get_clean();
+	}
+	return $note;
+}
+
+function pagelines_check_dms_plugin( $note ) {
+	
+	if( pl_is_activated() && ! pl_has_dms_plugin() && is_super_admin() ){
+		ob_start(); ?>
+
+			<div class="editor-alert alert">
+				
+			  	<strong><i class="icon icon-cogs"></i> <?php _e( 'Install DMS Utilities', 'pagelines' ); ?>
+			  	</strong><p><?php _e( 'Your site is "Pro activated" but we have detected that the DMS Pro Tools plugin is not activated. Grab this plugin if you have not installed it yet on <a href="http://www.pagelines.com/my-account" >PageLines.com &rarr; My-Account</a>.', 'pagelines' ); ?>
+			  	</p>
 
 			</div>
 
 			<?php 
 
 		$note .= ob_get_clean();
+	}
+	return $note;
+}
+	
+function pagelines_check_updater( $note ) {
+	
+	$message = pl_updater_txt();
+	
+	if( $message ) {
+		ob_start();
+		?>
+		<div class="editor-alert alert">		
+		  	<p>
+			<?php echo $message ?>
+			</p>
+		</div>
+		<?php $note .= ob_get_clean();
+	}
+	return $note;
+}		
+
+function pl_media_library_link( $type = 'image' ){
+	
+	global $post;
+
+	$post_id = ( empty($post->ID) ) ? 0 : $post->ID;
+
+	$image_library_url = add_query_arg( 'post_id', (int) $post_id, admin_url('media-upload.php') );
+//	$image_library_url = add_query_arg( 'type', $type, $image_library_url );
+	$image_library_url = add_query_arg( 'post_mime_type', $type, $image_library_url );
+	$image_library_url = add_query_arg( 'tab', 'library', $image_library_url);
+	$image_library_url = add_query_arg( array( 'context' => 'pl-custom-attach', 'TB_iframe' => 1), $image_library_url );
+	
+	return $image_library_url;
+	
+}
+
+
+$custom_attach = new PLImageUploader();
+
+class PLImageUploader{
+	function __construct() {
+		if ( isset( $_REQUEST['context'] ) && $_REQUEST['context'] == 'pl-custom-attach' ) {
+
+			$this->option_id = (isset( $_REQUEST['oid'] )) ? $_REQUEST['oid'] : '';
+
+			add_filter( 'attachment_fields_to_edit', array( $this, 'attachment_fields_to_edit' ), 15, 2 );
+			add_filter( 'media_upload_tabs', array( $this, 'filter_upload_tabs' ) );
+			//add_filter( 'media_upload_mime_type_links', '__return_empty_array' );
+			add_action( 'media_upload_library' , array( $this, 'the_js' ), 15 );
+			add_action( 'admin_head', array( $this, 'media_css' ) );
+			add_action('admin_print_scripts', array( $this, 'dequeue_offending_scripts' ));
+		}
+	}
+	// dequeue scripts that break the image uploader.
+	function dequeue_offending_scripts() {
+		wp_enqueue_style( 'dashicons' );
+		// nextgen gallery destroys media uploader. 
+		wp_dequeue_script( 'frame_event_publisher' );
+	}
+
+	function media_css() {
+
+		?>
+		<style type="text/css">
+		#media-upload #filter, #media-upload #media-items {
+		width: 770px;
+		}
+		.pl_uploader_close { float:right;}
+		.pl_uploader_close:before {
+			font-family: "dashicons";
+		    content: "\f158";
+		}
+		</style>
+		
+		<script>
+		jQuery(document).ready(function() {
+			jQuery( '#sidemenu' ).append('<li class="pl_uploader_close"></li>')
+
+		})
+		</script>
+		<?php
+	}
+
+	function the_js(){
+		?>
+		<script>
+		jQuery(document).ready(function(){
+			jQuery('.pl-frame-button').on('click', function(){
+			
+				var oSel = parent.jQuery.pl.iframeSelector
+				,	optID = '#' + oSel
+				,	imgURL = jQuery(this).data('imgurl')
+				,	imgURLShort = jQuery(this).data('short-img-url')
+				, 	theOption = jQuery( '[id="'+oSel+'"]', top.document) 
+				,	thePreview = theOption.closest('.upload-box').find('.opt-upload-thumb')
+				
+				theOption.val( imgURLShort )
+				
+				thePreview.html( '<div class="img-wrap"><img style="max-width:150px;max-height: 100px;" src="'+ imgURL +'" /></div>' )
+				
+				
+				parent.eval('jQuery(".bootbox").modal("hide")')				
+			})
+			
+			jQuery( '.pl_uploader_close' ).click(function() {
+				parent.eval('jQuery(".bootbox").modal("toggle")')	
+			})
+		})
+		</script>
+
+		<?php
+	}
+
+	/**
+	 * Replace default attachment actions with "Set as header" link.
+	 *
+	 * @since 3.4.0
+	 */
+	function attachment_fields_to_edit( $form_fields, $post ) {
+
+		$form_fields = array();
+
+		$attach_id = $post->ID;
+
+		
+		$image_url = wp_get_attachment_url( $attach_id );
+		$short_img_url = pl_shortcodize_url( $image_url );
+
+		$form_fields['buttons'] = array(
+			'tr' => sprintf(
+						'<tr class="submit"><td></td>
+							<td>
+							<span class="pl-frame-button admin-blue button" data-selector="%s" data-imgurl="%s" data-short-img-url="%s">%s</span>
+							</td></tr>',
+							$this->option_id,
+							$image_url,
+							$short_img_url,
+							__( 'Select This For Option', 'pagelines' )
+					)
+		);
+		$form_fields['context'] = array(
+			'input' => 'hidden',
+			'value' => 'pl-custom-attach'
+		);
+		$form_fields['oid'] = array(
+			'input' => 'hidden',
+			'value' => $this->option_id
+		);
+
+		return $form_fields;
 		
 	}
-	if( !pl_has_dms_plugin() ){
-		
-		ob_start(); ?>
 
-			<div class="alert">
-				<button type="button" class="close" data-dismiss="alert" href="#">&times;</button>
-			  	<strong><i class="icon-cogs"></i> Install DMS Utilities</strong><p>Looks like you haven't installed the DMS Pro tools plugin. Grab the plugin on your <a href="http://www.pagelines.com/my-account/">My Account > My Downloads</a> page. Its free and easy to register.<br />
-				This free plugin enables a lot of functionality we could not include in this WordPress.org version of DMS.</p>
-			</div>
-			<?php 
+	/**
+	 * Leave only "Media Library" tab in the uploader window.
+	 *
+	 * @since 3.4.0
+	 */
+	function filter_upload_tabs( $tabs ) {
+		return array( 
+			'library' => __('Your Media Library', 'pagelines'),
+		);
+	}
+}
 
-		$note .= ob_get_clean();
+
+
+add_filter('manage_edit-page_columns', 'pl_add_new_page_columns' );
+add_action('manage_page_posts_custom_column', 'pl_manage_page_columns', 10, 2);
+
+function pl_manage_page_columns($column_name, $id) {
+
+	switch ($column_name) {
+		case 'template':
+			$set = pl_meta($id, PL_SETTINGS);
+			echo ( is_array( $set ) && isset( $set['live']['custom-map']['template']['ctemplate'] ) ) ? $set['live']['custom-map']['template']['ctemplate'] : 'None Set';
+		break;
+	} // end switch
+}
 	
-	} 
-	return $note;		
-}
-
-// clear draft css on plugin activate/deactivate
-if( is_admin() && isset( $_REQUEST['plugin'] ) ) {
-	add_action( 'activate_' . $_REQUEST['plugin'], 'pl_flush_draft_caches' );
-	add_action( 'deactivate_' . $_REQUEST['plugin'], 'pl_flush_draft_caches' );
-}
+function pl_add_new_page_columns($columns) {
+	$columns['template'] = __( 'Template', 'pagelines' );
+	return $columns;
+}	

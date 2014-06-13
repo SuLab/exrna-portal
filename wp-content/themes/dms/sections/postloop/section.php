@@ -1,6 +1,6 @@
 <?php
 /*
-	Section: Content/PostLoop
+	Section: WP Content/Loop
 	Author: PageLines
 	Author URI: http://www.pagelines.com
 	Description: The Main Content area (Post Loop in WP speak). Includes content and post information.
@@ -20,29 +20,277 @@ class PageLinesPostLoop extends PageLinesSection {
 
 	function section_opts(){
 
+
+
 		$opts = array(
 
 			array(
 				'key'		=> 'post_content',
 				'type'		=> 'edit_post',
 				'title'		=> __( 'Edit Post Content', 'pagelines' ),
-				'label'		=>	__( '<i class="icon-edit"></i> Edit Post Info', 'pagelines' ),
+				'label'		=>	__( '<i class="icon icon-edit"></i> Edit Post Info', 'pagelines' ),
 				'help'		=> __( 'This section uses WordPress posts. Edit post information using WordPress admin.', 'pagelines' ),
 				'classes'	=> 'btn-primary'
 			),
 			array(
-				'key'		=> 'pagetitles',
+				'key'		=> 'post_media_hide',
+				'case'		=> 'special',
 				'type'		=> 'check',
-				'case'		=> 'page',
-				'title'		=> __( 'Page Title', 'pagelines' ),
-				'label'		=> 'Show page title?',
+				'col'			=> 3,
+				'default'	=> false,
+				'title'		=> __( 'Hide Media on archives', 'pagelines' ),
+			),
+			array(
+				'key'			=> 'pl_loop_thumb_size',
+				'type' 			=> 'select_imagesizes',
+				'scope'			=> 'global',
+				'col'			=> 3,
+				'default'		=> 'aspect-thumb',
+				'label' 		=> __( 'Select Thumb Size', 'pagelines' )
 			),
 
 			array(
-				'case'		=> 'special',
+				'key'			=> 'metabar_standard',
+				'scope'			=> 'global',
+				'default'		=> 'On [post_date] | [post_comments] [post_edit]',
+				'type'			=> 'text',
+				'col'			=> 2,
+				'label'			=> __( 'Enter Meta Information', 'pagelines' ),
+				'title'			=> __( 'Meta Information', 'pagelines' ),
+				'ref'			=> __( 'Use shortcodes to control the dynamic information in your metabar. Example shortcodes you can use are: <ul><li><strong>[post_categories]</strong> - List of categories</li><li><strong>[post_edit]</strong> - Link for admins to edit the post</li><li><strong>[post_tags]</strong> - List of post tags</li><li><strong>[post_comments]</strong> - Link to post comments</li><li><strong>[post_author_posts_link]</strong> - Author and link to archive</li><li><strong>[post_author_link]</strong> - Link to author URL</li><li><strong>[post_author]</strong> - Post author with no link</li><li><strong>[post_time]</strong> - Time of post</li><li><strong>[post_date]</strong> - Date of post</li><li><strong>[post_type]</strong> - Type of post</li></ul>', 'pagelines' )
+			)
+		);
+		
+		
+		
+		global $post;
+		
+		$id = ( isset( $post->ID ) ) ? $post->ID : null;
+		
+		if( true == apply_filters( 'pl_legacy_postloop', pl_setting( 'post_loop_legacy'), $id ) )
+			$opts = $this->get_old_options();
+
+		$opts['legacy']	= array(
+							'key'		=> 'post_loop_legacy',
+							'default'	=> false,
+							'type'		=> 'check',
+							'scope'		=> 'global',
+							'title'		=> __( 'Enable Legacy Mode', 'pagelines' ),
+							'label'		=>	__( 'Enable Legacy', 'pagelines' ),
+							'help'		=> __( 'The Legacy loop (< DMS 1.2) useful for upgrading. Unsupported in future releases.', 'pagelines')
+						);
+
+		return $opts;
+	}
+
+	function before_section_template( $location = '' ) {
+
+		global $wp_query;
+
+		if( isset($wp_query) && is_object($wp_query) )
+			$this->wrapper_classes[] = ( $wp_query->post_count > 1 ) ? 'multi-post' : 'single-post';
+
+	}
+
+	/**
+	* Section template.
+	*/
+   function section_template() {
+
+		// if using non pagelines template
+		if( do_special_content_wrap() ) {
+
+			global $integration_out;
+			echo $integration_out;
+
+		} else {
+
+			if( pl_standard_post_page() )
+				$this->get_loop();
+			else
+				$this->standard_loop();
+		}
+	}
+
+	/*
+	 * Decide which loop we need and load it.
+	 */
+	function get_loop() {
+		global $post;
+		$id = ( isset( $post->ID ) ) ? $post->ID : null;
+		if( true == apply_filters( 'pl_legacy_postloop', pl_setting( 'post_loop_legacy') , $id ) ) {
+			require_once( $this->base_dir . '/class.posts.php' );
+			$theposts = new PageLinesPosts( $this );
+			echo '<div class="pl-old-loop">';
+			$theposts->load_loop();
+			echo '</div>';
+		} else {
+			echo '<div class="pl-new-loop">';
+			$this->loop();
+			echo '</div>';
+		}
+	}
+
+	/*
+	 * Standard loop.
+	 */
+	function standard_loop() {
+
+		if( have_posts() )
+			while ( have_posts() ) : the_post();
+			the_content();
+			endwhile;
+	}
+
+	function loop(){
+
+		$count = 0;
+		global $plpg;
+
+		if( have_posts() )
+			while ( have_posts() ) : the_post();
+
+			$count++;
+
+			$format = get_post_format();
+
+			$linkbox = ($format == 'quote' || $format == 'link') ? true : false;
+
+			$class = array();
+
+			$postlist = ( $plpg->is_blog_page_type() ) ? true : false;
+
+			$class[ ] = ( is_archive() || is_search() || is_home() ) ? 'multi-post' : '';
+
+			$class[ ] = ( ! $postlist ) ? 'standard-page' : '';
+
+			$class[ ] = ( is_single() ) ? 'single-post' : '';
+			
+			$class[ ] = 'pl-border';
+			
+			$class[ ] = 'pl-new-loop';
+
+			$gallery_format = get_post_meta( get_the_ID(), '_pagelines_gallery_slider', true);
+
+			$class[ ] = ( ! empty( $gallery_format ) ) ? 'use-flex-gallery' : '';
+			
+			$thumb_size = ( pl_setting('thumb_size' ) ) ? pl_setting('thumb_size' ) : 'landscape-thumb'; 
+
+			$classes = apply_filters( 'pagelines_get_article_post_classes', join( " ", $class) );
+			?>
+			<article id="post-<?php the_ID(); ?>" <?php post_class( $classes ); ?>>
+
+				<?php
+
+					if( $postlist ){
+						echo '<div class="metahead">';
+							if( get_post_type() != 'page' )
+								echo do_shortcode( '[pl_author_avatar size="80"][post_author_posts_link class="pl-border"][pl_karma]' );
+							else 
+								printf('<div class="metaicon"><i class="icon icon-file icon-3x"></i></div>');
+						echo '</div>';
+					}
+						
+
+					if( ! is_singular() && ! $this->opt( 'post_media_hide' ) ){
+
+						$media = pagelines_media( array( 'thumb-size' => $thumb_size ) ); 
+						
+						if( ! empty( $media ) )
+							printf( '<div class="metamedia">%s</div>', $media );
+
+					}
+
+
+					?>
+
+				<?php if( ! $linkbox ): ?>
+					<header class="entry-header">
+						<?php
+
+							if ( is_single() ) :
+								the_title( '<h2 class="entry-title">', '</h2>' );
+							elseif( ! is_page() ) :
+								the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
+							endif;
+
+							$meta = ( pl_setting('metabar_standard') ) ? pl_setting('metabar_standard') : 'Posted [post_date] &middot; [post_comments] [post_edit]';
+
+							if( $meta && ! is_page() && get_post_type() != 'page' )
+								printf( '<div class="metabar"> %s </div>', do_shortcode( $meta ) );
+
+						?>
+					</header><!-- .entry-header -->
+				<?php endif; ?>
+				<div class="entry-content">
+					<?php
+
+					if( is_single() || is_page() ){
+						
+						
+						
+						printf( '<div class="metamedia">%s</div>', pagelines_media( array( 'thumb-size' => $thumb_size ) ) );
+
+						the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'pagelines' ) );
+
+						wp_link_pages( array(
+							'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'pagelines' ) . '</span>',
+							'after'       => '</div>',
+							'link_before' => '<span>',
+							'link_after'  => '</span>',
+						) );
+
+					} elseif( ! $linkbox ) {
+						the_excerpt();
+						printf(
+							'<div class="continue_reading_link"><a class="btn" href="%s" title="%s %s">%s</a></div>',
+							get_permalink(),
+							__("Read More", 'pagelines'),
+							the_title_attribute(array('echo'=> 0)),
+							__('Read More <i class="icon icon-angle-right"></i>', 'pagelines')
+						);
+					}
+
+					?>
+				</div><!-- .entry-content -->
+			</article><!-- #post-## -->
+			<?php
+
+
+		endwhile;
+	else
+		$this->posts_404();
+	}
+
+	function posts_404(){
+
+		$head = ( is_search() ) ? sprintf(__('No results for &quot;%s&quot;', 'pagelines'), get_search_query()) : __('Nothing Found', 'pagelines');
+
+		$subhead = ( is_search() ) ? __('Try another search?', 'pagelines') : __("Sorry, what you are looking for isn't here.", 'pagelines');
+
+		$the_text = sprintf('<h2 class="center">%s</h2><p class="subhead center">%s</p>', $head, $subhead);
+
+		printf( '<section class="billboard">%s <div class="center fix">%s</div></section>', apply_filters('pagelines_posts_404', $the_text), pagelines_search_form( false ));
+
+	}
+
+	function get_old_options(){
+
+		$opts = array(
+
+			array(
+
 				'title' 	=> __( 'Layout <span class="spamp">&amp;</span> Config', 'pagelines' ),
 				'type'		=> 'multi',
+				'col'		=> 2,
 				'opts'		=> array(
+					array(
+						'key'		=> 'pagetitles',
+						'type'		=> 'check',
+						'case'		=> 'page',
+						'title'		=> __( 'Page Title', 'pagelines' ),
+						'label'		=> 'Show page title?',
+					),
 					array(
 						'type'		=> 'select',
 						'key'		=> 'blog_layout_mode',
@@ -81,6 +329,7 @@ class PageLinesPostLoop extends PageLinesSection {
 
 			array(
 				'title' 	=> __( 'Meta Config', 'pagelines' ),
+				'col'		=> 3,
 				'type'		=> 'multi',
 				'ref'			=> __( 'Use shortcodes to control the dynamic information in your metabar. Example shortcodes you can use are: <ul><li><strong>[post_categories]</strong> - List of categories</li><li><strong>[post_edit]</strong> - Link for admins to edit the post</li><li><strong>[post_tags]</strong> - List of post tags</li><li><strong>[post_comments]</strong> - Link to post comments</li><li><strong>[post_author_posts_link]</strong> - Author and link to archive</li><li><strong>[post_author_link]</strong> - Link to author URL</li><li><strong>[post_author]</strong> - Post author with no link</li><li><strong>[post_time]</strong> - Time of post</li><li><strong>[post_date]</strong> - Date of post</li><li><strong>[post_type]</strong> - Type of post</li></ul>', 'pagelines' ),
 				'opts'		=> array(
@@ -119,8 +368,9 @@ class PageLinesPostLoop extends PageLinesSection {
 			array(
 				'title' 	=> __( 'Thumbs', 'pagelines' ),
 				'type'		=> 'multi',
+				'col'		=> 2,
 				'opts'		=> array(
-					
+
 
 					array(
 						'type'		=> 'select',
@@ -136,7 +386,7 @@ class PageLinesPostLoop extends PageLinesSection {
 						'help'		=> __( 'Use this option to configure how thumbs will be shown in full-width posts on your blog page.', 'pagelines' )
 
 					),
-					
+
 					array(
 						'case'		=> 'special',
 						'type'		=> 'select',
@@ -165,6 +415,7 @@ class PageLinesPostLoop extends PageLinesSection {
 
 			array(
 				'case'		=> 'special',
+				'col'		=> 4,
 				'title' 	=> __( 'Excerpts', 'pagelines' ),
 				'type'		=> 'multi',
 				'opts'		=> array(
@@ -208,38 +459,9 @@ class PageLinesPostLoop extends PageLinesSection {
 
 
 		);
-
 		return $opts;
 	}
 
-	function before_section_template( $location = '' ) {
 
-		global $wp_query;
-
-		if(isset($wp_query) && is_object($wp_query))
-			$this->wrapper_classes[] = ( $wp_query->post_count > 1 ) ? 'multi-post' : 'single-post';
-
-	}
-
-	/**
-	* Section template.
-	*/
-   function section_template() {
-	
-		global $pagelines_render;
-		
-		if(do_special_content_wrap()){
-			 global $integration_out;
-			echo $integration_out;
-			
-		} else {	
-		
-			//Included in theme root for easy editing.
-			$theposts = new PageLinesPosts( $this );
-			$theposts->load_loop();
-			
-		}
-	
-	}
 
 }

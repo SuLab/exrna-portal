@@ -11,18 +11,30 @@
 
 class PageLinesMediaBox extends PageLinesSection {
 
+	function section_head(){
+		
+		// Upgrade title options from 1.1 > 1.2
+		// $upgrade_options = array(
+		// 		'mediabox_title'		=> 'pl_standard_title',
+		// 	); 
+		// 
+		// 	$this->upgrade_section_options( $upgrade_options );
+	
+	}
+
 	function section_opts(){
 		$opts = array(
 	
 			array(
 				'title'	=> __( 'MediaBox Media', 'pagelines' ), 
 				'type'	=> 'multi',
-				'span'	=> 2,
+			
 				'opts'	=> array(
 					array(
 						'type' 			=> 'image_upload',
 						'key'			=> 'mediabox_image',
 						'label' 		=> __( 'MediaBox Image', 'pagelines' ),
+						'has_alt'		=> true
 					),
 					array(
 						'type' 			=> 'text',
@@ -42,6 +54,7 @@ class PageLinesMediaBox extends PageLinesSection {
 			array(
 				'title'	=> 'MediaBox Display', 
 				'type'	=> 'multi',
+				'col'	=> 2,
 				'opts'	=> array(
 					array(
 						'type' 			=> 'select',
@@ -51,6 +64,7 @@ class PageLinesMediaBox extends PageLinesSection {
 							'center'		=> array('name' => __( 'Align Center (Default)', 'pagelines' )),
 							'left'			=> array('name' => __( 'Align Left', 'pagelines' )),
 							'right'			=> array('name' => __( 'Align Right', 'pagelines' )),
+							'none'			=> array('name' => __( 'None', 'pagelines' )),
 						)
 					),
 					array(
@@ -65,12 +79,24 @@ class PageLinesMediaBox extends PageLinesSection {
 						'key'			=> 'disable_centering', 
 						'label'			=> __( 'Disable Media Vertical Centering?', 'pagelines' )
 					),
+					array(
+						'type'			=> 'check',
+						'key'			=> 'no_pad', 
+						'label'			=> __( 'Remove Media Box padding (Set to 0px)?', 'pagelines' )
+					),
+					array(
+						'type' 			=> 'select_animation',
+						'key'			=> 'mediabox_animation',
+						'label' 		=> __( 'Viewport Animation', 'pagelines' ),
+						'help' 			=> __( 'Optionally animate the appearance of this section on view.', 'pagelines' ),
+					)
 				
 				)
 			),
 			array(
 				'title'	=> 'MediaBox Background (Optional)', 
 				'type'	=> 'multi',
+				'col'	=> 3,
 				'opts'	=> array(
 					array(
 						'type' 			=> 'image_upload',
@@ -79,18 +105,19 @@ class PageLinesMediaBox extends PageLinesSection {
 					),
 				)
 			),
-			array(
-				'type' 			=> 'select_animation',
-				'key'			=> 'mediabox_animation',
-				'label' 		=> __( 'Viewport Animation', 'pagelines' ),
-				'help' 			=> __( 'Optionally animate the appearance of this section on view.', 'pagelines' ),
-			),
-			
 		
 
 		);
 
 		return $opts;
+
+	}
+	
+	function before_section_template( $location = '' ) {
+
+
+		$this->wrapper_classes['pad-set'] = ($this->opt('no_pad')) ? 'no-pad' : '';
+		
 
 	}
 
@@ -101,16 +128,15 @@ class PageLinesMediaBox extends PageLinesSection {
 		$disable_center = $this->opt('disable_centering');
 
 		$title = ( $this->opt('mediabox_title') ) ? sprintf('<h3 data-sync="mediabox_title">%s</h3>', $this->opt('mediabox_title')) : '';
-		$bg = ( $this->opt('mediabox_background') ) ? sprintf('background-image: url(%s);', $this->opt('mediabox_background')) : '';
-		
+			
 		$set_height = ( $this->opt('mediabox_height') )  ? $this->opt('mediabox_height') : 30;
 		$height = sprintf('min-height: %spx', $set_height);
 		
 
 
 		if( $image || $media_html )
-			$img = ($image) ? sprintf('<img data-sync="mediabox_image" src="%s" />', $image) : '';
-		elseif(!$bg)
+			$img = ( $this->opt( 'mediabox_image' ) ) ? $this->image( 'mediabox_image', $this->base_url.'/default.png' ) : '';
+		elseif( ! $this->opt('mediabox_background') )
 			$img = sprintf('<img data-sync="mediabox_image" src="%s" />', $this->base_url.'/default.png'); // DEFAULT
 		else 
 			$img = '';
@@ -124,6 +150,8 @@ class PageLinesMediaBox extends PageLinesSection {
 			$align_class = 'textright alignright';
 		elseif($align == 'left')
 			$align_class = 'textleft alignleft';
+		elseif($align == 'none')
+			$align_class = '';
 		else
 			$align_class = 'center';
 		
@@ -132,20 +160,21 @@ class PageLinesMediaBox extends PageLinesSection {
 		$classes[] = ($this->opt('mediabox_animation')) ? $this->opt('mediabox_animation') : 'pla-fade';
 		
 		
+		
+		
 		$html = do_shortcode( wpautop( $media_html ) );
 		
 		$height_sync_data = (pl_draft_mode()) ? 'data-sync="mediabox_height" data-sync-mode="css" data-sync-target="min-height" data-sync-post="px"' : '';
 		
 		printf(
-			'<div class="mediabox-wrap %s pl-animation fix" %s style="%s%s">
+			'<div class="mediabox-wrap %s pl-animation fix" %s style="%s">
 				<div class="the-media fitvids pl-centered %s hentry">
-					%s%s
+					%s %s
 					<div class="the-media-html">%s</div>
 				</div>
 			</div>', 
 			join(' ', $classes), 
 			$height_sync_data,
-			$bg, 
 			$height, 
 			$align_class,
 			$img, 

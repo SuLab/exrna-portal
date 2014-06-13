@@ -35,12 +35,12 @@ class EditorInterface {
 		global $is_chrome;
 		if ( $this->editor_user() && $this->draft->show_editor() && $is_chrome){
 
-			add_action( 'wp_footer', array( &$this, 'pagelines_toolbox' ) );
-			add_action( 'wp_enqueue_scripts', array(&$this, 'pl_editor_scripts' ) );
+			add_action( 'wp_footer', array( $this, 'pagelines_toolbox' ) );
+			add_action( 'wp_enqueue_scripts', array( $this, 'pl_editor_scripts' ) );
 
 		} elseif(current_user_can('edit_theme_options')) {
 
-			add_action( 'wp_footer', array( &$this, 'pagelines_editor_activate' ) );
+			add_action( 'wp_footer', array( $this, 'pagelines_editor_activate' ) );
 
 		}
 
@@ -56,32 +56,60 @@ class EditorInterface {
 		// UTILITIES ----------------------------
 		// --------------------------------------
 
-			// Sprintf
-			wp_enqueue_script( 'js-sprintf', $this->url . '/js/utils.sprintf.js', array( 'jquery' ), PL_CORE_VERSION, true );
+			
 			
 
 			// Forms handling
-			wp_enqueue_script( 'form-params', $this->url . '/js/form.params.js', array('jquery'), PL_CORE_VERSION, true );
-			wp_enqueue_script( 'form-store', $this->url . '/js/form.store.js', array('jquery'), PL_CORE_VERSION, true );
+			wp_enqueue_script( 'form-params', PL_JS . '/form.params.min.js', array('jquery'), pl_get_cache_key(), true );
+			//wp_enqueue_script( 'form-store', PL_JS . '/form.store.min.js', array('jquery'), pl_get_cache_key(), true );
 
-			wp_enqueue_script( 'form-fileupload', $this->url . '/js/utils.fileupload.js', array('jquery', 'jquery-ui-widget'), PL_CORE_VERSION, true );
+			wp_enqueue_script( 'form-fileupload', PL_JS . '/utils.fileupload.js', array('jquery', 'jquery-ui-widget'), pl_get_cache_key(), true );
 
 
 			// Bootbox Dialogs
-			wp_enqueue_script( 'bootbox', $this->url . '/js/utils.bootbox.js', array('jquery'), '3.0.0', true );
-			// Images Loaded
-			wp_enqueue_script( 'imagesloaded', $this->url . '/js/utils.imagesloaded.js', array('jquery'), PL_CORE_VERSION, true);
+			wp_enqueue_script( 'bootbox', PL_JS . '/utils.bootbox.js', array('jquery'), '3.0.0', true );
+			
+			
+			
+	
 
 		// PAGELINES CODE -----------------------
 		// --------------------------------------
-			wp_enqueue_script( 'pl-editor-js', $this->url . '/js/pl.editor.js', array( 'jquery' ), PL_CORE_VERSION , true);
-			wp_enqueue_script( 'pl-toolbox-js', $this->url . '/js/pl.toolbox.js', array('pagelines-bootstrap-all' ), PL_CORE_VERSION, true );
-			wp_enqueue_script( 'pl-optpanel', $this->url . '/js/pl.optpanel.js', array( 'jquery' ), PL_CORE_VERSION, true );
-			wp_enqueue_script( 'pl-ajax', $this->url . '/js/pl.ajax.js', array( 'jquery' ), PL_CORE_VERSION, true );
-			wp_enqueue_script( 'pl-library', $this->url . '/js/pl.library.js', array( 'jquery' ), PL_CORE_VERSION, true );
-			wp_enqueue_script( 'pl-layout', $this->url . '/js/pl.layout.js', array( 'jquery' ), PL_CORE_VERSION, true );
+		
+		// PageLines Developer Panel
+			wp_enqueue_script( 'pl-dev', $this->url . '/js/pl.developer.js', array( 'jquery' ), pl_get_cache_key(), true );
 			
-			wp_enqueue_script( 'js-hotkeys', $this->url . '/js/utils.hotkeys.js', array( 'jquery'), PL_CORE_VERSION );
+			wp_enqueue_script( 'pl-editor-js', $this->url . '/js/pl.editor.js', array( 'jquery' ), pl_get_cache_key() , true);
+			wp_enqueue_script( 'pl-toolbox-js', $this->url . '/js/pl.toolbox.js', array('pagelines-bootstrap-all' ), pl_get_cache_key(), true );
+			wp_enqueue_script( 'pl-optpanel', $this->url . '/js/pl.optpanel.js', array( 'jquery' ), pl_get_cache_key(), true );
+		
+			wp_enqueue_script( 'pl-configdata', $this->url . '/js/pl.configdata.js', array( 'jquery' ), pl_get_cache_key(), true );
+		
+			// Saving 
+			wp_enqueue_script( 'pl-ajax', $this->url . '/js/pl.ajax.js', array( 'jquery' ), pl_get_cache_key(), true );
+			wp_enqueue_script( 'pl-saving', $this->url . '/js/pl.saving.js', array( 'pl-ajax' ), pl_get_cache_key() , true);
+			wp_enqueue_script( 'pl-datas', $this->url . '/js/pl.datas.js', array( 'pl-ajax' ), pl_get_cache_key() , true);
+			
+			
+			wp_enqueue_script( 'pl-library', $this->url . '/js/pl.library.js', array( 'jquery' ), pl_get_cache_key(), true );
+			wp_enqueue_script( 'pl-layout', $this->url . '/js/pl.layout.js', array( 'jquery' ), pl_get_cache_key(), true );
+			
+			wp_enqueue_script( 'js-hotkeys', PL_JS . '/utils.hotkeys.min.js', array( 'jquery'), pl_get_cache_key() );
+			
+			
+			if( isset( $_GET['pl-installed-theme'] ) || isset( $_GET['pl-view-tour'] ) || ! get_theme_mod( 'pl_seen_tour' ) ){
+				wp_enqueue_style( 'pl-wizard-css', sprintf( '%s/wizard/wizard.css', PL_JS ), null, pl_get_cache_key() );
+				wp_enqueue_script( 'pl-wizard', PL_JS . '/wizard/pl.wizard.js', array( 'jquery'), pl_get_cache_key(),  true );
+				set_theme_mod( 'pl_seen_tour', true );
+			}
+				
+
+
+			// i18n test
+			wp_enqueue_script( 'js-i18n', $this->url . '/js/Gettext.js', pl_get_cache_key() );
+							
+			add_action( 'wp_head', array( $this, 'lang_head' ) );
+
 
 		// Action in to scripts here...
 		pagelines_register_hook('pagelines_editor_scripts'); // Hook
@@ -99,26 +127,39 @@ class EditorInterface {
 			wp_enqueue_script( 'jquery-ui-draggable' );
 			wp_enqueue_script( 'jquery-ui-droppable' );
 			wp_enqueue_script( 'jquery-ui-resizable' );
-			wp_enqueue_script( 'pl-new-ui-sortable', $this->url . '/js/new.jquery.sortable.js', array( 'jquery' ), PL_CORE_VERSION, true );
-		//	wp_enqueue_script( 'jquery-ui-sortable' );
+			wp_enqueue_script( 'jquery-ui-accordion' );
+			wp_enqueue_script( 'jquery-ui-sortable' );
+	
+			wp_enqueue_script( 'jquery-mousewheel', PL_JS . '/utils.mousewheel.js', array('jquery'), pl_get_cache_key(), true );
 
-		// Older sortable needs to be used for now
-		// 	https://github.com/jquery/jquery-ui/commit/bae06d2b1ef6bbc946dce9fae91f68cc41abccda#commitcomment-2141597
-		//	http://bugs.jqueryui.com/ticket/8810
-		//	wp_enqueue_script( 'jquery-new-ui-sortable', PL_ADMIN_JS . '/jquery.ui.sortable.js', $dep, 1.9, true);
-
-			wp_enqueue_script( 'jquery-new-ui-effect', PL_ADMIN_JS . '/jquery.ui.effect.js', $dep, 1.9, true);
-			wp_enqueue_script( 'jquery-new-ui-effect-highlight', PL_ADMIN_JS . '/jquery.ui.effect-highlight.js', array('jquery-new-ui-effect'), 1.9, true);
-			wp_enqueue_script( 'jquery-mousewheel', $this->url . '/js/utils.mousewheel.js', array('jquery'), PL_CORE_VERSION, true );
 
 		// Global AjaxURL variable --> http://www.garyc40.com/2010/03/5-tips-for-using-ajax-in-wordpress/
 			$ajax_url = admin_url( 'admin-ajax.php' );
 			if ( has_action( 'pl_force_ssl' ) )
 				$ajax_url = str_replace( 'http://', 'https://', $ajax_url );
 			wp_localize_script( 'pl-editor-js', 'ajaxurl', array( $ajax_url ) );
+		
+			//if( is_front_page() && get_theme_mod( 'pl_installed' ) && true != get_theme_mod( 'import_from_child' ) && is_file( trailingslashit( get_stylesheet_directory() ) . 'pl-config.json' ) )
+			//	wp_localize_script( 'pl-editor-js', 'plconfigfile', array( true ) );
 	}
 
+	function lang_head() {
+		$locale = get_locale();
+		$text = '';
+		$core_lang_url = sprintf( '%s/%s.po', PAGELINES_CORE_LANG_URL, $locale );
+		$core_lang_file = sprintf( '%s/%s.po', PAGELINES_CORE_LANG_DIR, $locale );
+		if( is_file( $core_lang_file ) )
+			$text = sprintf( "\n<link rel='gettext' type='application/x-po' href='%s' />", $core_lang_url );
 
+		if( defined( 'PAGELINES_THEME_LANG_DIR' ) ) {
+			$theme_lang_url = sprintf( '%s/%s.po', PAGELINES_THEME_LANG_URL, $locale );
+			$theme_lang_file = sprintf( '%s/%s.po', PAGELINES_THEME_LANG_DIR, $locale );
+
+			if( is_file( $theme_lang_file ) )
+				$text = sprintf( "\n<link rel='gettext' type='application/x-po' href='%s' />", $theme_lang_url );
+		}
+		echo $text;
+	}
 	function toolbar_config(){
 
 		// actions show up in a dropup
@@ -146,7 +187,21 @@ class EditorInterface {
 				'type'	=> 'btn',
 				'pos'	=> 199
 			),
-
+			
+			'pagelines-home' => array(
+				'icon'	=> 'icon-pagelines',
+				'tip'	=> __( 'PageLines.com', 'pagelines' ),
+				'type'	=> 'link',
+				'link'	=> 'http://www.pagelines.com',
+				'pos'	=> 210
+			),
+			
+			'state-tool' => array(
+				'type'		=> 'output',
+				'output'	=> $this->state_tool(),
+				'pos'		=> 205
+			),
+			
 		);
 
 		return $data;
@@ -170,7 +225,7 @@ class EditorInterface {
 		}
 		unset($info); // set by reference ^^
 
-		uasort( $toolbar_config, array(&$this, "cmp_by_position") );
+		uasort( $toolbar_config, array( $this, "cmp_by_position") );
 
 		return apply_filters( 'pl_sorted_toolbar_config', $toolbar_config );
 	}
@@ -192,41 +247,70 @@ class EditorInterface {
 
 			$activate_url = pl_add_query_arg( array( 'edtr' => 'on' ) );
 
-			$text = 'Activate PageLines Editor';
+			$text = __( 'Activate PageLines Editor', 'pagelines' );
 
 			$target = "";
-		} else {
+		} else {	
 			$target = "target='_blank'";
 			$activate_url = 'http://www.google.com/chrome';
-			$text = 'Chrome is required to use PageLines Editor';
+			$text = __( 'Use Google Chrome to edit with DMS', 'pagelines' );
 
 		}
 		?>
 			<span id="toolbox-activate" data-href="<?php echo $activate_url;?>" class="toolbox-activate pl-make-link" <?php echo $target;?>>
-				<i class="icon-off transit"></i> <span class="txt"><?php echo $text; ?></span></span>
+				<i class="icon icon-pagelines"></i> <span class="txt"><?php echo $text; ?></span></span>
 			</span>
 
 		<?php
 	}
 
-	function pagelines_toolbox(){
-
+	function state_tool(){
+		
 		$state = $this->draft->get_state( $this->page->id, $this->page->typeid, $this->map );
 
 		$state_class = '';
 		foreach($state as $st){
 			$state_class .= ' '.$st;
 		}
+		
+		$show_unload = ($state_class != '') ? 'yes' : '';
+		ob_start();
+		?>
+		<li id="stateTool" class="dropup <?php echo $state_class;?>" data-show-unload="<?php echo $show_unload;?>">
+			<span class="btn-toolbox btn-state " data-toggle="dropdown">
+				<span id="update-state" class="state-draft state-tag">&nbsp;</span>
+			</span>
+			<ul class="dropdown-menu pull-right state-list">
+				<li class="li-state-multi"><a class="btn-revert" data-revert="all"><span class="update-state state-draft multi">&nbsp;</span>&nbsp; <?php _e( 'Undo All Unpublished Changes', 'pagelines' ); ?>
+				</a></li>
+				<li class="li-state-global"><a class="btn-revert" data-revert="global"><span class="update-state state-draft global">&nbsp;</span>&nbsp; <?php _e( 'Undo Unpublished Global Changes', 'pagelines' ); ?>
+				</a></li>
+
+				<li class="li-state-type"><a class="btn-revert" data-revert="type"><span class="update-state state-draft type">&nbsp;</span>&nbsp; <?php _e( 'Undo Unpublished Post Type Changes', 'pagelines' ); ?>
+				</a></li>
+				<li class="li-state-local"><a class="btn-revert" data-revert="local"><span class="update-state state-draft local">&nbsp;</span>&nbsp; <?php _e( 'Undo Unpublished Local Changes', 'pagelines' ); ?>
+				</a></li>
+				<li class="li-state-clean disabled"><a class="txt"><span class="update-state state-draft clean">&nbsp;</span>&nbsp; <?php _e( 'No Unpublished Changes', 'pagelines' ); ?>
+				</a></li>
+			</ul>
+		</li>
+		<?php 
+		
+		return ob_get_clean();
+	}
+
+	function pagelines_toolbox(){
+
+		
 	?>
 
-	<div class="pl-toolbox-pusher">
-	</div>
+	<div class="pl-toolbox-pusher"> </div>
 	<div id="PageLinesToolbox" class="pl-toolbox">
 		<div class="resizer-handle"></div>
 		<div class="toolbox-handle fix">
 
 			<ul class="unstyled controls">
-				<li ><span class="btn-toolbox btn-closer" title="Close [esc]"><i class="icon-remove"></i></span></li>
+				<li class="el-closer" ><span class="btn-toolbox btn-closer" title="Close [esc]"><i class="icon icon-remove"></i></span></li>
 
 				<?php
 
@@ -234,20 +318,30 @@ class EditorInterface {
 
 						if(!isset($tab['type']))
 							$tab['type'] = 'panel';
+							
+						$tab['vtype'] = ( isset( $tab['vtype'] ) ) ? $tab['vtype'] : 'text';
+	
 
 						if( $tab['type'] == 'hidden' || ( $tab['type'] == 'dropup' && empty($tab['panel']) ) )
 							continue;
+							
+						if( $tab['type'] == 'output' ){
+							echo $tab['output']; 
+							continue;
+						}
 
 						$data = '';
 						$suffix = '';
 						$content = '';
 						$li_class = array();
 						$li_class[] = 'type-'.$tab['type'];
+						$li_class[] = 'el-'.$key;
+						$li_class[] = 'view-'.$tab['vtype'];
 
 						if($tab['type'] == 'dropup' && !empty($tab['panel'])){
 
 							$data = 'data-toggle="dropdown"';
-							$suffix = ' <i class="uxi icon-caret-right"></i>';
+							$suffix = ' <i class="uxi icon icon-caret-right"></i>';
 							$li_class[] = 'dropup';
 							$menu = '';
 
@@ -261,25 +355,34 @@ class EditorInterface {
 
 						$class = array();
 
-						$class[] = ($tab['type'] == 'panel') ? 'btn-panel' : '';
+						$class[] = ($tab['type'] == 'panel' ) ? 'btn-panel' : '';
+						$class[] = ($tab['type'] == 'btn-panel' ) ? 'btn-panel' : '';
 						$class[] = ($tab['type'] == 'btn') ? 'btn-action' : '';
+						$class[] = ($tab['type'] == 'link') ? 'btn-link' : '';
 
 						$class[] = 'btn-'.$key;
 
+						$el_type = ($tab['type'] == 'link') ? 'a' : 'span';
+						
+						if( $tab['type'] == 'link' ){
+							$data .= sprintf(' href="%s" target="_blank"', $tab['link']);
+						}
+
 						$classes = join(' ', $class);
 
-						$the_name = (isset($tab['name'])) ? $tab['name'] : '';
+						$the_name = (isset($tab['name']) && $tab['type'] != 'btn-panel') ? $tab['name'] : '';
 
 						$name = sprintf('<span class="txt">%s</span>', $the_name);
-						$icon = (isset($tab['icon'])) ? sprintf('<i class="uxi %s"></i> ', $tab['icon']) : '';
+						$icon = (isset($tab['icon'])) ? sprintf('<i class="uxi icon %s"></i> ', $tab['icon']) : '';
 						
 						$tip = (isset($tab['tip']) && $tab['tip'] != '') ? $tab['tip'] : $the_name;
 						
 						$title = sprintf('title="%s"', $tip);
 
 						printf(
-							'<li class="%s"><span class="btn-toolbox %s" data-action="%s" %s %s>%s%s%s</span>%s</li>',
+							'<li class="%s"><%s class="btn-toolbox %s" data-action="%s" %s %s>%s%s%s</%s>%s</li>',
 							$li_classes,
+							$el_type,
 							$classes,
 							$key,
 							$data,
@@ -287,46 +390,30 @@ class EditorInterface {
 							$icon,
 							$name,
 							$suffix,
+							$el_type,
 							$content
 						);
 
 					}
 					
-					$show_unload = ($state_class != '') ? 'yes' : ''
+					
 				?>
-				<li id="stateTool" class="dropup <?php echo $state_class;?>" data-show-unload="<?php echo $show_unload;?>">
-					<span class="btn-toolbox btn-state " data-toggle="dropdown">
-						<span id="update-state" class="state-draft state-tag">&nbsp;</span>
-					</span>
-					<ul class="dropdown-menu pull-right state-list">
-						<li class="li-state-multi"><a class="btn-revert" data-revert="all"><span class="update-state state-draft multi">&nbsp;</span>&nbsp; <?php _e( 'Undo All Unpublished Changes', 'pagelines' ); ?>
-						</a></li>
-						<li class="li-state-global"><a class="btn-revert" data-revert="global"><span class="update-state state-draft global">&nbsp;</span>&nbsp; <?php _e( 'Undo Unpublished Global Changes', 'pagelines' ); ?>
-						</a></li>
-
-						<li class="li-state-type"><a class="btn-revert" data-revert="type"><span class="update-state state-draft type">&nbsp;</span>&nbsp; <?php _e( 'Undo Unpublished Post Type Changes', 'pagelines' ); ?>
-						</a></li>
-						<li class="li-state-local"><a class="btn-revert" data-revert="local"><span class="update-state state-draft local">&nbsp;</span>&nbsp; <?php _e( 'Undo Unpublished Local Changes', 'pagelines' ); ?>
-						</a></li>
-						<li class="li-state-clean disabled"><a class="txt"><span class="update-state state-draft clean">&nbsp;</span>&nbsp; <?php _e( 'No Unpublished Changes', 'pagelines' ); ?>
-						</a></li>
-					</ul>
-				</li>
+				
 			</ul>
 			<ul class="unstyled controls send-right">
 				
 				<li class="li-refresh type-btn"><span class="btn-toolbox btn-save btn-refresh" data-mode="pagerefresh" title="<?php _e( 'Refresh needed to view changes.', 'pagelines' ); ?>
-				"><i class="icon-refresh"></i></li>
+				"><i class="icon icon-refresh"></i></li>
 				<li class="li-publish"><span class="btn-toolbox btn-save btn-publish" data-mode="publish" title="<?php _e( 'Publish Live', 'pagelines' ); ?>
-				 (alt+s)"><i class="icon-ok"></i> <span class="txt"><?php _e( 'Publish', 'pagelines' ); ?>
+				 (alt+s)"><i class="icon icon-ok"></i> <span class="txt"><?php _e( 'Publish', 'pagelines' ); ?>
 				 </span></li>
 
 			</ul>
 			<ul class="unstyled controls not-btn send-right">
-				<li class="switch-btn btn-saving"><span class="btn-toolbox not-btn"><i class="icon-spinner icon-spin"></i> <span class="txt"><?php _e( 'Saving', 'pagelines' ); ?>
+				<li class="switch-btn btn-saving"><span class="btn-toolbox not-btn"><i class="icon icon-refresh"></i> <span class="txt"><?php _e( 'Saving', 'pagelines' ); ?>
 				</span></li>
 				<li class="switch-btn btn-layout-resize"><span class="btn-toolbox  not-btn">
-					<i class="icon-fullscreen"></i> <span class="txt"><?php _e( 'Width', 'pagelines' ); ?>
+					<i class="icon icon-fullscreen"></i> <span class="txt"><?php _e( 'Width', 'pagelines' ); ?>
 					: <span class="resize-px"></span> / <span class="resize-percent"></span></span>
 				</li>
 			</ul>
@@ -342,7 +429,7 @@ class EditorInterface {
 							if(isset($tab['panel']) && !empty($tab['panel']))
 								$this->panel($key, $tab['panel']);
 							else
-								printf('<div class="panel-%s tabbed-set error-panel"><i class="icon-spinner icon-spin"></i></div>', $key);
+								printf('<div class="panel-%s tabbed-set error-panel"><i class="icon icon-spinner icon-spin"></i></div>', $key);
 
 						}
 							 ?>
@@ -405,9 +492,9 @@ class EditorInterface {
 
 								$flag = ($t['flag'] != '') ? sprintf('data-flag="%s"', $t['flag']) : '';
 
-								$class = ($t['class'] != '') ? $t['class'] : '';
+								$class = ($t['class'] != '') ? $t['class'] : 'tab-'.$tab_key;
 
-								$icon = ($t['icon'] != '') ? sprintf('<i class="%s"></i> ', $t['icon']) : '';
+								$icon = ($t['icon'] != '') ? sprintf('<i class="icon %s"></i> ', $t['icon']) : '';
 								
 								$link_tab = ($t['tab'] != '') ? sprintf('data-tab-link="%s"', $t['tab']) : '';
 								
@@ -462,7 +549,7 @@ class EditorInterface {
 						call_user_func($t['call']);
 						$content = ob_get_clean();
 					} else {
-						$content = sprintf('<div class="error-panel"><i class="icon-refresh icon-spin"></i></div>', rand());
+						$content = sprintf('<div class="error-panel"><i class="icon icon-refresh icon-spin"></i></div>', rand());
 					}
 
 					$clip = ( isset($t['clip']) ) ? sprintf('<span class="clip-desc">%s</span>', $t['clip']) : '';
@@ -495,6 +582,32 @@ class EditorInterface {
 		<?php
 	}
 
+	function section_controls_footer( $s ){
+
+		if( ! $this->draft->show_editor() )
+			return;
+
+		$sid = $s->id;
+		ob_start();
+		
+		?>
+		<div class="pl-section-controls section-controls-footer fix" >
+			<div class="controls-left">
+				<a title="<?php _e( 'Pad Top', 'pagelines' ) ?>" href="#" class="s-control s-control-icon section-pad-top"><i class="icon icon-long-arrow-up"></i></a>
+				<a title="<?php _e( 'Pad Right', 'pagelines' ) ?>" href="#" class="s-control s-control-icon section-pad-right"><i class="icon icon-long-arrow-right"></i></a>
+				<a title="<?php _e( 'Pad Bottom', 'pagelines' ) ?>" href="#" class="s-control s-control-icon section-pad-bottom"><i class="icon icon-long-arrow-down"></i></a>
+				<a title="<?php _e( 'Pad Left', 'pagelines' ) ?>" href="#" class="s-control s-control-icon section-pad-left"><i class="icon icon-long-arrow-left"></i></a>
+				<a title="<?php _e( 'Pad Reset', 'pagelines' ) ?>" href="#" class="s-control s-control-icon section-pad-left"><i class="icon icon-undo"></i></a>
+			
+			</div>
+		</div>
+		<?php
+
+		return ob_get_clean();
+
+	}
+	
+	
 	function section_controls( $s ){
 
 		if(!$this->draft->show_editor())
@@ -506,20 +619,20 @@ class EditorInterface {
 		?>
 		<div class="pl-section-controls fix" >
 			<div class="controls-left">
-				<a title="Decrease Width" href="#" class="s-control s-control-icon section-decrease"><i class="icon-caret-left"></i></a>
-				<span title="Column Width" class="s-control section-size"></span>
-				<a title="Increase Width" href="#" class="s-control s-control-icon section-increase"><i class="icon-caret-right"></i></a>
-				<a title="Offset Left <?php echo pl_pro_text();?>" href="#" class="s-control s-control-icon section-offset-reduce <?php echo pl_pro_disable_class();?>"><i class="icon-angle-left"></i></a>
-				<span title="Offset Amount" class="s-control offset-size"></span>
-				<a title="Offset Right <?php echo pl_pro_text();?>" href="#" class="s-control s-control-icon section-offset-increase <?php echo pl_pro_disable_class();?>"><i class="icon-angle-right"></i></a>
-				<a title="Force to New Row <?php echo pl_pro_text();?>" href="#" class="s-control s-control-icon section-start-row <?php echo pl_pro_disable_class();?>"><i class="icon-double-angle-left"></i></a>
+				<a title="<?php _e( 'Decrease Width', 'pagelines' ) ?>" href="#" class="s-control s-control-icon section-decrease"><i class="icon icon-caret-left"></i></a>
+				<span title="<?php _e( 'Column Width', 'pagelines' ) ?>" class="s-control section-size"></span>
+				<a title="<?php _e( 'Increase Width', 'pagelines' ) ?>" href="#" class="s-control s-control-icon section-increase"><i class="icon icon-caret-right"></i></a>
+				<a title="<?php _e( 'Offset Left', 'pagelines' ) ?> <?php echo pl_pro_text();?>" href="#" class="s-control s-control-icon section-offset-reduce <?php echo pl_pro_disable_class();?>"><i class="icon icon-angle-double-left"></i></a>
+				<span title="<?php _e( 'Offset Amount', 'pagelines' ) ?>" class="s-control offset-size"></span>
+				<a title="<?php _e( 'Offset Right', 'pagelines' ) ?> <?php echo pl_pro_text();?>" href="#" class="s-control s-control-icon section-offset-increase <?php echo pl_pro_disable_class();?>"><i class="icon icon-angle-double-right"></i></a>
+				<a title="<?php _e( 'Force to New Row', 'pagelines' ) ?> <?php echo pl_pro_text();?>" href="#" class="s-control s-control-icon section-start-row <?php echo pl_pro_disable_class();?>"><i class="icon icon-level-down"></i></a>
 			</div>
 			<div class="controls-right">
-				<a title="Edit" href="#" class="s-control s-control-icon section-edit s-loaded"><i class="icon-pencil"></i></a>
-				<a title="Clone <?php echo pl_pro_text();?>" href="#" class="s-control s-control-icon section-clone s-loaded <?php echo pl_pro_disable_class();?>"><i class="icon-copy"></i></a>
-				<a title="Delete" href="#" class="s-control s-control-icon section-delete"><i class="icon-remove"></i></a>
+				<a title="<?php _e( 'Edit', 'pagelines' ) ?>" href="#" class="s-control s-control-icon section-edit s-loaded"><i class="icon icon-pencil"></i></a>
+				<a title="<?php _e( 'Clone', 'pagelines' ) ?> <?php echo pl_pro_text();?>" href="#" class="s-control s-control-icon section-clone s-loaded <?php echo pl_pro_disable_class();?>"><i class="icon icon-copy"></i></a>
+				<a title="<?php _e( 'Delete', 'pagelines' ) ?>" href="#" class="s-control s-control-icon section-delete"><i class="icon icon-remove"></i></a>
 			</div>
-			<div class="controls-title"><span class="ctitle"><?php echo $s->name;?></span></div>
+			<div class="controls-title"><span class="ctitle"><?php echo $s->name;?></span> <span class="linked-section">&mdash; <i class="icon icon-link"></i> Linked to Custom</span> <span class="linked-tpl"><i class="icon icon-link"></i> Linked to Template</span></div>
 		</div>
 		<?php
 

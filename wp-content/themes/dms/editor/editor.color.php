@@ -5,20 +5,20 @@ class EditorColor{
 
 	var $default_base = '#FFFFFF';
 	var $default_text = '#000000';
-	var $default_link = '#225E9B';
+	var $default_link = '#337EFF';
 	var $background = '';
 
 	function __construct( ){
 
 		$this->background = pl_setting('page_background_image_url');
 
- 		add_filter('pl_settings_array', array(&$this, 'add_settings'));
-		add_filter('pless_vars', array(&$this, 'add_less_vars'));
+ 		add_filter('pl_settings_array', array( $this, 'add_settings'));
+		add_filter('pless_vars', array( $this, 'add_less_vars'));
 		
 		if($this->background && $this->background != '')
-			add_filter('wp_enqueue_scripts', array(&$this, 'background_fit'));
+			add_filter('wp_enqueue_scripts', array( $this, 'background_fit'));
 		
-//		add_filter('pagelines_body_classes', array(&$this, 'add_body_classes'));
+//		add_filter('pagelines_body_classes', array( $this, 'add_body_classes'));
 		
 		
 	
@@ -34,7 +34,7 @@ class EditorColor{
 
 	function add_less_vars( $vars ){
 		$bg = pl_setting('bodybg');
-		$base = ( $bg && $bg != '' ) ? $bg : $this->default_base;
+		$this->base = $base = ( $bg && $bg != '' ) ? $bg : $this->default_base;
 
 		$text = ( pl_setting('text_primary') ) ? pl_setting('text_primary') : $this->default_text;
 		$link = ( pl_setting('linkcolor') ) ? pl_setting('linkcolor') : $this->default_link;
@@ -42,9 +42,74 @@ class EditorColor{
 		$vars['pl-base'] 				= $this->hash( $base );
 		$vars['pl-text']				= $this->hash( $text );
 		$vars['pl-link']				= $this->hash( $link );
+		$vars['pl-link-inverse']		= ( $this->color_detect($vars['pl-link']) == 1 ) ? '#000000' : '#FFFFFF';
 		$vars['pl-background']			= $this->background( $vars['pl-base'] );
+		$vars['invert-dark']			= $this->invert();
+		$vars['invert-light']			= $this->invert( 'light' );
 		
 		return $vars;
+	}
+	
+	private function invert( $mode = 'dark', $delta = 5 ){
+
+		if($mode == 'light'){
+
+			if($this->color_detect( $this->base ) == -2)
+				return 2*$delta;
+			elseif($this->color_detect( $this->base ) == -1)
+				return 1.5*$delta;
+			elseif($this->color_detect( $this->base ) == 1)
+				return -1.7*$delta;
+			else
+				return $delta;
+
+		}else{
+			if($this->color_detect( $this->base ) == -2)
+				return -(2*$delta);
+			elseif($this->color_detect( $this->base ) == -1)
+				return -$delta;
+			else
+				return $delta;
+		}
+	}
+	
+	/**
+     * Color Detect
+     *
+     * Takes the base color hex string and assigns a value to determine what "shade" the color is
+     *
+     * @return bool|int - a numeric value used in invert()
+     */
+	function color_detect( $color ){
+
+		$hex = str_replace( '#', '', $color );
+
+		$r = hexdec(substr($hex,0,2));
+		$g = hexdec(substr($hex,2,2));
+		$b = hexdec(substr($hex,4,2));
+
+		if($r + $g + $b > 600){
+
+			// Light
+		    return 1;
+
+		}elseif($r + $g + $b < 120){
+
+			// Really Dark
+			return -2;
+
+		}
+		elseif($r + $g + $b < 300){
+
+			// Dark
+			return -1;
+
+		}else{
+
+			// Meh
+		    return 0;
+
+		}
 	}
 
 	function background( $bg_color ){
@@ -82,19 +147,12 @@ class EditorColor{
 		if( !pl_setting('supersize_bg') )
 			return; 
 			
-		wp_enqueue_script( 'pagelines-supersize', PL_JS . '/script.supersize.js', array( 'jquery' ), '3.1.3', false );
+		wp_enqueue_script( 'pagelines-supersize', PL_JS . '/script.supersize.min.js', array( 'jquery' ), '3.1.3', false );
 		
-		add_action('pl_scripts_on_ready', array(&$this, 'run_background_fit'), 20);
+		wp_localize_script( 'pagelines-supersize', 'supersize_image', array( 'url' => $this->background ) );
 	}
 
-	function run_background_fit(){
-	
-		
-		$image = $this->background;
-		?>
-		jQuery.supersized({ slides: [{ image : '<?php echo $image; ?>' }]})
-<?php
-	}
+
 
 
 	function hash( $color ){
@@ -119,7 +177,7 @@ class EditorColor{
 	function add_settings( $settings ){
 
 		$settings['color_control'] = array(
-			'name' 	=> 'Color <span class="spamp">&amp;</span> Style',
+			'name' 	=> __( 'Color <span class="spamp">&amp;</span> BG', 'pagelines' ),
 			'icon'	=> 'icon-tint',
 			'pos'	=> 3,
 			'opts' 	=> $this->options()
@@ -134,46 +192,38 @@ class EditorColor{
 			array(
 				'key'		=> 'canvas_colors',
 				'type' 		=> 'multi',
-				'title' 	=> __( 'Content Base Color', 'pagelines' ),
-				'help' 		=> __( 'The "base" color is used as your background and as a basis for calculating contrast values in elements (like hover effects, etc.. ) Use it as your default background color and refine using custom CSS/LESS or a theme.' ),
+				'title' 	=> __( 'Site Base Colors', 'pagelines' ),
+				'help' 		=> __( 'The "base" colors are a few standard colors used throughout DMS that plugins may use to calculate contrast or other colors to make sure everything looks great.', 'pagelines' ),
 				'opts'		=> array(
 					array(
 						'key'			=> 'bodybg',
 						'type'			=> 'color',
-						'label' 		=> __( 'Content Base Color', 'pagelines' ),
+						'label' 		=> __( 'Background Base Color', 'pagelines' ),
 						'default'		=> $this->default_base,
+						'compile'		=> 'pl-base',
 					),
-				)
-			),
-			array(
-				'key'		=> 'text_colors',
-				'type' 		=> 'multi',
-				'label' 	=> __( 'Site Text Colors', 'pagelines' ),
-				'title' 	=> __( 'Site Text Colors', 'pagelines' ),
-				'help' 		=> __( 'Configure the basic text colors for your site', 'pagelines' ),
-				'opts'		=> array(
 					array(
 						'key'			=> 'text_primary',
 						'type'			=> 'color',
-						'label' 		=> __( 'Main Text Color', 'pagelines' ),
+						'label' 		=> __( 'Text Base Color', 'pagelines' ),
 						'default'		=> $this->default_text,
-						'compile'		=> true,
+						'compile'		=> 'pl-text',
 
 					),
 					array(
 						'key'			=> 'linkcolor',
 						'type'			=> 'color',
-						'label' 		=> __( 'Link Color', 'pagelines' ),
+						'label' 		=> __( 'Link Base Color', 'pagelines' ),
 						'default'		=> $this->default_link,
-						'compile'		=> true,
+						'compile'		=> 'pl-link',
 					)
 				)
 			),
 			array(
-				'key'		=> 'background_image_settings',
+				'key'		=> 'background_image_upload',
 				'type' 		=> 'multi',
-
-				'title' 	=> __( 'Background Image Settings', 'pagelines' ),
+				'col'		=> 2,
+				'title' 	=> __( 'Background Image', 'pagelines' ),
 				'help' 		=> '',
 				'opts'		=> array(
 					array(
@@ -193,18 +243,18 @@ class EditorColor{
 						'label' 		=> __( 'Fit image to page?', 'pagelines' ),
 						'default'		=> true,
 						'compile'		=> true,
-						'help'			=> 'If you use this option the image will be fit "responsively" to the background of your page. This means the settings below will have no effect.'
-						),
+						'help'			=> __( 'If you use this option the image will be fit "responsively" to the background of your page. This means the settings below will have no effect.', 'pagelines' )
+					),
 					array(
 						'key'			=> 'page_background_image_repeat',
 						'type'			=> 'select',
 						'label' 		=> __( 'Background Repeat', 'pagelines' ),
 						'default'		=> 'no-repeat',
 						'opts'	=> array(
-							'no-repeat' => array('name' => 'No Repeat'),
-							'repeat'	=> array('name' => 'Repeat'),
-							'repeat-x'	=> array('name' => 'Repeat Horizontally'),
-							'repeat-y'	=> array('name' => 'Repeat Vertically')
+							'no-repeat' => array('name' => __( 'No Repeat', 'pagelines' )),
+							'repeat'	=> array('name' => __( 'Repeat', 'pagelines' )),
+							'repeat-x'	=> array('name' => __( 'Repeat Horizontally', 'pagelines' )),
+							'repeat-y'	=> array('name' => __( 'Repeat Vertically', 'pagelines' ))
 						),
 						'compile'		=> true,
 
@@ -243,8 +293,9 @@ class EditorColor{
 						'compile'		=> true,
 
 					)
+					
 				)
-			)
+			), 
 
 		);
 

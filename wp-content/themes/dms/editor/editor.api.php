@@ -36,10 +36,14 @@ class EditorStoreFront extends PageLinesAPI {
 	 */
 	function get_latest(){
 
-			$data = $this->get( 'store_mixed', array( $this, 'json_get' ), array( $this->data_url ) );
+			$data = $this->get( 'store_mixed', array( $this, 'json_get' ), array( $this->data_url ), 86400 );
+			if( '' == $data || empty( $data ) ) {
+				// empty data, or server error, retry in 10 mins? 
+				$this->put( json_encode( array() ), 'store_mixed', 900 );
+				return json_encode( array() );
+			}
+			
 			$data = $this->sort( $this->make_array( json_decode( $data ) ) );
-			if( empty( $data ) )
-				$this->del( 'store_mixed' );
 			return $data;
 	}
 
@@ -62,7 +66,6 @@ class EditorStoreFront extends PageLinesAPI {
  **/
 class PageLinesAPI {
 
-	var $prot = array( 'https://', 'http://' );
 	var $base_url = 'api.pagelines.com';
 
 	/**
@@ -130,6 +133,7 @@ class PageLinesAPI {
 		$options = array(
 			'timeout'	=>	15,
 			'method'	=> 'GET',
+			'prot'		=> array( 'http://' )
 		);
 		$f  = $this->try_api( $url, $options );
 		return wp_remote_retrieve_body( $f );
@@ -148,7 +152,8 @@ class PageLinesAPI {
 			'sslverify'	=>	false,
 			'timeout'	=>	5,
 			'body'		=> array(),
-			'method'	=> 'POST'
+			'method'	=> 'POST',
+			'prot'		=> array( 'https://', 'http://' )
 		);
 		$options = wp_parse_args( $args, $defaults );
 		$command = sprintf( 'wp_remote_%s', $options['method'] );
@@ -156,7 +161,7 @@ class PageLinesAPI {
 		if( 'get' == $options['method'] )
 			$options = array();
 
-		foreach( $this->prot as $type ) {
+		foreach( $options['prot'] as $type ) {
 			// sometimes wamp does not have curl!
 			if ( $type === 'https://' && ! function_exists( 'curl_init' ) )
 				continue;
@@ -217,61 +222,6 @@ class PageLinesAPI {
 }
 
 // API wrapper functions.
-
-/**
- *  Get data from cache.
- *
- *	@since 3.0
- */
-function pl_cache_get( $id, $callback = false, $args = array(), $timeout = 3600 ) {
-	global $storeapi;
-	if( ! is_object( $storeapi ) )
-		$storeapi = new EditorStoreFront;
-
-	if( is_object( $storeapi ) )
-		return $storeapi->get( $id, $callback, $args, $timeout );
-	else
-		return false;
-}
-
-/**
- *  Write data to cache.
- *
- *	@since 3.0
- */
-function pl_cache_put( $data, $id, $time = 3600 ) {
-	global $storeapi;
-	if( ! is_object( $storeapi ) )
-		$storeapi = new EditorStoreFront;
-	if( $id && $data && is_object( $storeapi ) )
-		$storeapi->put( $data, $id, $time );
-}
-
-/**
- *  Delete from cache.
- *
- *	@since 3.0
- */
-function pl_cache_del( $id ) {
-	delete_transient( sprintf( 'plapi_%s', $id ) );
-}
-
-/**
- *  Clear draft caches.
- *
- *	@since 3.0
- */
-function pl_flush_draft_caches( $file ) {
-
-	$caches = array( 'draft_core_raw', 'draft_core_compiled', 'draft_sections_compiled' );
-	foreach( $caches as $key ) {
-		pl_cache_del( $key );
-	}
-	if( false == $file )
-		$file = sprintf( '%s%s', trailingslashit( PageLinesRenderCSS::get_css_dir( 'path' ) ), 'editor-draft.css' ); 
-	if( is_file( $file ) )
-		unlink( $file );
-}
 
 /**
  *  Search the store.

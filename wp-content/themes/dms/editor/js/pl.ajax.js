@@ -18,13 +18,16 @@
 					,	typeID: $.pl.config.typeID
 					,	log: false
 					,	confirm: false
-					, 	confirmText: 'Are you sure?'
+					, 	confirmText: $.pl.lang( "Are you sure?" )
 					,	savingText: 'Saving'
 					,	refresh: 	false
-					,	refreshText: 'Refreshing page...'
+					,	refreshText: $.pl.lang( "Refreshing page..." )
+					,	refreshArgs: false
 					, 	toolboxOpen: $.toolbox('open')
 					,	beforeSend: ''
 					, 	postSuccess: ''
+					,	load: false
+					,	onFalse: ''
 
 				}
 
@@ -37,6 +40,12 @@
 					$.toolbox('hide')
 
 				bootbox.confirm( theData.confirmText, function( result ){
+
+					if( false == result && theData.onFalse ) {
+						if ( $.isFunction( theData.onFalse ) )
+							theData.onFalse.call()
+					}
+
 
 					if(result == true){
 						that.runAction( theData )
@@ -61,13 +70,19 @@
 		, runAction: function( theData ){
 
 			var that = this
+			
+			// Note that nested objects must be of consistent type, mixed numeric/associative objects cannot be passed.
 			$.ajax( {
 					type: 'POST'
 				, 	url: ajaxurl
 				, 	data: theData
+				//,	dataType: 'json'
 				, 	beforeSend: function(){
 
-						$('.btn-saving').addClass('active')
+						$('.btn-saving')
+							.addClass('active')
+							.find('.icon')
+								.addClass('icon-spin')
 
 						if ( $.isFunction( theData.beforeSend ) )
 							theData.beforeSend.call( this )
@@ -79,19 +94,19 @@
 							bootbox.dialog( that.dialogText( theData.savingText ), [ ], {animate: false})
 						}
 
+					
 						$.pl.flags.saving = true
 					}
-				, 	error: function( jqXHR, status, error ){
-					$.pl.flags.saving = false
-					plPrint('AJAX Error')
-					plPrint( status )
-					plPrint( error )
-				}
+				
 				, 	success: function( response ){
 					
+						plPrint(response)
+						
+						var rsp	= $.parseJSON( response )
+						
 						$.pl.flags.saving = false
 						
-						that.runSuccess( theData, response )
+						that.runSuccess( theData, rsp )
 
 						if( theData.refresh ){
 
@@ -102,7 +117,24 @@
 							bootbox.dialog( that.dialogText( theData.refreshText ), [ ], {animate: false})
 							
 							window.onbeforeunload = null
-							location.reload()
+							
+							if( plIsset( rsp.url ) &&  rsp.url != '' ){
+								
+								window.location.href = rsp.url
+								
+							} else if( theData.refreshArgs ){
+								
+								var url = window.location.href
+								url += (url.indexOf('?') > -1) ? '&'+theData.refreshArgs : '?'+theData.refreshArgs
+								
+								window.location.href = url
+								
+							} else{
+								location.reload()
+								
+							//	console.log()
+							}
+								
 
 						} else {
 
@@ -112,19 +144,24 @@
 						}
 
 					}
+					
+				, 	error: function( jqXHR, status, error ){
+						$.pl.flags.saving = false
+						plPrint('- AJAX Error -')
+						plPrint( jqXHR )
+						plPrint( status )
+						plPrint( error )
+					}
 			})
 		}
 
-		, runSuccess: function( theData, response ){
-			if(log == 'true')
-				plPrint(response)
-
+		, runSuccess: function( theData, rsp ){
+			
 			var that = this
-			,	rsp	= $.parseJSON( response )
 			,	log = (rsp.post) ? rsp.post.log || false : ''
 
-			if(log == 'true')
-				plPrint(rsp)
+			if( log == 'true' )
+				plPrint( rsp )
 
 			if ( $.isFunction( theData.postSuccess ) )
 				theData.postSuccess.call( this, rsp )
@@ -143,9 +180,9 @@
 			
 			var args = {
 					mode: 'save'
-				,	savingText: 'Saving Settings'
+				,	savingText: $.pl.lang("Saving Settings")
 				,	refresh: false
-				,	refreshText: 'Settings successfully saved! Refreshing page...'
+				,	refreshText: $.pl.lang("Settings successfully saved! Refreshing page...")
 				, 	log: true
 				,	pageData: $.pl.data
 				,	run: 'draft'
@@ -169,7 +206,7 @@
 					,	userID: $.pl.config.userID
 				}
 
-			confirmText = sprintf("<h3>Turn Off PageLines Editor?</h3><p>(Note: Draft mode is disabled when editor is off.)</p>")
+			confirmText = $.pl.lang( "<h3>Turn Off DMS Editor?</h3><p>(Note: Draft mode is disabled when editor is off.)</p>" )
 			bootbox.confirm( confirmText, function( result ){
 				if(result == true){
 					$.ajax( {
@@ -177,12 +214,12 @@
 						, url: ajaxurl
 						, data: theData
 						, beforeSend: function(){
-							bootbox.dialog( that.dialogText('Deactivating...'), [], {animate: false})
+							bootbox.dialog( that.dialogText($.pl.lang( "Deactivating..." ) ), [], {animate: false})
 						}
 						, success: function( response ){
 
 
-							bootbox.dialog( that.dialogText('Editor deactivated! Reloading page.'), [], {animate: false})
+							bootbox.dialog( that.dialogText($.pl.lang( "Editor deactivated! Reloading page.") ), [], {animate: false})
 							
 							window.location = $.pl.config.currentURL
 						}
@@ -198,8 +235,11 @@
 
 			$( '.btn-publish' ).on('click.saveButton', function(){
 
-				$.plAJAX.saveData( { 
+
+				$.plSave.save( { 
 					run: 'publish'
+					, store: $.plDatas.GetUIDs()
+					, log: true
 				} )
 
 
@@ -207,10 +247,16 @@
 			
 			$( '.btn-refresh' ).on('click.saveButton', function(){
 				
-				$(this).find('i').addClass('icon-spin')
+				$(this).find('i').addClass('icon icon-spin')
 				
 				window.onbeforeunload = null
-				location.reload()
+
+				plCallWhenSet( 'saving', function(){
+					
+					location.reload()
+				
+				}, true )
+			
 
 			})
 
@@ -223,9 +269,9 @@
 								mode: 'save'
 							,	run: 'revert'
 							,	confirm: true
-							,	confirmText: "<h3>Are you sure?</h3><p>This will revert <strong>"+revert+"</strong> changes to your last published configuration.</p>"
-							,	savingText: 'Reverting Draft'
-							,	refreshText: 'Template successfully updated!'
+							,	confirmText: sprintf( $.pl.lang( "<h3>Are you sure?</h3><p>This will revert <strong>%s</strong> changes to your last published configuration.</p>" ), revert )
+							,	savingText: $.pl.lang( "Reverting Draft" )
+							,	refreshText: $.pl.lang( "Template successfully updated!" )
 							,	refresh: true
 							, 	log: true
 							,	revert: revert
@@ -247,7 +293,10 @@
 
 				var state = response.state || false
 
-				$('.btn-saving').removeClass('active')
+				$('.btn-saving')
+					.removeClass('active')
+					.find('.icon')
+						.removeClass('icon-spin')
 
 				$('#stateTool').attr('class', 'dropup')
 
@@ -256,18 +305,14 @@
 					$('#stateTool').addClass(el)
 				})
 				
-				if( typeof state == 'object' && Object.keys(state).length > 0 ){
-					pl_show_unload( )
-				} else {
-					window.onbeforeunload = null
-				}
+			
 		}
 
 
 		, dialogText: function( text ){
 
-			var dynamo = '<div class="progress progress-striped active"><div class="bar" style="width: 100%;"></div></div>'
-			, 	theHTML = sprintf('<div class="spn"><div class="spn-txt">%s</div>%s</div>', text, dynamo)
+			var dynamo = '<div class="pl-spinner"></div>'
+			, 	theHTML = sprintf('<div class="spn">%s<div class="ttl">%s</div></div>', dynamo, text)
 			
 			
 			return theHTML

@@ -39,18 +39,24 @@
 	$.pageTools = {
 
 		startUp: function(){
+			
+			$.plDev.init()
 
 			$.plHotKeys.init()
 
 			$(".dropdown-toggle").dropdown()
 
-			$.pageBuilder.reloadConfig({ location: 'start', storeMap: false})
+			var storeMap = ( $('body').hasClass('pl-save-map-on-load') ) ? true : false
+			
+			$.pageBuilder.reloadConfig({ location: 'start', storeMap: storeMap })
 
 			this.theToolBox = $('body').toolbox()
 
 			$.pageBuilder.showEditingTools()
 
 			$.plAJAX.init()
+			
+			
 
 			$.plTemplates.init()
 
@@ -58,9 +64,13 @@
 			
 			that.toggleGrid( true )
 
+			$.plCommon.setFixedHeight()
 
-
-
+			// run after transition
+			setTimeout(function(){
+				$.plCommon.setFixedHeight()
+			}, 500)
+			
 		}
 		
 		
@@ -75,10 +85,10 @@
 			// Show unload if state is changed from live, will be overridden if 
 			// the state changes or by other user actions.
 		//	if( $('#stateTool').data('show-unload') == 'yes' )
-				//pl_show_unload()
+
 			
 			// Click event listener
-			$(".btn-toolbox").on("click.toolboxHandle", function(e) {
+			$(".btn-toolbox:not(.btn-link)").on("click.toolboxHandle", function(e) {
 
 				e.preventDefault()
 				
@@ -128,95 +138,6 @@
 				that.tabLink(tabLink, tabSubLink)
 			}
 			
-			
-			// ACCOUNT STUFF -- NEEDS TO BE MOVED
-			$('.submit-invites').on('click', function(){
-				
-				var theInvites = $('.karma-email-invites').val()
-				,	link = $(this).data('link')
-				,	name = $(this).data('name')
-				,	args = {
-					mode: 'account'
-					,	run: 'email_invites'
-					,	invites: theInvites
-					,	link: link
-					,	name: name
-				}
-				
-				if(theInvites == ''){
-					$('.karma-email-invites').focus()
-				} else {
-					$.plAJAX.run( args )
-				}
-				
-			})
-			
-			$('[data-action="pagelines_account"]').on('click', function() {
-			
-			
-				var key = $('#pl_activation').val()
-				,	email = $('#pl_email').val()
-				,	reset = ($(this).hasClass('deactivate-key')) ? true : false
-				,	update = ($(this).hasClass('refresh-user')) ? true : false
-				, 	theData = {
-						action: 'pl_account_actions'
-					,	key: key
-					,	email: email
-					,	reset: reset
-					, 	update: update
-				}
-
-
-				$.ajax({		
-						type: 'POST'
-					, 	url: ajaxurl
-					, 	data: theData
-					, 	beforeSend: function(){
-							$('.account-saving').html('<i class="icon-spin icon-refresh"></i> Saving').slideDown()
-						}
-					,	success: function( response ){
-					
-						console.log(response)
-						var rsp	= $.parseJSON( response )
-						,	accountDetails = $('.account-details')
-						
-						$('.account-saving')
-							.slideUp()
-						
-						var theMessages = ''
-						
-						if( rsp.messages) {
-							$.each(rsp.messages, function(i, val){ 
-							 	theMessages += sprintf('<div>%s</div>', val)
-							})
-						} else {
-							theMessages += 'Error, no messages?'
-						}
-						accountDetails
-							.removeClass('alert-warning')
-							.addClass('alert-info')
-							.html( theMessages )
-							.slideDown()
-
-
-						var url = sprintf( '%s?tablink=account&tabsublink=pl_account', $.pl.config.siteURL)
-						
-						if( true == rsp.refresh ){
-							
-							accountDetails
-								.append( '<br/><div><i class="icon-refresh icon-spin"></i> Refreshing Page</div>' )
-								
-							pl_url_refresh( url, 500 )
-							
-						}
-							
-
-						
-					}
-				})
-				
-				
-			})
         }
 
 		, tabLink: function( tabLink, tabSubLink ){
@@ -263,7 +184,7 @@
 				$('[data-action="toggle-grid"]').addClass('active-tab')
 				$('body').removeClass('drag-drop-editing width-resize')
 				store.set('plPagePreview', true)
-				$('.ui-sortable').sortable( "disable" )
+				$('.ui-sortable:not(.toolbox-sortable)').sortable( "disable" )
 				
 			} else {
 				
@@ -273,6 +194,8 @@
 				$('.ui-sortable').sortable( "enable" )
 				
 			}
+			
+			$.plCommon.setFixedHeight()
 
 		}
 		
@@ -332,17 +255,21 @@
 			
 
 			selectedPanel.tabs({
-				active: activeTab
 				
+				active: activeTab
+				, show: 600
 				, create: function(event, ui){
 					
 					var theTab = ui.tab
 					,	tabMeta = theTab.attr('data-tab-meta') || ''
 					, 	tabAction = theTab.attr('data-tab-action') || ''
+					,	tabPanel = $("[data-panel='"+tabAction+"']")
 					
-					if(tabMeta == 'options'){
+					if( tabMeta == 'options' ){
 						that.loadPanelOptions( selectedPanel, tabAction, tabAction )
 					}
+					
+				
 					
 					selectedPanel.find('.tabs-nav li').on('click.panelTab', function(){
 						
@@ -350,6 +277,27 @@
 						
 					})
 					
+					$('body').trigger('pl-tab-build', [ theTab ])
+					
+				}
+				
+				, beforeActivate: function(e, ui){
+					
+					var theTab = ui.newTab
+					,	tabFlag = theTab.attr('data-flag') || ''
+					
+					if ( tabFlag == 'link-storefront' ){
+
+						e.preventDefault()
+						
+						var storeURL = 'http://www.pagelines.com/shop'
+						
+						window.open( storeURL )
+						
+							
+						return false
+
+					}
 				}
 				, activate: function(e, ui){
 					
@@ -364,8 +312,8 @@
 					
 					if(tabMeta == 'options'){
 						that.loadPanelOptions( selectedPanel, tabAction )
-					
 					}
+		
 						
 				
 					if( tabLink != '' ){
@@ -383,16 +331,7 @@
 					}
 
 
-					if ( tabFlag == 'link-storefront' ){
-
-						e.preventDefault()
-
-						$('.btn-pl-extend')
-							.trigger('click')
-							
-						return
-
-					}
+					
 					
 					
 					var tabMemory = store.get( 'plTabMemory' )
@@ -400,12 +339,13 @@
 					
 					obj[key] = ui.newTab.parent().children('li').index(ui.newTab)
 				
-					
 					tabMemory = $.extend(tabMemory, obj)
 					
-					plPrint(tabMemory)
+				//	plPrint(tabMemory)
 
 					store.set('plTabMemory', tabMemory)
+					
+					$('body').trigger('pl-tab-build', [ theTab ])
 
 				}
 			})
@@ -424,16 +364,8 @@
 						, sid: 'settings'
 						, settings: $.pl.config.settings
 					}
-
+					
 				$.optPanel.render( config )
-
-			} else if( key == 'live'){
-
-				var liveFrame = '<div class="live-wrap"><iframe class="live_chat_iframe" src="http://pagelines.campfirenow.com/6cd04"></iframe></div>'
-
-				selectedPanel
-					.find('.panel-tab-content')
-					.html(liveFrame)
 
 			} else if (key == 'section-options'){
 
@@ -447,9 +379,27 @@
 					}
 				})
 
+			} else if( plIsset( $.pl.config[key] ) ){
+				
+				
+				var config = {
+						mode: 'settings'
+						, sid: key
+						, panel: key
+						, settings: $.pl.config[key]
+					}
+					
+				$.optPanel.render( config )
+				
+			} else if ( key == 'add-new'){
+				
+				$.pageTools.toggleGrid(false, 'show')
+				
 			}
 
 			selectedTab.addClass('active-tab')
+			
+			$('body').trigger('panelSetup', [ selectedPanel ])
 
 			$.xList.listStop()
 
@@ -553,8 +503,7 @@
 
 			$.widthResize.startUp()
 
-
-
+			
 		}
 		
 		, reloadAllEvents: function(){
@@ -591,94 +540,33 @@
 
 		}
 		
-		, setElementDelete: function( deleted ){
-			
-			var uniqueID = deleted.data('clone')
-			
-			deleted.find("[data-clone]").each(function(){
-				$.pageBuilder.setElementDelete( $(this) )
-			})
-			
-			// recursive
-			deleted.remove()
-
-			if( plIsset($.pl.data.local[ uniqueID ]) )
-				delete $.pl.data.local[ uniqueID ]
-				
-			if( plIsset($.pl.data.type[ uniqueID ]) )
-				delete $.pl.data.type[ uniqueID ]
-				
-			if( plIsset($.pl.data.global[ uniqueID ]) )
-				delete $.pl.data.global[ uniqueID ]
-		}
-		
-		, handleCloneData: function( cloned ){
-
-			var that = this
-			,	newUniqueID = $.pageBuilder.setCloneData( cloned ) // recursive function
-			
-			cloned
-				.find('.tooltip')
-				.removeClass('in')
-			
-			return newUniqueID
-
-		}
-		
-		, setCloneData: function( cloned ){
-			
-			var oldUniqueID = cloned.data('clone')
-			, 	newUniqueID = plUniqueID()
-			
-			// Recursion
-			cloned.find("[data-clone]").each(function(){
-				$.pageBuilder.setCloneData( $(this) )
-			})
-			
-			// Set element meta for mapping
-			cloned
-				.attr('data-clone', newUniqueID)
-				.data('clone', newUniqueID)
-				
-			var globalDat 	= (plIsset( $.pl.data.global[ oldUniqueID ] )) ? $.pl.data.global[ oldUniqueID ] : ''
-			,	typeDat 	= (plIsset( $.pl.data.type[ oldUniqueID ])) ? $.pl.data.type[ oldUniqueID ] : ''
-			,	localDat 	= (plIsset( $.pl.data.local[ oldUniqueID ])) ? $.pl.data.local[ oldUniqueID ] : ''
-			,	theOpts 	= (plIsset( $.pl.config.opts[ oldUniqueID ])) ? $.pl.config.opts[ oldUniqueID ] : ''
-
-			// Copy and move around meta data
-			$.pl.data.global[ newUniqueID ] = $.extend({}, globalDat) // must clone the element, not just assign as they stay connected
-				
-			$.pl.data.type[ newUniqueID ] 	= $.extend({}, typeDat) // must clone the element, not just assign as they stay connected
-			
-			$.pl.data.local[ newUniqueID ] 	= $.extend({}, localDat) // must clone the element, not just assign as they stay connected
-			
-			$.pl.config.opts[ newUniqueID ] = theOpts
-			
-			return newUniqueID
-		}
 
 		, sectionControls: function() {
 		
 			var that = this
-			, proBtn = '<br/> <a class="btn btn-primary" href="http://www.pagelines.com/DMS" target="_blank"><i class="icon-pagelines"></i> Learn more about being a PRO <i class="icon-external-link"></i></a>'
+			, proBtn = sprintf( '<br/> <a class="btn btn-primary" href="http://www.pagelines.com/pricing/" target="_blank"><i class="icon icon-pagelines"></i> %s <i class="icon icon-external-link"></i></a>', $.pl.lang( "Learn more about being a PRO" ) )
 			
 			$('.pro-only-disabled').on('click', function(e){
-				bootbox.alert('<h4>This capability is pro edition only.</h4>'+proBtn)
+				bootbox.alert($.pl.lang("<h4>This capability is pro edition only.</h4>")+proBtn)
 			})
 			
 			
-			$('.pro-section .section-edit').addClass('pro-only-disabled').attr('title', 'Edit (Pro Only)').on('click', function(e){
-				bootbox.alert('<h4>This is a Pro Section</h4>Editing Pro sections requires Pro Membership.<br/>'+proBtn)
+			$('.pro-section .section-edit').addClass('pro-only-disabled').attr('title', $.pl.lang("Edit (Pro Only)")).on('click', function(e){
+				bootbox.alert($.pl.lang("<h4>This is a Pro Section</h4>Editing Pro sections requires Pro Membership.<br/>")+proBtn)
 			})
 			
 			$('.s-control').tooltip({placement: 'top'})
 			
 			
 			
-			$('.s-control:not(".pro-only-disabled")').on('click.sectionControls', function(e){
+			$('.pl-area .s-control:not(".pro-only-disabled")').on('click.sectionControls', function(e){
 
 				e.preventDefault()
 				e.stopPropagation()
+
+				// cause options to save in last panel
+				// If a user clicks on edit button of another section and it doesn't save, percieved as bug
+				$('.current-panel').find('.lstn').first().trigger('blur')
 
 				var btn = $(this)
 				,	section = btn.closest(".pl-section")
@@ -722,10 +610,10 @@
 
 					storeData = false
 					
-					bootbox.confirm("<h3>Are you sure?</h3><p>This will remove this section and its settings from this page.</p>", function( result ){
+					bootbox.confirm($.pl.lang("<h3>Are you sure?</h3><p>This will remove this section and its settings from this page.</p>"), function( result ){
 
 						if(result == true){
-							$.pageBuilder.setElementDelete( section ) // recursive function
+							$.plDatas.setElementDelete( section ) // recursive function
 
 							$.pageBuilder.reloadConfig( {location: 'section-delete'} )
 					
@@ -742,7 +630,7 @@
 						.hide()
 						.fadeIn()
 
-					$.pageBuilder.handleCloneData( cloned )
+					$.plDatas.handleNewItemData( cloned )
 					
 				} else if ( btn.hasClass('section-increase')){
 
@@ -800,14 +688,15 @@
 				$.pageBuilder.alignGrid( this )
 			})
 			
-			var map = $.plMapping.getCurrentMap()
+			var mapConfig = $.plMapping.getCurrentMap()	
 			
+			$.pl.data[templateMode]['custom-map'] = $.extend({}, { template: mapConfig.template.map })
 			
-			$.pl.data[templateMode]['custom-map'] = $.extend({}, { template: map.template })
-			
-			$.pl.data.global.regions = $.extend({}, { header: map.header, footer: map.footer })
+			$.pl.data.global.regions = $.extend({}, { header: mapConfig.header.map, footer: mapConfig.footer.map })
 
-			return map
+			$(window).trigger('resize')
+
+			return mapConfig
 			
 		} 
 
@@ -822,44 +711,37 @@
 			,	obj = obj || {}
 			, 	location = obj.location || 'none'
 			, 	refresh  = obj.refresh || false
+			,	refreshText = (typeof obj.refreshText !== 'undefined') ? obj.refreshText : $.pl.lang( "Refreshing page..." )
 			,	storeMap = (typeof obj.storeMap !== 'undefined') ? obj.storeMap : true
 			,	templateMode = $.pl.config.templateMode || 'local'
 			,	map = that.updatePage( obj )
 			
+			$.plCommon.setFixedHeight()
 			
 			if( storeMap ){
+				
+				var saveArgs = {
+					run: 'map'
+					, store: map
+					, refresh: refresh
+					, refreshText: refreshText
+					, postSuccess: function( rsp ){
 
-				if( refresh ){
+						if(!rsp)
+							return
 
-					$.plAJAX.saveData( {
-						  run: 'map'
-						, refresh: true
-						, refreshText: 'Saved! Page refresh required. Refreshing...'
-						, map: map
-						, templateMode: templateMode
-					} )
-
-				} else {
-
-					$.plAJAX.saveData( {
-						  run: 'map'
-						, map: map
-						, templateMode: templateMode
-						, postSuccess: function( rsp ){
-
-							if(!rsp)
-								return
-
-							if(rsp.changes && rsp.changes.local == 1){
-								$('.x-item-actions')
-								 	.removeClass('active-template')
-							}
-
-
+						if(rsp.changes && rsp.changes.local == 1){
+							$('.x-item-actions')
+							 	.removeClass('active-template')
 						}
-					} )
-				}
 
+					}
+				}
+				
+				$.extend( saveArgs, obj )
+				
+				
+				$.plSave.save( saveArgs )
 
 			}
 
@@ -973,37 +855,18 @@
 			,	reloadSort = reloadSort || false
 			,	sortableArgs = {}
 
-			
-			that.preventNestedColumns()
-
-		    $( '.pl-sortable-area' ).sortable( that.sortableArguments( 'section' ) )
-
-
-			// AREA drag and drop
-			$( '.pl-area-container' ).sortable( that.sortableArguments( 'area' ) )
-
-		}
+		 
+			$('.pl-region')
+	  			.find('.pl-area .pl-sortable-area')
+					.sortable( that.sortableArguments( 'section' ) )
+					.end()
+   				.find('.pl-area-container')
+   					.sortable( that.sortableArguments( 'area' ) )
 		
-		, preventNestedColumns: function(){
-			
-			// if( $('.section-plcolumn .pl-sortable-area').hasClass('ui-sortable') ){
-			// 			
-			// 			$( '.section-plcolumn' )
-			// 					.off('mousedown.noNested')
-			// 					.off('mouseup.noNested')
-			// 			
-			// 			$('.section-plcolumn .pl-sortable-area').sortable( "enable" )
-			// 			$( '.section-plcolumn .pl-section' ).addClass('pl-sortable')
-			// 		}
-			// 		
-			// 		$( '.section-plcolumn' ).on('mousedown.noNested', function(e){
-			// 			$('.section-plcolumn .pl-sortable-area').sortable( "disable" )
-			// 			$( '.section-plcolumn .pl-section' ).removeClass('pl-sortable')
-			// 		}).on('mouseup.noNested', function(e){
-			// 			$('.section-plcolumn .pl-sortable-area').sortable( "enable" )
-			// 			$( '.section-plcolumn .pl-section' ).addClass('pl-sortable')
-			// 		})
+	
+
 		}
+
 
 		, sortableArguments: function( type ){
 
@@ -1018,6 +881,7 @@
 				sortableSettings = {
 				       	items: 	items
 					,	connectWith: container
+					,	appendTo: document.body
 					,	placeholder: placeholder
 					,	forcePlaceholderSize: true
 			        ,	tolerance: "pointer"		// basis for calculating where to drop
@@ -1026,8 +890,9 @@
 					,	scrollSpeed: 40
 			        ,	cursor: "move"
 					,	distance: 3
-					,	delay: 100
+					,	delay: 200
 					, 	handle: handle
+					,	zIndex: 9999
 					, start: function(event, ui){
 
 						$('body')
@@ -1115,6 +980,7 @@
 			, 	templateMode = $.pl.config.templateMode || 'local'
 			,	newScope = (element.parents(".template-region-wrap").length == 1) ? templateMode : 'global'
 			, 	oldScope = element.attr('data-start-scope')
+			,	store = {}
 				
 			
 			// if data wasn't set or scope wasn't changed
@@ -1130,22 +996,10 @@
 			
 			delete $.pl.data[ oldScope ][ uniqueID ]
 			
-			
-			
-			$.plAJAX.saveData()
-			
+			store[ newScope ] = $.pl.data[ newScope ]
+			store[ oldScope ] = $.pl.data[ oldScope ]
 		
+		//	$.plAJAX.saveData()
 		}
-
-
-
-
-
     }
-
-
-
-
-
 }(window.jQuery);
-
