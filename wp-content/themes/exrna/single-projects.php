@@ -44,7 +44,7 @@ get_header(); ?>
 				<div class="row">
 					<div class="col-md-8">
 					<p><span class="projectlead">Principal Investigator:</span> <span class="post-author"> <?php the_author_posts_link(); ?></span></p>					
-					<p><span class="projectlead">Contributors:</span> <?php the_field('contributors'); ?> <?php coauthors_posts_links(); ?></p>
+					<p><span class="projectlead">Contributors:</span> <?php the_field('contributors'); ?> </p>
 					</div>
 					
 				</div>
