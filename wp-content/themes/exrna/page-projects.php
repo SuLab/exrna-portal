@@ -426,7 +426,7 @@ Template Name: Project 2 Page
 								<img src="http://placehold.it/90x90" alt="" class="img-responsive project-header-img ">
 							</div>
 							<div class="col-md-9 col-sm-10 col-xs-12">
-								<h4><a href="<?php bloginfo( 'url' ); ?>projects/data-management-resource-repository-data-integration-analysis-component-dmrr-diac/">Data Integration and Analysis Component of the Data Management and Resource Repository for the exRNA atlas (DMRR DIAC) <span class="l-more"><i class="fa fa-long-arrow-right"></i></span></a></h4>
+								<h4><a href="<?php bloginfo( 'url' ); ?>/projects/data-management-resource-repository-data-integration-analysis-component-dmrr-diac/">Data Integration and Analysis Component of the Data Management and Resource Repository for the exRNA atlas (DMRR DIAC) <span class="l-more"><i class="fa fa-long-arrow-right"></i></span></a></h4>
 		                        <h5>Mark Bender Gerstein</h5>
 		                        <h6>Yale University</h6>
 							</div>
