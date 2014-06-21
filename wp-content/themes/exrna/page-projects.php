@@ -414,7 +414,46 @@ Template Name: Project 2 Page
 								<img src="http://placehold.it/90x90" alt="" class="img-responsive project-header-img ">
 							</div>
 							<div class="col-md-9 col-sm-10 col-xs-12">
-								<h4><a href="<?php bloginfo( 'url' ); ?>/projects/data-management-resource-repository-exrna-atlas/">Data Management and Resource Repository for the exRNA Atlas <span class="l-more"><i class="fa fa-long-arrow-right"></i></span></a></h4>
+								<h4><a href="<?php bloginfo( 'url' ); ?>/projects/data-management-resource-repository-data-coordination-component-dmrr-dcc/">Data Coordination Component of the Data Management and Resource Repository for the exRNA atlas (DMRR DCC) <span class="l-more"><i class="fa fa-long-arrow-right"></i></span></a></h4>
+		                        <h5>Aleksandar Milosavljevic</h5>
+		                        <h6>Baylor College of Medicine</h6>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+							<div class="col-3">
+								<img src="http://placehold.it/90x90" alt="" class="img-responsive project-header-img ">
+							</div>
+							<div class="col-md-9 col-sm-10 col-xs-12">
+								<h4><a href="<?php bloginfo( 'url' ); ?>projects/data-management-resource-repository-data-integration-analysis-component-dmrr-diac/">Data Integration and Analysis Component of the Data Management and Resource Repository for the exRNA atlas (DMRR DIAC) <span class="l-more"><i class="fa fa-long-arrow-right"></i></span></a></h4>
+		                        <h5>Mark Bender Gerstein</h5>
+		                        <h6>Yale University</h6>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+				<div class="row pushtop the-projects">
+					<div class="col-md-6">
+						<div class="row">
+							<div class="col-3">
+								<img src="http://placehold.it/90x90" alt="" class="img-responsive project-header-img ">
+							</div>
+							<div class="col-md-9 col-sm-10 col-xs-12">
+								<h4><a href="<?php bloginfo( 'url' ); ?>/projects/scientific-outreach-component-data-management-resource-repository-ex-rna-dmrr-soc/">Scientific Outreach Component of the Data Management and Resource Repository for the exRNA atlas (DMRR SOC) <span class="l-more"><i class="fa fa-long-arrow-right"></i></span></a></h4>
+		                        <h5>DAVID GALAS</h5>
+		                        <h6>Pacific Northwest Diabetes Research Institute</h6>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+							<div class="col-3">
+								<img src="http://placehold.it/90x90" alt="" class="img-responsive project-header-img ">
+							</div>
+							<div class="col-md-9 col-sm-10 col-xs-12">
+								<h4><a href="<?php bloginfo( 'url' ); ?>/projects/data-management-resource-repository-exrna-atlas/">Administrative Core of the Data Management and Resource Repository for the exRNA Atlas (DMRR AC) <span class="l-more"><i class="fa fa-long-arrow-right"></i></span></a></h4>
 		                        <h5>Aleksandar Milosavljevic</h5>
 		                        <h6>Baylor College of Medicine</h6>
 							</div>
