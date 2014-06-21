@@ -14,7 +14,7 @@
 			
 			<div class="row">
 				<div class="heading">
-					<p><span class="post-date"><?php the_time('m.d.y') ?></span> <span class="post-author">by <?php the_author_posts_link(); ?></span></p>
+					<p><span class="post-date"><?php the_time('m.d.y') ?></span> <span class="post-author">by <?php coauthors_posts_links(); ?></span></p>
 					<h3><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h3>
 				</div>
 			</div>
