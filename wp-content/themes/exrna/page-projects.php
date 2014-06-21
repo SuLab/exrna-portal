@@ -8,7 +8,7 @@ Template Name: Project 2 Page
 <div class="container pushtop">
 	<div class="row">
 		<div class="col-xs-12">
-			<h1>Projects test</h1>
+			<h1>Projects</h1>
 		</div>
 	</div>
 	
