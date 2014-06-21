@@ -162,10 +162,10 @@ function coauthors__echo( $tag, $type = 'tag', $separators = array(), $tag_args 
 			$author_text = $i->current_author->user_login;
 		
 		// Append separators
-		if ( ! $i->is_first() && $i->count() > 3 )
+		if ( ! $i->is_first() && $i->count() > 2 )
 			$output .= $separators['between'];
 		
-		if ( $i->is_last() && $i->count() > 2 ) {
+		if ( $i->is_last() && $i->count() > 1 ) {
 			$output = rtrim( $output, $separators['between'] );
 			$output .= $separators['betweenLast'];
 		}

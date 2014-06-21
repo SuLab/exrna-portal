@@ -28,8 +28,7 @@ get_header(); ?>
 			<div class="row">
 				<div class="col-xs-6"><div class="hm-post-border"></div></div>
 			</div>
-			<p><span class="post-author">by <?php the_author_posts_link(); ?> </span></p>
-			<p><span class="post-author">Contributors:</span> <?php coauthors_posts_links(); ?> </p>
+			<p><span class="post-author">by <?php coauthors_posts_links(); ?> </span></p>
 			<div class="sp-content">
 				<?php the_content(); ?>
 				
