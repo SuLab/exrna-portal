@@ -13,7 +13,7 @@
 get_header(); ?>
 <div class="container pushtop">
 	<div class="row pushtop hm-posts">
-		<div class="col-md-5 col-md-offset-1">
+		<div class="col-md-8 col-md-offset-">
 			<?php // Display blog posts on any page @ http://m0n.co/l
 				$temp = $wp_query; $wp_query= null;
 				$wp_query = new WP_Query(); $wp_query->query('showposts=10' . '&paged='.$paged);

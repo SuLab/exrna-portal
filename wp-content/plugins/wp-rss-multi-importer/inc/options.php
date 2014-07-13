@@ -1140,9 +1140,57 @@ function wp_rss_multi_importer_feed_page() {
 	}
 
 	?>
+	
+	<h2><?php _e("Export Your Feeds", 'wp-rss-multi-importer')?></h2>
+	<p><?php _e("Export a text file with all of the feed URLS you have stored in this plugin", 'wp-rss-multi-importer')?> </p>
+		<form method="post">
+	      <p class="submit">
+
+	          <input type="submit" name="rssmi_export" value="<?php _e( 'Export Your Feeds', 'wp-rss-multi-importer' ); ?>"  class="button" />
+	      </p>
+	  </form>
+	
 
 </div></div></div>
 <?php
+}
+
+
+function wp_rssmi_download_feed_stream(){
+		$rssmi_url_download='';
+		$option_items = get_option( 'rss_import_items' ); 
+		$option_values = array_values($option_items);
+		
+		for ($i = 0; $i <= count($option_items) - 1; $i++) {
+			$name=$option_values[$i];
+			$i=$i+1;
+			$url=$option_values[$i];
+			$i=$i+1;
+			$cat=$option_values[$i];
+			
+			$rssmi_url_download .= $name.",".$url;
+				if ($cat!=0){
+			$rssmi_url_download .=",".$cat; 		
+				}
+			$rssmi_url_download .="\n" ;
+		}
+			
+	echo $rssmi_url_download;
+	die();	
+}
+
+add_action( 'admin_init', 'wp_rssmi_download_feeds', 1 );
+
+
+function wp_rssmi_download_feeds() {
+    if ( isset( $_POST['rssmi_export'] ) ) {  //watch for post
+        $file_name = "feeds.text";
+        header( 'Content-Description: File Transfer' );
+        header( "Content-Type: text/plain; charset=" . get_option( 'blog_charset' ) );
+        header( "Content-Disposition: attachment; filename=$file_name." );
+        wp_rssmi_download_feed_stream();
+        die();
+    }
 }
 
 
@@ -1309,7 +1357,7 @@ wp_rss_multi_deactivation();
 	
 		<p ><label class='o_textinput' for='titleFilter'><?php _e("Make title clickable on listing page with same settings as above", 'wp-rss-multi-importer')?>   <input type="checkbox" Name="rss_post_options[titleFilter]" Value="1" <?php if (isset($post_options['titleFilter']) && $post_options['titleFilter']==1){echo 'checked="checked"';} ?></label></p>
 	
-	<p ><label class='o_textinput' for='readmore'><?php _e("Text to use for Read More (default is ...Read More)", 'wp-rss-multi-importer')?>   <input  id='readmore' type="text" size='18' Name="rss_post_options[readmore]" Value="<?php echo $readmoreWords ;?>"></label></p>
+	<p ><label class='o_textinput' for='readmore'><?php _e("Text to use for Read More (default is ...Read More)", 'wp-rss-multi-importer')?>   <input  id='readmore' type="text" size='18' Name="rss_post_options[readmore]" Value="<?php echo $readmoreWords ;?>">(Write in NONE if you do not want Read More text)</label></p>
 	
 	
 
@@ -1345,7 +1393,7 @@ wp_rss_multi_deactivation();
 <OPTION VALUE="5" <?php if($post_options['sourceWords']==5){echo 'selected';} ?>><?php _e("Other (fill in below)", 'wp-rss-multi-importer')?></OPTION>
 </SELECT></p>
 
-<p style="padding-left:15px"><label class='o_textinput' for='sourceWords_Label'><?php _e("Your own attribution label", 'wp-rss-multi-importer')?>   <input  id='sourceWords_Label' type="text" size='12'  Name="rss_post_options[sourceWords_Label]" Value="<?php echo $sourceWords_Label ?>">(make sure to choose Other in drop down list)</label></p>
+<p style="padding-left:15px"><label class='o_textinput' for='sourceWords_Label'><?php _e("Your own attribution label", 'wp-rss-multi-importer')?>   <input  id='sourceWords_Label' type="text" size='12'  Name="rss_post_options[sourceWords_Label]" Value="<?php echo $sourceWords ?>">(make sure to choose Other in drop down list)</label></p>
 
 <p><label class='o_textinput' for='sourceAnchorText'><?php _e("Read More anchor text", 'wp-rss-multi-importer')?></label>
 	<SELECT NAME="rss_post_options[sourceAnchorText]" id="sourceAnchorText">

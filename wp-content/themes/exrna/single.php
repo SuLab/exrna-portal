@@ -24,7 +24,7 @@ get_header(); ?>
 		</article>
 	</div><!-- End Row -->
 	<div class="row">
-		<div class="col-md-5 col-md-offset-1">
+		<div class="col-md-8 col-md-offset-">
 			<div class="row">
 				<div class="col-xs-6"><div class="hm-post-border"></div></div>
 			</div>
