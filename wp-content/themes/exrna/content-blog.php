@@ -21,7 +21,7 @@
 			<div class="row">
 				<div class="excerpt">
 					<div class="post-excerpt">
-						<p><?php the_excerpt() ?>
+						<p><?php the_excerpt() ?></p>
 					</div>
 				</div>
 			</div>

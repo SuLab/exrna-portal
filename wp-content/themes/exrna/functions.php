@@ -65,6 +65,18 @@ function custom_fields($fields) {
 	return $fields;
 }
 
+/**
+ * Reorder events
+ *
+ */
+
+add_action( 'pre_get_posts', 'reorder_events_in_blog', 100 );
+
+function reorder_events_in_blog( $query ) {
+	if ( isset( $query->tribe_is_multi_posttype ) )
+		unset( $query->tribe_is_multi_posttype );
+}
+
 
 
 /**
