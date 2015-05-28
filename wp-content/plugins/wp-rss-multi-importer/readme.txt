@@ -3,13 +3,13 @@ Contributors: amweiss98
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=M6GC7V8BARAJL
 Tags: rss, atom, feeds, aggregation, aggregator, import, syndication, autoblog, widget
 Requires at least: 3.3
-Tested up to: 3.9.2
-Stable tag: 3.01
+Tested up to: 4.2.2
+Stable tag: 3.15
 Aggregate RSS feeds. AutoPost or use shortcode, excerpts w/ images, 13 templates, categorize and more.
 
 == Description ==
 
-All-In-One totally free solution for importing, merging and displaying RSS and Atom feeds on your Wordpress site. Highly rated (in Top 25 of Wordpress plugins). Using this plugin you can do 4 things (separately or at the same time):
+All-In-One totally free solution for importing, merging and displaying RSS and Atom feeds on your Wordpress site. Using this plugin you can do 4 things (separately or at the same time):
 
 * Display the aggregated feed items on a page in one of __13 different templates that you can customize__ 
 * __Create blog posts (AutoPost)__ from the feed items so readers can comment on them
@@ -57,8 +57,7 @@ These features are all available in the admin panel.
 
 [__Allen Weiss__](http://www.wprssimporter.com/)
 
-
-Some parts of the code in this plugin are based on code from [__WP RSS Aggregator__](https://wordpress.org/plugins/wp-rss-aggregator/)
+The code for some parts of this plugin is based on code from [__WP RSS Aggregator__](https://wordpress.org/plugins/wp-rss-aggregator/)
 
 == Installation ==
 
@@ -115,6 +114,31 @@ Go here to find [__all FAQs__](http://www.wprssimporter.com/faqs/)
 4. User view - with excerpts and images.
 
 == Changelog ==
+
+= Version 3.15 (2015-5-10) =
+* Fixed: Problem due to repository guidelines of Wordpress.
+
+= Version 3.14 (2015-3-20) =
+* Fixed: Add nonce to GET request for deleting feed items.
+
+= Version 3.13 (2014-9-13) =
+* Fixed: Bug that would cause media images to disappear.
+
+= Version 3.12 (2014-9-13) =
+* Fixed: Various issues reported during the last few weeks.
+* Enhanced: Manually deleting posts caused by the plugin will now also delete its associated featured image.
+* Enhanced: Share on LinkedIn now added to social sharing option for AutoPost and default shortcode template.
+* NEW: Only bring in items newer than n number of days old.
+
+= Version 3.11 (2014-9-1) =
+* Fixed: Bugs due to plugin conflicts and clearing the cron scheduler.
+
+= Version 3.10 (2014-8-31) =
+* NEW: Bulk editing of categories.
+* NEW: Add a time restriction on feed items (go to Global Settings).
+* NEW: View feed items from feed list.
+* NEW: Added option to get image size remotely (which can slow performance).
+* Fixed: Several bugs
 
 = Version 3.01 (2014-8-14) =
 * NEW: Option to not use Force-Feed for importing RSS feeds.

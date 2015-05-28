@@ -6,30 +6,27 @@
  */
 
 get_header(); ?>
-	<div class="container">
-		<!-- Test -->
-		
-		<?php if ( have_posts() ) : ?>
 
-			<header class="page-header">
-				<h2 class="page-title"><?php printf( __( 'Search Results for: %s', '_tk' ), '<span>' . get_search_query() . '</span>' ); ?></h2>
-			</header><!-- .page-header -->
+	<?php if ( have_posts() ) : ?>
 
-			<?php // start the loop. ?>
-			<?php while ( have_posts() ) : the_post(); ?>
+		<header>
+			<h2 class="page-title"><?php printf( __( 'Search Results for: %s', '_tk' ), '<span>' . get_search_query() . '</span>' ); ?></h2>
+		</header><!-- .page-header -->
 
-				<?php get_template_part( 'content', 'search' ); ?>
+		<?php // start the loop. ?>
+		<?php while ( have_posts() ) : the_post(); ?>
 
-			<?php endwhile; ?>
+			<?php get_template_part( 'content', 'search' ); ?>
 
-			<?php _tk_content_nav( 'nav-below' ); ?>
+		<?php endwhile; ?>
 
-		<?php else : ?>
+		<?php _tk_content_nav( 'nav-below' ); ?>
 
-			<?php get_template_part( 'no-results', 'search' ); ?>
+	<?php else : ?>
 
-		<?php endif; // end of loop. ?>
+		<?php get_template_part( 'no-results', 'search' ); ?>
 
-	<?php get_sidebar(); ?>
-</div>
+	<?php endif; // end of loop. ?>
+
+<?php get_sidebar(); ?>
 <?php get_footer(); ?>

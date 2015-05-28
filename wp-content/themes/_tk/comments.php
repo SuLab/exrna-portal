@@ -24,7 +24,7 @@ if ( post_password_required() )
 	<?php // You can start editing here -- including this comment! ?>
 
 	<?php if ( have_comments() ) : ?>
-		<header class="page-header">
+		<header>
 			<h2 class="comments-title">
 				<?php
 					printf( _nx( 'One thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', get_comments_number(), 'comments title', '_tk' ),
@@ -75,25 +75,25 @@ if ( post_password_required() )
 	<?php comment_form( $args = array(
 			  'id_form'           => 'commentform',  // that's the wordpress default value! delete it or edit it ;)
 			  'id_submit'         => 'commentsubmit',
-			  'title_reply'       => __( 'Leave a Reply' ),  // that's the wordpress default value! delete it or edit it ;)
-			  'title_reply_to'    => __( 'Leave a Reply to %s' ),  // that's the wordpress default value! delete it or edit it ;)
-			  'cancel_reply_link' => __( 'Cancel Reply' ),  // that's the wordpress default value! delete it or edit it ;)
-			  'label_submit'      => __( 'Post Comment' ),  // that's the wordpress default value! delete it or edit it ;)
-			
-			  'comment_field' =>  '<p><textarea placeholder="Start typing..." id="comment" class="form-control" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>', 
-			
+			  'title_reply'       => __( 'Leave a Reply', '_tk' ),  // that's the wordpress default value! delete it or edit it ;)
+			  'title_reply_to'    => __( 'Leave a Reply to %s', '_tk' ),  // that's the wordpress default value! delete it or edit it ;)
+			  'cancel_reply_link' => __( 'Cancel Reply', '_tk' ),  // that's the wordpress default value! delete it or edit it ;)
+			  'label_submit'      => __( 'Post Comment', '_tk' ),  // that's the wordpress default value! delete it or edit it ;)
+
+			  'comment_field' =>  '<p><textarea placeholder="Start typing..." id="comment" class="form-control" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>',
+
 			  'comment_notes_after' => '<p class="form-allowed-tags">' .
-			   	__( 'You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes:' ) .
-			  	'</p><div class="alert alert-info">' . allowed_tags() . '</div>' 
+				__( 'You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes:', '_tk' ) .
+				'</p><div class="alert alert-info">' . allowed_tags() . '</div>'
 
-			  // So, that was the needed stuff to have bootstrap basic styles for the form elements and buttons 
+			  // So, that was the needed stuff to have bootstrap basic styles for the form elements and buttons
 
-			  // Basically you can edit everything here! 
+			  // Basically you can edit everything here!
 			  // Checkout the docs for more: http://codex.wordpress.org/Function_Reference/comment_form
-			  // Another note: some classes are added in the bootstrap-wp.js - ckeck from line 1 
-			  
-	)); 
-	
+			  // Another note: some classes are added in the bootstrap-wp.js - ckeck from line 1
+
+	));
+
 	?>
 
 </div><!-- #comments -->

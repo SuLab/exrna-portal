@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * Day View Single Event
  * This file contains one event in the day view
@@ -9,26 +9,28 @@
  *
  */
 
-if ( !defined('ABSPATH') ) { die('-1'); } ?>
+if ( ! defined( 'ABSPATH' ) ) {
+	die( '-1' );
+} ?>
 
-<?php 
+<?php
 
 $venue_details = array();
 
-if ($venue_name = tribe_get_meta( 'tribe_event_venue_name' ) ) {
-	$venue_details[] = $venue_name;	
+if ( $venue_name = tribe_get_meta( 'tribe_event_venue_name' ) ) {
+	$venue_details[] = $venue_name;
 }
 
-if ($venue_address = tribe_get_meta( 'tribe_event_venue_address' ) ) {
-	$venue_details[] = $venue_address;	
+if ( $venue_address = tribe_get_meta( 'tribe_event_venue_address' ) ) {
+	$venue_details[] = $venue_address;
 }
 // Venue microformats
-$has_venue = ( $venue_details ) ? ' vcard': '';
-$has_venue_address = ( $venue_address ) ? ' location': '';
+$has_venue = ( $venue_details ) ? ' vcard' : '';
+$has_venue_address = ( $venue_address ) ? ' location' : '';
 ?>
 
 <!-- Event Cost -->
-<?php if ( tribe_get_cost() ) : ?> 
+<?php if ( tribe_get_cost() ) : ?>
 	<div class="tribe-events-event-cost">
 		<span><?php echo tribe_get_cost( null, true ); ?></span>
 	</div>
@@ -37,7 +39,7 @@ $has_venue_address = ( $venue_address ) ? ' location': '';
 <!-- Event Title -->
 <?php do_action( 'tribe_events_before_the_event_title' ) ?>
 <h2 class="tribe-events-list-event-title summary">
-	<a class="url" href="<?php echo tribe_get_event_link() ?>" title="<?php the_title() ?>" rel="bookmark">
+	<a class="url" href="<?php echo esc_url( tribe_get_event_link() ); ?>" title="<?php the_title() ?>" rel="bookmark">
 		<?php the_title() ?>
 	</a>
 </h2>
@@ -51,11 +53,11 @@ $has_venue_address = ( $venue_address ) ? ' location': '';
 	<div class="updated published time-details">
 		<?php echo tribe_events_event_schedule_details() ?>
 	</div>
-	
+
 	<?php if ( $venue_details ) : ?>
 		<!-- Venue Display Info -->
 		<div class="tribe-events-venue-details">
-			<?php echo implode( ', ', $venue_details) ; ?>
+			<?php echo implode( ', ', $venue_details ); ?>
 		</div> <!-- .tribe-events-venue-details -->
 	<?php endif; ?>
 
@@ -69,6 +71,6 @@ $has_venue_address = ( $venue_address ) ? ' location': '';
 <?php do_action( 'tribe_events_before_the_content' ) ?>
 <div class="tribe-events-list-event-description tribe-events-content description entry-summary">
 	<?php echo tribe_events_get_the_excerpt() ?>
-	<a href="<?php echo tribe_get_event_link() ?>" class="tribe-events-read-more" rel="bookmark"><?php _e( 'Find out more', 'tribe-events-calendar' ) ?> &raquo;</a>
+	<a href="<?php echo esc_url( tribe_get_event_link() ); ?>" class="tribe-events-read-more" rel="bookmark"><?php _e( 'Find out more', 'tribe-events-calendar' ) ?> &raquo;</a>
 </div><!-- .tribe-events-list-event-description -->
 <?php do_action( 'tribe_events_after_the_content' ) ?>
