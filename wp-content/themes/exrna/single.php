@@ -12,12 +12,13 @@ get_header(); ?>
 			<div class="col-md-12 hm-post">
 				<div class="row">
 					<div class="heading">
-						<div class="pull-right">
+						
+						<p><span class="post-date"><?php the_time('m.d.y') ?></span> <i style="color: #9d9d9d;">last updated.</i></p>
+						<h1><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h1>
+						<div class="pull-">
 							<a href="https://twitter.com/share" class="twitter-share-button" data-via="exrna" data-dnt="true">Tweet</a>
 							<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 						</div>
-						<p><span class="post-date"><?php the_time('m.d.y') ?></span> <i style="color: #9d9d9d;">last updated.</i></p>
-						<h1><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h1>
 					</div>
 				</div>
 			</div>
